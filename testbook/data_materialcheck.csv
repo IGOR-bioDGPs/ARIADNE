@@ -1,0 +1,30 @@
+id;type;label;shape;fillcolor;fontcolor;rank;subgraph;connection_from;connection_to;edgeLabel
+1;lower;Project Start;rectangle;Purple;white;1;initial;Project Start;Type of Project;
+2;lower;Type of Project;diamond;Thistle;white;1;initial;Type of Project;Type of Study;Continue after choice
+3;lower;Type of Study;diamond;Thistle;white;1;initial;Type of Study;Data Availability;Empircal
+4;lower;Data Availability;diamond;Thistle;white;1;initial;Data Availability;Data Simulation;
+5;lower;Data Simulation;diamond;Thistle;white;1;initial;Data Simulation;Experiment Design;
+6;lower;Experiment Design;rectangle;Purple;white;1;initial;Experiment Design;Data Collection;
+7;lower;Data Collection;rectangle;Purple;white;1;initial;Data Collection;Data Validation;
+8;lower;Data Validation;rectangle;Purple;white;1;initial;Data Validation;Data Analysis;
+9;lower;Data Analysis;rectangle;Purple;white;1;initial;Data Analysis;Writing;
+10;lower;Writing;rectangle;Purple;white;1;initial;Writing;Dissemination;
+11;lower;Dissemination;rectangle;Purple;white;1;initial;Dissemination;Project End;
+12;lower;Project End;rectangle;Purple;white;1;initial;;;
+14;lower;Type of Preregistration;diamond;Cyan4;white;2;TypeofProject;Type of Project;Type of Preregistration;
+15;lower;Preregistration Metaanalysis;diamond;Cyan4;white;2;TypeofStudy;Type of Study;Preregistration Metaanalysis;
+16;lower;Design Framework;diamond;Cyan4;white;2;ExperimentDesign;Experiment Design;Design Framework;
+17;lower;Sample Size;diamond;Cyan4;white;2;ExperimentDesign;Experiment Design;Sample Size;
+18;lower;Stimuli;diamond;Cyan4;white;2;ExperimentDesign;Experiment Design;Stimuli;
+19;lower;Open Code;diamond;Cyan4;white;2;Dissemination;Dissemination;Open Code;
+20;lower;Open Materials;diamond;Cyan4;white;2;Dissemination;Dissemination;Open Materials;
+21;lower;Open Data;diamond;Cyan4;white;2;Dissemination;Dissemination;Open Data;
+22;lower;Presentation;diamond;Cyan4;white;2;Dissemination;Dissemination;Presentation;
+23;lower;Type of Preregistration;diamond;Cyan4;white;2;TypeofPreregistration;Type of Preregistration;Preregistration;
+24;lower;Preregistration;diamond;OliveDrab3;black;3;TypeofPreregistration;Preregistration;Preregistration Framework;
+25;lower;Preregistration Framework;diamond;SteelBlue1;black;4;TypeofPreregistration;Type of Preregistration;Registered Report;
+26;lower;Registered Report;diamond;OliveDrab3;black;3;TypeofPreregistration;Registered Report;Registered Report Framework;
+27;lower;OSF Templates;ellipse;PaleVioletRed3;black;5;TypeofPreregistration;Preregistration Framework;OSF Templates;
+28;lower;AsPredicted Templates;ellipse;PaleVioletRed3;black;5;TypeofPreregistration;Preregistration Framework;AsPredicted Templates;
+29;lower;Registered Report Framework;diamond;SteelBlue1;black;4;TypeofPreregistration;Registered Report Framework;Journal;
+30;lower;Journal;ellipse;PaleVioletRed3;black;5;TypeofPreregistration;;;
