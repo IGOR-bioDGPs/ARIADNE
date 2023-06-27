@@ -5,10 +5,10 @@
 
 #######################################################################################
 # Book settings
-title                       : TestBook  # The title of the book. Will be placed in the left navbar.
-author                      : Marie Mueckstein  # The author of the book
+title                       : ARIADNE  # The title of the book. Will be placed in the left navbar.
+author                      : The IGOR Cumminity  # The author of the book
 copyright                   : "2023"  # Copyright year to be placed in the footer
-logo                        : logo.png  # A path to the book logo
+logo                        : ARIADNE_Logo.png  # A path to the book logo
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
