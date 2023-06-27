@@ -3,7 +3,20 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+parts:
+    - caption: Overview
+      chapters:
+       - file: abstract
+    - caption: The road to success
+      chapters:
+       - file: node_graph
+       - file: step1
+       - file: step2
+       - file: step3
+       - file: step4
+       - file: step5
+       - file: step6
+       - file: step7
+       - file: step8
+       - file: step9
+       - file: step10
