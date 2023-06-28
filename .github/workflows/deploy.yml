@@ -5,6 +5,11 @@ on:
   push:
     branches:
       - master
+      
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
