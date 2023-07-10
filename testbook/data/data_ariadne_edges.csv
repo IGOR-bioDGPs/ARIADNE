@@ -1,0 +1,34 @@
+id;source;target;label;background-color;shape;line-color;arrow;type;source-arrow-color
+1;Project Start;Type of Project;;;triangle;#D1E3DD;triangle;triangle;black
+2;Type of Project;Type of Study;;;triangle;#D1E3DD;triangle;triangle;black
+3;Type of Study;Data Availability;;;triangle;#D1E3DD;triangle;triangle;black
+4;Data Availability;Data Simulation;;;;#D1E3DD;;;
+5;Data Simulation;Experiment Design;;;;#D1E3DD;;;
+6;Experiment Design;Data Collection;;;;#D1E3DD;;;
+7;Data Collection;Data Validation;;;;#D1E3DD;;;
+8;Data Validation;Data Analysis;;;;#D1E3DD;;;
+9;Data Analysis;Writing;;;;#D1E3DD;;;
+10;Writing;Dissemination;;;;#D1E3DD;;;
+11;Dissemination;Project End;;;;#D1E3DD;;;
+12;;;;;;#D1E3DD;;;
+13;Type of Project;;;;;#D1E3DD;;;
+14;Type of Project;Type of Preregistration;;;;#D1E3DD;;;
+15;Type of Study;;;;;#D1E3DD;;;
+16;Type of Study;Preregistration Metaanalysis;;;;#D1E3DD;;;
+17;Experiment Design;;;;;#D1E3DD;;;
+18;Experiment Design;Design Framework;;;;#D1E3DD;;;
+19;Experiment Design;Sample Size;;;;#D1E3DD;;;
+20;Experiment Design;Stimuli;;;;#D1E3DD;;;
+21;Dissemination;;;;;#D1E3DD;;;
+22;Dissemination;Open Code;;;;#D1E3DD;;;
+23;Dissemination;Open Materials;;;;#D1E3DD;;;
+24;Dissemination;Open Data;;;;#D1E3DD;;;
+25;Dissemination;Presentation;;;;#D1E3DD;;;
+26;Type of Preregistration;Preregistration;;;;#D1E3DD;;;
+27;Preregistration;Preregistration Framework;;;;#D1E3DD;;;
+28;Type of Preregistration;Registered Report;;;;#D1E3DD;;;
+29;Registered Report;Registered Report Framework;;;;#D1E3DD;;;
+30;Preregistration Framework;OSF Templates;;;;#D1E3DD;;;
+31;Preregistration Framework;AsPredicted Templates;;;;#D1E3DD;;;
+32;Registered Report Framework;Journal;;;;#D1E3DD;;;
+33;;;;;;;;;
