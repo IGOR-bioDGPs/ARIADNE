@@ -9,7 +9,7 @@ parts:
        - file: abstract
     - caption: The road to success
       chapters:
-       - file: node_graph
+       - file: node_graph_final
        - file: step1
        - file: step2
        - file: step3

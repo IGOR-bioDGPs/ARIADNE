@@ -1,12 +1,12 @@
 #######################################################################################
 # A default configuration that will be loaded for all jupyter books
-# See the documentation for help and more options: 
+# See the documentation for help and more options:
 # https://jupyterbook.org/customize/config.html
 
 #######################################################################################
 # Book settings
 title                       : ARIADNE  # The title of the book. Will be placed in the left navbar.
-author                      : The IGOR Cumminity  # The author of the book
+author                      : The IGOR Community  # The author of the book
 copyright                   : "2023"  # Copyright year to be placed in the footer
 logo                        : ARIADNE_Logo.png  # A path to the book logo
 
