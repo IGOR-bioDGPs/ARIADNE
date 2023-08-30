@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Import stuff to dynamically update the graph &#8212; ARIADNE</title>
+    <title>&lt;no title&gt; &#8212; ARIADNE</title>
   
   
   
@@ -161,12 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="abstract.html">Abstract</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The road to success</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Import stuff to dynamically update the graph</a></li>
-
-
-
-
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="step1.html">STEP 1: Project start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step2.html">STEP 2: Study design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step3.html">STEP 3: Study implementation</a></li>
@@ -360,7 +355,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Import stuff to dynamically update the graph</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -369,12 +364,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Import stuff to dynamically update the graph</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-constructor-function">graph constructor function</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-the-graph">reset the graph</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-an-jupyternotebook-output">instantiate an jupyternotebook output</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-a-graph">instantiate a graph</a></li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
 
             </nav>
@@ -387,166 +377,172 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script type="text/x-thebe-config">
-  {
-    requestKernel: true,
-    binderOptions: {
-      repo: "QuantStack/ipycytoscape",
-      ref: "1.2.0",
-      repoProvider: "github",
-    },
-  }
-</script>
-<script src="https://unpkg.com/thebe@latest/lib/index.js"></script>
-<button id="activateButton" style="width: 120px; height: 40px; font-size: 1.5em;">
+  <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/x-thebe-config&quot;</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">requestKernel</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">binderOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">repo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;QuantStack/ipycytoscape&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">ref</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1.2.0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">repoProvider</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;github&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/thebe@latest/lib/index.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;activateButton&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 120px; height: 40px; font-size: 1.5em;&quot;</span><span class="p">&gt;</span>
   Activate
-</button>
-<script>
-var bootstrapThebe = function() {
-    thebelab.bootstrap();
-}
-document.querySelector("#activateButton").addEventListener('click', bootstrapThebe)
-</script>
-<style>
-pre{
-    display: none;
-    height: 75%;
-    width: 75%;
-}
-</style>
-<html>
-  <pre hidden data-executable="true" data-language="python" data-readonly="true">
+<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">bootstrapThebe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">thebelab</span><span class="p">.</span><span class="nx">bootstrap</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#activateButton&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">bootstrapThebe</span><span class="p">)</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="nt">pre</span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">pre</span> <span class="na">hidden</span> <span class="na">data-executable</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">data-language</span><span class="o">=</span><span class="s">&quot;python&quot;</span> <span class="na">data-readonly</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>
 # Some more prerequisites, just run this
 import networkx as nx
 import pandas as pd
 import json
 from ipycytoscape import *
 from pathlib import Path
-<p>df_nodes = pd.read_csv(str(’<a class="reference external" href="https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_nodes.csv">https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_nodes.csv</a>’), sep=’;’)
-df_edges = pd.read_csv(str(’<a class="reference external" href="https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_edges.csv">https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_edges.csv</a>’), sep=’;’)</p>
-<p>df_nodes = df_nodes.fillna(‘’)
-df_edges = df_edges.fillna(‘’)</p>
-<section class="tex2jax_ignore mathjax_ignore" id="import-stuff-to-dynamically-update-the-graph">
-<h1>Import stuff to dynamically update the graph<a class="headerlink" href="#import-stuff-to-dynamically-update-the-graph" title="Permalink to this heading">#</a></h1>
-<p>from ipywidgets import Output
-from IPython.display import display, HTML</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="graph-constructor-function">
-<h1>graph constructor function<a class="headerlink" href="#graph-constructor-function" title="Permalink to this heading">#</a></h1>
-<p>def const_graph(nodes_df, edges_df, init):
-# convert df to dicts
-nodes_dict = nodes_df.to_dict(‘records’)
-edges_dict = edges_df.to_dict(‘records’)
-# start building nodes
-data_keys = [‘id’, ‘label’] # cyto logic
-rest_keys = [‘score’, ‘idInt’, ‘name’, ‘score’, ‘group’, ‘removed’, ‘selected’,
-‘selectable’, ‘locked’, ‘grabbed’, ‘grabbable’] # cyto extra logic
-nodes_graph_list = []
-# now loop over nodes
-for node in nodes_dict:
-dict_node = {}
-data_sub_dict = {‘data’:{el:node[el] for el in data_keys}} # get MUST data info
-rest_sub_dict = {el:node[el] for el in node.keys() if el in rest_keys} # get extra data info
-dict_node = {**data_sub_dict,**rest_sub_dict} # zip them
-nodes_graph_list.append(dict_node) # add to the list
-# start building edges
-data_keys  = [‘id’, ‘source’, ‘target’] # cyto logic
-data_keys2 = [‘label’, ‘classes’] # cyto logic
-rest_keys  = [‘score’, ‘weight’, ‘group’, ‘networkId’, ‘networkGroupId’, ‘intn’,
-‘rIntnId’, ‘group’, ‘removed’, ‘selected’, ‘selectable’, ‘locked’,
-‘grabbed’, ‘gra bbable’, ‘classes’] # cyto extra logic
-edges_graph_list = []
-# now loop over edges
-for edge in edges_dict:
-dict_edge = {}
-data_sub_dict = {el:edge[el] for el in data_keys} # get MUST data info
-data_sub_dict2 = {el:edge[el] for el in edge.keys() if el in data_keys2} # get MUST_2 data info
-rest_sub_dict = {el:edge[el] for el in edge.keys() if el in rest_keys} # get extra data info
-dict_edge = {‘data’:{**data_sub_dict,**data_sub_dict},**rest_sub_dict} # zip them
-edges_graph_list.append(dict_edge) # add to the list
-# create the combined edge+node dictionary
-total_graph_dict = {‘nodes’: nodes_graph_list, ‘edges’:edges_graph_list}
-# building the style
-all_node_style = [‘background-color’, ‘background-opacity’,
-‘font-family’, ‘font-size’, ‘label’, ‘width’,
-‘shape’, ‘height’, ‘width’, ‘text-valign’, ‘text-halign’, ‘underlay-color’ ,’underlay-shape’]
-all_edge_style = [‘background-color’, ‘background-opacity’,
-‘font-family’, ‘font-size’, ‘label’, ‘width’, ‘line-color’, ‘arrow’, ‘type’, ‘target-arrow-shape’]
-total_style_dict = {}
-style_elements = []
-# now construct the node styles
-for node in nodes_dict:
-node_dict = {‘selector’: f’node[id = “{node[“id”]}”]’}
-style_dict ={“style”: { el:node[el] for el in node.keys() if el in all_node_style}}
-node_dict.update(style_dict)
-style_elements.append(node_dict)
-# now construct the edge styles
-for edge in edges_dict:
-edge_dict = {‘selector’: f’edge[id = “{edge[“id”]}”]’}
-style_dict = {“style”: { el:edge[el] for el in edge.keys() if el in all_edge_style}}
-edge_dict.update(style_dict)
-style_elements.append(edge_dict)
-# now create the graph
-data_graph = json.dumps(total_graph_dict)
-json_to_python = json.loads(data_graph)
-# result_cyto = CytoscapeWidget()
-# for some reason ipycytoscape’s function is not callable, so calling it manually
-cyto_graph.graph.nodes.clear()
-cyto_graph.graph.edges.clear()
-cyto_graph.graph._adj.clear()
-cyto_graph.graph.add_graph_from_json(json_to_python)
-cyto_graph.set_style(style_elements)
-# also save the initial json to a file
-if init:
-json_filename = ‘init_config.json’
-style_filename = ‘init_style.json’
-cyto_graph.set_layout(name = ‘circle’)
-else:
-json_filename = ‘curr_config.json’
-style_filename = ‘curr_style.json’
-cyto_graph.set_layout(name = ‘breadthfirst’)
-with open(json_filename, ‘w’) as outfile:
-json.dump(json_to_python, outfile)
-with open(style_filename, ‘w’) as outfile:
-json.dump(json_to_python, outfile)
-# and return it
-#return result_cyto</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="reset-the-graph">
-<h1>reset the graph<a class="headerlink" href="#reset-the-graph" title="Permalink to this heading">#</a></h1>
-<p>def res_graph(node):
-with out:
-# for some reason ipycytoscape’s function is not callable, so calling it manually
-cyto_graph.graph.nodes.clear()
-cyto_graph.graph.edges.clear()
-cyto_graph.graph._adj.clear()
-const_graph(df_nodes[df_nodes[‘subgraph’] == ‘initial’], df_edges[df_nodes[‘subgraph’] == ‘initial’], init=True)</p>
-<p>def log_clicks(node):
-with out:
-new_nodes = df_nodes[‘subgraph’] == node[‘data’][‘id’].replace(’ ‘,’’)
-const_graph(df_nodes[new_nodes], df_edges[new_nodes], init=False)
-if len(df_edges[new_nodes]) == 0 or len(df_nodes[new_nodes]) == 0:
-print(‘Empty subgraph, resetting view…’)
-res_graph(node)</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="instantiate-an-jupyternotebook-output">
-<h1>instantiate an jupyternotebook output<a class="headerlink" href="#instantiate-an-jupyternotebook-output" title="Permalink to this heading">#</a></h1>
-<p>out = Output()
-out.layout.height = ‘500px’</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="instantiate-a-graph">
-<h1>instantiate a graph<a class="headerlink" href="#instantiate-a-graph" title="Permalink to this heading">#</a></h1>
-<p>cyto_graph = CytoscapeWidget() # ok now create the cytoscape object
-const_graph(df_nodes[df_nodes[‘subgraph’] == ‘initial’], df_edges[df_nodes[‘subgraph’] == ‘initial’], init=True)</p>
-<p>cyto_graph.on(‘node’, ‘click’, log_clicks) # dynamically listen to left clicks
-cyto_graph.on(‘node’, ‘cxttap’, res_graph) # dynamically listen to right clicks
-cyto_graph.on(‘node’, ‘click’, log_clicks)</p>
-<p>display(cyto_graph) # display the object
-display(out) # display the output</p>
-  </pre>
-</html>
-</section>
+
+
+df_nodes = pd.read_csv(str(&#39;https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_nodes.csv&#39;), sep=&#39;;&#39;)
+df_edges = pd.read_csv(str(&#39;https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_edges.csv&#39;), sep=&#39;;&#39;)
+
+df_nodes = df_nodes.fillna(&#39;&#39;)
+df_edges = df_edges.fillna(&#39;&#39;)
+
+# Import stuff to dynamically update the graph
+from ipywidgets import Output
+from IPython.display import display, HTML
+
+# graph constructor function
+def const_graph(nodes_df, edges_df, init):
+    # convert df to dicts
+    nodes_dict = nodes_df.to_dict(&#39;records&#39;)
+    edges_dict = edges_df.to_dict(&#39;records&#39;)
+    # start building nodes
+    data_keys = [&#39;id&#39;, &#39;label&#39;] # cyto logic
+    rest_keys = [&#39;score&#39;, &#39;idInt&#39;, &#39;name&#39;, &#39;score&#39;, &#39;group&#39;, &#39;removed&#39;, &#39;selected&#39;,
+                 &#39;selectable&#39;, &#39;locked&#39;, &#39;grabbed&#39;, &#39;grabbable&#39;] # cyto extra logic
+    nodes_graph_list = []
+    # now loop over nodes
+    for node in nodes_dict:
+        dict_node = {}
+        data_sub_dict = {&#39;data&#39;:{el:node[el] for el in data_keys}} # get MUST data info
+        rest_sub_dict = {el:node[el] for el in node.keys() if el in rest_keys} # get extra data info
+        dict_node = {**data_sub_dict,**rest_sub_dict} # zip them
+        nodes_graph_list.append(dict_node) # add to the list
+    # start building edges
+    data_keys  = [&#39;id&#39;, &#39;source&#39;, &#39;target&#39;] # cyto logic
+    data_keys2 = [&#39;label&#39;, &#39;classes&#39;] # cyto logic
+    rest_keys  = [&#39;score&#39;, &#39;weight&#39;, &#39;group&#39;, &#39;networkId&#39;, &#39;networkGroupId&#39;, &#39;intn&#39;,
+                  &#39;rIntnId&#39;, &#39;group&#39;, &#39;removed&#39;, &#39;selected&#39;, &#39;selectable&#39;, &#39;locked&#39;,
+                  &#39;grabbed&#39;, &#39;gra bbable&#39;, &#39;classes&#39;] # cyto extra logic
+    edges_graph_list = []
+    # now loop over edges
+    for edge in edges_dict:
+        dict_edge = {}
+        data_sub_dict = {el:edge[el] for el in data_keys} # get MUST data info
+        data_sub_dict2 = {el:edge[el] for el in edge.keys() if el in data_keys2} # get MUST_2 data info
+        rest_sub_dict = {el:edge[el] for el in edge.keys() if el in rest_keys} # get extra data info
+        dict_edge = {&#39;data&#39;:{**data_sub_dict,**data_sub_dict},**rest_sub_dict} # zip them
+        edges_graph_list.append(dict_edge) # add to the list
+    # create the combined edge+node dictionary
+    total_graph_dict = {&#39;nodes&#39;: nodes_graph_list, &#39;edges&#39;:edges_graph_list}
+    # building the style
+    all_node_style = [&#39;background-color&#39;, &#39;background-opacity&#39;,
+                     &#39;font-family&#39;, &#39;font-size&#39;, &#39;label&#39;, &#39;width&#39;,
+                     &#39;shape&#39;, &#39;height&#39;, &#39;width&#39;, &#39;text-valign&#39;, &#39;text-halign&#39;, &#39;underlay-color&#39; ,&#39;underlay-shape&#39;]
+    all_edge_style = [&#39;background-color&#39;, &#39;background-opacity&#39;,
+                     &#39;font-family&#39;, &#39;font-size&#39;, &#39;label&#39;, &#39;width&#39;, &#39;line-color&#39;, &#39;arrow&#39;, &#39;type&#39;, &#39;target-arrow-shape&#39;]
+    total_style_dict = {}
+    style_elements = []
+    # now construct the node styles
+    for node in nodes_dict:
+        node_dict = {&#39;selector&#39;: f&#39;node[id = \&quot;{node[&quot;id&quot;]}\&quot;]&#39;}
+        style_dict ={&quot;style&quot;: { el:node[el] for el in node.keys() if el in all_node_style}}
+        node_dict.update(style_dict)
+        style_elements.append(node_dict)
+    # now construct the edge styles
+    for edge in edges_dict:
+        edge_dict = {&#39;selector&#39;: f&#39;edge[id = \&quot;{edge[&quot;id&quot;]}\&quot;]&#39;}
+        style_dict = {&quot;style&quot;: { el:edge[el] for el in edge.keys() if el in all_edge_style}}
+        edge_dict.update(style_dict)
+        style_elements.append(edge_dict)
+    # now create the graph
+    data_graph = json.dumps(total_graph_dict)
+    json_to_python = json.loads(data_graph)
+    # result_cyto = CytoscapeWidget()
+    # for some reason ipycytoscape&#39;s function is not callable, so calling it manually
+    cyto_graph.graph.nodes.clear()
+    cyto_graph.graph.edges.clear()
+    cyto_graph.graph._adj.clear()
+    cyto_graph.graph.add_graph_from_json(json_to_python)
+    cyto_graph.set_style(style_elements)
+    # also save the initial json to a file
+    if init:
+        json_filename = &#39;init_config.json&#39;
+        style_filename = &#39;init_style.json&#39;
+        cyto_graph.set_layout(name = &#39;circle&#39;)
+    else:
+        json_filename = &#39;curr_config.json&#39;
+        style_filename = &#39;curr_style.json&#39;
+        cyto_graph.set_layout(name = &#39;breadthfirst&#39;)
+    with open(json_filename, &#39;w&#39;) as outfile:
+        json.dump(json_to_python, outfile)
+    with open(style_filename, &#39;w&#39;) as outfile:
+        json.dump(json_to_python, outfile)
+    # and return it
+    #return result_cyto
+
+# reset the graph
+def res_graph(node):
+    with out:
+        # for some reason ipycytoscape&#39;s function is not callable, so calling it manually
+        cyto_graph.graph.nodes.clear()
+        cyto_graph.graph.edges.clear()
+        cyto_graph.graph._adj.clear()
+        const_graph(df_nodes[df_nodes[&#39;subgraph&#39;] == &#39;initial&#39;], df_edges[df_nodes[&#39;subgraph&#39;] == &#39;initial&#39;], init=True)
+
+def log_clicks(node):
+    with out:
+        new_nodes = df_nodes[&#39;subgraph&#39;] == node[&#39;data&#39;][&#39;id&#39;].replace(&#39; &#39;,&#39;&#39;)
+        const_graph(df_nodes[new_nodes], df_edges[new_nodes], init=False)
+        if len(df_edges[new_nodes]) == 0 or len(df_nodes[new_nodes]) == 0:
+            print(&#39;Empty subgraph, resetting view...&#39;)
+            res_graph(node)
+
+
+# instantiate an jupyternotebook output
+out = Output()
+out.layout.height = &#39;500px&#39;
+# instantiate a graph
+cyto_graph = CytoscapeWidget() # ok now create the cytoscape object
+const_graph(df_nodes[df_nodes[&#39;subgraph&#39;] == &#39;initial&#39;], df_edges[df_nodes[&#39;subgraph&#39;] == &#39;initial&#39;], init=True)
+
+cyto_graph.on(&#39;node&#39;, &#39;click&#39;, log_clicks) # dynamically listen to left clicks
+cyto_graph.on(&#39;node&#39;, &#39;cxttap&#39;, res_graph) # dynamically listen to right clicks
+cyto_graph.on(&#39;node&#39;, &#39;click&#39;, log_clicks)
+
+display(cyto_graph) # display the object
+display(out) # display the output
+
+  <span class="p">&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -614,12 +610,7 @@ display(out) # display the output</p>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Import stuff to dynamically update the graph</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-constructor-function">graph constructor function</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-the-graph">reset the graph</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-an-jupyternotebook-output">instantiate an jupyternotebook output</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-a-graph">instantiate a graph</a></li>
+    <ul class="simple visible nav section-nav flex-column">
 </ul>
 
   </nav></div>
