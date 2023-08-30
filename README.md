@@ -1,4 +1,5 @@
-# TestBook
+# ARIADNE
+Here we will deploy our ARIADNE book
 
 This cookiecutter creates a simple boilerplate for a Jupyter Book.
 
