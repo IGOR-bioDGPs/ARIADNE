@@ -1,3 +1,4 @@
+```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 
 <script type="text/x-thebe-config">
@@ -162,3 +163,4 @@ display(out) # display the output
 
   </pre>
 </html>
+```
