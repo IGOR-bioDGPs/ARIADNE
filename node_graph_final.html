@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Node Graph &#8212; ARIADNE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"e213800f909d49cab6ed5c696f03857d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bc3c9cc169df4edcaa8a373c42b2d2a9": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_e213800f909d49cab6ed5c696f03857d", "msg_id": "", "outputs": [], "tabbable": null, "tooltip": null}}, "27edb162647643f8a3175dfe10a703b5": {"model_name": "GraphModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_adj": {}, "_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "GraphModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": null, "edges": [], "nodes": []}}, "e3d47eec0d51492d9d1bf1316b7f4dd5": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b2dda3466f0f4dee8eeb3a81e3d6bc03": {"model_name": "CytoscapeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_dom_classes": [], "_interaction_handlers": {"node": ["cxttap", "click"]}, "_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "CytoscapeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "CytoscapeView", "auto_ungrabify": false, "auto_unselectify": true, "autolock": false, "box_selection_enabled": false, "cytoscape_layout": {"name": "circle"}, "cytoscape_style": [{"selector": "node[id = \"Project Start\"]", "style": {"label": "Project Start", "shape": "rectangle", "background-color": "#3974be", "text-halign": "", "text-valign": ""}}, {"selector": "node[id = \"Type of Project\"]", "style": {"label": "Type of Project", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Type of Study\"]", "style": {"label": "Type of Study", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Data Availability\"]", "style": {"label": "Data Availability", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Data Simulation\"]", "style": {"label": "Data Simulation", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Experiment Design\"]", "style": {"label": "Experiment Design", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Data Collection\"]", "style": {"label": "Data Collection", "shape": "rectangle", "background-color": "#3974be", "text-halign": "", "text-valign": ""}}, {"selector": "node[id = \"Data Validation\"]", "style": {"label": "Data Validation", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "node[id = \"Data Analysis\"]", "style": {"label": "Data Analysis", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "node[id = \"Writing\"]", "style": {"label": "Writing", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "node[id = \"Dissemination\"]", "style": {"label": "Dissemination", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "node[id = \"Project End\"]", "style": {"label": "Project End", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "edge[id = \"1\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "triangle", "type": "triangle"}}, {"selector": "edge[id = \"2\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "triangle", "type": "triangle"}}, {"selector": "edge[id = \"3\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "triangle", "type": "triangle"}}, {"selector": "edge[id = \"4\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"5\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"6\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"7\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"8\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"9\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"10\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"11\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"12\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}], "desktop_tap_threshold": 4, "graph": "IPY_MODEL_24dcfc473b834284bddde82f7ab70e44", "headless": false, "hide_edges_on_viewport": false, "layout": "IPY_MODEL_e3d47eec0d51492d9d1bf1316b7f4dd5", "max_zoom": 1e+50, "min_zoom": 1e-50, "motion_blur": false, "motion_blur_opacity": 0.2, "panning_enabled": true, "pixel_ratio": "auto", "rendered_position": {"renderedPosition": {"x": 100, "y": 100}}, "selection_type": "single", "style_enabled": true, "tabbable": null, "texture_on_viewport": false, "tooltip": null, "tooltip_source": "tooltip", "touch_tap_threshold": 8, "user_panning_enabled": true, "user_zooming_enabled": true, "wheel_sensitivity": 1.0, "zoom": 2.0, "zooming_enabled": true}}, "24dcfc473b834284bddde82f7ab70e44": {"model_name": "GraphModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_adj": {"Project Start": {"Type of Project": 1}, "Type of Project": {"Project Start": 1, "Type of Study": 1}, "Type of Study": {"Type of Project": 1, "Data Availability": 1}, "Data Availability": {"Type of Study": 1, "Data Simulation": 1}, "Data Simulation": {"Data Availability": 1, "Experiment Design": 1}, "Experiment Design": {"Data Simulation": 1, "Data Collection": 1}, "Data Collection": {"Experiment Design": 1, "Data Validation": 1}, "Data Validation": {"Data Collection": 1, "Data Analysis": 1}, "Data Analysis": {"Data Validation": 1, "Writing": 1}, "Writing": {"Data Analysis": 1, "Dissemination": 1}, "Dissemination": {"Writing": 1, "Project End": 1}, "Project End": {"Dissemination": 1}, "": {}}, "_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "GraphModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": null, "edges": ["IPY_MODEL_ff2ff59587014fcc859e7f94bbac5cdc", "IPY_MODEL_6498ef7a0394402184ac02cfccbab5d1", "IPY_MODEL_021e0094668949ada522e62a398634ae", "IPY_MODEL_b25f9432045940c39d880eebd47ede3e", "IPY_MODEL_d683fbe74db4434cb2b48aadcf967bb6", "IPY_MODEL_3b0df645788646248e0834a741ebf183", "IPY_MODEL_96c220b7a4714746b6c3e19d03bc61d7", "IPY_MODEL_2320ecf37578494daa0a3d0f56dc533e", "IPY_MODEL_2e6b319379df4e629eac0c7946393e1a", "IPY_MODEL_e4a5286aae674b638d35bc7a0ba95553", "IPY_MODEL_0b90c4e7869e41f18a9a2bef918a92c0", "IPY_MODEL_78fef96458b345da86b8cb12205d04c3"], "nodes": ["IPY_MODEL_297c442488114293b263b189b4267a64", "IPY_MODEL_7ddd60e3aafd4d9f8ae28090404b0896", "IPY_MODEL_65dd4b19f33b472a866bc24b5274534d", "IPY_MODEL_b6cf5ab8939641d89a73772b945e8ee0", "IPY_MODEL_31f3375b89654c2cb30d155c53de3ea8", "IPY_MODEL_99aa979eb1854e49abc56da91e324921", "IPY_MODEL_daa6f6d7ca554085b06c7a24d9928e46", "IPY_MODEL_d51469860ef3406fb63fb8bc5e5bb13d", "IPY_MODEL_587d36ef185e45f3b399919f59c48e1e", "IPY_MODEL_07ea88f5ed304145aa582297828c60d5", "IPY_MODEL_492367b2543945ada961e2d50966569d", "IPY_MODEL_143701ad9c2a491694b3a2ca06fd4cc8", "IPY_MODEL_b24a6df7876e4164b9b1f0ea57b6e04e"]}}, "297c442488114293b263b189b4267a64": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Project Start", "label": "Project Start"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "7ddd60e3aafd4d9f8ae28090404b0896": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Type of Project", "label": "Type of Project"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "65dd4b19f33b472a866bc24b5274534d": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Type of Study", "label": "Type of Study"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "b6cf5ab8939641d89a73772b945e8ee0": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Availability", "label": "Data Availability"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "31f3375b89654c2cb30d155c53de3ea8": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Simulation", "label": "Data Simulation"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "99aa979eb1854e49abc56da91e324921": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Experiment Design", "label": "Experiment Design"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "daa6f6d7ca554085b06c7a24d9928e46": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Collection", "label": "Data Collection"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "d51469860ef3406fb63fb8bc5e5bb13d": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Validation", "label": "Data Validation"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "587d36ef185e45f3b399919f59c48e1e": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Analysis", "label": "Data Analysis"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "07ea88f5ed304145aa582297828c60d5": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Writing", "label": "Writing"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "492367b2543945ada961e2d50966569d": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Dissemination", "label": "Dissemination"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "143701ad9c2a491694b3a2ca06fd4cc8": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Project End", "label": "Project End"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "ff2ff59587014fcc859e7f94bbac5cdc": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 1, "source": "Project Start", "target": "Type of Project"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "6498ef7a0394402184ac02cfccbab5d1": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 2, "source": "Type of Project", "target": "Type of Study"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "021e0094668949ada522e62a398634ae": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 3, "source": "Type of Study", "target": "Data Availability"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "b25f9432045940c39d880eebd47ede3e": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 4, "source": "Data Availability", "target": "Data Simulation"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "d683fbe74db4434cb2b48aadcf967bb6": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 5, "source": "Data Simulation", "target": "Experiment Design"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "3b0df645788646248e0834a741ebf183": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 6, "source": "Experiment Design", "target": "Data Collection"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "96c220b7a4714746b6c3e19d03bc61d7": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 7, "source": "Data Collection", "target": "Data Validation"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "2320ecf37578494daa0a3d0f56dc533e": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 8, "source": "Data Validation", "target": "Data Analysis"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "2e6b319379df4e629eac0c7946393e1a": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 9, "source": "Data Analysis", "target": "Writing"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "e4a5286aae674b638d35bc7a0ba95553": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 10, "source": "Writing", "target": "Dissemination"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "0b90c4e7869e41f18a9a2bef918a92c0": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 11, "source": "Dissemination", "target": "Project End"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "78fef96458b345da86b8cb12205d04c3": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 12, "source": "", "target": ""}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "b24a6df7876e4164b9b1f0ea57b6e04e": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": ""}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'node_graph_final';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/ARIADNE_Logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to ARIADNE
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">Abstract</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The road to success</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="node_graph.html">Node Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step1.html">STEP 1: Project start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step2.html">STEP 2: Study design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step3.html">STEP 3: Study implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step4.html">STEP 4: Piloting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step5.html">STEP 5: Data collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step6.html">STEP 6: Data validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step7.html">STEP 7: Data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step8.html">STEP 8: Writing the manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step9.html">STEP 9: Publication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step10.html">STEP 10: Dissemination</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mamuerie/TestBook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mamuerie/TestBook/issues/new?title=Issue%20on%20page%20%2Fnode_graph_final.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/node_graph_final.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Node Graph</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="node-graph">
+<h1>Node Graph<a class="headerlink" href="#node-graph" title="Permalink to this heading">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">23.0.1</span> -&gt; <span class=" -Color -Color-Green">23.2.1</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b2dda3466f0f4dee8eeb3a81e3d6bc03"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bc3c9cc169df4edcaa8a373c42b2d2a9"}</script></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The IGOR Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

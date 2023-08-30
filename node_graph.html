@@ -1,0 +1,1114 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Node Graph &#8212; ARIADNE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"bd5feb26273e43549eff0a8b2d4d1846": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e8b3941408e34f8388fa99ecca93b648": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_bd5feb26273e43549eff0a8b2d4d1846", "msg_id": "", "outputs": [], "tabbable": null, "tooltip": null}}, "76a97a55c7294490a1a7cf3dcb22b76c": {"model_name": "GraphModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_adj": {}, "_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "GraphModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": null, "edges": [], "nodes": []}}, "0dfca078cd834f39b54583f6c255e4db": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f1859ce0eabc4e85ae7654d4fa092298": {"model_name": "CytoscapeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_dom_classes": [], "_interaction_handlers": {"node": ["click", "cxttap"]}, "_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "CytoscapeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "CytoscapeView", "auto_ungrabify": false, "auto_unselectify": true, "autolock": false, "box_selection_enabled": false, "cytoscape_layout": {"name": "circle"}, "cytoscape_style": [{"selector": "node[id = \"Project Start\"]", "style": {"label": "Project Start", "shape": "rectangle", "background-color": "#3974be", "text-halign": "", "text-valign": ""}}, {"selector": "node[id = \"Type of Project\"]", "style": {"label": "Type of Project", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Type of Study\"]", "style": {"label": "Type of Study", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Data Availability\"]", "style": {"label": "Data Availability", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Data Simulation\"]", "style": {"label": "Data Simulation", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Experiment Design\"]", "style": {"label": "Experiment Design", "shape": "rectangle", "background-color": "#3974be", "text-halign": "right", "text-valign": "center"}}, {"selector": "node[id = \"Data Collection\"]", "style": {"label": "Data Collection", "shape": "rectangle", "background-color": "#3974be", "text-halign": "", "text-valign": ""}}, {"selector": "node[id = \"Data Validation\"]", "style": {"label": "Data Validation", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "node[id = \"Data Analysis\"]", "style": {"label": "Data Analysis", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "node[id = \"Writing\"]", "style": {"label": "Writing", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "node[id = \"Dissemination\"]", "style": {"label": "Dissemination", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "node[id = \"Project End\"]", "style": {"label": "Project End", "shape": "rectangle", "background-color": "#3974be", "text-halign": "left", "text-valign": "center"}}, {"selector": "edge[id = \"1\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "triangle", "type": "triangle"}}, {"selector": "edge[id = \"2\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "triangle", "type": "triangle"}}, {"selector": "edge[id = \"3\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "triangle", "type": "triangle"}}, {"selector": "edge[id = \"4\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"5\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"6\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"7\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"8\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"9\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"10\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"11\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}, {"selector": "edge[id = \"12\"]", "style": {"label": "", "background-color": "", "line-color": "#D1E3DD", "arrow": "", "type": ""}}], "desktop_tap_threshold": 4, "graph": "IPY_MODEL_3c8f795383794f019d30589302f0b2d7", "headless": false, "hide_edges_on_viewport": false, "layout": "IPY_MODEL_0dfca078cd834f39b54583f6c255e4db", "max_zoom": 1e+50, "min_zoom": 1e-50, "motion_blur": false, "motion_blur_opacity": 0.2, "panning_enabled": true, "pixel_ratio": "auto", "rendered_position": {"renderedPosition": {"x": 100, "y": 100}}, "selection_type": "single", "style_enabled": true, "tabbable": null, "texture_on_viewport": false, "tooltip": null, "tooltip_source": "tooltip", "touch_tap_threshold": 8, "user_panning_enabled": true, "user_zooming_enabled": true, "wheel_sensitivity": 1.0, "zoom": 2.0, "zooming_enabled": true}}, "3c8f795383794f019d30589302f0b2d7": {"model_name": "GraphModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_adj": {"Project Start": {"Type of Project": 1}, "Type of Project": {"Project Start": 1, "Type of Study": 1}, "Type of Study": {"Type of Project": 1, "Data Availability": 1}, "Data Availability": {"Type of Study": 1, "Data Simulation": 1}, "Data Simulation": {"Data Availability": 1, "Experiment Design": 1}, "Experiment Design": {"Data Simulation": 1, "Data Collection": 1}, "Data Collection": {"Experiment Design": 1, "Data Validation": 1}, "Data Validation": {"Data Collection": 1, "Data Analysis": 1}, "Data Analysis": {"Data Validation": 1, "Writing": 1}, "Writing": {"Data Analysis": 1, "Dissemination": 1}, "Dissemination": {"Writing": 1, "Project End": 1}, "Project End": {"Dissemination": 1}, "": {}}, "_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "GraphModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": null, "edges": ["IPY_MODEL_7235a2bc75aa4ed593c47d901b5c8052", "IPY_MODEL_5c936d2f1e404628b44dd4b40acd2b56", "IPY_MODEL_8b44b0b323f545f88df3f14839043329", "IPY_MODEL_20940cbe1e824726a8e6dc4f4a8fed64", "IPY_MODEL_4582222083964b47aa0fc2c5d943ca55", "IPY_MODEL_083fd791051045ee8c72919121a2f278", "IPY_MODEL_bac32470c810422e870746f8ac97c121", "IPY_MODEL_5714e5a20e16479ba8245af3fd57a558", "IPY_MODEL_db01eac2cbb448f3959aa36be5220cd6", "IPY_MODEL_bba76a5643e944b893b5d2df4008def2", "IPY_MODEL_deddd19620144213afd7ea4368020707", "IPY_MODEL_ef50fb86873f4276ba09db5e8b89f9ea"], "nodes": ["IPY_MODEL_68074d5f5c2a4684b5f035ed33f34aa1", "IPY_MODEL_c06fa8cfc0a84a6a87ace16eb066b220", "IPY_MODEL_b83ce8c0935f4335ac1640d8164977b9", "IPY_MODEL_aa8fe661119c4fbf8f49344f6186cff7", "IPY_MODEL_e316be37662e4ea080ccaf39c59c6e9c", "IPY_MODEL_a4a971aaea9d4e55b4e52d29f777a4d3", "IPY_MODEL_5ebbdaf7d8db4e68ac26ba684189cec2", "IPY_MODEL_13d4264cce7f4577867dc548326e0ff4", "IPY_MODEL_ea722b61a90e43caaacfac17fcea77f3", "IPY_MODEL_7d292122b5574db8898d43b20143272d", "IPY_MODEL_c276b95063c84c89ad81094827f1d2fb", "IPY_MODEL_58f18d0955e24588b31acd063b467523", "IPY_MODEL_c917c40a99cd479281f8540ddad01377"]}}, "68074d5f5c2a4684b5f035ed33f34aa1": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Project Start", "label": "Project Start"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "c06fa8cfc0a84a6a87ace16eb066b220": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Type of Project", "label": "Type of Project"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "b83ce8c0935f4335ac1640d8164977b9": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Type of Study", "label": "Type of Study"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "aa8fe661119c4fbf8f49344f6186cff7": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Availability", "label": "Data Availability"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "e316be37662e4ea080ccaf39c59c6e9c": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Simulation", "label": "Data Simulation"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "a4a971aaea9d4e55b4e52d29f777a4d3": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Experiment Design", "label": "Experiment Design"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "5ebbdaf7d8db4e68ac26ba684189cec2": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Collection", "label": "Data Collection"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "13d4264cce7f4577867dc548326e0ff4": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Validation", "label": "Data Validation"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "ea722b61a90e43caaacfac17fcea77f3": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Data Analysis", "label": "Data Analysis"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "7d292122b5574db8898d43b20143272d": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Writing", "label": "Writing"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "c276b95063c84c89ad81094827f1d2fb": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Dissemination", "label": "Dissemination"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "58f18d0955e24588b31acd063b467523": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": "Project End", "label": "Project End"}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}, "7235a2bc75aa4ed593c47d901b5c8052": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 1, "source": "Project Start", "target": "Type of Project"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "5c936d2f1e404628b44dd4b40acd2b56": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 2, "source": "Type of Project", "target": "Type of Study"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "8b44b0b323f545f88df3f14839043329": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 3, "source": "Type of Study", "target": "Data Availability"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "20940cbe1e824726a8e6dc4f4a8fed64": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 4, "source": "Data Availability", "target": "Data Simulation"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "4582222083964b47aa0fc2c5d943ca55": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 5, "source": "Data Simulation", "target": "Experiment Design"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "083fd791051045ee8c72919121a2f278": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 6, "source": "Experiment Design", "target": "Data Collection"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "bac32470c810422e870746f8ac97c121": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 7, "source": "Data Collection", "target": "Data Validation"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "5714e5a20e16479ba8245af3fd57a558": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 8, "source": "Data Validation", "target": "Data Analysis"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "db01eac2cbb448f3959aa36be5220cd6": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 9, "source": "Data Analysis", "target": "Writing"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "bba76a5643e944b893b5d2df4008def2": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 10, "source": "Writing", "target": "Dissemination"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "deddd19620144213afd7ea4368020707": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 11, "source": "Dissemination", "target": "Project End"}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "ef50fb86873f4276ba09db5e8b89f9ea": {"model_name": "EdgeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "EdgeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "EdgeView", "classes": "", "data": {"id": 12, "source": "", "target": ""}, "pannable": true, "removed": false, "selectable": false, "selected": false}}, "c917c40a99cd479281f8540ddad01377": {"model_name": "NodeModel", "model_module": "jupyter-cytoscape", "model_module_version": "^1.3.3", "state": {"_model_module": "jupyter-cytoscape", "_model_module_version": "^1.3.3", "_model_name": "NodeModel", "_view_count": null, "_view_module": "jupyter-cytoscape", "_view_module_version": "^1.3.3", "_view_name": "NodeView", "classes": "", "data": {"id": ""}, "grabbable": true, "grabbed": false, "locked": false, "pannable": false, "position": {}, "removed": false, "selectable": false, "selected": false}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'node_graph';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="STEP 1: Project start" href="step1.html" />
+    <link rel="prev" title="Abstract" href="abstract.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/ARIADNE_Logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to ARIADNE
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">Abstract</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The road to success</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Node Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step1.html">STEP 1: Project start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step2.html">STEP 2: Study design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step3.html">STEP 3: Study implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step4.html">STEP 4: Piloting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step5.html">STEP 5: Data collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step6.html">STEP 6: Data validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step7.html">STEP 7: Data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step8.html">STEP 8: Writing the manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step9.html">STEP 9: Publication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step10.html">STEP 10: Dissemination</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mamuerie/TestBook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mamuerie/TestBook/issues/new?title=Issue%20on%20page%20%2Fnode_graph.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/node_graph.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Node Graph</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="node-graph">
+<h1>Node Graph<a class="headerlink" href="#node-graph" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some prerequisites, do not forget to run this!</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>ipycytoscape<span class="w"> </span>--quiet
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">23.0.1</span> -&gt; <span class=" -Color -Color-Green">23.2.1</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some more prerequisites, just run this</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">ipycytoscape</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;data/data_ariadne_nodes.csv&#39;</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">df_edges</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;data/data_ariadne_edges.csv&#39;</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+<span class="n">df_nodes</span> <span class="o">=</span> <span class="n">df_nodes</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">df_edges</span> <span class="o">=</span> <span class="n">df_edges</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">df_edges</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>source</th>
+      <th>target</th>
+      <th>label</th>
+      <th>background-color</th>
+      <th>shape</th>
+      <th>line-color</th>
+      <th>arrow</th>
+      <th>type</th>
+      <th>source-arrow-color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Project Start</td>
+      <td>Type of Project</td>
+      <td></td>
+      <td></td>
+      <td>triangle</td>
+      <td>#D1E3DD</td>
+      <td>triangle</td>
+      <td>triangle</td>
+      <td>black</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Type of Project</td>
+      <td>Type of Study</td>
+      <td></td>
+      <td></td>
+      <td>triangle</td>
+      <td>#D1E3DD</td>
+      <td>triangle</td>
+      <td>triangle</td>
+      <td>black</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Type of Study</td>
+      <td>Data Availability</td>
+      <td></td>
+      <td></td>
+      <td>triangle</td>
+      <td>#D1E3DD</td>
+      <td>triangle</td>
+      <td>triangle</td>
+      <td>black</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Data Availability</td>
+      <td>Data Simulation</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Data Simulation</td>
+      <td>Experiment Design</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>Experiment Design</td>
+      <td>Data Collection</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>Data Collection</td>
+      <td>Data Validation</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>Data Validation</td>
+      <td>Data Analysis</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>Data Analysis</td>
+      <td>Writing</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>Writing</td>
+      <td>Dissemination</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>Dissemination</td>
+      <td>Project End</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>Type of Project</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>Type of Project</td>
+      <td>Type of Preregistration</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>Type of Study</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>Type of Study</td>
+      <td>Preregistration Metaanalysis</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>Experiment Design</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>Experiment Design</td>
+      <td>Design Framework</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>Experiment Design</td>
+      <td>Sample Size</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>Experiment Design</td>
+      <td>Stimuli</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>Dissemination</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>Dissemination</td>
+      <td>Open Code</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>Dissemination</td>
+      <td>Open Materials</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>Dissemination</td>
+      <td>Open Data</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>Dissemination</td>
+      <td>Presentation</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>Type of Preregistration</td>
+      <td>Preregistration</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>Preregistration</td>
+      <td>Preregistration Framework</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>Type of Preregistration</td>
+      <td>Registered Report</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29</td>
+      <td>Registered Report</td>
+      <td>Registered Report Framework</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>30</td>
+      <td>Preregistration Framework</td>
+      <td>OSF Templates</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>31</td>
+      <td>Preregistration Framework</td>
+      <td>AsPredicted Templates</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>32</td>
+      <td>Registered Report Framework</td>
+      <td>Journal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>#D1E3DD</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>33</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>import networkx as nx
+import pandas as pd
+import json
+from ipycytoscape import *</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import stuff to dynamically update the graph</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Output</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># graph constructor function</span>
+<span class="k">def</span> <span class="nf">const_graph</span><span class="p">(</span><span class="n">nodes_df</span><span class="p">,</span> <span class="n">edges_df</span><span class="p">,</span> <span class="n">init</span><span class="p">):</span>
+    <span class="c1"># convert df to dicts</span>
+    <span class="n">nodes_dict</span> <span class="o">=</span> <span class="n">nodes_df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
+    <span class="n">edges_dict</span> <span class="o">=</span> <span class="n">edges_df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
+    <span class="c1"># start building nodes</span>
+    <span class="n">data_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="c1"># cyto logic</span>
+    <span class="n">rest_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;idInt&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;removed&#39;</span><span class="p">,</span> <span class="s1">&#39;selected&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;selectable&#39;</span><span class="p">,</span> <span class="s1">&#39;locked&#39;</span><span class="p">,</span> <span class="s1">&#39;grabbed&#39;</span><span class="p">,</span> <span class="s1">&#39;grabbable&#39;</span><span class="p">]</span> <span class="c1"># cyto extra logic</span>
+    <span class="n">nodes_graph_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># now loop over nodes</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes_dict</span><span class="p">:</span>
+        <span class="n">dict_node</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">data_sub_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:{</span><span class="n">el</span><span class="p">:</span><span class="n">node</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">data_keys</span><span class="p">}}</span> <span class="c1"># get MUST data info</span>
+        <span class="n">rest_sub_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">el</span><span class="p">:</span><span class="n">node</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">rest_keys</span><span class="p">}</span> <span class="c1"># get extra data info</span>
+        <span class="n">dict_node</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">data_sub_dict</span><span class="p">,</span><span class="o">**</span><span class="n">rest_sub_dict</span><span class="p">}</span> <span class="c1"># zip them</span>
+        <span class="n">nodes_graph_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dict_node</span><span class="p">)</span> <span class="c1"># add to the list</span>
+    <span class="c1"># start building edges</span>
+    <span class="n">data_keys</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="c1"># cyto logic</span>
+    <span class="n">data_keys2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;classes&#39;</span><span class="p">]</span> <span class="c1"># cyto logic</span>
+    <span class="n">rest_keys</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;networkId&#39;</span><span class="p">,</span> <span class="s1">&#39;networkGroupId&#39;</span><span class="p">,</span> <span class="s1">&#39;intn&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;rIntnId&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;removed&#39;</span><span class="p">,</span> <span class="s1">&#39;selected&#39;</span><span class="p">,</span> <span class="s1">&#39;selectable&#39;</span><span class="p">,</span> <span class="s1">&#39;locked&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;grabbed&#39;</span><span class="p">,</span> <span class="s1">&#39;gra bbable&#39;</span><span class="p">,</span> <span class="s1">&#39;classes&#39;</span><span class="p">]</span> <span class="c1"># cyto extra logic</span>
+    <span class="n">edges_graph_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># now loop over edges</span>
+    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges_dict</span><span class="p">:</span>
+        <span class="n">dict_edge</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">data_sub_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">el</span><span class="p">:</span><span class="n">edge</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">data_keys</span><span class="p">}</span> <span class="c1"># get MUST data info</span>
+        <span class="n">data_sub_dict2</span> <span class="o">=</span> <span class="p">{</span><span class="n">el</span><span class="p">:</span><span class="n">edge</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">edge</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">data_keys2</span><span class="p">}</span> <span class="c1"># get MUST_2 data info</span>
+        <span class="n">rest_sub_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">el</span><span class="p">:</span><span class="n">edge</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">edge</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">rest_keys</span><span class="p">}</span> <span class="c1"># get extra data info</span>
+        <span class="n">dict_edge</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:{</span><span class="o">**</span><span class="n">data_sub_dict</span><span class="p">,</span><span class="o">**</span><span class="n">data_sub_dict</span><span class="p">},</span><span class="o">**</span><span class="n">rest_sub_dict</span><span class="p">}</span> <span class="c1"># zip them</span>
+        <span class="n">edges_graph_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dict_edge</span><span class="p">)</span> <span class="c1"># add to the list</span>
+    <span class="c1"># create the combined edge+node dictionary</span>
+    <span class="n">total_graph_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nodes&#39;</span><span class="p">:</span> <span class="n">nodes_graph_list</span><span class="p">,</span> <span class="s1">&#39;edges&#39;</span><span class="p">:</span><span class="n">edges_graph_list</span><span class="p">}</span>
+    <span class="c1"># building the style</span>
+    <span class="n">all_node_style</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;background-color&#39;</span><span class="p">,</span> <span class="s1">&#39;background-opacity&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;font-family&#39;</span><span class="p">,</span> <span class="s1">&#39;font-size&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;text-valign&#39;</span><span class="p">,</span> <span class="s1">&#39;text-halign&#39;</span><span class="p">,</span> <span class="s1">&#39;underlay-color&#39;</span> <span class="p">,</span><span class="s1">&#39;underlay-shape&#39;</span><span class="p">]</span>
+    <span class="n">all_edge_style</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;background-color&#39;</span><span class="p">,</span> <span class="s1">&#39;background-opacity&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;font-family&#39;</span><span class="p">,</span> <span class="s1">&#39;font-size&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;line-color&#39;</span><span class="p">,</span> <span class="s1">&#39;arrow&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;target-arrow-shape&#39;</span><span class="p">]</span>
+    <span class="n">total_style_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">style_elements</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># now construct the node styles</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes_dict</span><span class="p">:</span>
+        <span class="n">node_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;node[id = </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">node</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="si">}</span><span class="se">\&quot;</span><span class="s1">]&#39;</span><span class="p">}</span>
+        <span class="n">style_dict</span> <span class="o">=</span><span class="p">{</span><span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="n">el</span><span class="p">:</span><span class="n">node</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">all_node_style</span><span class="p">}}</span>
+        <span class="n">node_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">style_dict</span><span class="p">)</span>
+        <span class="n">style_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node_dict</span><span class="p">)</span>
+    <span class="c1"># now construct the edge styles</span>
+    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges_dict</span><span class="p">:</span>
+        <span class="n">edge_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;edge[id = </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">edge</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="si">}</span><span class="se">\&quot;</span><span class="s1">]&#39;</span><span class="p">}</span>
+        <span class="n">style_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="n">el</span><span class="p">:</span><span class="n">edge</span><span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">edge</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">all_edge_style</span><span class="p">}}</span>
+        <span class="n">edge_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">style_dict</span><span class="p">)</span>
+        <span class="n">style_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge_dict</span><span class="p">)</span>
+    <span class="c1"># now create the graph</span>
+    <span class="n">data_graph</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">total_graph_dict</span><span class="p">)</span>
+    <span class="n">json_to_python</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data_graph</span><span class="p">)</span>
+    <span class="c1"># result_cyto = CytoscapeWidget()</span>
+    <span class="n">cyto_graph</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">cyto_graph</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">add_graph_from_json</span><span class="p">(</span><span class="n">json_to_python</span><span class="p">)</span>
+    <span class="n">cyto_graph</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="n">style_elements</span><span class="p">)</span>
+    <span class="c1"># also save the initial json to a file</span>
+    <span class="k">if</span> <span class="n">init</span><span class="p">:</span>
+        <span class="n">json_filename</span> <span class="o">=</span> <span class="s1">&#39;init_config.json&#39;</span>
+        <span class="n">style_filename</span> <span class="o">=</span> <span class="s1">&#39;init_style.json&#39;</span>
+        <span class="n">cyto_graph</span><span class="o">.</span><span class="n">set_layout</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;circle&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">json_filename</span> <span class="o">=</span> <span class="s1">&#39;curr_config.json&#39;</span>
+        <span class="n">style_filename</span> <span class="o">=</span> <span class="s1">&#39;curr_style.json&#39;</span>
+        <span class="n">cyto_graph</span><span class="o">.</span><span class="n">set_layout</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;breadthfirst&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_to_python</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">style_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_to_python</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+    <span class="c1"># and return it</span>
+    <span class="c1">#return result_cyto</span>
+
+<span class="c1"># reset the graph</span>
+<span class="k">def</span> <span class="nf">res_graph</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">out</span><span class="p">:</span>
+        <span class="n">cyto_graph</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">const_graph</span><span class="p">(</span><span class="n">df_nodes</span><span class="p">[</span><span class="n">df_nodes</span><span class="p">[</span><span class="s1">&#39;subgraph&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;initial&#39;</span><span class="p">],</span> <span class="n">df_edges</span><span class="p">[</span><span class="n">df_nodes</span><span class="p">[</span><span class="s1">&#39;subgraph&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;initial&#39;</span><span class="p">],</span> <span class="n">init</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">log_clicks</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">out</span><span class="p">:</span>
+        <span class="n">new_nodes</span> <span class="o">=</span> <span class="n">df_nodes</span><span class="p">[</span><span class="s1">&#39;subgraph&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">const_graph</span><span class="p">(</span><span class="n">df_nodes</span><span class="p">[</span><span class="n">new_nodes</span><span class="p">],</span> <span class="n">df_edges</span><span class="p">[</span><span class="n">new_nodes</span><span class="p">],</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_edges</span><span class="p">[</span><span class="n">new_nodes</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_nodes</span><span class="p">[</span><span class="n">new_nodes</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Empty subgraph, resetting view...&#39;</span><span class="p">)</span>
+            <span class="n">res_graph</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+  
+
+<span class="c1"># instantiate an jupyternotebook output</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">Output</span><span class="p">()</span>
+<span class="c1"># instantiate a graph</span>
+<span class="n">cyto_graph</span> <span class="o">=</span> <span class="n">CytoscapeWidget</span><span class="p">()</span> <span class="c1"># ok now create the cytoscape object</span>
+<span class="n">const_graph</span><span class="p">(</span><span class="n">df_nodes</span><span class="p">[</span><span class="n">df_nodes</span><span class="p">[</span><span class="s1">&#39;subgraph&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;initial&#39;</span><span class="p">],</span> <span class="n">df_edges</span><span class="p">[</span><span class="n">df_nodes</span><span class="p">[</span><span class="s1">&#39;subgraph&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;initial&#39;</span><span class="p">],</span> <span class="n">init</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">cyto_graph</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="n">log_clicks</span><span class="p">)</span> <span class="c1"># dynamically listen to left clicks</span>
+<span class="n">cyto_graph</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="s1">&#39;cxttap&#39;</span><span class="p">,</span> <span class="n">res_graph</span><span class="p">)</span> <span class="c1"># dynamically listen to right clicks</span>
+<span class="n">cyto_graph</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="n">log_clicks</span><span class="p">)</span>
+
+
+<span class="n">display</span><span class="p">(</span><span class="n">cyto_graph</span><span class="p">)</span> <span class="c1"># display the object</span>
+<span class="n">display</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="c1"># display the output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f1859ce0eabc4e85ae7654d4fa092298"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e8b3941408e34f8388fa99ecca93b648"}</script></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="abstract.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Abstract</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="step1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">STEP 1: Project start</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The IGOR Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
