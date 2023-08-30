@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>STEP 9: Publication &#8212; ARIADNE</title>
+    <title>Import stuff to dynamically update the graph &#8212; ARIADNE</title>
   
   
   
@@ -61,11 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'step9';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'graph';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="STEP 10: Dissemination" href="step10.html" />
-    <link rel="prev" title="STEP 8: Writing the manuscript" href="step8.html" />
+    <link rel="next" title="STEP 1: Project start" href="step1.html" />
+    <link rel="prev" title="Abstract" href="abstract.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The road to success</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="graph.html">Import stuff to dynamically update the graph</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Import stuff to dynamically update the graph</a></li>
 
 
 
@@ -175,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="step6.html">STEP 6: Data validation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step7.html">STEP 7: Data analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step8.html">STEP 8: Writing the manuscript</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">STEP 9: Publication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step9.html">STEP 9: Publication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step10.html">STEP 10: Dissemination</a></li>
 </ul>
 
@@ -248,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/IGOR-bioDGPs/ARIADNE/issues/new?title=Issue%20on%20page%20%2Fstep9.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/IGOR-bioDGPs/ARIADNE/issues/new?title=Issue%20on%20page%20%2Fgraph.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/step9.md" target="_blank"
+      <li><a href="_sources/graph.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -347,7 +347,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -358,11 +360,24 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>STEP 9: Publication</h1>
+    <h1>Import stuff to dynamically update the graph</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Import stuff to dynamically update the graph</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-constructor-function">graph constructor function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-the-graph">reset the graph</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-an-jupyternotebook-output">instantiate an jupyternotebook output</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-a-graph">instantiate a graph</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -372,9 +387,165 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="step-9-publication">
-<h1>STEP 9: Publication<a class="headerlink" href="#step-9-publication" title="Permalink to this heading">#</a></h1>
-<p>There are many ways in which to disseminate scientific work, many of which have already been mentioned (Bourne, 2005) or are summarized in <strong>ARIADNE</strong>. Preprints facilitate early access to the manuscript, which helps researchers to document their scientific or academic work and may even be used to assert priority (e.g. ➜ MetaArXiv or ➜ BioArXiv). Preprint publication often happens simultaneously with the submission to the target journal of choice. The accessibility and reception of a preprint may be better suited to assess quality of scientific work than bold claims about the novelty or impact of the work (Brembs, 2019). Additionally, fellow researchers who have access to this work may provide comments that may be useful for a critical re-evaluation of the manuscript, which might also happen simultaneously to its peer review at a journal (see Table 1). Most journals ask researchers to submit the manuscript together with a cover letter (see Table 1). The cover letter allows researchers to demonstrate the relevance and quality of their work. However, some journals also actively discourage the submission of a cover letter to let the manuscript “speak for itself”. Once the manuscript is under review, reviewers might raise more or less critical issues about the manuscript and inform the editor handling your paper (Suls et al., 2009). Some journals ask reviewers to discuss manuscripts and draft a consensual reply (e.g. eLife). More often, the editor then recommends either acceptance, minor revisions (both rarely happen on the first submission), major revisions (sometimes also called revise and resubmit; see Table 1), or rejection. Addressing each issue raised by the reviewers in a well-crafted, point-by-point response rebuttal letter (Palminteri, 2023; see Table 1) allows researchers to demonstrate that criticized parts of the manuscript have been revised to an extent that warrants the acceptance of the manuscript (Noble, 2017) or to argue why suggested changes have not been adapted. Following acceptance, researchers may think about publishing their data and code together with the manuscript in a way that allows easy access to and reuse of the work (Goodman et al., 2014). This process until seeing your paper published can take several months (in rare cases even years) and this time should be factored in Step 1, where a time plan of the project is first fixed. If your manuscript is rejected by your first journal choice, a submission to an alternative journal of equal or slightly lower rank is usually warranted. Only in exceptional cases an appeal could be considered. Crucially, if you notice an error only after publication (e.g. a software bug or faulty code/input data), this should be discussed with the authors and corrected in the published article as soon as possible (Bruns et al., 2019).</p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script type="text/x-thebe-config">
+  {
+    requestKernel: true,
+    binderOptions: {
+      repo: "QuantStack/ipycytoscape",
+      ref: "1.2.0",
+      repoProvider: "github",
+    },
+  }
+</script>
+<script src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+<button id="activateButton" style="width: 120px; height: 40px; font-size: 1.5em;">
+  Activate
+</button>
+<script>
+var bootstrapThebe = function() {
+    thebelab.bootstrap();
+}
+document.querySelector("#activateButton").addEventListener('click', bootstrapThebe)
+</script>
+<style>
+pre{
+    display: none;
+    height: 75%;
+    width: 75%;
+}
+</style>
+<html>
+  <pre hidden data-executable="true" data-language="python" data-readonly="true">
+# Some more prerequisites, just run this
+import networkx as nx
+import pandas as pd
+import json
+from ipycytoscape import *
+from pathlib import Path
+<p>df_nodes = pd.read_csv(str(’<a class="reference external" href="https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_nodes.csv">https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_nodes.csv</a>’), sep=’;’)
+df_edges = pd.read_csv(str(’<a class="reference external" href="https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_edges.csv">https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_edges.csv</a>’), sep=’;’)</p>
+<p>df_nodes = df_nodes.fillna(‘’)
+df_edges = df_edges.fillna(‘’)</p>
+<section class="tex2jax_ignore mathjax_ignore" id="import-stuff-to-dynamically-update-the-graph">
+<h1>Import stuff to dynamically update the graph<a class="headerlink" href="#import-stuff-to-dynamically-update-the-graph" title="Permalink to this heading">#</a></h1>
+<p>from ipywidgets import Output
+from IPython.display import display, HTML</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="graph-constructor-function">
+<h1>graph constructor function<a class="headerlink" href="#graph-constructor-function" title="Permalink to this heading">#</a></h1>
+<p>def const_graph(nodes_df, edges_df, init):
+# convert df to dicts
+nodes_dict = nodes_df.to_dict(‘records’)
+edges_dict = edges_df.to_dict(‘records’)
+# start building nodes
+data_keys = [‘id’, ‘label’] # cyto logic
+rest_keys = [‘score’, ‘idInt’, ‘name’, ‘score’, ‘group’, ‘removed’, ‘selected’,
+‘selectable’, ‘locked’, ‘grabbed’, ‘grabbable’] # cyto extra logic
+nodes_graph_list = []
+# now loop over nodes
+for node in nodes_dict:
+dict_node = {}
+data_sub_dict = {‘data’:{el:node[el] for el in data_keys}} # get MUST data info
+rest_sub_dict = {el:node[el] for el in node.keys() if el in rest_keys} # get extra data info
+dict_node = {**data_sub_dict,**rest_sub_dict} # zip them
+nodes_graph_list.append(dict_node) # add to the list
+# start building edges
+data_keys  = [‘id’, ‘source’, ‘target’] # cyto logic
+data_keys2 = [‘label’, ‘classes’] # cyto logic
+rest_keys  = [‘score’, ‘weight’, ‘group’, ‘networkId’, ‘networkGroupId’, ‘intn’,
+‘rIntnId’, ‘group’, ‘removed’, ‘selected’, ‘selectable’, ‘locked’,
+‘grabbed’, ‘gra bbable’, ‘classes’] # cyto extra logic
+edges_graph_list = []
+# now loop over edges
+for edge in edges_dict:
+dict_edge = {}
+data_sub_dict = {el:edge[el] for el in data_keys} # get MUST data info
+data_sub_dict2 = {el:edge[el] for el in edge.keys() if el in data_keys2} # get MUST_2 data info
+rest_sub_dict = {el:edge[el] for el in edge.keys() if el in rest_keys} # get extra data info
+dict_edge = {‘data’:{**data_sub_dict,**data_sub_dict},**rest_sub_dict} # zip them
+edges_graph_list.append(dict_edge) # add to the list
+# create the combined edge+node dictionary
+total_graph_dict = {‘nodes’: nodes_graph_list, ‘edges’:edges_graph_list}
+# building the style
+all_node_style = [‘background-color’, ‘background-opacity’,
+‘font-family’, ‘font-size’, ‘label’, ‘width’,
+‘shape’, ‘height’, ‘width’, ‘text-valign’, ‘text-halign’, ‘underlay-color’ ,’underlay-shape’]
+all_edge_style = [‘background-color’, ‘background-opacity’,
+‘font-family’, ‘font-size’, ‘label’, ‘width’, ‘line-color’, ‘arrow’, ‘type’, ‘target-arrow-shape’]
+total_style_dict = {}
+style_elements = []
+# now construct the node styles
+for node in nodes_dict:
+node_dict = {‘selector’: f’node[id = “{node[“id”]}”]’}
+style_dict ={“style”: { el:node[el] for el in node.keys() if el in all_node_style}}
+node_dict.update(style_dict)
+style_elements.append(node_dict)
+# now construct the edge styles
+for edge in edges_dict:
+edge_dict = {‘selector’: f’edge[id = “{edge[“id”]}”]’}
+style_dict = {“style”: { el:edge[el] for el in edge.keys() if el in all_edge_style}}
+edge_dict.update(style_dict)
+style_elements.append(edge_dict)
+# now create the graph
+data_graph = json.dumps(total_graph_dict)
+json_to_python = json.loads(data_graph)
+# result_cyto = CytoscapeWidget()
+# for some reason ipycytoscape’s function is not callable, so calling it manually
+cyto_graph.graph.nodes.clear()
+cyto_graph.graph.edges.clear()
+cyto_graph.graph._adj.clear()
+cyto_graph.graph.add_graph_from_json(json_to_python)
+cyto_graph.set_style(style_elements)
+# also save the initial json to a file
+if init:
+json_filename = ‘init_config.json’
+style_filename = ‘init_style.json’
+cyto_graph.set_layout(name = ‘circle’)
+else:
+json_filename = ‘curr_config.json’
+style_filename = ‘curr_style.json’
+cyto_graph.set_layout(name = ‘breadthfirst’)
+with open(json_filename, ‘w’) as outfile:
+json.dump(json_to_python, outfile)
+with open(style_filename, ‘w’) as outfile:
+json.dump(json_to_python, outfile)
+# and return it
+#return result_cyto</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reset-the-graph">
+<h1>reset the graph<a class="headerlink" href="#reset-the-graph" title="Permalink to this heading">#</a></h1>
+<p>def res_graph(node):
+with out:
+# for some reason ipycytoscape’s function is not callable, so calling it manually
+cyto_graph.graph.nodes.clear()
+cyto_graph.graph.edges.clear()
+cyto_graph.graph._adj.clear()
+const_graph(df_nodes[df_nodes[‘subgraph’] == ‘initial’], df_edges[df_nodes[‘subgraph’] == ‘initial’], init=True)</p>
+<p>def log_clicks(node):
+with out:
+new_nodes = df_nodes[‘subgraph’] == node[‘data’][‘id’].replace(’ ‘,’’)
+const_graph(df_nodes[new_nodes], df_edges[new_nodes], init=False)
+if len(df_edges[new_nodes]) == 0 or len(df_nodes[new_nodes]) == 0:
+print(‘Empty subgraph, resetting view…’)
+res_graph(node)</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="instantiate-an-jupyternotebook-output">
+<h1>instantiate an jupyternotebook output<a class="headerlink" href="#instantiate-an-jupyternotebook-output" title="Permalink to this heading">#</a></h1>
+<p>out = Output()
+out.layout.height = ‘500px’</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="instantiate-a-graph">
+<h1>instantiate a graph<a class="headerlink" href="#instantiate-a-graph" title="Permalink to this heading">#</a></h1>
+<p>cyto_graph = CytoscapeWidget() # ok now create the cytoscape object
+const_graph(df_nodes[df_nodes[‘subgraph’] == ‘initial’], df_edges[df_nodes[‘subgraph’] == ‘initial’], init=True)</p>
+<p>cyto_graph.on(‘node’, ‘click’, log_clicks) # dynamically listen to left clicks
+cyto_graph.on(‘node’, ‘cxttap’, res_graph) # dynamically listen to right clicks
+cyto_graph.on(‘node’, ‘click’, log_clicks)</p>
+<p>display(cyto_graph) # display the object
+display(out) # display the output</p>
+  </pre>
+</html>
 </section>
 
     <script type="text/x-thebe-config">
@@ -409,20 +580,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="step8.html"
+       href="abstract.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">STEP 8: Writing the manuscript</p>
+        <p class="prev-next-title">Abstract</p>
       </div>
     </a>
     <a class="right-next"
-       href="step10.html"
+       href="step1.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">STEP 10: Dissemination</p>
+        <p class="prev-next-title">STEP 1: Project start</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -435,6 +606,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Import stuff to dynamically update the graph</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-constructor-function">graph constructor function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-the-graph">reset the graph</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-an-jupyternotebook-output">instantiate an jupyternotebook output</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-a-graph">instantiate a graph</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
