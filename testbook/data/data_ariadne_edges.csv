@@ -1,7 +1,4 @@
 id,source,target,label,background-color
-just the id number from 1 to N,Source of the edge.,Target of the edge,Label of the edge,color of the arrow
-,Should correspond to a node,Should correspond to a node,basically what should be written on top of the edge,
-,,,,
 1,Project Start,Literature,,black
 2,Literature,Unpaywall,,black
 3,Literature,How to get a paper,,black
