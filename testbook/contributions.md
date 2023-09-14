@@ -1,8 +1,13 @@
 # Author contributions
 
-Initial idea and project supervision: HH and CG
-Contributed to conception and design: All authors
-Contributed to acquisition of data: All authors
-Contributed to analysis and interpretation of data: All authors
-Drafted and/or revised the article: All authors
-Approved the submitted version for publication: All authors
+Conceptualization (All authors)
+Data curation (All authors)
+Investigation (All authors)
+Methodology (All authors)
+Project administration (CG, HH)
+Software (AKa, CG, MM)
+Supervision (CG, HH)
+Validation (All authors)
+Visualization (AKa, CG, MM)
+Writing - original draft (AK, ALi, HH, MS, SV, YY)
+Writing – review & editing (All authors)
