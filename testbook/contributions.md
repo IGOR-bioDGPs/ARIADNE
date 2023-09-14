@@ -9,5 +9,5 @@
 * Supervision (CG, HH)
 * Validation (All authors)
 * Visualization (AKa, CG, MM)
-* Writing - original draft (AK, ALi, HH, MS, SV, YY)
+* Writing - original draft (AKo, AL, HH, MFJS, SV, YY)
 * Writing – review & editing (All authors)
