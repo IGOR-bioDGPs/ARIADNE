@@ -46,7 +46,7 @@ jobs:
         publish_dir: testbook/_build/html
     - name: copy
       env:
-          SRC_FOLDER_PATH: 'testbook/graph.html'
+          SRC_FOLDER_PATH: 'testbook/graph/'
           TARGET_BRANCH: 'gh-pages'
       run: |
           files= $(find $SRC_FOLDER_PATH -type f) # get the file list
