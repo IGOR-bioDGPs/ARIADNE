@@ -38,15 +38,20 @@ from ipycytoscape import *
 from pathlib import Path
 
 
-df_nodes = pd.read_csv(str('https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_nodes.csv'), sep=';')
-df_edges = pd.read_csv(str('https://raw.githubusercontent.com/caggursoy/thebetest/main/data/data_ariadne_edges.csv'), sep=';')
+#df_nodes = pd.read_csv(str('https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_nodes.csv'), sep=';')
+#df_edges = pd.read_csv(str('https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_edges.csv'), sep=';')
+
+url = 'https://docs.google.com/spreadsheets/d/1_QFjq-kAQfn_LFzRPwfP1G_yo2Kjc7z8vc61w_ZmN1o/gviz/tq?tqx=out:csv&sheet=sheet1'
+df_nodes = pd.read_csv(url)
+url = 'https://docs.google.com/spreadsheets/d/1o_KmX1LvN6dwk5kTvJDap-qUbEU9-axVW6HhhusI7ZA/gviz/tq?tqx=out:csv&sheet=sheet1'
+df_edges = pd.read_csv(url)
 
 df_nodes = df_nodes.fillna('')
 df_edges = df_edges.fillna('')
 
 # Import stuff to dynamically update the graph
 from ipywidgets import Output
-from IPython.display import display, HTML
+from IPython.display import display
 
 # graph constructor function
 def const_graph(nodes_df, edges_df, init):
@@ -120,7 +125,7 @@ def const_graph(nodes_df, edges_df, init):
     else:
         json_filename = 'curr_config.json'
         style_filename = 'curr_style.json'
-        cyto_graph.set_layout(name = 'breadthfirst')
+        cyto_graph.set_layout(name = 'dagre')
     with open(json_filename, 'w') as outfile:
         json.dump(json_to_python, outfile)
     with open(style_filename, 'w') as outfile:
@@ -135,27 +140,29 @@ def res_graph(node):
         cyto_graph.graph.nodes.clear()
         cyto_graph.graph.edges.clear()
         cyto_graph.graph._adj.clear()
-        const_graph(df_nodes[df_nodes['subgraph'] == 'initial'], df_edges[df_nodes['subgraph'] == 'initial'], init=True)
+        const_graph(df_nodes[df_nodes['subgraph'] == 'initial'], df_edges[df_edges['subgraph'] == 'initial'], init=True)
 
 def log_clicks(node):
     with out:
+        print(node)
         new_nodes = df_nodes['subgraph'] == node['data']['id'].replace(' ','')
-        const_graph(df_nodes[new_nodes], df_edges[new_nodes], init=False)
-        if len(df_edges[new_nodes]) == 0 or len(df_nodes[new_nodes]) == 0:
+        new_edges = df_edges['subgraph'] == node['data']['id'].replace(' ','')
+        const_graph(df_nodes[new_nodes], df_edges[new_edges], init=False)
+        if len(df_edges[new_edges]) == 0 or len(df_nodes[new_nodes]) == 0:
             print('Empty subgraph, resetting view...')
             res_graph(node)
 
 
 # instantiate an jupyternotebook output
 out = Output()
-out.layout.height = '500px'
 # instantiate a graph
 cyto_graph = CytoscapeWidget() # ok now create the cytoscape object
-const_graph(df_nodes[df_nodes['subgraph'] == 'initial'], df_edges[df_nodes['subgraph'] == 'initial'], init=True)
+const_graph(df_nodes[df_nodes['subgraph'] == 'initial'], df_edges[df_edges['subgraph'] == 'initial'], init=True)
 
 cyto_graph.on('node', 'click', log_clicks) # dynamically listen to left clicks
 cyto_graph.on('node', 'cxttap', res_graph) # dynamically listen to right clicks
 cyto_graph.on('node', 'click', log_clicks)
+
 
 display(cyto_graph) # display the object
 display(out) # display the output
