@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -76,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -327,10 +337,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -338,7 +348,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -369,7 +379,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-6-data-validation">
 <h1>STEP 6: Data validation<a class="headerlink" href="#step-6-data-validation" title="Permalink to this heading">#</a></h1>
-<p>Data validation in a research project refers to the process of ensuring the quality and accuracy of the data collected during the study (e.g., Breck et al., 2019 for machine learning projects and our tool <strong>ARIADNE</strong> for specific resources). Accordingly, quality control refers to the continuous process of evaluating the data or procedures such as SOPs for completeness, accuracy, and consistency, and identifying and removing any errors or outliers (Freire, 2021). This may include checks for missing data, incorrect data entry, or other issues that could impact the validity of the study and subsequent interpretation of the results. Data wrangling, also known as data munging, is the process of transforming and mapping data from one “raw” data form into another format with the intent of making it more appropriate and valuable for a variety of downstream purposes such as analytics (see Table 1; Endel &amp; Piringer, 2015; Kandel et al., 2011). This step has the ultimate goal of cleaning, organizing, documenting, and preserving the data for future use. This may include creating detailed metadata, documenting the data collection and cleaning process, and storing the raw and processed data in a secure and accessible format (which might mean that the software [version] used to gather and process data has to be stored as well). However, aspects like data quality, merging data from different sources, creating reproducible processes and data provenance are equally important. Importantly, these validation practices should be implemented throughout the data collection, and must not be done on the comparison of interest. In sum, this step contributes essentially to the robustness of the study’s findings and the ability to replicate or build upon the research in future studies. This step can be started as soon as first data is collected, leading to the next step, data analysis.</p>
+<p>Data validation in a research project refers to the process of ensuring the quality and accuracy of the data collected during the study (e.g., Breck et al., 2019 for machine learning projects and our tool <strong>ARIADNE</strong> for specific resources). Accordingly, quality control refers to the continuous process of evaluating the data or procedures such as SOPs for completeness, accuracy, and consistency, and identifying and removing any errors or outliers (Freire, 2021). This may include checks for missing data, incorrect data entry, or other issues that could impact the validity of the study and subsequent interpretation of the results, but also assuring your data is FAIR (➜ <a class="reference external" href="https://www.nature.com/articles/sdata201618">FAIR data</a> or ➜ <a class="reference external" href="https://rdmkit.elixir-europe.org/">RDMkit</a>). <em>Data wrangling</em>, also known as <em>data munging</em>, is the process of transforming and mapping data from one “raw” data form into another format with the intent of making it more appropriate and valuable for a variety of downstream purposes such as analytics (see Table 1; Endel &amp; Piringer, 2015; Kandel et al., 2011). This step has the ultimate goal of cleaning, organizing, documenting, and preserving the data for future use. This may include creating detailed metadata, documenting the data collection and cleaning process, and storing the raw and processed data in a secure and accessible format (which might mean that the software [version] used to gather and process data has to be stored as well). However, aspects like data quality, merging data from different sources, creating reproducible processes and data provenance are equally important. Importantly, these validation practices should be implemented throughout the data collection, and must not be done on the comparison of interest. In sum, this step contributes essentially to the robustness of the study’s findings and the ability to replicate or build upon the research in future studies. This step can be started as soon as first data is collected, leading to the next step, data analysis.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -397,11 +407,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="step5.html"
@@ -421,10 +430,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -473,8 +479,8 @@ By The IGOR Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

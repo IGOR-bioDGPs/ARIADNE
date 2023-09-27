@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -76,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -327,10 +337,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -338,7 +348,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -369,7 +379,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-3-study-implementation">
 <h1>STEP 3: Study implementation<a class="headerlink" href="#step-3-study-implementation" title="Permalink to this heading">#</a></h1>
-<p>Study implementation refers to the development of a task or paradigm that will be used to manipulate the IVs and measure the DVs of interest, as well as the creation of the necessary stimuli and control conditions. Here, stimulus control refers to the methods used to control and manipulate the stimuli that participants are exposed to during the experiment. This might include creating specific visual, auditory, tactile, or other types of stimuli, as well as controlling the timing, duration, and intensity of the stimuli. The selection of openly available stimuli on platforms such as the ➜ Kapodi Stimuli database or ➜ International Affective Picture System (IAPS) is recommended enhancing not only reproducibility, but also the use of stimuli, which underwent a proper standardization procedure (Lang et al., 2008). <strong>ARIADNE</strong> helps in providing curated, tried-and-tested resources. Crucially, and of note, the trap of “questionable measurement practices” as indicated by Flake (2020) should be avoided by favoring materials proven for standardization, reliability and validity (e.g., stimuli, tasks, questionnaires). However, researchers should consider that task reliability can mean different things in experimental and correlational research (Hedge et al., 2018). Finally, the decision for a suitable task programming environment should take into account whether the study will be lab-based or implemented online and whether the program is freely available (➜ Psychopy vs. ➜ Psychtoolbox in Matlab; see <strong>ARIADNE</strong> for more tools). Other aspects of study implementation may include the development of a standard operating procedure (SOP; Maghani, 2011; see Table 1) or protocol to guide the experimenter through the study, the creation of a data collection and analysis plan, and the implementation of procedures to ensure the reliability and validity of the study (see also Step 6). It is immensely helpful to note down decisions and the reasons for these decisions, as those will be relevant for the later writing process (Step 8). In this context, preregistration, which entails documenting and uploading the research plan before the outset of data collection, including the hypothesis, design, and analysis plan, has received a great deal of attention recently and been employed as a crucial tool in transparent and reproducible scientific research (Toth et al., 2021; see Table 1). This practice helps to prevent researcher degrees of freedom or the garden of forking paths (see Table 1) and improves transparency and reproducibility of the study (Peikert et al., 2021). An extension of preregistration, so called Registered Reports (Henderson &amp; Chambers, 2022; see Table 1), even shift the peer-review process from after to before data collection, allowing researchers to get feedback on their work early in the process and to be able to adapt their research design before the study starts (Scheel et al., 2021).</p>
+<p>Study implementation refers to the development of a task or paradigm that will be used to manipulate the independent variables (IVs) and measure the dependent variables (DVs) of interest, as well as the creation of the necessary stimuli and control conditions. Here, stimulus control refers to the methods used to control and manipulate the stimuli that participants are exposed to during the experiment. This might include creating specific visual, auditory, tactile, or other types of stimuli, as well as controlling the timing, duration, and intensity of the stimuli. The selection of openly available stimuli on platforms such as the ➜ <a class="reference external" href="https://airtable.com/shrnVoUZrwu6riP9b/tbljKUnVvikhzaNvF/viwlo7OvlHBG2q88P?blocks=hide">Kapodi Stimuli database</a> or ➜ <a class="reference external" href="https://csea.phhp.ufl.edu/media.html">International Affective Picture System</a> (IAPS) is recommended enhancing not only reproducibility, but also the use of stimuli, which underwent a proper standardization procedure (Lang et al., 2008). <strong>ARIADNE</strong> helps in providing curated, tried-and-tested resources. Crucially, and of note, the trap of “questionable measurement practices” as indicated by Flake (2020) should be avoided by favoring materials proven for standardization, reliability and validity (e.g., stimuli, tasks, questionnaires). However, researchers should consider that task reliability can mean different things in experimental and correlational research (Hedge et al., 2018). Finally, the decision for a suitable task programming environment should take into account whether the study will be lab-based or implemented online and whether the program is freely available (➜ <a class="reference external" href="https://www.psychopy.org/">Psychopy</a> vs. ➜ <a class="reference external" href="http://psychtoolbox.org/">Psychtoolbox</a> in Matlab). Other aspects of study implementation may include the development of a <em>standard operating procedure</em> (SOP; Maghani, 2011; see Table 1) or protocol to guide the experimenter through the study, the creation of a data collection and analysis plan, and the implementation of procedures to ensure the reliability and validity of the study (see also Step 6). It is immensely helpful to note down decisions and the reasons for these decisions, as those will be relevant for the later writing process (Step 8). In this context, <em>preregistration</em>, which entails documenting and uploading the research plan before the outset of data collection, including the hypothesis, design, and analysis plan, has received a great deal of attention recently and been employed as a crucial tool in transparent and reproducible scientific research (Toth et al., 2021; see Table 1). This practice helps to prevent <em>researcher degrees of freedom</em> or the <em>garden of forking paths</em> (see Table 1) and improves transparency and reproducibility of the study (Peikert et al., 2021). An extension of preregistration, so-called <em>Registered Reports</em> (Henderson &amp; Chambers, 2022; see Table 1), even shift the peer-review process from after to before data collection, allowing researchers to get feedback on their work early in the process and to be able to adapt their research design before the study starts (Scheel et al., 2021).</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -397,11 +407,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="step2.html"
@@ -421,10 +430,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -473,8 +479,8 @@ By The IGOR Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
