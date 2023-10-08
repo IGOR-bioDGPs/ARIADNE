@@ -12,7 +12,7 @@
 </script>
 <script src="https://unpkg.com/thebe@latest/lib/index.js"></script>
 
-<button id="activateButton" style="width: 120px; height: 40px; font-size: 1.5em;">
+<!-- <button id="activateButton" style="width: 120px; height: 40px; font-size: 1.5em;">
   Activate
 </button>
 <script>
@@ -20,14 +20,34 @@ var bootstrapThebe = function() {
     thebelab.bootstrap();
 }
 document.querySelector("#activateButton").addEventListener('click', bootstrapThebe)
-</script>
+</script> -->
 <style>
-pre{
-    display: none;
-    height: 75%;
-    width: 75%;
-}
+    pre{
+        display: none;
+        height: 100%;
+        width: 100%;
+    }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Configure Thebe
+        thebelab.bootstrap();
+        var buttonTitles = ['run this cell', 'restart the kernel', 'restart the kernel and run all cells'];
+        // Find the buttons one by one and click or hide them
+        for (let i = 0; i < buttonTitles.length; i++) {
+            var button = document.querySelector('[title="'+buttonTitles[i]+'"]'); 
+            console.log('button:',button)
+            // If run button click the button
+            if (i == 0){
+                button.click();
+                button.style.display = "none";
+            }else{
+                // else just remove
+                button.style.display = "none";
+            }
+        }
+    });
+</script>
 <html>
   <pre hidden data-executable="true" data-language="python" data-readonly="true">
 # Some more prerequisites, just run this
