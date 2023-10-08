@@ -11,27 +11,22 @@
   }
 </script>
 <script src="https://unpkg.com/thebe@latest/lib/index.js"></script>
-
-<!-- <button id="activateButton" style="width: 120px; height: 40px; font-size: 1.5em;">
-  Activate
-</button>
-<script>
-var bootstrapThebe = function() {
-    thebelab.bootstrap();
-}
-document.querySelector("#activateButton").addEventListener('click', bootstrapThebe)
-</script> -->
 <style>
     pre{
         display: none;
         height: 100%;
-        width: 100%;
+        width: 75%;
     }
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Configure Thebe
-        thebelab.bootstrap();
+        // thebelab.bootstrap();
+        var cellConfig = {
+            "code": true,   // Allow execution of code cells
+            "query": true   // Allow execution of query cells (for asking questions)
+        };
+        thebelab.bootstrap(cellConfig).then(thebelab.bootstrap());
         var buttonTitles = ['run this cell', 'restart the kernel', 'restart the kernel and run all cells'];
         // Find the buttons one by one and click or hide them
         for (let i = 0; i < buttonTitles.length; i++) {
@@ -57,7 +52,6 @@ import json
 from ipycytoscape import *
 from pathlib import Path
 
-
 #df_nodes = pd.read_csv(str('https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_nodes.csv'), sep=';')
 #df_edges = pd.read_csv(str('https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_edges.csv'), sep=';')
 
@@ -71,7 +65,7 @@ df_edges = df_edges.fillna('')
 
 # Import stuff to dynamically update the graph
 from ipywidgets import Output
-from IPython.display import display
+from IPython.display import display, Javascript, HTML
 
 # graph constructor function
 def const_graph(nodes_df, edges_df, init):
@@ -79,7 +73,7 @@ def const_graph(nodes_df, edges_df, init):
     nodes_dict = nodes_df.to_dict('records')
     edges_dict = edges_df.to_dict('records')
     # start building nodes
-    data_keys = ['id', 'label'] # cyto logic
+    data_keys = ['id', 'label', 'is_terminal', 'href', 'tooltip'] # cyto logic
     rest_keys = ['score', 'idInt', 'name', 'score', 'group', 'removed', 'selected',
                  'selectable', 'locked', 'grabbed', 'grabbable'] # cyto extra logic
     nodes_graph_list = []
@@ -145,7 +139,12 @@ def const_graph(nodes_df, edges_df, init):
     else:
         json_filename = 'curr_config.json'
         style_filename = 'curr_style.json'
-        cyto_graph.set_layout(name = 'dagre')
+        dagre_layout_options = {
+            'name': 'dagre',
+            'nodeSpacing': 20,
+            'edgeLengthVal': 100
+        }
+        cyto_graph.set_layout(layout=dagre_layout_options)
     with open(json_filename, 'w') as outfile:
         json.dump(json_to_python, outfile)
     with open(style_filename, 'w') as outfile:
@@ -164,28 +163,32 @@ def res_graph(node):
 
 def log_clicks(node):
     with out:
-        print(node)
         new_nodes = df_nodes['subgraph'] == node['data']['id'].replace(' ','')
         new_edges = df_edges['subgraph'] == node['data']['id'].replace(' ','')
-        const_graph(df_nodes[new_nodes], df_edges[new_edges], init=False)
-        if len(df_edges[new_edges]) == 0 or len(df_nodes[new_nodes]) == 0:
-            print('Empty subgraph, resetting view...')
+        curr_node_num = len(df_nodes[new_nodes])
+        if node['data']['is_terminal'] == 'no':
+            const_graph(df_nodes[new_nodes], df_edges[new_edges], init=False)
+            cyto_graph.set_tooltip_source('')
+        elif node['data']['is_terminal'] == 'yes':
+            cyto_graph.set_tooltip_source('tooltip')
+        if curr_node_num == 0 and node['data']['is_terminal'] == 'no':
             res_graph(node)
-
+         
 
 # instantiate an jupyternotebook output
 out = Output()
 # instantiate a graph
-cyto_graph = CytoscapeWidget() # ok now create the cytoscape object
+cyto_graph = CytoscapeWidget(min_zoom=0.5, max_zoom=3.0) # ok now create the cytoscape object
+cyto_graph.layout.height = '600px'
+cyto_graph.layout.width = '1600px'
 const_graph(df_nodes[df_nodes['subgraph'] == 'initial'], df_edges[df_edges['subgraph'] == 'initial'], init=True)
 
 cyto_graph.on('node', 'click', log_clicks) # dynamically listen to left clicks
 cyto_graph.on('node', 'cxttap', res_graph) # dynamically listen to right clicks
-cyto_graph.on('node', 'click', log_clicks)
-
 
 display(cyto_graph) # display the object
 display(out) # display the output
+
 
   </pre>
 </html>
