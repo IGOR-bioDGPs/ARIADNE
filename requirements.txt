@@ -4,3 +4,4 @@ numpy
 ghp-import
 networkx
 pandas
+sphinxcontrib-bibtex==1.0.0
