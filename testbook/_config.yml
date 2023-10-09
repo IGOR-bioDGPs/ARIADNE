@@ -26,8 +26,11 @@ latex:
 bibtex_bibfiles:
   - references.bib
 sphinx:
+  extra_extensions:
+    - sphinxcontrib.apa
   config:
-    bibtex_reference_style: author_year  # or label, super, \supercite
+    bibtex_reference_style: apastyle
+    bibtex_default_style: apa
     
 # Information about where the book exists on the web
 repository:
