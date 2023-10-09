@@ -20,7 +20,7 @@ parts:
        - file: step9
        - file: step10
        - file: discussion
-       - file: references
+       - file: zbibliography
     - caption: Supplementary information
       chapters:
        - file: contributions
