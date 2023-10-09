@@ -162,7 +162,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The road to success</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="node_graph.html">Node Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step1.html">STEP 1: Project start</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">STEP 2: Study design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step3.html">STEP 3: Study implementation</a></li>
@@ -173,6 +172,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="step8.html">STEP 8: Writing the manuscript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step9.html">STEP 9: Publication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step10.html">STEP 10: Dissemination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discussion.html">Discussion and outlook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributions.html">Author contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funding.html">Funding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="competinginterests.html">Competing interests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content.html">Content in Jupyter Book</a></li>
 </ul>
 
     </div>
@@ -227,7 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/mamuerie/TestBook" target="_blank"
+      <li><a href="https://github.com/IGOR-bioDGPs/ARIADNE" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -244,7 +249,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/mamuerie/TestBook/issues/new?title=Issue%20on%20page%20%2Fstep2.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/IGOR-bioDGPs/ARIADNE/issues/new?title=Issue%20on%20page%20%2Fstep2.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -370,8 +375,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-2-study-design">
 <h1>STEP 2: Study design<a class="headerlink" href="#step-2-study-design" title="Permalink to this heading">#</a></h1>
-<p>In an empirical research project, the study design encompasses conceptualizing and planning the methodology for data collection and analysis. For this purpose, the research group should ideally establish a workflow pipeline that outlines the subsequent steps (i.e., Steps 2 to 9; Gantt charts and work packages are often employed at this stage). Additionally, documenting the decision-making process throughout the research project is crucial for enhancing reproducibility, enabling other researchers to understand and replicate the study with greater ease. Hence, it is essential to maintain flexibility in this pipeline, allowing for adjustments as the project progresses. <strong>ARIADNE</strong> aids researchers in this process by providing tools to help identify prior hypotheses, select the appropriate study design, and develop a detailed plan for data collection and analysis.</p>
-<p>Another important aspect of the study design step is determining the appropriate sample size, target population (e.g., neurotypical individuals or patients), as well as the sampling strategy (e.g., stratified or convenience sampling; Stratton, 2021). To ensure that the study has sufficient statistical power to detect meaningful differences or associations, a power analysis is helpful at this stage (➜ GPower; Cohen, 1962; Jones et al., 2004; Kemal, 2020; see Table 1). Considering ethics in experimental design involves taking steps to protect the rights and welfare of participants, weighing costs and benefits while minimizing risks, and ensuring the privacy of participants and the confidentiality of their data. It also involves considering the impact of the findings on society and potential biases that may exist in the study. In essence, the study design step lays out the foundation for the entire project and provides a roadmap for all subsequent steps. Most importantly, it considers data collection, analysis, and interpretation of results (Steps 5-8). It is essential for the study design to be well-conceived, well-executed, and well-documented to ensure the quality, integrity, and generalizability of the findings of the research. Drawing on the experience from supervisor(s), mentor(s), and/or collaborator(s) is key in this step, as they might have specific expertise or experience with certain aspects of the planned project. In this step, the importance of ‘Team Science’ and sharing of knowledge and expertise becomes especially clear (Hall et al., 2018). <strong>ARIADNE</strong> can help kick-start this process by providing grounds for tool selection.</p>
+<p>In an empirical research project, the study design encompasses conceptualizing and planning the methodology for data collection and analysis. For this purpose, the research group should ideally establish a workflow pipeline that outlines the subsequent steps (i.e., Steps 2 to 9; Gantt charts (a bar chart used to illustrate a project schedule, showing start and finish dates of activities and their dependencies; ➜ <a class="reference external" href="https://github.com/giocomai/ganttrify">Ganttrify</a>). It is useful for planning, scheduling, and monitoring projects and work packages  - a set of related tasks within a project. It is the smallest unit of work that can be planned and managed. Additionally, documenting the decision-making process throughout the research project is crucial for enhancing reproducibility, enabling other researchers to understand and replicate the study with greater ease. It is essential to maintain flexibility in this pipeline, allowing for adjustments as the project progresses.</p>
+<p>Another important aspect of the study design step is determining the appropriate sample size, target population (e.g., neurotypical individuals or patients), as well as the sampling strategy (e.g., stratified or convenience sampling; Stratton, 2021). To ensure that the study has sufficient statistical power to detect meaningful differences or associations,  justification of one’s sample size is helpful at this stage, e.g., via a <em>power analysis</em> (➜ <a class="reference external" href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower">GPower</a>, ➜ <a class="reference external" href="https://shiny.ieis.tue.nl/sample_size_justification/">Justification Shinyapp</a> or ➜ <a class="reference external" href="https://github.com/Fungisai/g_ci_spm">g_ci_spm</a>; Cohen, 1962; Jones et al., 2003; Kemal, 2020; see Table 1). Considering ethics in experimental design involves taking steps to protect the rights and welfare of participants, weighing costs and benefits while minimizing risks, and ensuring the privacy of participants and the confidentiality of their data. It also involves considering the impact of the findings on society and potential biases that may exist in the study. In essence, the study design step lays out the foundation for the entire project and provides a roadmap for all subsequent steps. Most importantly, it considers data collection, analysis, and interpretation of results (Steps 5-8). It is essential for the study design to be well-conceived, well-executed, and well-documented to ensure the quality, integrity, and generalizability of the findings of the research. Drawing on the experience from supervisor(s), mentor(s), and/or collaborator(s) is key in this step, as they might have specific expertise or experience with certain aspects of the planned project. In this step, the importance of ‘Big Team Science’ and sharing of knowledge and expertise becomes especially clear (Hall et al., 2018). <strong>ARIADNE</strong> can help kick-start this process by providing grounds for tool selection.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -442,7 +447,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By The IGOR Cumminity
+By The IGOR Community
 </p>
 
   </div>
