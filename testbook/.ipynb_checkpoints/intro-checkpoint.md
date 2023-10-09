@@ -2,7 +2,9 @@
 This is the website belonging to the **ARIADNE** project.
 
 # Who are we?
-We are a group of early career researchers in the fields of biological psychology and neuroscience.
+We are a group of early career researchers in the fields of biological psychology and neuroscience. <br>
+Helena Hartmann, Cagatay Guersoy, Alexander Lischke, Marie Mueckstein, Matthias F. J. Sperl, Susanne Vogel, Yu-Fang Yang, Gordon B. Feld, Alexandros Kastrinogiannis and Alina Koppold
+
 
 # What is this about?
 We have created a curated resource navigator called **ARIADNE** that will guide researchers in the field of life sciences, especially those at the beginning of their career, through the process of conducting a transparent and reproducible research project from start to finish. The project is presented in the form of 10 steps, with tried-and-tested resources allocated to each step. You can find an outline of these 10 steps below:

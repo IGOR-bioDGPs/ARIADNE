@@ -1,5 +1,5 @@
 
-# Step Visualization
+# Resource
 
 Click [here](https://igor-biodgps.github.io/ARIADNE/graph/graph.html) to be directed to the graph:
 
