@@ -4,3 +4,4 @@ numpy
 ghp-import
 networkx
 pandas
+sphinxcontrib-apa
