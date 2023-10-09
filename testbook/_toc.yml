@@ -4,11 +4,10 @@
 format: jb-book
 root: intro
 parts:
-    - caption: Overview
-      chapters:
-       - file: abstract
     - caption: The road to success
       chapters:
+       - file: abstract
+       - file: Introduction
        - file: node_graph_link
        - file: step1
        - file: step2
@@ -21,8 +20,10 @@ parts:
        - file: step9
        - file: step10
        - file: discussion
+       - file: references
+    - caption: Supplementary information
        - file: contributions
        - file: acknowledgments
        - file: funding
        - file: competinginterests
-       - file: content
+
