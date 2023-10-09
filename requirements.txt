@@ -5,3 +5,5 @@ ghp-import
 networkx
 pandas
 sphinxcontrib-apa
+pybtex==0.22.2
+pybtex-apa-style==1.3
