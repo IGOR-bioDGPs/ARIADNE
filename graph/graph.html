@@ -44,6 +44,15 @@
     });
 </script>
 <html>
+  <h1>Instructions</h1>
+  <h2>Here are a few notes:</h2>
+  <ul>
+    <li>The app might take a few minutes to load, so please be patient.</li>
+    <li>Left click on a node to go to deeper levels.</li>
+    <li>Right click on any node to reset to the initial overview.</li>
+    <li>Left click on the resource nodes will show the information regarding to it.</li>
+        <li style="margin-left:2em">Left click again on the resource nodes to reveal the link to the respective webpages.</li>
+  </ul>
   <pre hidden data-executable="true" data-language="python" data-readonly="true">
 # Some more prerequisites, just run this
 import networkx as nx
@@ -73,7 +82,7 @@ def const_graph(nodes_df, edges_df, init):
     nodes_dict = nodes_df.to_dict('records')
     edges_dict = edges_df.to_dict('records')
     # start building nodes
-    data_keys = ['id', 'label', 'is_terminal', 'href', 'tooltip'] # cyto logic
+    data_keys = ['id', 'label', 'is_terminal', 'href', 'tooltip', 'descr'] # cyto logic
     rest_keys = ['score', 'idInt', 'name', 'score', 'group', 'removed', 'selected',
                  'selectable', 'locked', 'grabbed', 'grabbable'] # cyto extra logic
     nodes_graph_list = []
@@ -89,7 +98,7 @@ def const_graph(nodes_df, edges_df, init):
     data_keys2 = ['label', 'classes'] # cyto logic
     rest_keys  = ['score', 'weight', 'group', 'networkId', 'networkGroupId', 'intn',
                   'rIntnId', 'group', 'removed', 'selected', 'selectable', 'locked',
-                  'grabbed', 'gra bbable', 'classes'] # cyto extra logic
+                  'grabbed', 'grabbable', 'classes'] # cyto extra logic
     edges_graph_list = []
     # now loop over edges
     for edge in edges_dict:
@@ -173,7 +182,11 @@ def log_clicks(node):
             cyto_graph.set_tooltip_source('tooltip')
         if curr_node_num == 0 and node['data']['is_terminal'] == 'no':
             res_graph(node)
-         
+
+def hover_over(node):
+    with out:
+        cyto_graph.set_tooltip_source('descr')
+        
 
 # instantiate an jupyternotebook output
 out = Output()
@@ -185,10 +198,10 @@ const_graph(df_nodes[df_nodes['subgraph'] == 'initial'], df_edges[df_edges['subg
 
 cyto_graph.on('node', 'click', log_clicks) # dynamically listen to left clicks
 cyto_graph.on('node', 'cxttap', res_graph) # dynamically listen to right clicks
+cyto_graph.on('node', 'mouseover', hover_over)
 
 display(cyto_graph) # display the object
 display(out) # display the output
 
-
-  </pre>
+</pre>
 </html>
