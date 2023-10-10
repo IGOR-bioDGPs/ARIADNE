@@ -1,3 +1,7 @@
+---
+layout: forward
+target: https://igor-biodgps.github.io/ARIADNE/graph/graph.html
+---
 
 # Resource
 
@@ -9,3 +13,4 @@ Here are a few notes/instructions:
 - Left click on a node to go to deeper levels.
 - Right click on any node to reset to the initial overview.
 - Click on the resource nodes to reveal the link to the respective webpages.
+- 
