@@ -31,7 +31,6 @@ Ganttrify;Ganttrify;ellipse;#cd6886;white;3;Organization;;;;yes;https://github.c
 Miro;Miro;ellipse;#cd6886;white;3;Organization;;;;yes;https://miro.com/;"<a href=""https://miro.com/"" target=""_blank"">Click here</a>";You can use Miro for creating visual presentations of anything, and most of all, for collaboration with others! The possibilities are endless.
 Toggl;Toggl;ellipse;#cd6886;white;3;Organization;;;;yes;https://toggl.com/;"<a href=""https://toggl.com/"" target=""_blank"">Click here</a>";Time tracking software to boost performance and get paid for every billable minute. An intuitive tool that makes time tracking painless for the entire team.
 Time Graphic;Time Graphic;ellipse;#cd6886;white;3;Organization;;;;yes;https://time.graphics/de/;"<a href=""https://time.graphics/de/"" target=""_blank"">Click here</a>";Free online timeline maker
-;;;;;;;;;;;;"<a href="""" target=""_blank"">Click here</a>";
 Study design;Study design;rectangle;Purple;white;1;initial;;;;no;NA;;NA
 Study design;Study design;rectangle;Purple;white;1;Studydesign;;;;no;NA;;NA
 Sample size;Sample size;diamond;Cyan;white;2;Studydesign;;;;no;NA;;NA
@@ -53,7 +52,6 @@ Cogent toolbox;Cogent toolbox;ellipse;Thistle;white;4;Matlab;;;;yes;https://doku
 Psychtoolbox;Psychtoolbox;ellipse;Thistle;white;4;Matlab;;;;yes;http://psychtoolbox.org/;"<a href=""http://psychtoolbox.org/"" target=""_blank"">Click here</a>";Psychtoolbox is an open-source software package used in MATLAB and GNU Octave for creating experiments in the fields of psychology, neuroscience, and vision research. It provides a collection of functions that allow researchers to control the presentation of stimuli and the collection of responses, making it a valuable tool for conducting behavioral experiments and studies involving human perception and cognition.
 Pavlovia;Pavlovia;ellipse;#cd6886;white;3;Design framework;;;;yes;https://pavlovia.org/;"<a href=""https://pavlovia.org/"" target=""_blank"">Click here</a>";Pavlovia is an online platform that enables researchers to create, host, and share experiments developed using the PsychoPy software. It allows researchers to run experiments remotely via web browsers, making it convenient for collecting data from participants across different locations.
 Presentation;Presentation;ellipse;#cd6886;white;3;Design framework;;;;yes;https://www.neurobs.com/menu_presentation/menu_features/features_overview;"<a href=""https://www.neurobs.com/menu_presentation/menu_features/features_overview"" target=""_blank"">Click here</a>";Presentation® is a stimulus delivery and experiment control program for neuroscience. Check whether your insitution got a licence for it.
-;;;;;;;;;;;;"<a href="""" target=""_blank"">Click here</a>";
 Study Implementation;Study Implementation;rectangle;Purple;white;1;initial;;;;no;NA;;NA
 Study Implementation;Study Implementation;rectangle;Purple;white;1;StudyImplementation;;;;no;NA;;NA
 Preregistration Framework;Preregistration Framework;diamond;Cyan;white;2;StudyImplementation;;;;no;NA;;NA
