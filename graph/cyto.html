@@ -32,6 +32,16 @@
         padding: 10px;
         z-index: 999; /* Ensure the tooltip appears above other elements */
     }
+    .info-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css">
@@ -40,6 +50,14 @@
 </head>
 <body>
   <div id="cy"></div>
+  <div id="info-box" class="info-box">
+    <h2>Here are a few notes:</h2>
+    <ul>
+      <li>Left click on a node to go to deeper levels.</li>
+      <li>Right click on any node to reset to the initial overview.</li>
+      <li>Hover on any node to reveal the information regarding the node.</li>
+      <li>Left click on the resource nodes to go to the respective webpages.</li>  
+  </div>
   <!-- <div id="tooltip" class="tooltip"></div> -->
 
   <script>// Get the width and height of the screen
