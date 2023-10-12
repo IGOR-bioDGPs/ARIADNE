@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Network with Node Tooltip</title>
+  <style>
+    :root {
+            --screen-width: 0px;
+            --screen-height: 0px;
+        }
+    #cy {
+        width: var(--screen-width);
+        height: var(--screen-height);
+        display: block;
+    }
+
+    .tooltip {
+      position: absolute;
+      z-index: 10;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none;
+    }
+    .custom-tooltip {
+        position: absolute;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 999; /* Ensure the tooltip appears above other elements */
+    }
+    .info-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script> -->
+</head>
+<body>
+  <div id="cy"></div>
+  <div id="info-box" class="info-box">
+    <h2>Here are a few notes:</h2>
+    <ul>
+      <li>Left click on a node to go to deeper levels.</li>
+      <li>Right click on any node to reset to the initial overview.</li>
+      <li>Hover on any node to reveal the information regarding the node.</li>
+      <li>Left click on the resource nodes to go to the respective webpages.</li>  
+  </div>
+  <!-- <div id="tooltip" class="tooltip"></div> -->
+
+  <script>// Get the width and height of the screen
+        var screenWidth = window.screen.width;
+        var screenHeight = window.screen.height;
+        // Set CSS variables with screen width and height
+        document.documentElement.style.setProperty('--screen-width', screenWidth + 'px');
+        document.documentElement.style.setProperty('--screen-height', screenHeight*0.8 + 'px');
+    </script>
+    <script>
+        // const tooltip = document.getElementById('tooltip');
+        async function fetchDataNodes() {
+            try {
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_nodes.csv';
+                const response = await fetch(githubRawURL);
+                const csvData = await response.text();
+                const rows = csvData.split('\n');
+                const nodes = rows.map(row => {
+                const [id, label, shape, bgColor, fontColor, rank, subgraph, isTerminal, href, tooltip, descr] = row.split(';');
+                // You can customize the node data structure here based on your CSV columns
+                return {
+                    data: {
+                    id: id,
+                    label: label,
+                    shape: shape,
+                    background_color: bgColor,
+                    font_color: fontColor,
+                    rank: rank,
+                    subgraph: subgraph,
+                    is_terminal: isTerminal,
+                    href: href,
+                    tooltip: tooltip,
+                    descr: descr
+                    }
+                };
+                });
+
+                const nodesAndEdges = {
+                nodes: nodes
+                };
+
+                return nodesAndEdges;
+            } catch (err) {
+                console.error('Error fetching data from GitHub:', err);
+                return null;
+            }
+        }
+        async function fetchDataEdges() {
+            try {
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_edges.csv';
+                const response = await fetch(githubRawURL);
+                const csvData = await response.text();
+
+                const rows = csvData.split('\n');
+                const edges = rows.map(row => {
+                const [id, source, target, subgraph, label, bgColor] = row.split(';');
+
+                // You can customize the node data structure here based on your CSV columns
+                return {
+                    data: {
+                    id: id,
+                    source: source,
+                    target: target,
+                    'background-color': bgColor,
+                    subgraph: subgraph,
+                    label: label,
+                    }
+                };
+                });
+
+                const nodesAndEdges = {
+                edges: edges
+                };
+
+                return nodesAndEdges;
+            } catch (err) {
+                console.error('Error fetching data from GitHub:', err);
+                return null;
+            }
+        }
+    const ind = 0;
+    async function createNetwork(sub_graph = '', ind) {
+        const nodesArrayAux = await fetchDataNodes();
+        const edgesArrayAux = await fetchDataEdges();
+        // console.log(nodesArrayAux);
+        const nodesArray = nodesArrayAux.nodes;
+        const edgesArray = edgesArrayAux.edges;
+        // Validate and sanitize IDs in the nodesArray
+        nodesArray.forEach(node => {
+        if (typeof node.data.id !== 'string' || !node.data.id.trim()) {
+            // If the ID is not a valid string or is empty, generate a unique ID
+            node.data.id = 'node_' + Math.random().toString(36).substr(2, 9);
+        }
+        });
+        // Validate and sanitize IDs in the edgesArray
+        edgesArray.forEach(edge => {
+        if (typeof edge.data.id !== 'string' || !edge.data.id.trim()) {
+            // If the ID is not a valid string or is empty, generate a unique ID
+            edge.data.id = 'node_' + Math.random().toString(36).substr(2, 9);
+        }
+        });
+        const filteredNodes = nodesArray.filter(item => item.data.subgraph === sub_graph);
+        const filteredEdges = edgesArray.filter(item => item.data.subgraph === sub_graph);
+        const filteredAll = filteredNodes.concat(filteredEdges);
+            // console.log(filteredAll)
+            const cy = cytoscape({
+                container: document.getElementById('cy'),
+                elements: filteredAll,
+                style: [
+                    {
+                    selector: 'node',
+                    style: {
+                        // 'background-color': '#4286f4',
+                        'background-color': 'data(background_color)',
+                        'shape': 'data(shape)',
+                        'label': 'data(id)'
+                    }
+                    },
+                    {
+                    selector: 'edge',
+                    style: {
+                        'width': 2,
+                        'line-color': '#ccc',
+                        'target-arrow-color': '#ccc',
+                        'target-arrow-shape': 'triangle'
+                    }
+                    }
+                ],
+                layout: {
+                    name: 'circle'
+                }
+            });
+            ind += 1;
+            main(ind, cy);
+    }
+    
+    async function main(ind, cyto) {
+        if (ind == 0){
+            cyto = await createNetwork('initial');
+        }
+        else{
+            cyto.on('click', 'node', function(event) {
+                var node = event.target;
+                if (node.data('is_terminal') == 'no'){
+                    console.log(node.data('id').replace(' ',''))
+                    createNetwork(node.data('id').replace(' ',''));
+                }
+                else{
+                    window.open(node.data('tooltip'), '_blank');
+                }
+            });
+            cyto.on('cxttap', function(event) {
+                console.log('rclick');
+                const tooltips = document.querySelectorAll('.custom-tooltip');
+                tooltips.forEach(tooltip => tooltip.remove());
+                createNetwork('initial');
+            });
+            
+            cyto.on('mouseover', 'node', function(event) {
+                const node = event.target;
+                if (node.data('is_terminal') == 'yes'){
+                    var tooltip = document.createElement('div');
+                    tooltip.className = 'custom-tooltip';
+                    tooltip.textContent = node.data('descr');
+                    document.body.appendChild(tooltip);
+                    // Position the tooltip relative to the node's position and dimensions
+                    const nodePosition = node.renderedPosition();
+                    const nodeHeight = node.height();
+                    const nodeWidth = node.width();
+                    tooltip.style.left = nodePosition.x + 'px';
+                    tooltip.style.top = nodePosition.y + nodeHeight + 10 + 'px';
+                }
+            });
+            cyto.on('mouseout', 'node', function() {
+                const tooltips = document.querySelectorAll('.custom-tooltip');
+                tooltips.forEach(tooltip => tooltip.remove());
+            });
+            const minZoom = 0.5; // Minimum allowed zoom level
+            const maxZoom = 1.5; // Maximum allowed zoom level
+            cyto.on('zoom', function(event) { // handle the zooming part
+                const currentZoom = cyto.zoom();
+                // Limit the zoom level to the specified range
+                console.log(minZoom, currentZoom, maxZoom)
+                if (currentZoom < minZoom) {
+                    cyto.zoom(minZoom); // Set zoom to the minimum value
+                } else if (currentZoom > maxZoom) {
+                    cyto.zoom(maxZoom); // Set zoom to the maximum value
+                }
+            });
+        }
+    }
+    main(ind);
+  </script>
+</body>
+</html>
