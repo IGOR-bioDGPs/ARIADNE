@@ -49,7 +49,7 @@ Presentation;Presentation;ellipse;#cd6886;white;4;Designframework;yes;https://ww
 Pavlovia;Pavlovia;ellipse;#cd6886;white;4;Designframework;yes;https://pavlovia.org/;https://pavlovia.org/;
 Matlab;Matlab;diamond;Cyan;white;3;Designframework;no;NA;;NA
 Python;Python;diamond;Cyan;white;3;Designframework;no;NA;;NA
-Javascript;Javascript;ellipse;#cd6886;white;3;Designframework;no;NA;;NA
+Javascript;Javascript;diamond;Cyan;white;3;Designframework;no;NA;;NA
 Psychtoolbox;Psychtoolbox;ellipse;#cd6886;white;4;Designframework;yes;http://psychtoolbox.org/;http://psychtoolbox.org/;
 Cogent toolbox;Cogent toolbox;ellipse;#cd6886;white;4;Designframework;yes;http://apps.usd.edu/coglab/psyc770/pdf/cogmanv125.pdf;http://apps.usd.edu/coglab/psyc770/pdf/cogmanv125.pdf;
 PsychoPy;PsychoPy;ellipse;#cd6886;white;4;Designframework;yes;https://www.psychopy.org/;https://www.psychopy.org/;
@@ -57,6 +57,7 @@ JsPsych;JsPsych;ellipse;#cd6886;white;4;Designframework;yes;https://www.jspsych.
 Gorilla;Gorilla;ellipse;#cd6886;white;4;Designframework;yes;https://gorilla.sc/?gclid=CjwKCAjw6fyXBhBgEiwAhhiZshYWN20_NN2f-nllP964f5t21bRoEJCun03fT7cDfUsqt_Zqql3xWxoCUywQAvD_BwE;https://gorilla.sc/?gclid=CjwKCAjw6fyXBhBgEiwAhhiZshYWN20_NN2f-nllP964f5t21bRoEJCun03fT7cDfUsqt_Zqql3xWxoCUywQAvD_BwE;
 Data availability;Data availability;diamond;Thistle;white;2;Dataavailability;no;NA;;NA
 Datasets;Datasets;diamond;Cyan;white;3;Dataavailability;no;NA;;NA
+Datasets;Datasets;diamond;Cyan;white;3;Datasets;no;NA;;NA
 Imaging data;Imaging data;diamond;Cyan;white;4;Datasets;no;NA;;NA
 Emotions;Emotions;diamond;Cyan;white;4;Datasets;no;NA;;NA
 24 days of databases;24 days of databases;ellipse;#cd6886;white;5;Datasets;yes;https://twitter.com/fier_caitlin/status/1333731512676651008?s=20;https://twitter.com/fier_caitlin/status/1333731512676651008?s=20;
