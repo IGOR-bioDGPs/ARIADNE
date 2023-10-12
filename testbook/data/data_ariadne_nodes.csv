@@ -33,25 +33,35 @@ Toggl;Toggl;ellipse;#cd6886;white;3;Organization;yes;https://toggl.com/;https://
 Time Graphic;Time Graphic;ellipse;#cd6886;white;3;Organization;yes;https://time.graphics/de/;https://time.graphics/de/;Free online timeline maker
 Study design;Study design;rectangle;Purple;white;1;initial;no;NA;;NA
 Study design;Study design;rectangle;Purple;white;1;Studydesign;no;NA;;NA
+Stimuli;Stimuli;diamond;Cyan;white;2;Studydesign;no;NA;;NA
 Sample size;Sample size;diamond;Cyan;white;2;Studydesign;no;NA;;NA
-Justification Shinyapp;Justification Shinyapp;ellipse;#cd6886;white;3;Samplesize;yes;https://shiny.ieis.tue.nl/sample_size_justification/;https://shiny.ieis.tue.nl/sample_size_justification/;If you need help justifying your sample size, use this Shiny app from Daniel Lakens.
-Justification Paper;Justification Paper;ellipse;#cd6886;white;3;Samplesize;yes;https://psyarxiv.com/9d3yf/;https://psyarxiv.com/9d3yf/;If you need help justifying your sample size, read this paper.
-g_ci_spm;g_ci_spm;ellipse;#cd6886;white;3;Samplesize;yes;https://github.com/Fungisai/g_ci_spm;https://github.com/Fungisai/g_ci_spm;Matlab function for the estimation of effect size g and its confidence interval from SPM t maps.
-Systematic review;Systematic review;diamond;Cyan;white;2;Studydesign;no;NA;;NA
-Covidence;Covidence;ellipse;#cd6886;white;3;Systematicreview;yes;https://www.covidence.org/;https://www.covidence.org/;This paid tool is well worth its money, because it helps you screen and decide on hundreds of papers if you're working on a systematic review.
-Questionnaires;Questionnaires;diamond;Cyan;white;2;Studydesign;no;NA;;NA
-Semantic scale network;Semantic scale network;ellipse;#cd6886;white;3;ProjectStart;yes;https://rosenbusch.shinyapps.io/semantic_net/;https://rosenbusch.shinyapps.io/semantic_net/;If you want to create a new scale but are not sure whether it exists already, check the Semantic Scale Network to detect semantically related (psychological) scales. You can also add your own scales in there to extend the database.
 Design framework;Design framework;diamond;Cyan;white;2;Studydesign;no;NA;;NA
-Gorilla;Gorilla;ellipse;#cd6886;white;3;Design framework;yes;https://gorilla.sc/?gclid=CjwKCAjw6fyXBhBgEiwAhhiZshYWN20_NN2f-nllP964f5t21bRoEJCun03fT7cDfUsqt_Zqql3xWxoCUywQAvD_BwE;https://gorilla.sc/?gclid=CjwKCAjw6fyXBhBgEiwAhhiZshYWN20_NN2f-nllP964f5t21bRoEJCun03fT7cDfUsqt_Zqql3xWxoCUywQAvD_BwE;
-Javascript;Javascript;ellipse;#cd6886;white;3;Design framework;yes;https://www.w3schools.com/js/;https://www.w3schools.com/js/;JavaScript is a versatile programming language commonly used for web development to create dynamic and interactive elements on websites.
-isPsych;isPsych;ellipse;Thistle;white;4;Javascript;yes;https://www.jspsych.org/7.3/;https://www.jspsych.org/7.3/;jsPsych is a JavaScript framework designed to develop behavioral experiments that can be executed within a web browser.
-Python;Python;ellipse;#cd6886;white;3;Design framework;no;https://www.python.org/;https://www.python.org/;Python is a high-level programming language known for its readability and versatility, widely used in various applications including web development, data analysis, artificial intelligence, and more.
-Psychopy;Psychopy;ellipse;Thistle;white;4;Python;yes;https://www.psychopy.org/;https://www.psychopy.org/;PsychoPy is an open-source software package used for creating and conducting experiments in psychology and neuroscience, providing tools to generate various types of stimuli and collect data, often used in research and educational settings.
-Matlab;Matlab;ellipse;#cd6886;white;3;Design framework;no;https://www.mathworks.com/products/matlab.html;https://www.mathworks.com/products/matlab.html;MATLAB is a high-level programming language and interactive environment primarily used for numerical computation, data analysis, visualization, and algorithm development, widely utilized in various scientific, engineering, and mathematical disciplines.
-Cogent toolbox;Cogent toolbox;ellipse;Thistle;white;4;Matlab;yes;https://dokumen.tips/documents/cogent-toolbox-manual-v125.html;https://dokumen.tips/documents/cogent-toolbox-manual-v125.html;Cogent toolbox refers to a collection of tools and functions designed for creating experiments in MATLAB for cognitive psychology and neuroscience research.
-Psychtoolbox;Psychtoolbox;ellipse;Thistle;white;4;Matlab;yes;http://psychtoolbox.org/;http://psychtoolbox.org/;Psychtoolbox is an open-source software package used in MATLAB and GNU Octave for creating experiments in the fields of psychology, neuroscience, and vision research. It provides a collection of functions that allow researchers to control the presentation of stimuli and the collection of responses, making it a valuable tool for conducting behavioral experiments and studies involving human perception and cognition.
-Pavlovia;Pavlovia;ellipse;#cd6886;white;3;Design framework;yes;https://pavlovia.org/;https://pavlovia.org/;Pavlovia is an online platform that enables researchers to create, host, and share experiments developed using the PsychoPy software. It allows researchers to run experiments remotely via web browsers, making it convenient for collecting data from participants across different locations.
-Presentation;Presentation;ellipse;#cd6886;white;3;Design framework;yes;https://www.neurobs.com/menu_presentation/menu_features/features_overview;https://www.neurobs.com/menu_presentation/menu_features/features_overview;Presentation® is a stimulus delivery and experiment control program for neuroscience. Check whether your insitution got a licence for it.
+Data availability;Data availability;diamond;Thistle;white;2;Studydesign;no;NA;;NA
+Stimuli;Stimuli;diamond;Cyan;white;2;Stimuli;no;NA;;NA
+Full body stimuli;Full body stimuli;ellipse;#cd6886;white;3;Stimuli;yes;https://www.paulconnorpsych.com/stimuli;https://www.paulconnorpsych.com/stimuli;
+EmBody / EmFace;EmBody / EmFace;ellipse;#cd6886;white;3;Stimuli;yes;https://www.psychologie.uni-freiburg.de/abteilungen/psychobio/tests;https://www.psychologie.uni-freiburg.de/abteilungen/psychobio/tests;
+Kapodi stimuli database;Kapodi stimuli database;ellipse;#cd6886;white;3;Stimuli;yes;https://airtable.com/applhKyjKmrljh2wu/shrnVoUZrwu6riP9b/tbljKUnVvikhzaNvF/viwlo7OvlHBG2q88P?blocks=hide;https://airtable.com/applhKyjKmrljh2wu/shrnVoUZrwu6riP9b/tbljKUnVvikhzaNvF/viwlo7OvlHBG2q88P?blocks=hide;
+Sample size;Sample size;diamond;Cyan;white;2;Samplesize;no;NA;;NA
+Sample size justification Shiny app;Sample size justification Shiny app;ellipse;#cd6886;white;3;Samplesize;yes;https://osf.io/preprints/psyarxiv/9d3yf/;https://osf.io/preprints/psyarxiv/9d3yf/;
+Gpower;Gpower;ellipse;#cd6886;white;3;Samplesize;yes;https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower;https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower;
+Design framework;Design framework;diamond;Cyan;white;2;Designframework;no;NA;;NA
+Presentation;Presentation;ellipse;#cd6886;white;4;Designframework;yes;https://www.neurobs.com/menu_presentation/menu_features/features_overview;https://www.neurobs.com/menu_presentation/menu_features/features_overview;
+Pavlovia;Pavlovia;ellipse;#cd6886;white;4;Designframework;yes;https://pavlovia.org/;https://pavlovia.org/;
+Matlab;Matlab;diamond;Cyan;white;3;Designframework;no;NA;;NA
+Python;Python;diamond;Cyan;white;3;Designframework;no;NA;;NA
+Javascript;Javascript;ellipse;#cd6886;white;3;Designframework;no;NA;;NA
+Psychtoolbox;Psychtoolbox;ellipse;#cd6886;white;4;Designframework;yes;http://psychtoolbox.org/;http://psychtoolbox.org/;
+Cogent toolbox;Cogent toolbox;ellipse;#cd6886;white;4;Designframework;yes;http://apps.usd.edu/coglab/psyc770/pdf/cogmanv125.pdf;http://apps.usd.edu/coglab/psyc770/pdf/cogmanv125.pdf;
+PsychoPy;PsychoPy;ellipse;#cd6886;white;4;Designframework;yes;https://www.psychopy.org/;https://www.psychopy.org/;
+JsPsych;JsPsych;ellipse;#cd6886;white;4;Designframework;yes;https://www.jspsych.org/7.3/;https://www.jspsych.org/7.3/;
+Gorilla;Gorilla;ellipse;#cd6886;white;4;Designframework;yes;https://gorilla.sc/?gclid=CjwKCAjw6fyXBhBgEiwAhhiZshYWN20_NN2f-nllP964f5t21bRoEJCun03fT7cDfUsqt_Zqql3xWxoCUywQAvD_BwE;https://gorilla.sc/?gclid=CjwKCAjw6fyXBhBgEiwAhhiZshYWN20_NN2f-nllP964f5t21bRoEJCun03fT7cDfUsqt_Zqql3xWxoCUywQAvD_BwE;
+Data availability;Data availability;diamond;Thistle;white;2;Dataavailability;no;NA;;NA
+Datasets;Datasets;diamond;Cyan;white;3;Dataavailability;no;NA;;NA
+Imaging data;Imaging data;diamond;Cyan;white;4;Datasets;no;NA;;NA
+Emotions;Emotions;diamond;Cyan;white;4;Datasets;no;NA;;NA
+24 days of databases;24 days of databases;ellipse;#cd6886;white;5;Datasets;yes;https://twitter.com/fier_caitlin/status/1333731512676651008?s=20;https://twitter.com/fier_caitlin/status/1333731512676651008?s=20;
+Popane;Popane;ellipse;#cd6886;white;5;Datasets;yes;https://osf.io/94bpx/;https://osf.io/94bpx/;
+NeuroSynth;NeuroSynth;ellipse;#cd6886;white;5;Datasets;yes;https://neurosynth.org/;https://neurosynth.org/;
 Study Implementation;Study Implementation;rectangle;Purple;white;1;initial;no;NA;;NA
 Study Implementation;Study Implementation;rectangle;Purple;white;1;StudyImplementation;no;NA;;NA
 Preregistration Framework;Preregistration Framework;diamond;Cyan;white;2;StudyImplementation;no;NA;;NA
