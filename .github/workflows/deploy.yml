@@ -50,7 +50,7 @@ jobs:
           TARGET_BRANCH: 'gh-pages'
       run: |
           #files= $(find $SRC_FOLDER_PATH -type f) # get the file list
-          files=$(ls -d **graph/*.html)
+          files=$(ls -d **graph/*)
           #echo $files
           #ls
           git config --global user.name 'GitHub Action'
