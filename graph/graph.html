@@ -46,7 +46,7 @@
       <li>Left click on a node to go to the next levels.</li>
       <li>Right click on anywhere to reset to the initial overview.</li>
       <li>Right click on a node to go back to the previous level in the network.</li>
-      <li>Hover on any node to reveal the information regarding the node.</li>
+      <li>Hover on any resource node to reveal the information regarding the node.</li>
       <li>Left click on the resource nodes to go to the respective webpages.</li>  
   </div>
   <!-- <div id="tooltip" class="tooltip"></div> -->
@@ -191,10 +191,23 @@
                         }
                     ],
                     layout: { // layout is circular
-                        name: 'circle'
+                        name: 'circle',
+                        fit: true, // whether to fit the viewport to the graph
+                        avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+                        // animate: true, // whether to transition the node positions
+                        // animationDuration: 500, // duration of animation in ms if enabled
                     }
                 });
-                
+                if (sub_graph != 'initial'){
+                    var styleOptions = cy.layout({
+                        name: 'breadthfirst',
+                        fit: true, // whether to fit the viewport to the graph
+                        avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+                        animate: true, // whether to transition the node positions
+                        animationDuration: 500, // duration of animation in ms if enabled
+                    });
+                    styleOptions.run();
+                }
                 main(index, cy, graphPathArr); // and now call the main function so we run it indefinitely
                 index += 1; // increase the index because we run the code once already
         }
@@ -208,7 +221,6 @@
                 cyto.on('click', 'node', function(event) {
                     var node = event.target; // get the node
                     if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
-                        console.log(node.data('id').replaceAll(' ','')); // get the id
                         createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
                     }
                     else{ // if it's a terminal node
