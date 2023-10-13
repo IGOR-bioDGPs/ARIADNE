@@ -170,7 +170,7 @@
             }
             });
             graphPathArr.push(sub_graph);
-            console.log('PrevGraph in func:', graphPathArr, 'index:', index)
+            // console.log('PrevGraph in func:', graphPathArr, 'index:', index)
             // filter the nodes&edges wrt. to selected node's subgraph
             const filteredNodes = nodesArray.filter(item => item.data.subgraph === sub_graph);
             const filteredEdges = edgesArray.filter(item => item.data.subgraph === sub_graph);
@@ -186,7 +186,7 @@
                         style: {
                             'background-color': 'data(background_color)',
                             'shape': 'data(shape)',
-                            'label': 'data(id)'
+                            'label': 'data(label)'
                         }
                         },
                         {
@@ -214,7 +214,7 @@
             }
             else{ // if it's not the first iteration
                 // if there is a left click on a node
-                cyto.on('click', 'node', function(event) { 
+                cyto.on('click', 'node', function(event) {
                     var node = event.target; // get the node
                     if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
                         // console.log(node.data('id').replace(' ','')); // get the id
@@ -233,7 +233,7 @@
                 // if there is a right click on a node
                 cyto.on('cxttap', 'node', function(event) {
                     var auxElem = graphPathArr[index-1];
-                    console.log('prevGraph:', auxElem, 'ind:', index-1);
+                    // console.log('prevGraph:', auxElem, 'ind:', index-1);
                     createNetwork(auxElem.replace(' ','')); // and reset to the initial overview
                 });
                 // if there mouse is on a node
