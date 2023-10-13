@@ -1,207 +1,279 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-
-<script type="text/x-thebe-config">
-  {
-    requestKernel: true,
-    binderOptions: {
-      repo: "QuantStack/ipycytoscape",
-      ref: "1.2.0",
-      repoProvider: "github",
-    },
-  }
-</script>
-<script src="https://unpkg.com/thebe@latest/lib/index.js"></script>
-<style>
-    pre{
-        display: none;
-        height: 100%;
-        width: 75%;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIADNE: A Graphical and Curated Resource Navigator</title>
+  <link rel="icon" type="image/x-icon" href="ARIADNE_Logo.png">
+  <style>
+    :root {
+            --screen-width: 0px;
+            --screen-height: 0px;
+        }
+    #cy {
+        width: var(--screen-width);
+        height: var(--screen-height);
+        display: block;
     }
-</style>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Configure Thebe
-        // thebelab.bootstrap();
-        var cellConfig = {
-            "code": true,   // Allow execution of code cells
-            "query": true   // Allow execution of query cells (for asking questions)
-        };
-        thebelab.bootstrap(cellConfig).then(thebelab.bootstrap());
-        var buttonTitles = ['run this cell', 'restart the kernel', 'restart the kernel and run all cells'];
-        // Find the buttons one by one and click or hide them
-        for (let i = 0; i < buttonTitles.length; i++) {
-            var button = document.querySelector('[title="'+buttonTitles[i]+'"]'); 
-            console.log('button:',button)
-            // If run button click the button
-            if (i == 0){
-                button.click();
-                button.style.display = "none";
-            }else{
-                // else just remove
-                button.style.display = "none";
+    /* .tooltip {
+      position: absolute;
+      z-index: 10;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none;
+    } */
+    .custom-tooltip {
+        position: absolute;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 999; /* Ensure the tooltip appears above other elements */
+    }
+    .info-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script> -->
+</head>
+<body>
+  <div id="cy"></div>
+  <div id="info-box" class="info-box">
+    <h2>Here are a few notes:</h2>
+    <ul>
+      <li>Left click on a node to go to the next levels.</li>
+      <li>Right click on anywhere to reset to the initial overview.</li>
+      <li>Right click on a node to go back to the previous level in the network.</li>
+      <li>Hover on any node to reveal the information regarding the node.</li>
+      <li>Left click on the resource nodes to go to the respective webpages.</li>  
+  </div>
+  <!-- <div id="tooltip" class="tooltip"></div> -->
+
+  <script>// Get the width and height of the screen
+        var screenWidth = window.screen.width;
+        var screenHeight = window.screen.height;
+        // Set CSS variables with screen width and height
+        document.documentElement.style.setProperty('--screen-width', screenWidth + 'px');
+        document.documentElement.style.setProperty('--screen-height', screenHeight*0.8 + 'px');
+    </script>
+    <script>
+        // async function to get nodes from the Github repo
+        async function fetchDataNodes() {
+            try {
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_nodes.csv';
+                const response = await fetch(githubRawURL); // fetch the CSV data from the URL
+                const csvData = await response.text(); // and get the response as a text file
+                const rows = csvData.split('\n'); // rows are splitted with '/n'
+                const nodes = rows.map(row => {
+                    // A split the columns into a looong array of variables
+                    // Also columns are splitted with ';'
+                    const [id, label, shape, bgColor, fontColor, rank, subgraph, isTerminal, href, tooltip, descr] = row.split(';');
+                    // And initalise the data structure of the nodes, with using the CSV file and variables
+                    return {
+                        data: {
+                        id: id,
+                        label: label,
+                        shape: shape,
+                        background_color: bgColor,
+                        font_color: fontColor,
+                        rank: rank,
+                        subgraph: subgraph,
+                        is_terminal: isTerminal,
+                        href: href,
+                        tooltip: tooltip,
+                        descr: descr
+                        }
+                    };
+                });
+                // Create a nodes variable with a sub structure 
+                const nodesArr = {
+                    nodes: nodes
+                };
+                // And return the nodes
+                return nodesArr;
+            } catch (err) { // catch a possible fetch error here
+                console.error('Error fetching data from GitHub:', err);
+                return null;
             }
         }
-    });
-</script>
-<html>
-  <h1>Instructions</h1>
-  <h2>Here are a few notes:</h2>
-  <ul>
-    <li>The app might take a few minutes to load, so please be patient.</li>
-    <li>Left click on a node to go to deeper levels.</li>
-    <li>Right click on any node to reset to the initial overview.</li>
-    <li>Left click on the resource nodes will show the information regarding to it.</li>
-        <li style="margin-left:2em">Left click again on the resource nodes to reveal the link to the respective webpages.</li>
-  </ul>
-  <pre hidden data-executable="true" data-language="python" data-readonly="true">
-# Some more prerequisites, just run this
-import networkx as nx
-import pandas as pd
-import json
-from ipycytoscape import *
-from pathlib import Path
-
-#df_nodes = pd.read_csv(str('https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_nodes.csv'), sep=';')
-#df_edges = pd.read_csv(str('https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_edges.csv'), sep=';')
-
-url = 'https://docs.google.com/spreadsheets/d/1_QFjq-kAQfn_LFzRPwfP1G_yo2Kjc7z8vc61w_ZmN1o/gviz/tq?tqx=out:csv&sheet=sheet1'
-df_nodes = pd.read_csv(url)
-url = 'https://docs.google.com/spreadsheets/d/1o_KmX1LvN6dwk5kTvJDap-qUbEU9-axVW6HhhusI7ZA/gviz/tq?tqx=out:csv&sheet=sheet1'
-df_edges = pd.read_csv(url)
-
-df_nodes = df_nodes.fillna('')
-df_edges = df_edges.fillna('')
-
-# Import stuff to dynamically update the graph
-from ipywidgets import Output
-from IPython.display import display, Javascript, HTML
-
-# graph constructor function
-def const_graph(nodes_df, edges_df, init):
-    # convert df to dicts
-    nodes_dict = nodes_df.to_dict('records')
-    edges_dict = edges_df.to_dict('records')
-    # start building nodes
-    data_keys = ['id', 'label', 'is_terminal', 'href', 'tooltip', 'descr'] # cyto logic
-    rest_keys = ['score', 'idInt', 'name', 'score', 'group', 'removed', 'selected',
-                 'selectable', 'locked', 'grabbed', 'grabbable'] # cyto extra logic
-    nodes_graph_list = []
-    # now loop over nodes
-    for node in nodes_dict:
-        dict_node = {}
-        data_sub_dict = {'data':{el:node[el] for el in data_keys}} # get MUST data info
-        rest_sub_dict = {el:node[el] for el in node.keys() if el in rest_keys} # get extra data info
-        dict_node = {**data_sub_dict,**rest_sub_dict} # zip them
-        nodes_graph_list.append(dict_node) # add to the list
-    # start building edges
-    data_keys  = ['id', 'source', 'target'] # cyto logic
-    data_keys2 = ['label', 'classes'] # cyto logic
-    rest_keys  = ['score', 'weight', 'group', 'networkId', 'networkGroupId', 'intn',
-                  'rIntnId', 'group', 'removed', 'selected', 'selectable', 'locked',
-                  'grabbed', 'grabbable', 'classes'] # cyto extra logic
-    edges_graph_list = []
-    # now loop over edges
-    for edge in edges_dict:
-        dict_edge = {}
-        data_sub_dict = {el:edge[el] for el in data_keys} # get MUST data info
-        data_sub_dict2 = {el:edge[el] for el in edge.keys() if el in data_keys2} # get MUST_2 data info
-        rest_sub_dict = {el:edge[el] for el in edge.keys() if el in rest_keys} # get extra data info
-        dict_edge = {'data':{**data_sub_dict,**data_sub_dict},**rest_sub_dict} # zip them
-        edges_graph_list.append(dict_edge) # add to the list
-    # create the combined edge+node dictionary
-    total_graph_dict = {'nodes': nodes_graph_list, 'edges':edges_graph_list}
-    # building the style
-    all_node_style = ['background-color', 'background-opacity',
-                     'font-family', 'font-size', 'label', 'width',
-                     'shape', 'height', 'width', 'text-valign', 'text-halign', 'underlay-color' ,'underlay-shape']
-    all_edge_style = ['background-color', 'background-opacity',
-                     'font-family', 'font-size', 'label', 'width', 'line-color', 'arrow', 'type', 'target-arrow-shape']
-    total_style_dict = {}
-    style_elements = []
-    # now construct the node styles
-    for node in nodes_dict:
-        node_dict = {'selector': f'node[id = \"{node["id"]}\"]'}
-        style_dict ={"style": { el:node[el] for el in node.keys() if el in all_node_style}}
-        node_dict.update(style_dict)
-        style_elements.append(node_dict)
-    # now construct the edge styles
-    for edge in edges_dict:
-        edge_dict = {'selector': f'edge[id = \"{edge["id"]}\"]'}
-        style_dict = {"style": { el:edge[el] for el in edge.keys() if el in all_edge_style}}
-        edge_dict.update(style_dict)
-        style_elements.append(edge_dict)
-    # now create the graph
-    data_graph = json.dumps(total_graph_dict)
-    json_to_python = json.loads(data_graph)
-    # result_cyto = CytoscapeWidget()
-    # for some reason ipycytoscape's function is not callable, so calling it manually
-    cyto_graph.graph.nodes.clear()
-    cyto_graph.graph.edges.clear()
-    cyto_graph.graph._adj.clear()
-    cyto_graph.graph.add_graph_from_json(json_to_python)
-    cyto_graph.set_style(style_elements)
-    # also save the initial json to a file
-    if init:
-        json_filename = 'init_config.json'
-        style_filename = 'init_style.json'
-        cyto_graph.set_layout(name = 'circle')
-    else:
-        json_filename = 'curr_config.json'
-        style_filename = 'curr_style.json'
-        dagre_layout_options = {
-            'name': 'dagre',
-            'nodeSpacing': 20,
-            'edgeLengthVal': 100
+        // async function to get edges from the Github repo
+        async function fetchDataEdges() {
+            try {
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_edges.csv';
+                const response = await fetch(githubRawURL); // fetch the CSV data from the URL
+                const csvData = await response.text(); // and get the response as a text file
+                const rows = csvData.split('\n'); // rows are splitted with '/n'
+                const edges = rows.map(row => {
+                    // A split the columns into a looong array of variables
+                    // Also columns are splitted with ';'
+                    const [id, source, target, subgraph, label, bgColor] = row.split(';');
+                    // And initalise the data structure of the nodes, with using the CSV file and variables
+                    return {
+                        data: {
+                        id: id,
+                        source: source,
+                        target: target,
+                        background_color: bgColor,
+                        subgraph: subgraph,
+                        label: label,
+                        }
+                    };
+                });
+                // Create an edges variable with a sub structure 
+                const edgesArr = {
+                    edges: edges
+                };
+                // And return the nodes
+                return edgesArr;
+            } catch (err) { // catch a possible fetch error here
+                console.error('Error fetching data from GitHub:', err);
+                return null;
+            }
         }
-        cyto_graph.set_layout(layout=dagre_layout_options)
-    with open(json_filename, 'w') as outfile:
-        json.dump(json_to_python, outfile)
-    with open(style_filename, 'w') as outfile:
-        json.dump(json_to_python, outfile)
-    # and return it
-    #return result_cyto
-
-# reset the graph
-def res_graph(node):
-    with out:
-        # for some reason ipycytoscape's function is not callable, so calling it manually
-        cyto_graph.graph.nodes.clear()
-        cyto_graph.graph.edges.clear()
-        cyto_graph.graph._adj.clear()
-        const_graph(df_nodes[df_nodes['subgraph'] == 'initial'], df_edges[df_edges['subgraph'] == 'initial'], init=True)
-
-def log_clicks(node):
-    with out:
-        new_nodes = df_nodes['subgraph'] == node['data']['id'].replace(' ','')
-        new_edges = df_edges['subgraph'] == node['data']['id'].replace(' ','')
-        curr_node_num = len(df_nodes[new_nodes])
-        if node['data']['is_terminal'] == 'no':
-            const_graph(df_nodes[new_nodes], df_edges[new_edges], init=False)
-            cyto_graph.set_tooltip_source('')
-        elif node['data']['is_terminal'] == 'yes':
-            cyto_graph.set_tooltip_source('tooltip')
-        if curr_node_num == 0 and node['data']['is_terminal'] == 'no':
-            res_graph(node)
-
-def hover_over(node):
-    with out:
-        cyto_graph.set_tooltip_source('descr')
-        
-
-# instantiate an jupyternotebook output
-out = Output()
-# instantiate a graph
-cyto_graph = CytoscapeWidget(min_zoom=0.5, max_zoom=3.0) # ok now create the cytoscape object
-cyto_graph.layout.height = '600px'
-cyto_graph.layout.width = '1600px'
-const_graph(df_nodes[df_nodes['subgraph'] == 'initial'], df_edges[df_edges['subgraph'] == 'initial'], init=True)
-
-cyto_graph.on('node', 'click', log_clicks) # dynamically listen to left clicks
-cyto_graph.on('node', 'cxttap', res_graph) # dynamically listen to right clicks
-cyto_graph.on('node', 'mouseover', hover_over)
-
-display(cyto_graph) # display the object
-display(out) # display the output
-
-</pre>
+        // index variable for keeping track of the first run or others
+        let index = 0;
+        // get previous subgraph
+        let graphPathArr = [];
+        // async function to create and draw the graph
+        async function createNetwork(sub_graph = '') {
+            // wait for nodes
+            const nodesArrayAux = await fetchDataNodes();
+            // wait for edges
+            const edgesArrayAux = await fetchDataEdges();
+            // assign nodes&edges to respective variables
+            const nodesArray = nodesArrayAux.nodes;
+            const edgesArray = edgesArrayAux.edges;
+            // Validate and sanitize IDs in the nodesArray
+            nodesArray.forEach(node => {
+            if (typeof node.data.id !== 'string' || !node.data.id.trim()) {
+                // If the ID is not a valid string or is empty, generate a unique ID
+                node.data.id = 'node_' + Math.random().toString(36).substr(2, 9);
+            }
+            });
+            // Validate and sanitize IDs in the edgesArray
+            edgesArray.forEach(edge => {
+            if (typeof edge.data.id !== 'string' || !edge.data.id.trim()) {
+                // If the ID is not a valid string or is empty, generate a unique ID
+                edge.data.id = 'node_' + Math.random().toString(36).substr(2, 9);
+            }
+            });
+            graphPathArr.push(sub_graph);
+            // console.log('PrevGraph in func:', graphPathArr, 'index:', index)
+            // filter the nodes&edges wrt. to selected node's subgraph
+            const filteredNodes = nodesArray.filter(item => item.data.subgraph === sub_graph);
+            const filteredEdges = edgesArray.filter(item => item.data.subgraph === sub_graph);
+            // now combine the arrays
+            const filteredAll = filteredNodes.concat(filteredEdges);
+                // configure the cytoscape graph here
+                const cy = cytoscape({
+                    container: document.getElementById('cy'), // will be drawn on div tag 'cy'
+                    elements: filteredAll, // only the filtered elements
+                    style: [ // now construct the style of the nodes and edges from the filtered variables
+                        {
+                        selector: 'node', // node style
+                        style: {
+                            'background-color': 'data(background_color)',
+                            'shape': 'data(shape)',
+                            'label': 'data(label)'
+                        }
+                        },
+                        {
+                        selector: 'edge', // edge style
+                        style: {
+                            'width': 2,
+                            'line-color': '#ccc',
+                            'target-arrow-color': '#ccc',
+                            'target-arrow-shape': 'triangle',
+                            'label': 'data(label)'
+                        }
+                        }
+                    ],
+                    layout: { // layout is circular
+                        name: 'circle'
+                    }
+                });
+                
+                main(index, cy, graphPathArr); // and now call the main function so we run it indefinitely
+                index += 1; // increase the index because we run the code once already
+        }
+        // main function
+        async function main(index, cyto, graphPathArr) {
+            if (index == 0){ // if it's the first iteration
+                cyto = await createNetwork('initial'); // draw the initial overview
+            }
+            else{ // if it's not the first iteration
+                // if there is a left click on a node
+                cyto.on('click', 'node', function(event) {
+                    var node = event.target; // get the node
+                    if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
+                        console.log(node.data('id').replaceAll(' ','')); // get the id
+                        createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
+                    }
+                    else{ // if it's a terminal node
+                        window.open(node.data('tooltip'), '_blank'); // redirect to the respective webpage
+                    }
+                });
+                // if there is a right click anywhere
+                cyto.on('cxttap', function(event) {
+                    const tooltips = document.querySelectorAll('.custom-tooltip'); // get all tooltips, i.e. boxes
+                    tooltips.forEach(tooltip => tooltip.remove()); // and remove all of them
+                    createNetwork('initial'); // and reset to the initial overview
+                });
+                // if there is a right click on a node
+                cyto.on('cxttap', 'node', function(event) {
+                    var auxElem = graphPathArr[index-1];
+                    // console.log('prevGraph:', auxElem, 'ind:', index-1);
+                    createNetwork(auxElem.replace(' ','')); // and reset to the initial overview
+                });
+                // if there mouse is on a node
+                cyto.on('mouseover', 'node', function(event) {
+                    const node = event.target;
+                    if (node.data('is_terminal') == 'yes'){ // and it's a terminal node
+                        var tooltip = document.createElement('div'); // create a tooltip div tag
+                        tooltip.className = 'custom-tooltip'; // using the respective CSS 
+                        tooltip.textContent = node.data('descr'); // and show the descriptions of the nodes
+                        document.body.appendChild(tooltip); // and append to the div tag created
+                        // Position the tooltip relative to the node's position and dimensions
+                        const nodePosition = node.renderedPosition(); // node's position
+                        const nodeHeight = node.height(); // node's height
+                        const nodeWidth = node.width(); // node's width
+                        tooltip.style.left = nodePosition.x + 'px'; // distance from left
+                        tooltip.style.top = nodePosition.y + nodeHeight + 10 + 'px'; // distance from top
+                    }
+                });
+                // if the mouse is moved outside of a node
+                cyto.on('mouseout', 'node', function() {
+                    const tooltips = document.querySelectorAll('.custom-tooltip'); // get all the boxes
+                    tooltips.forEach(tooltip => tooltip.remove()); // and remove them
+                });
+                // also we want to lock the amount of zoom
+                const minZoom = 0.5; // minimum allowed zoom level
+                const maxZoom = 1.5; // maximum allowed zoom level
+                cyto.on('zoom', function(event) { // handle the zooming part
+                    const currentZoom = cyto.zoom();
+                    // limit the zoom level to the specified range
+                    console.log(minZoom, currentZoom, maxZoom)
+                    if (currentZoom < minZoom) {
+                        cyto.zoom(minZoom); // set zoom to the minimum value
+                    } else if (currentZoom > maxZoom) {
+                        cyto.zoom(maxZoom); // set zoom to the maximum value
+                    }
+                });
+            }
+        }
+        main(index);
+  </script>
+</body>
 </html>
