@@ -1,83 +1,37 @@
 Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 1305, in execute
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
     return loop.run_until_complete(inner)
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
     return future.result()
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 705, in async_execute
+           ^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-df_nodes = pd.read_csv('./data/data_ariadne_nodes.csv', sep=';')
-df_edges = pd.read_csv('./data/data_ariadne_edges.csv', sep=';')
-
-df_nodes = df_nodes.fillna('')
-df_edges = df_edges.fillna('')
-
-df_edges
+# Some more prerequisites, just run this
+import networkx as nx
+import pandas as pd
+import json
+from ipycytoscape import *
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mUnicodeDecodeError[0m                        Traceback (most recent call last)
-Cell [0;32mIn[3], line 1[0m
-[0;32m----> 1[0m df_nodes [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_csv[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43m./data/data_ariadne_nodes.csv[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43msep[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43m;[39;49m[38;5;124;43m'[39;49m[43m)[49m
-[1;32m      2[0m df_edges [38;5;241m=[39m pd[38;5;241m.[39mread_csv([38;5;124m'[39m[38;5;124m./data/data_ariadne_edges.csv[39m[38;5;124m'[39m, sep[38;5;241m=[39m[38;5;124m'[39m[38;5;124m;[39m[38;5;124m'[39m)
-[1;32m      4[0m df_nodes [38;5;241m=[39m df_nodes[38;5;241m.[39mfillna([38;5;124m'[39m[38;5;124m'[39m)
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[2], line 5[0m
+[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mjson[39;00m
+[0;32m----> 5[0m [38;5;28;01mfrom[39;00m [38;5;21;01mipycytoscape[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
 
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:912[0m, in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)[0m
-[1;32m    899[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
-[1;32m    900[0m     dialect,
-[1;32m    901[0m     delimiter,
-[0;32m   (...)[0m
-[1;32m    908[0m     dtype_backend[38;5;241m=[39mdtype_backend,
-[1;32m    909[0m )
-[1;32m    910[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
-[0;32m--> 912[0m [38;5;28;01mreturn[39;00m [43m_read[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43mkwds[49m[43m)[49m
-
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:577[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
-[1;32m    574[0m _validate_names(kwds[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mnames[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m))
-[1;32m    576[0m [38;5;66;03m# Create the parser.[39;00m
-[0;32m--> 577[0m parser [38;5;241m=[39m [43mTextFileReader[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
-[1;32m    579[0m [38;5;28;01mif[39;00m chunksize [38;5;129;01mor[39;00m iterator:
-[1;32m    580[0m     [38;5;28;01mreturn[39;00m parser
-
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1407[0m, in [0;36mTextFileReader.__init__[0;34m(self, f, engine, **kwds)[0m
-[1;32m   1404[0m     [38;5;28mself[39m[38;5;241m.[39moptions[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m] [38;5;241m=[39m kwds[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m]
-[1;32m   1406[0m [38;5;28mself[39m[38;5;241m.[39mhandles: IOHandles [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m
-[0;32m-> 1407[0m [38;5;28mself[39m[38;5;241m.[39m_engine [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_make_engine[49m[43m([49m[43mf[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mengine[49m[43m)[49m
-
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1679[0m, in [0;36mTextFileReader._make_engine[0;34m(self, f, engine)[0m
-[1;32m   1676[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
-[1;32m   1678[0m [38;5;28;01mtry[39;00m:
-[0;32m-> 1679[0m     [38;5;28;01mreturn[39;00m [43mmapping[49m[43m[[49m[43mengine[49m[43m][49m[43m([49m[43mf[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[43m)[49m
-[1;32m   1680[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
-[1;32m   1681[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
-
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:93[0m, in [0;36mCParserWrapper.__init__[0;34m(self, src, **kwds)[0m
-[1;32m     90[0m [38;5;28;01mif[39;00m kwds[[38;5;124m"[39m[38;5;124mdtype_backend[39m[38;5;124m"[39m] [38;5;241m==[39m [38;5;124m"[39m[38;5;124mpyarrow[39m[38;5;124m"[39m:
-[1;32m     91[0m     [38;5;66;03m# Fail here loudly instead of in cython after reading[39;00m
-[1;32m     92[0m     import_optional_dependency([38;5;124m"[39m[38;5;124mpyarrow[39m[38;5;124m"[39m)
-[0;32m---> 93[0m [38;5;28mself[39m[38;5;241m.[39m_reader [38;5;241m=[39m [43mparsers[49m[38;5;241;43m.[39;49m[43mTextReader[49m[43m([49m[43msrc[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
-[1;32m     95[0m [38;5;28mself[39m[38;5;241m.[39munnamed_cols [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_reader[38;5;241m.[39munnamed_cols
-[1;32m     97[0m [38;5;66;03m# error: Cannot determine type of 'names'[39;00m
-
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:550[0m, in [0;36mpandas._libs.parsers.TextReader.__cinit__[0;34m()[0m
-
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:639[0m, in [0;36mpandas._libs.parsers.TextReader._get_header[0;34m()[0m
-
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:850[0m, in [0;36mpandas._libs.parsers.TextReader._tokenize_rows[0;34m()[0m
-
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:861[0m, in [0;36mpandas._libs.parsers.TextReader._check_tokenize_status[0;34m()[0m
-
-File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:2021[0m, in [0;36mpandas._libs.parsers.raise_parser_error[0;34m()[0m
-
-[0;31mUnicodeDecodeError[0m: 'utf-8' codec can't decode byte 0x92 in position 38040: invalid start byte
+[0;31mModuleNotFoundError[0m: No module named 'ipycytoscape'
 
