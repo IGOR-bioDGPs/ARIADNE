@@ -80,16 +80,16 @@ id;source;target;subgraph;label;background-color
 79;Data validation;Data management;Datavalidation;;black
 80;Data management;FAIR data;Datamanagement;;black
 81;Data management;RDMkit;Datamanagement;;black
-82;Data validation;Preprocessing;Datavalidation;;black
-83;Preprocessing;Type of data;Preprocessing;;black
-84;Type of data;fMRI_val;Typeofdata;;black
-85;Type of data;EEG;Typeofdata;;black
-86;fMRI_val;AFNI;fMRI_val;;black
-87;fMRI_val;SPM;fMRI_val;;black
-88;fMRI_val;FSL;fMRI_val;;black
-89;fMRI_val;Freesurfer;fMRI_val;;black
-90;fMRI_val;DICOM tags;fMRI_val;;black
-91;Data validation;Diffchecker;Datavalidation;;black
+82;Data management;Diffchecker;Datamanagement;;black
+83;Data validation;Preprocessing;Datavalidation;;black
+84;Preprocessing;Type of data;Preprocessing;;black
+85;Type of data;fMRI_val;Typeofdata;;black
+86;Type of data;EEG;Typeofdata;;black
+87;fMRI_val;AFNI;fMRI_val;;black
+88;fMRI_val;SPM;fMRI_val;;black
+89;fMRI_val;FSL;fMRI_val;;black
+90;fMRI_val;Freesurfer;fMRI_val;;black
+91;fMRI_val;DICOM tags;fMRI_val;;black
 92;Data validation;Data analysis;initial;;black
 93;Data analysis;Data Visualization;Dataanalysis;;black
 94;Data Visualization;fMRI_viz;DataVisualization;fMRI;black

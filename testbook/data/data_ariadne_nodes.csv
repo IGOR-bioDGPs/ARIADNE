@@ -96,6 +96,7 @@ Existing data;Existing data;diamond;Cyan;white;2;Existingdata;no;NA;;NA
 24 days of databases;24 days of databases;ellipse;#cd6886;white;3;Existingdata;yes;https://twitter.com/fier_caitlin/status/1333731512676651008?s=20;https://twitter.com/fier_caitlin/status/1333731512676651008?s=20;Somebody on Twitter was gracious enough to summarize some cool datasets that you can work on.
 Popane dataset;Popane dataset;ellipse;#cd6886;white;3;Existingdata;yes;https://osf.io/94bpx/;https://osf.io/94bpx/;"A large database on the psychophysiology of positive and negative emotions. ""This database involves recording of 1157 healthy participants, collected across seven studies, a continuous recordof self-reported affect along with several biosignals (electrocardiogram, impedance cardiogram, electrodermal activity, hemodynamic measures, e.g., blood pressure), respiration trace, and skin temperature. [The authors] experimentally elicited a wide range of positive and negative emotions, including amusement, anger, disgust, excitement, fear, gratitude, sadness, tenderness, and threat""."
 Landscaping Longitudinal Research;Landscaping Longitudinal Research;ellipse;#cd6886;white;3;Existingdata;yes;https://www.landscaping-longitudinal-research.com/;https://www.landscaping-longitudinal-research.com/;Landscaped longitudinal datasets from across the world
+;;;;;;;;;;
 Data validation;Data validation;rectangle;Purple;white;1;initial;no;NA;;NA
 Data validation;Data validation;rectangle;Purple;white;1;Datavalidation;no;NA;;NA
 Data management;Data management;diamond;Cyan;white;2;Datavalidation;no;NA;;NA
@@ -115,6 +116,7 @@ SPM;SPM;ellipse;#cd6886;white;5;fMRI_val;yes;https://www.fil.ion.ucl.ac.uk/spm/;
 FSL;FSL;ellipse;#cd6886;white;5;fMRI_val;yes;https://fsl.fmrib.ox.ac.uk/fsl/fslwiki;https://fsl.fmrib.ox.ac.uk/fsl/fslwiki;FSL is a comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data.
 Freesurfer;Freesurfer;ellipse;#cd6886;white;5;fMRI_val;yes;https://surfer.nmr.mgh.harvard.edu/;https://surfer.nmr.mgh.harvard.edu/;An open source neuroimaging toolkit for processing, analyzing, and visualizing human brain MR images
 DICOM tags;DICOM tags;ellipse;#cd6886;white;5;fMRI_val;yes;https://exiftool.org/TagNames/DICOM.html;https://exiftool.org/TagNames/DICOM.html;Do you want to know where a specific information is saved in the DICOM file of your imaging data. Check out DICOM Tags.
+;;;;;;;;;;
 Data analysis;Data analysis;rectangle;Purple;white;1;initial;no;NA;;NA
 Data analysis;Data analysis;rectangle;Purple;white;1;Dataanalysis;no;NA;;NA
 Data Visualization;Data Visualization;diamond;Cyan;white;2;Dataanalysis;no;NA;;NA
