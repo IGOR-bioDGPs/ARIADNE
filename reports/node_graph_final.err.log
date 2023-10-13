@@ -79,5 +79,5 @@ File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/p
 
 File [0;32m/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/_libs/parsers.pyx:2021[0m, in [0;36mpandas._libs.parsers.raise_parser_error[0;34m()[0m
 
-[0;31mUnicodeDecodeError[0m: 'utf-8' codec can't decode byte 0x92 in position 38044: invalid start byte
+[0;31mUnicodeDecodeError[0m: 'utf-8' codec can't decode byte 0x92 in position 38066: invalid start byte
 
