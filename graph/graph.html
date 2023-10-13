@@ -7,23 +7,14 @@
   <link rel="icon" type="image/x-icon" href="ARIADNE_Logo.png">
   <style>
     :root {
-            --screen-width: 0px;
-            --screen-height: 0px;
+        --screen-width: 0px;
+        --screen-height: 0px;
         }
     #cy {
         width: var(--screen-width);
         height: var(--screen-height);
         display: block;
     }
-    /* .tooltip {
-      position: absolute;
-      z-index: 10;
-      padding: 10px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      display: none;
-    } */
     .custom-tooltip {
         position: absolute;
         background-color: #f1f1f1;
@@ -33,20 +24,19 @@
         z-index: 999; /* Ensure the tooltip appears above other elements */
     }
     .info-box {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+        font-family: Helvetica;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script> -->
+  <script src="./cytoscape/cytoscape.min.js"></script>
 </head>
 <body>
   <div id="cy"></div>
