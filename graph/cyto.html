@@ -195,7 +195,8 @@
                             'width': 2,
                             'line-color': '#ccc',
                             'target-arrow-color': '#ccc',
-                            'target-arrow-shape': 'triangle'
+                            'target-arrow-shape': 'triangle',
+                            'label': 'data(label)'
                         }
                         }
                     ],
@@ -217,8 +218,8 @@
                 cyto.on('click', 'node', function(event) {
                     var node = event.target; // get the node
                     if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
-                        // console.log(node.data('id').replace(' ','')); // get the id
-                        createNetwork(node.data('id').replace(' ','')); // and give it to the network function as 'subgraph'
+                        console.log(node.data('id').replaceAll(' ','')); // get the id
+                        createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
                     }
                     else{ // if it's a terminal node
                         window.open(node.data('tooltip'), '_blank'); // redirect to the respective webpage
