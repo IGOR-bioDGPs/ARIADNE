@@ -100,7 +100,6 @@
             var infoBox = document.getElementById('info-box');
             // Adjust the width of the info box based on the screen width
             infoBox.style.width = screenWidth >= 768 ? '300px' : '150px';
-            console.log('screen:', screenWidth, 'box:', infoBox.style.width)
             // You can add additional size adjustments based on screen width if needed
         }
         // Call the function when the window is resized
@@ -116,7 +115,6 @@
         var infoBox = document.getElementById('info-box');
         var infoContent = document.getElementById('infoContent');
         infoBox.addEventListener('click', function() {
-            console.log('clicked')
             infoContent.toggleAttribute("hidden");
         });
     </script>
