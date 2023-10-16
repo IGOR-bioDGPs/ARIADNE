@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIADNE: A Graphical and Curated Resource Navigator</title>
+  <link rel="icon" type="image/x-icon" href="ARIADNE_Logo.png">
+  <style>
+    :root {
+        --screen-width: 0px;
+        --screen-height: 0px;
+        }
+    #cy {
+        width: var(--screen-width);
+        height: var(--screen-height);
+        display: block;
+    }
+    .custom-tooltip {
+        position: absolute;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 999; /* Ensure the tooltip appears above other elements */
+    }
+    .info-box {
+        font-family: Helvetica;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 300px;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+    .info-box.show {
+        display: none;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url('ARIADNE_Logo.png');
+        background-size: 600px 600px;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+    }
+    .back-button {
+        position: fixed;
+        top: 20px; /* Adjust the top distance from the top of the screen */
+        left: 20px; /* Adjust the left distance from the left side of the screen */
+        z-index: 9999; /* Ensure the button appears above other elements */
+        font-size: 24px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #45a049;
+    }
+  </style>
+  <script src="./cytoscape/cytoscape.min.js"></script>
+</head>
+<body>
+    <button id="back-button" class="back-button" title="Jump back to ARIADNE-Book">←</button>
+    <div id="cy"></div>
+    <div id="info-box" class="info-box">
+        <span id="infoTitle"><h2>Here are a few notes:</h2> Click to hide/unhide the notes</span>
+        <div id="infoContent">
+            <ul>
+            <li>Left click on a node to go to the next levels.</li>
+            <li>Right click on anywhere to reset to the initial overview.</li>
+            <li>Right click on a node to go back to the previous level in the network.</li>
+            <li>Hover on any resource node to reveal the information regarding the node.</li>
+            <li>Left click on the resource nodes to go to the respective webpages.</li>  
+        </div>
+    </div>
+
+  <script>// Get the width and height of the screen
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+        // Set CSS variables with screen width and height
+        document.documentElement.style.setProperty('--screen-width', screenWidth + 'px');
+        document.documentElement.style.setProperty('--screen-height', screenHeight*0.8 + 'px');
+        // Also the size of the info box
+        function updateInfoBoxSize() {
+            screenWidth = window.innerWidth;
+            var infoBox = document.getElementById('info-box');
+            // Adjust the width of the info box based on the screen width
+            infoBox.style.width = screenWidth >= 768 ? '300px' : '150px';
+            // You can add additional size adjustments based on screen width if needed
+        }
+        // Call the function when the window is resized
+        window.addEventListener('resize', updateInfoBoxSize);
+        // Get the button element
+        var redirectButton = document.getElementById('back-button');
+        // Add a click event listener to the button
+        redirectButton.addEventListener('click', function() {
+            // Redirect the user to the desired webpage
+            window.location.href = 'https://igor-biodgps.github.io/ARIADNE/intro.html'; // Replace with the URL you want to redirect to
+        });
+        // Add a click event listener to the info-box
+        var infoBox = document.getElementById('info-box');
+        var infoContent = document.getElementById('infoContent');
+        infoBox.addEventListener('click', function() {
+            infoContent.toggleAttribute("hidden");
+        });
+    </script>
+    <script>
+        // async function to get nodes from the Github repo
+        async function fetchDataNodes() {
+            try {
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_nodes.csv';
+                const response = await fetch(githubRawURL); // fetch the CSV data from the URL
+                const csvData = await response.text(); // and get the response as a text file
+                const rows = csvData.split('\n'); // rows are splitted with '/n'
+                const nodes = rows.map(row => {
+                    // A split the columns into a looong array of variables
+                    // Also columns are splitted with ';'
+                    const [id, label, shape, bgColor, fontColor, rank, subgraph, isTerminal, href, tooltip, descr] = row.split(';');
+                    // And initalise the data structure of the nodes, with using the CSV file and variables
+                    return {
+                        data: {
+                        id: id,
+                        label: label,
+                        shape: shape,
+                        background_color: bgColor,
+                        font_color: fontColor,
+                        rank: rank,
+                        subgraph: subgraph,
+                        is_terminal: isTerminal,
+                        href: href,
+                        tooltip: tooltip,
+                        descr: descr
+                        }
+                    };
+                });
+                // Create a nodes variable with a sub structure 
+                const nodesArr = {
+                    nodes: nodes
+                };
+                // And return the nodes
+                return nodesArr;
+            } catch (err) { // catch a possible fetch error here
+                console.error('Error fetching data from GitHub:', err);
+                return null;
+            }
+        }
+        // async function to get edges from the Github repo
+        async function fetchDataEdges() {
+            try {
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_edges.csv';
+                const response = await fetch(githubRawURL); // fetch the CSV data from the URL
+                const csvData = await response.text(); // and get the response as a text file
+                const rows = csvData.split('\n'); // rows are splitted with '/n'
+                const edges = rows.map(row => {
+                    // A split the columns into a looong array of variables
+                    // Also columns are splitted with ';'
+                    const [id, source, target, subgraph, label, bgColor] = row.split(';');
+                    // And initalise the data structure of the nodes, with using the CSV file and variables
+                    return {
+                        data: {
+                        id: id,
+                        source: source,
+                        target: target,
+                        background_color: bgColor,
+                        subgraph: subgraph,
+                        label: label,
+                        }
+                    };
+                });
+                // Create an edges variable with a sub structure 
+                const edgesArr = {
+                    edges: edges
+                };
+                // And return the nodes
+                return edgesArr;
+            } catch (err) { // catch a possible fetch error here
+                console.error('Error fetching data from GitHub:', err);
+                return null;
+            }
+        }
+        // index variable for keeping track of the first run or others
+        let index = 0;
+        // get previous subgraph
+        let graphPathArr = [];
+        // async function to create and draw the graph
+        async function createNetwork(sub_graph = '') {
+            // wait for nodes
+            const nodesArrayAux = await fetchDataNodes();
+            // wait for edges
+            const edgesArrayAux = await fetchDataEdges();
+            // assign nodes&edges to respective variables
+            const nodesArray = nodesArrayAux.nodes;
+            const edgesArray = edgesArrayAux.edges;
+            // Validate and sanitize IDs in the nodesArray
+            nodesArray.forEach(node => {
+            if (typeof node.data.id !== 'string' || !node.data.id.trim()) {
+                // If the ID is not a valid string or is empty, generate a unique ID
+                node.data.id = 'node_' + Math.random().toString(36).substr(2, 9);
+            }
+            });
+            // Validate and sanitize IDs in the edgesArray
+            edgesArray.forEach(edge => {
+            if (typeof edge.data.id !== 'string' || !edge.data.id.trim()) {
+                // If the ID is not a valid string or is empty, generate a unique ID
+                edge.data.id = 'node_' + Math.random().toString(36).substr(2, 9);
+            }
+            });
+            graphPathArr.push(sub_graph);
+            // filter the nodes&edges wrt. to selected node's subgraph
+            const filteredNodes = nodesArray.filter(item => item.data.subgraph === sub_graph);
+            const filteredEdges = edgesArray.filter(item => item.data.subgraph === sub_graph);
+            // now combine the arrays
+            const filteredAll = filteredNodes.concat(filteredEdges);
+                // configure the cytoscape graph here
+                const cy = cytoscape({
+                    container: document.getElementById('cy'), // will be drawn on div tag 'cy'
+                    elements: filteredAll, // only the filtered elements
+                    style: [ // now construct the style of the nodes and edges from the filtered variables
+                        {
+                        selector: 'node', // node style
+                        style: {
+                            'background-color': 'data(background_color)',
+                            'shape': 'data(shape)',
+                            'label': 'data(label)',
+                            'font-size': 24
+                        }
+                        },
+                        {
+                        selector: 'edge', // edge style
+                        style: {
+                            'width': 2,
+                            'font-size': 24,
+                            'line-color': '#ccc',
+                            'target-arrow-color': '#ccc',
+                            'target-arrow-shape': 'triangle',
+                            'label': 'data(label)'
+                        }
+                        }
+                    ],
+                    layout: { // layout is circular
+                        name: 'circle',
+                        fit: true, // whether to fit the viewport to the graph
+                        avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+                        // animate: true, // whether to transition the node positions
+                        // animationDuration: 500, // duration of animation in ms if enabled
+                    }
+                });
+                if (sub_graph != 'initial'){
+                    var styleOptions = cy.layout({
+                        name: 'breadthfirst',
+                        fit: true, // whether to fit the viewport to the graph
+                        avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+                        avoidOverlapPadding: 10, // extra spacing around nodes when avoidOverlap: true
+                        animate: true, // whether to transition the node positions
+                        animationDuration: 500, // duration of animation in ms if enabled
+                    });
+                    styleOptions.run();
+                }
+                main(index, cy, graphPathArr); // and now call the main function so we run it indefinitely
+                index += 1; // increase the index because we run the code once already
+        }
+        // main function
+        async function main(index, cyto, graphPathArr) {
+            // get cyto .css element first
+            var cytoCSS = document.body;
+            if (index == 0){ // if it's the first iteration
+                cyto = await createNetwork('initial'); // draw the initial overview
+            }
+            else{ // if it's not the first iteration
+                // if there is a left click on a node
+                cyto.on('click', 'node', function(event) {
+                    cytoCSS.style.backgroundImage = 'url("")'; // remove background image
+                    var node = event.target; // get the node
+                    if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
+                        createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
+                    }
+                    else{ // if it's a terminal node
+                        window.open(node.data('tooltip'), '_blank'); // redirect to the respective webpage
+                    }
+                });
+                // if there is a right click anywhere
+                cyto.on('cxttap', function(event) {
+                    cytoCSS.style.backgroundImage = 'url("ARIADNE_Logo.png")'; // add background image
+                    const tooltips = document.querySelectorAll('.custom-tooltip'); // get all tooltips, i.e. boxes
+                    tooltips.forEach(tooltip => tooltip.remove()); // and remove all of them
+                    createNetwork('initial'); // and reset to the initial overview
+                });
+                // if there is a right click on a node
+                cyto.on('cxttap', 'node', function(event) {
+                    var auxElem = graphPathArr[index-1];
+                    createNetwork(auxElem.replace(' ','')); // and reset to the initial overview
+                });
+                // if there mouse is on a node
+                cyto.on('mouseover', 'node', function(event) {
+                    const node = event.target;
+                    if (node.data('is_terminal') == 'yes'){ // and it's a terminal node
+                        var tooltip = document.createElement('div'); // create a tooltip div tag
+                        tooltip.className = 'custom-tooltip'; // using the respective CSS 
+                        tooltip.textContent = node.data('descr'); // and show the descriptions of the nodes
+                        document.body.appendChild(tooltip); // and append to the div tag created
+                        // Position the tooltip relative to the node's position and dimensions
+                        const nodePosition = node.renderedPosition(); // node's position
+                        const nodeHeight = node.height(); // node's height
+                        const nodeWidth = node.width(); // node's width
+                        tooltip.style.left = nodePosition.x + 'px'; // distance from left
+                        tooltip.style.top = nodePosition.y + nodeHeight + 10 + 'px'; // distance from top
+                    }
+                });
+                // if the mouse is moved outside of a node
+                cyto.on('mouseout', 'node', function() {
+                    const tooltips = document.querySelectorAll('.custom-tooltip'); // get all the boxes
+                    tooltips.forEach(tooltip => tooltip.remove()); // and remove them
+                });
+                // also we want to lock the amount of zoom
+                const minZoom = 0.5; // minimum allowed zoom level
+                const maxZoom = 1.5; // maximum allowed zoom level
+                cyto.on('zoom', function(event) { // handle the zooming part
+                    const currentZoom = cyto.zoom();
+                    // limit the zoom level to the specified range
+                    if (currentZoom < minZoom) {
+                        cyto.zoom(minZoom); // set zoom to the minimum value
+                    } else if (currentZoom > maxZoom) {
+                        cyto.zoom(maxZoom); // set zoom to the maximum value
+                    }
+                });
+            }
+        }
+        main(index);
+  </script>
+</body>
+</html>
