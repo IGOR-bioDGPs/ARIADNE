@@ -66,8 +66,8 @@ NeuroSynth;NeuroSynth;ellipse;#cd6886;white;5;Datasets;yes;https://neurosynth.or
 Study Implementation;Study Implementation;rectangle;Purple;white;1;initial;no;NA;;NA
 Study Implementation;Study Implementation;rectangle;Purple;white;1;StudyImplementation;no;NA;;NA
 Preregistration Framework;Preregistration Framework;diamond;Cyan;white;2;StudyImplementation;no;NA;;NA
-Registered Report Framework;Registered Report Framework;diamond;Cyan;white;2;StudyImplementation;yes;https://www.cos.io/initiatives/registered-reports;https://www.cos.io/initiatives/registered-reports;NA
-Registered Report Framework;Registered Report Framework;diamond;Cyan;white;2;RegisteredReportFramework;yes;https://www.cos.io/initiatives/registered-reports;https://www.cos.io/initiatives/registered-reports;NA
+Registered Report Framework;Registered Report Framework;ellipse;#cd6886;white;2;StudyImplementation;yes;https://www.cos.io/initiatives/registered-reports;https://www.cos.io/initiatives/registered-reports;NA
+Registered Report Framework;Registered Report Framework;ellipse;#cd6886;white;2;RegisteredReportFramework;yes;https://www.cos.io/initiatives/registered-reports;https://www.cos.io/initiatives/registered-reports;NA
 Preregistration Framework;Preregistration Framework;diamond;Cyan;white;2;PreregistrationFramework;no;NA;;NA
 PROSPERO;PROSPERO;ellipse;#cd6886;white;3;PreregistrationFramework;yes;https://www.crd.york.ac.uk/prospero/;https://www.crd.york.ac.uk/prospero/;PROSPERO accepts registrations for systematic reviews, rapid reviews and umbrella reviews. PROSPERO does not accept scoping reviews or literature scans. Sibling PROSPERO sites registers systematic reviews of human studies and systematic reviews of animal studies.
 OSF Templates;OSF Templates;ellipse;#cd6886;white;3;PreregistrationFramework;yes;https://osf.io/zg78t;https://osf.io/zg78t;A list of available preregistration templates.
