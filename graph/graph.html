@@ -301,7 +301,10 @@
                 });
                 // if there is a right click on a node
                 cyto.on('cxttap', 'node', function(event) {
-                    var auxElem = graphPathArr[index-1];
+                    var auxElem = graphPathArr[index-1]; // get the previous subgraph
+                    if (auxElem != 'initial'){
+                        cytoCSS.style.backgroundImage = 'url("")'; // add background image
+                    }
                     createNetwork(auxElem.replace(' ','')); // and reset to the initial overview
                 });
                 // if there mouse is on a node
