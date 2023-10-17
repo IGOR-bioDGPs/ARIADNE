@@ -242,7 +242,9 @@
                             'background-color': 'data(background_color)',
                             'shape': 'data(shape)',
                             'label': 'data(label)',
-                            'font-size': 24
+                            'font-size': 24,
+                            'text-wrap': 'wrap', // or 'ellipsis' for truncation
+                            'text-max-width': 150, // Set the maximum width for wrapped text
                         }
                         },
                         {
@@ -268,7 +270,8 @@
                         name: 'breadthfirst',
                         fit: true, // whether to fit the viewport to the graph
                         avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-                        avoidOverlapPadding: 10, // extra spacing around nodes when avoidOverlap: true
+                        // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
+                        spacingFactor: 1.5,
                     });
                     styleOptions.run();
                 }
