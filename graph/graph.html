@@ -9,13 +9,19 @@
     :root {
         --screen-width: 0px;
         --screen-height: 0px;
-        }
+    }
     #cy {
-        width: var(--screen-width);
-        height: var(--screen-height);
-        display: block;
+        /* width: var(--screen-width);
+        height: var(--screen-height); */
+        width: 80vw;
+        height: 80vh;
+        position: absolute;
+        top: 10;
+        left: 10;
+        /* display: block; */
     }
     .custom-tooltip {
+        font-family: Helvetica;
         position: absolute;
         background-color: #f1f1f1;
         border: 1px solid #ccc;
@@ -47,9 +53,9 @@
         align-items: center;
         height: 100vh;
         background-image: url('ARIADNE_Logo.png');
-        background-size: 600px 600px;
+        background-size: 300px 300px;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center center;
         position: relative;
     }
     .back-button {
@@ -66,7 +72,6 @@
         cursor: pointer;
         transition: background-color 0.3s;
     }
-
     .back-button:hover {
         background-color: #45a049;
     }
@@ -74,10 +79,10 @@
   <script src="./cytoscape/cytoscape.min.js"></script>
 </head>
 <body>
-    <button id="back-button" class="back-button" title="Jump back to ARIADNE-Book">←</button>
+    <button id="back-button" class="back-button" title="Jump back to ARIADNE-Book">←<br>Back to ARIADNE Book</button>
     <div id="cy"></div>
     <div id="info-box" class="info-box">
-        <span id="infoTitle"><h2>Here are a few notes:</h2> Click to hide/unhide the notes</span>
+        <span id="infoTitle"><h2>Instructions:</h2> Click to hide/unhide the instructions</span>
         <div id="infoContent">
             <ul>
             <li>Left click on a node to go to the next levels.</li>
@@ -265,8 +270,8 @@
                         fit: true, // whether to fit the viewport to the graph
                         avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
                         avoidOverlapPadding: 10, // extra spacing around nodes when avoidOverlap: true
-                        animate: true, // whether to transition the node positions
-                        animationDuration: 500, // duration of animation in ms if enabled
+                        // animate: true, // whether to transition the node positions
+                        // animationDuration: 500, // duration of animation in ms if enabled
                     });
                     styleOptions.run();
                 }
