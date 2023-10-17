@@ -166,15 +166,15 @@ Analysis Framework;Analysis Framework;diamond;#40B0A6;white;2;Dataanalysis;no;NA
 Analysis Framework;Analysis Framework;diamond;#40B0A6;white;2;AnalysisFramework;no;NA;;NA
 PSPP;PSPP;ellipse;#D41159;white;3;AnalysisFramework;yes;https://www.gnu.org/software/pspp/;https://www.gnu.org/software/pspp/;GNU PSPP is a free and open-source software application used for statistical analysis of data. It is designed to provide similar functionality to proprietary software like IBM SPSS (Statistical Package for the Social Sciences). PSPP is part of the GNU Project, which aims to develop a complete, free, and open-source operating system.
 SPSS;SPSS;ellipse;#D41159;white;3;AnalysisFramework;yes;https://www.ibm.com/products/spss-statistics;https://www.ibm.com/products/spss-statistics;IBM SPSS (Statistical Package for the Social Sciences) is a proprietary software application used for statistical analysis, data manipulation, and data visualization. It is widely utilized in social science research, business analytics, and academic settings for its comprehensive set of statistical tools and user-friendly interface.
-R;R;ellipse;#D41159;white;3;AnalysisFramework;no;NA;;NA
-R;R;ellipse;#D41159;white;3;R;no;NA;;NA
-FSBrain;FSBrain;ellipse;#40B0A6;white;4;R;yes;https://cran.r-project.org/web/packages/fsbrain/vignettes/fsbrain.html;https://cran.r-project.org/web/packages/fsbrain/vignettes/fsbrain.html;"This R package ""helps visualize surface-based brain structure data for large groups of subjects with very little code"" and ""also supports the computation of simple brain morphometry measures""."
-GGhelp;GGhelp;ellipse;#40B0A6;white;4;R;yes;https://rdrr.io/github/brandmaier/ggx/man/gghelp.html;https://rdrr.io/github/brandmaier/ggx/man/gghelp.html;"An R package that ""converts a natural language query into a 'ggplot2' command string""."
-GGplot tricks;GGplot tricks;ellipse;#40B0A6;white;4;R;yes;https://twitter.com/data_question/status/1496130684729303045?s=20;https://twitter.com/data_question/status/1496130684729303045?s=20;Some tricks from the R people to level up your ggplot game.
-R visualization;R visualization;ellipse;#40B0A6;white;4;R;yes;https://wilkelab.org/SDS375/syllabus.html;https://wilkelab.org/SDS375/syllabus.html;This is a great syllabus about visualizing data in R, held by Claus Wilke.
-R graph gallery;R graph gallery;ellipse;#40B0A6;white;4;R;yes;https://r-graph-gallery.com/;https://r-graph-gallery.com/;A collection of charts made with the R programming language.
-RStudio;RStudio;ellipse;#40B0A6;white;4;R;no;https://posit.co/;https://posit.co/;NA
-RStudio;RStudio;ellipse;#40B0A6;white;4;RStudio;no;https://posit.co/;https://posit.co/;NA
+R;R;diamond;#40B0A6;white;3;AnalysisFramework;no;NA;;NA
+R;R;diamond;#40B0A6;white;3;R;no;NA;;NA
+FSBrain;FSBrain;ellipse;#D41159;white;4;R;yes;https://cran.r-project.org/web/packages/fsbrain/vignettes/fsbrain.html;https://cran.r-project.org/web/packages/fsbrain/vignettes/fsbrain.html;"This R package ""helps visualize surface-based brain structure data for large groups of subjects with very little code"" and ""also supports the computation of simple brain morphometry measures""."
+GGhelp;GGhelp;ellipse;#D41159;white;4;R;yes;https://rdrr.io/github/brandmaier/ggx/man/gghelp.html;https://rdrr.io/github/brandmaier/ggx/man/gghelp.html;"An R package that ""converts a natural language query into a 'ggplot2' command string""."
+GGplot tricks;GGplot tricks;ellipse;#D41159;white;4;R;yes;https://twitter.com/data_question/status/1496130684729303045?s=20;https://twitter.com/data_question/status/1496130684729303045?s=20;Some tricks from the R people to level up your ggplot game.
+R visualization;R visualization;ellipse;#D41159;white;4;R;yes;https://wilkelab.org/SDS375/syllabus.html;https://wilkelab.org/SDS375/syllabus.html;This is a great syllabus about visualizing data in R, held by Claus Wilke.
+R graph gallery;R graph gallery;ellipse;#D41159;white;4;R;yes;https://r-graph-gallery.com/;https://r-graph-gallery.com/;A collection of charts made with the R programming language.
+RStudio;RStudio;diamond;#40B0A6;white;4;R;no;https://posit.co/;https://posit.co/;NA
+RStudio;RStudio;diamond;#40B0A6;white;4;RStudio;no;https://posit.co/;https://posit.co/;NA
 Cheatsheets 1;Cheatsheets 1;ellipse;#D41159;white;5;RStudio;yes;https://posit.co/resources/cheatsheets/;https://posit.co/resources/cheatsheets/;There are loads of cheat sheets to help you find your way around in R.
 Cheatsheets 2;Cheatsheets 2;ellipse;#D41159;white;5;RStudio;yes;https://www.rstudio.com/resources/cheatsheets/;https://www.rstudio.com/resources/cheatsheets/;Another load of cheat sheets to help you find your way around in R.
 JASP;JASP;ellipse;#D41159;white;3;AnalysisFramework;yes;https://jasp-stats.org/;https://jasp-stats.org/;JASP offers standard analysis procedures in both their classical and Bayesian form.
@@ -195,8 +195,8 @@ Templates;Templates;ellipse;#D41159;white;3;Meta-analysis;yes;https://psycnet.ap
 Neuroquery;Neuroquery;ellipse;#D41159;white;3;Meta-analysis;yes;https://neuroquery.org/;https://neuroquery.org/;NeuroQuery is a tool for meta-analysis of neuroimaging studies, relating text queries to activations as well as associations between terms used together in neuroimaging publications. More info in the corresponding paper.
 Writing;Writing;rectangle;#005AB5;white;1;initial;no;NA;;NA
 Writing;Writing;rectangle;#005AB5;white;1;Writing;no;NA;;NA
-Crediting;Crediting;diamond;#1A85FF;white;2;Writing;no;NA;;NA
-Crediting;Crediting;diamond;#1A85FF;white;2;Crediting;no;NA;;NA
+Crediting;Crediting;diamond;#40B0A6;white;2;Writing;no;NA;;NA
+Crediting;Crediting;diamond;#40B0A6;white;2;Crediting;no;NA;;NA
 Tenzing;Tenzing;ellipse;#D41159;white;3;Crediting;yes;tenzing (shinyapps.io);tenzing (shinyapps.io);Use the Tenzing ShinyApp for quickly and easily documenting contributorship.
 CRediT;CRediT;ellipse;#D41159;white;3;Crediting;yes;CRediT author statement (elsevier.com);CRediT author statement (elsevier.com);Use the CRedit Author Statement by Brandt et al. (2015, Learned Publishing) to report each author’s proper contribution to a manuscript.
 Scite;Scite;ellipse;#D41159;white;3;Crediting;yes;https://scite.ai/;https://scite.ai/;A platform for evaluating scientific articles via smart citations, which allows users to assess how a publication has ben cited.
@@ -207,14 +207,15 @@ List of acronyms;List of acronyms;ellipse;#D41159;white;2;Writing;yes;https://li
 Quillbot;Quillbot;ellipse;#D41159;white;2;Writing;yes;https://quillbot.com/;https://quillbot.com/;Paraphrase like the awesome boss you are using QuillBot.
 Statcheck;Statcheck;ellipse;#D41159;white;2;Writing;yes;statcheck // web (shinyapps.io);statcheck // web (shinyapps.io);To check a PDF, DOCX or HTML file for errors in statistical reporting, upload it to Statcheck. Some journals even officially request this now (e.g., Psychological Science).
 Writing Framework;Writing Framework;diamond;#40B0A6;white;2;Writing;no;NA;;NA
+Writing Framework;Writing Framework;diamond;#40B0A6;white;2;WritingFramework;no;NA;;NA
 Word;Word;diamond;Green;white;3;WritingFramework;no;NA;;NA
 Word;Word;diamond;Green;white;3;Word;no;NA;;NA
 APA-style Word template;APA-style Word template;ellipse;#40B0A6;white;4;Word;yes;https://twitter.com/NicolasFNL/status/1357048003027230726?s=20;https://twitter.com/NicolasFNL/status/1357048003027230726?s=20;Thanks to Nicolás F. Narvaez Linares for telling me about the readymade APA-style word document option, where you can directly initialize the right formatting in Word.
 Preprint templates;Preprint templates;ellipse;#40B0A6;white;4;Word;yes;https://osf.io/hsv6a/;https://osf.io/hsv6a/;"Amazing and useful ""Word templates for typesetting preprints. Because your preprint should be a #prettypreprint"" and we don't have time for endless formatting."
 Papaja;Papaja;ellipse;#D41159;white;3;WritingFramework;yes;papaja package - RDocumentation;papaja package - RDocumentation;If you want to create reproducible manuscripts including tables directly from your data in R, use the papaja package.
 Overleaf;Overleaf;ellipse;#D41159;white;3;WritingFramework;yes;Overleaf, Online LaTeX Editor;Overleaf, Online LaTeX Editor;Overleaf is an online collaborative platform used for creating, editing, and sharing scientific documents, particularly LaTeX-based documents, making it popular among researchers and academics for collaborative writing and publishing.
-Citations;Citations;diamond;#1A85FF;white;2;Writing;no;NA;;NA
-Citations;Citations;diamond;#1A85FF;white;2;Citations;no;NA;;NA
+Citations;Citations;diamond;#40B0A6;white;2;Writing;no;NA;;NA
+Citations;Citations;diamond;#40B0A6;white;2;Citations;no;NA;;NA
 Citation Managers;Citation Managers;ellipse;#D41159;white;3;Citations;no;NA;;NA
 Citation Managers;Citation Managers;ellipse;#D41159;white;3;CitationManagers;no;NA;;NA
 Zotero;Zotero;ellipse;#40B0A6;white;4;CitationManagers;yes;Zotero | Your personal research assistant;Zotero | Your personal research assistant;Zotero is a free and open-source reference management software that helps users collect, organize, cite, and share research sources and bibliographic information. You can also connect it with Rmarkdown for reproducible workflows.
@@ -238,8 +239,8 @@ SciRev;SciRev;ellipse;#D41159;white;3;Journalchoice;yes;https://scirev.org/;http
 Preprint;Preprint;diamond;#40B0A6;white;2;Publication;no;NA;;NA
 Preprint;Preprint;diamond;#40B0A6;white;2;Preprint;no;NA;;NA
 Sherpa Romeo;Sherpa Romeo;ellipse;#D41159;white;3;Preprint;yes;https://v2.sherpa.ac.uk/romeo/;https://v2.sherpa.ac.uk/romeo/;If you are not sure whether you are allowed to upload a preprint prior to journal submission.
-Preprint server;Preprint server;diamond;#40B0A6;white;3;Preprint;no;NA;;NA
-Preprint server;Preprint server;diamond;#40B0A6;white;3;Preprintserver;no;NA;;NA
+Preprint server;Preprint server;diamond;Green;white;3;Preprint;no;NA;;NA
+Preprint server;Preprint server;diamond;Green;white;3;Preprintserver;no;NA;;NA
 MetArXiv;MetArXiv;ellipse;#D41159;white;4;Preprintserver;yes;https://osf.io/preprints/metaarxiv/;https://osf.io/preprints/metaarxiv/;A preprint platform for publications related to meta research.
 PsyArXiv;PsyArXiv;ellipse;#D41159;white;4;Preprintserver;yes;https://www.biorxiv.org/;https://www.biorxiv.org/;A preprint platform for publications related to Biology and Neuroscience.
 BioArXiv;BioArXiv;ellipse;#D41159;white;4;Preprintserver;yes;https://psyarxiv.com/;https://psyarxiv.com/;A preprint platform for publications related to Psychology.
