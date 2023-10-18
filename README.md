@@ -7,7 +7,7 @@
 
 Included in this repo, is the network backend of *ARIADNE-resource* and the Jupyter-notebook instance of the living book.
 
-## Authors of ARIADNE-graph:
+## Authors of ARIADNE:
 - Helena Hartmann [@helenahartmann](https://www.github.com/helenahartmann)
 - Çağatay Gürsoy [@caggursoy](https://www.github.com/caggursoy)
 - Marie Mückstein [@mamuerie](https://www.github.com/mamuerie)
