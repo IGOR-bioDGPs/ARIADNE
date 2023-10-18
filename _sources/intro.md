@@ -2,12 +2,10 @@
 This is the website belonging to the **ARIADNE** project.
 
 # Who are we?
-We are a group of early career researchers in the fields of biological psychology and neuroscience. <br>
-Helena Hartmann, Cagatay Guersoy, Alexander Lischke, Marie Mueckstein, Matthias F. J. Sperl, Susanne Vogel, Yu-Fang Yang, Gordon B. Feld, Alexandros Kastrinogiannis and Alina Koppold
-
+We are a group of early career researchers in the fields of biological psychology and neuroscience: Helena Hartmann, Cagatay Guersoy, Alexander Lischke, Marie Mueckstein, Matthias F. J. Sperl, Susanne Vogel, Yu-Fang Yang, Gordon B. Feld, Alexandros Kastrinogiannis and Alina Koppold. We are all members of [IGOR](https://www.dgps.de/fachgruppen/fgbi/aktivitaeten-der-fachgruppe/igor/), the DGPs Interest Group for Open and Reproducible Science.
 
 # What is this about?
-We have created a curated resource navigator called **ARIADNE** that will guide researchers in the field of life sciences, especially those at the beginning of their career, through the process of conducting a transparent and reproducible research project from start to finish. The project is presented in the form of 10 steps, with tried-and-tested resources allocated to each step. You can find an outline of these 10 steps below:
+We have created a curated scientific resource navigator called **ARIADNE** that will guide researchers in the field of life sciences, especially those at the beginning of their career, through the process of conducting a transparent and reproducible research project from start to finish. The project is presented in the form of 10 steps, with tried-and-tested resources allocated to each step. You can find an outline of these 10 steps below:
 
 1. Starting a project - from literature research to a research question
 2. Planning and designing experiments - from ethics to sample size
