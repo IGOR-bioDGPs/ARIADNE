@@ -1,9 +1,32 @@
 # ARIADNE
-Here we will deploy our ARIADNE book
+
+![ARIADNE Logo](https://github.com/IGOR-bioDGPs/ARIADNE/blob/master/testbook/ARIADNE_Logo.png)
+
+
+*The freely available, curated and dynamically “living” tool ARIADNE spans the whole research process and is translated to a dynamic interface for easier use and search for the individual resources.*
+
+Included in this repo, is the network backend of *ARIADNE-resource* and the Jupyter-notebook instance of the living book.
+
+## Authors of ARIADNE-graph:
+- Helena Hartmann [@helenahartmann](https://www.github.com/helenahartmann)
+- Çağatay Gürsoy [@caggursoy](https://www.github.com/caggursoy)
+- Marie Mückstein [@mamuerie](https://www.github.com/mamuerie)
+- Matthias F. J. Sperl [@matthias-sperl](https://www.github.com/matthias-sperl)
+- Gordon B. Feld [@flashgordon1983](https://www.github.com/flashgordon1983)
+- Alina Koppold [@alkoppold](https://www.github.com/alkoppold)
+- Alex Kastrinogiannis [@alkastrinogiannis](https://www.github.com/alkastrinogiannis)
+- Alex Lischke
+- Suzanne Vogel
+- Yu-Fang Yang
+
+## License
+
+[![MIT License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/license/mit/)
+
+## Usage / Reproducing
+If you want to reproduce and host the book by yourself.
 
 This cookiecutter creates a simple boilerplate for a Jupyter Book.
-
-## Usage
 
 ### Building the book
 
