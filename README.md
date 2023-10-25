@@ -15,7 +15,7 @@ Included in this repo, is the network backend of *ARIADNE-resource* and the Jupy
 - Gordon B. Feld [@flashgordon1983](https://www.github.com/flashgordon1983)
 - Alina Koppold [@alkoppold](https://www.github.com/alkoppold)
 - Alex Kastrinogiannis [@alkastrinogiannis](https://www.github.com/alkastrinogiannis)
-- Alex Lischke [@AlexLischke](https://www.github.com/@AlexLischke)
+- Alex Lischke [@AlexLischke](https://www.github.com/AlexLischke)
 - Suzanne Vogel [@SusanneVo](https://www.github.com/SusanneVo)
 - Yu-Fang Yang [@ufangyang](https://www.github.com/ufangyang)
 
