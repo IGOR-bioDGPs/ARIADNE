@@ -16,7 +16,7 @@ Included in this repo, is the network backend of *ARIADNE-resource* and the Jupy
 - Alina Koppold [@alkoppold](https://www.github.com/alkoppold)
 - Alex Kastrinogiannis [@alkastrinogiannis](https://www.github.com/alkastrinogiannis)
 - Alex Lischke
-- Suzanne Vogel
+- Suzanne Vogel [@SusanneVo](https://www.github.com/SusanneVo)
 - Yu-Fang Yang [@ufangyang](https://www.github.com/ufangyang)
 
 ## License
