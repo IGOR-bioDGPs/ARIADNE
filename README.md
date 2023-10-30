@@ -5,9 +5,9 @@
 
 *The freely available, curated and dynamically “living” tool ARIADNE spans the whole research process and is translated to a dynamic interface for easier use and search for the individual resources.*
 
-Included in this repo, is the network backend of *ARIADNE-resource* and the Jupyter-notebook instance of the living book.
+Included in this repo, is the network backend of *ARIADNE-resource* and the Jupyter-notebook instance of the living book. Please also have a look at the [preprint](https://osf.io/jfh3t) and [website](https://igor-biodgps.github.io/ARIADNE/intro.html) to this tool.
 
-## Authors of ARIADNE:
+## Contributors to ARIADNE:
 - Helena Hartmann [@helenahartmann](https://www.github.com/helenahartmann)
 - Çağatay Gürsoy [@caggursoy](https://www.github.com/caggursoy)
 - Marie Mückstein [@mamuerie](https://www.github.com/mamuerie)
@@ -48,7 +48,7 @@ For GitHub and GitLab deployment specifically, the [cookiecutter-jupyter-book](h
 
 ## Contributors
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/mamuerie/testbook/graphs/contributors).
+We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/mamuerie/testbook/graphs/contributors). If you want to contribute a new resource, please do so [here](https://docs.google.com/forms/d/e/1FAIpQLSdA1w97i-tMfpBX1Je5N2IzvPKKxe5H7PUJcCH-0WaZ39Fu-w/viewform). More detailed instructions will follow soon!
 
 ## Credits
 
