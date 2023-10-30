@@ -20,4 +20,5 @@ We have created a curated scientific resource navigator called **ARIADNE** that 
 
 These 10 steps determine the quality and ultimately the success of any research project, yet so far no such guide exists, especially none focussing on novel developments in the field of open and reproducible science practices.
 
+The preprint corresponding to this tool can be found [here](https://osf.io/jfh3t). If you want to contribute a new resource, please do so [here](https://docs.google.com/forms/d/e/1FAIpQLSdA1w97i-tMfpBX1Je5N2IzvPKKxe5H7PUJcCH-0WaZ39Fu-w/viewform).
 
