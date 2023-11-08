@@ -17,13 +17,15 @@ The link to the resource's public webpage or similar
 A clear and concise description of the suggested resource.
 
 **Which step of the research cycle does the resource belong to?**
-- [] Project start
-- [] Study design
-- [] Study implementation
-- [] Piloting
-- [] Data collection
-- [] Data validation
-- [] Data analysis
-- [] Writing the manuscript
-- [] Publication
-- [] Dissemination
+Just put an 'x' in one of the boxes below, the one where your suggested resource belong to
+
+- [ ] Project start
+- [ ] Study design
+- [ ] Study implementation
+- [ ] Piloting
+- [ ] Data collection
+- [ ] Data validation
+- [ ] Data analysis
+- [ ] Writing the manuscript
+- [ ] Publication
+- [ ] Dissemination
