@@ -88,9 +88,119 @@
             <li>Right click on anywhere to reset to the initial overview.</li>
             <li>Right click on a node to go back to the previous level in the network.</li>
             <li>Hover on any resource node to reveal the information regarding the node.</li>
-            <li>Left click on the resource nodes to go to the respective webpages.</li>  
+            <li>Left click on the resource nodes to go to the respective webpages.</li>
+            <li>Here's the explanation of all the shapes, just hover over them:</li>
+            <canvas id="shapesCanvas" width="280" height="100"></canvas>
         </div>
     </div>
+    <script>
+        // Get the canvas element
+        var canvas = document.getElementById("shapesCanvas");
+        var ctx = canvas.getContext("2d");
+    
+        // Define shapes and their respective popup messages
+        var shapes = [
+            { x: 0, y: 25, width: 50, height: 50, color: "#005AB5", popupMessage: "Initial node, there are more nodes inside this one!" },
+            { x: 115, y: 50, radius: 25, color: "#D41159", popupMessage: "Decision node, filter the nodes and move deeper!" },
+            { x: 175, y: 25, width: 50, height: 50, color: "#40B0A6", diamond: true, popupMessage: "Final node. Click this node to go to the resource's website!" }
+        ];
+    
+        // Draw shapes on the canvas
+    function drawShapes() {
+        shapes.forEach(function (shape) {
+            ctx.fillStyle = shape.color;
+            if (shape.radius) {
+                ctx.beginPath();
+                ctx.arc(shape.x, shape.y, shape.radius, 0, Math.PI * 2);
+                ctx.fill();
+            } else if (shape.diamond) {
+                ctx.beginPath();
+                ctx.moveTo(shape.x + shape.width / 2, shape.y);
+                ctx.lineTo(shape.x + shape.width, shape.y + shape.height / 2);
+                ctx.lineTo(shape.x + shape.width / 2, shape.y + shape.height);
+                ctx.lineTo(shape.x, shape.y + shape.height / 2);
+                ctx.closePath();
+                ctx.fill();
+            } else {
+                ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
+            }
+        });
+    }
+
+    // Draw initial shapes
+    drawShapes();
+
+    // Function to show popup message
+    function showPopup(message, x, y) {
+        var popupHeight = 20;
+        var padding = 5;
+
+        // Calculate text width
+        var textWidth = ctx.measureText(message).width;
+
+        // Calculate popup width based on text width and padding
+        var popupWidth = textWidth + 2 * padding;
+
+        // Calculate popup position
+        var popupX = x - popupWidth / 2;
+        var popupY = y - popupHeight - padding;
+
+        // Adjust popup position to stay within canvas bounds
+        if (popupX < 0) {
+            popupX = padding;
+        } else if (popupX + popupWidth > canvas.width) {
+            popupX = canvas.width - popupWidth - padding;
+        }
+        if (popupY < 0) {
+            popupY = y + padding;
+        }
+
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Draw shapes again
+        drawShapes();
+        // Draw popup message
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        ctx.fillRect(popupX, popupY, popupWidth, popupHeight);
+        ctx.fillStyle = "black";
+        ctx.fillText(message, popupX + padding, popupY + popupHeight - padding);
+    }
+
+    // Event listener for mouse movement
+    canvas.addEventListener("mousemove", function (event) {
+        var mouseX = event.clientX - canvas.getBoundingClientRect().left;
+        var mouseY = event.clientY - canvas.getBoundingClientRect().top;
+
+        shapes.forEach(function (shape) {
+            if (shape.radius) {
+                var dx = mouseX - shape.x;
+                var dy = mouseY - shape.y;
+                var distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance <= shape.radius) {
+                    showPopup(shape.popupMessage, mouseX, mouseY);
+                }
+            } else if (shape.diamond) {
+                if (mouseX >= shape.x && mouseX <= shape.x + shape.width &&
+                    mouseY >= shape.y && mouseY <= shape.y + shape.height) {
+                    showPopup(shape.popupMessage, mouseX, mouseY);
+                }
+            } else {
+                if (mouseX >= shape.x && mouseX <= shape.x + shape.width &&
+                    mouseY >= shape.y && mouseY <= shape.y + shape.height) {
+                    showPopup(shape.popupMessage, mouseX, mouseY);
+                }
+            }
+        });
+    });
+
+    // Event listener to clear popup when mouse leaves the canvas
+    canvas.addEventListener("mouseleave", function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawShapes();
+    });
+</script>
+
+
 
   <script>// Get the width and height of the screen
         var screenWidth = window.innerWidth;
