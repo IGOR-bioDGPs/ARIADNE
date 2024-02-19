@@ -91,11 +91,29 @@
     .bug-button:hover {
         background-color: #45a049;
     }
+    .sugg-button {
+        position: absolute;
+        bottom: 60px; /* Adjust the top distance from the top of the screen */
+        left: 20px; /* Adjust the left distance from the left side of the screen */
+        z-index: 9999; /* Ensure the button appears above other elements */
+        font-size: 24px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .sugg-button:hover {
+        background-color: #45a049;
+    }
   </style>
   <script src="./cytoscape/cytoscape.min.js"></script>
 </head>
 <body>
     <button id="back-button" class="back-button" title="Jump back to ARIADNE-Book">←<br>Back to ARIADNE Book</button>
+    <button id="sugg-button" class="sugg-button" title="Report bug / Broken link">Suggest resource</button>
     <button id="bug-button" class="bug-button" title="Report bug / Broken link">Report bug / Broken link</button>
     <div id="cy"></div>
     <div id="info-box" class="info-box">
@@ -244,14 +262,21 @@
         // Add a click event listener to the button
         redirectButton.addEventListener('click', function() {
             // Redirect the user to the desired webpage
-            window.location.href = 'https://igor-biodgps.github.io/ARIADNE/intro.html'; // Replace with the URL you want to redirect to
+            window.location.href = 'https://igor-biodgps.github.io/ARIADNE/intro.html';
         });
         // Get the button element
         var redirectBugButton = document.getElementById('bug-button');
         // Add a click event listener to the button
         redirectBugButton.addEventListener('click', function() {
             // Redirect the user to the desired webpage
-            window.location.href = 'https://github.com/IGOR-bioDGPs/ARIADNE/issues/new/choose'; // Replace with the URL you want to redirect to
+            window.open('https://github.com/IGOR-bioDGPs/ARIADNE/issues/new/choose', '_blank');
+        });
+        // Get the button element
+        var redirectBugButton = document.getElementById('sugg-button');
+        // Add a click event listener to the button
+        redirectBugButton.addEventListener('click', function() {
+            // Open the desired webpage in a new tab
+            window.open('https://github.com/IGOR-bioDGPs/ARIADNE/issues/new/choose', '_blank');
         });
         // Add a click event listener to the info-box
         var infoBox = document.getElementById('info-box');
