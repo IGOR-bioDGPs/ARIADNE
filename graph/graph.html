@@ -74,12 +74,12 @@
     .back-button:hover {
         background-color: #45a049;
     }
-    .bug-button {
+    .sugg-ghub-button {  /*change the name to gdrive & ghub*/
         position: absolute;
         bottom: 10px; /* Adjust the top distance from the top of the screen */
         left: 20px; /* Adjust the left distance from the left side of the screen */
         z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 24px;
+        font-size: 16px;
         background-color: #4CAF50;
         color: white;
         border: none;
@@ -88,15 +88,15 @@
         cursor: pointer;
         transition: background-color 0.3s;
     }
-    .bug-button:hover {
+    .sugg-ghub-button:hover {
         background-color: #45a049;
     }
-    .sugg-button {
+    .sugg-gdrive-button { /*change the name to gdrive & ghub*/
         position: absolute;
-        bottom: 60px; /* Adjust the top distance from the top of the screen */
+        bottom: 50px; /* Adjust the top distance from the top of the screen */
         left: 20px; /* Adjust the left distance from the left side of the screen */
         z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 24px;
+        font-size: 16px;
         background-color: #4CAF50;
         color: white;
         border: none;
@@ -105,7 +105,7 @@
         cursor: pointer;
         transition: background-color 0.3s;
     }
-    .sugg-button:hover {
+    .sugg-gdrive-button:hover {
         background-color: #45a049;
     }
   </style>
@@ -113,8 +113,8 @@
 </head>
 <body>
     <button id="back-button" class="back-button" title="Jump back to ARIADNE-Book">←<br>Back to ARIADNE Book</button>
-    <button id="sugg-button" class="sugg-button" title="Report bug / Broken link">Suggest resource</button>
-    <button id="bug-button" class="bug-button" title="Report bug / Broken link">Report bug / Broken link</button>
+    <button id="sugg-gdrive-button" class="sugg-gdrive-button" title="Suggestions / Bug reporting via Google Docs">Suggestions / Bug reporting via Google Docs</button>
+    <button id="sugg-ghub-button" class="sugg-ghub-button" title="Suggestions / Bug reporting via GitHub">Suggestions / Bug reporting via GitHub</button>
     <div id="cy"></div>
     <div id="info-box" class="info-box">
         <span id="infoTitle"><h2>Instructions:</h2> Click to hide/unhide the instructions</span>
@@ -125,6 +125,7 @@
             <li>Right click on a node to go back to the previous level in the network.</li>
             <li>Hover on any resource node to reveal the information regarding the node.</li>
             <li>Left click on the resource nodes to go to the respective webpages.</li>
+            <li>Drag and drop on the nodes to rearrange the graph</li>
             <li>Here's the explanation of all the shapes, just hover over them:</li>
             <canvas id="shapesCanvas" width="280" height="100"></canvas>
         </div>
@@ -138,8 +139,8 @@
         // Define shapes and their respective popup messages
         var shapes = [
             { x: 0, y: 25, width: 50, height: 50, color: "#005AB5", popupMessage: "Initial node, there are more nodes inside this one!" },
-            { x: 115, y: 50, radius: 25, color: "#D41159", popupMessage: "Decision node, filter the nodes and move deeper!" },
-            { x: 175, y: 25, width: 50, height: 50, color: "#40B0A6", diamond: true, popupMessage: "Final node. Click this node to go to the resource's website!" }
+            { x: 175, y: 50, radius: 25, color: "#D41159", popupMessage: "Final node. Click this node to go to the resource's website!" }, 
+            { x: 75, y: 25, width: 50, height: 50, color: "#40B0A6", diamond: true, popupMessage: "Decision node, filter the nodes and move deeper!" } 
         ];
     
         // Draw shapes on the canvas
@@ -258,25 +259,25 @@
         // Call the function when the window is resized
         window.addEventListener('resize', updateInfoBoxSize);
         // Get the button element
-        var redirectButton = document.getElementById('back-button');
+        var redirectGdriveButton = document.getElementById('back-button');
         // Add a click event listener to the button
-        redirectButton.addEventListener('click', function() {
+        redirectGdriveButton.addEventListener('click', function() {
             // Redirect the user to the desired webpage
             window.location.href = 'https://igor-biodgps.github.io/ARIADNE/intro.html';
         });
         // Get the button element
-        var redirectBugButton = document.getElementById('bug-button');
+        var redirectGhubButton = document.getElementById('sugg-ghub-button');
         // Add a click event listener to the button
-        redirectBugButton.addEventListener('click', function() {
+        redirectGhubButton.addEventListener('click', function() {
             // Redirect the user to the desired webpage
             window.open('https://github.com/IGOR-bioDGPs/ARIADNE/issues/new/choose', '_blank');
         });
         // Get the button element
-        var redirectBugButton = document.getElementById('sugg-button');
+        var redirectGhubButton = document.getElementById('sugg-gdrive-button');
         // Add a click event listener to the button
-        redirectBugButton.addEventListener('click', function() {
+        redirectGhubButton.addEventListener('click', function() {
             // Open the desired webpage in a new tab
-            window.open('https://github.com/IGOR-bioDGPs/ARIADNE/issues/new/choose', '_blank');
+            window.open('https://docs.google.com/forms/d/1Xqk6MyLYvjdu9cbs1-R40hn9mIZ6KtKL-4LcpI80I_I/', '_blank');
         });
         // Add a click event listener to the info-box
         var infoBox = document.getElementById('info-box');
