@@ -2,16 +2,16 @@ id;source;target;subgraph;label;background-color
 1;Project Start;Literature;ProjectStart;;black
 2;Literature;Unpaywall;Literature;;black
 3;Literature;How to get a paper;Literature;;black
-4;Literature;Literature Excel organization;Literature;;black
-5;Literature;Elicit;Literature;;black
-6;Literature;Connected Papers;Literature;;black
-7;Literature;Snowball;Literature;;black
-8;Literature;Literature Tracker;Literature;;black
-9;Literature;Research Rabbit;Literature;;black
-10;Literature;Scholarcy;Literature;;black
-11;Literature;LitMaps;Literature;;black
-12;Literature;10 ways to OpenAccess;Literature;;black
-13;Literature;Ways to a scientific paper;Literature;;black
+4;Literature;Unpaywall;Literature;;black
+5;Literature;How to get a paper;Literature;;black
+6;Literature;Literature Excel organization;Literature;;black
+7;Literature;Elicit;Literature;;black
+8;Literature;Connected Papers;Literature;;black
+9;Literature;Snowball;Literature;;black
+10;Literature;Research Rabbit;Literature;;black
+11;Literature;Scholarcy;Literature;;black
+12;Literature;LitMaps;Literature;;black
+13;Literature;10 ways to OpenAccess;Literature;;black
 14;Literature;Consensus;Literature;;black
 15;Literature;Seaboat;Literature;;black
 16;Literature;Semantic Scholar;Literature;;black

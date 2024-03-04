@@ -110,6 +110,7 @@
     }
   </style>
   <script src="./cytoscape/cytoscape.min.js"></script>
+  
 </head>
 <body>
     <button id="back-button" class="back-button" title="Jump back to ARIADNE-Book">←<br>Back to ARIADNE Book</button>
@@ -425,7 +426,8 @@
                         name: 'circle',
                         fit: true, // whether to fit the viewport to the graph
                         avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-                    }
+                    },
+                    zoom: 1
                 });
                 if (sub_graph != 'initial'){
                     var styleOptions = cy.layout({
@@ -436,6 +438,29 @@
                         spacingFactor: 1.5,
                     });
                     styleOptions.run();
+                }
+                if (filteredNodes.length < 3){
+                    // Calculate the center of the screen
+                    var centerX = window.innerWidth / 2;
+                    var centerY = window.innerHeight / 2;
+
+                    // Calculate the positions for the nodes
+                    var positions = {};
+                    positions[filteredNodes[0].data.id] = { x: centerX, y: centerY - 100 };
+                    positions[filteredNodes[1].data.id] = { x: centerX, y: centerY + 100 };
+
+                    // Define layout options
+                    var styleOptions2 = cy.layout({
+                        name: 'preset',
+                        fit: false, // whether to fit the viewport to the graph
+                        avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+                        // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
+                        // spacingFactor: 1,
+                        // zoom: 0.88,
+                        // pan: { x: centerX, y: centerY },
+                        positions: positions // Assign positions for nodes
+                    });
+                    styleOptions2.run();
                 }
                 main(index, cy, graphPathArr); // and now call the main function so we run it indefinitely
                 index += 1; // increase the index because we run the code once already
