@@ -41,17 +41,17 @@ id;source;target;subgraph;label;background-color
 40;Design framework;Matlab;Designframework;Lab-based;black
 41;Design framework;Python;Designframework;Online & Lab-based;black
 42;Design framework;Javascript;Designframework;Online & Lab-based;black
-43;Matlab;Psychtoolbox;Designframework;;black
-44;Matlab;Cogent toolbox;Designframework;;black
-45;Python;PsychoPy;Designframework;;black
-46;Javascript;JsPsych;Designframework;;black
+43;Matlab;Psychtoolbox;Matlab;;black
+44;Matlab;Cogent toolbox;Matlab;;black
+45;Python;PsychoPy;Python;;black
+46;Javascript;JsPsych;Javascript;;black
 47;Design framework;Gorilla;Designframework;Online & Lab-based;black
 48;Data availability;Datasets;Dataavailability;Existing data;black
 49;Datasets;Imaging data;Datasets;;black
 50;Datasets;Emotions;Datasets;;black
 51;Datasets;24 days of databases;Datasets;;black
-52;Emotions;Popane;Datasets;;black
-53;Imaging data;NeuroSynth;Datasets;;black
+52;Emotions;Popane;Emotions;;black
+53;Imaging data;NeuroSynth;Imagingdata;;black
 54;Study design;Study Implementation;initial;;black
 55;Study Implementation;Preregistration Framework;StudyImplementation;;black
 56;Study Implementation;Registered Report Framework;StudyImplementation;;black
