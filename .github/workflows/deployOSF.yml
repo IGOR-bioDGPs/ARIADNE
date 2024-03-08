@@ -26,5 +26,5 @@ jobs:
         env:
           OSF_TOKEN: ${{ secrets.OSF_TOKEN }}
           OSF_USERNAME: caggursoy
-          OSF_PROJECT: IGOR - DGPs Interessengruppe Offene und Reproduzierbare Forschung
+          OSF_PROJECT: tqjh8
         run: python auto/autoConv.py && osf upload ARIADNE Resources.xlsx
