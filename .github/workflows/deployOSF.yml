@@ -24,7 +24,6 @@ jobs:
 
       - name: Process CSV and create XLSX
         run: python auto/autoConv.py
-        if: github.event_name == 'push' && github.event.head_commit.modified contains 'data_ariadne_nodes.csv'
 
       - name: Upload to OSF
         uses: osf-upload/action@v1
