@@ -1,0 +1,38 @@
+name: Upload CSV to OSF
+
+on:
+  push:
+    paths:
+      - "testbook/data/data_ariadne_nodes.csv"
+    branches:
+      - main
+
+jobs:
+  process_and_upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install pandas openpyxl
+
+      - name: Process CSV and create XLSX
+        run: python auto/autoConv.py
+        if: github.event_name == 'push' && github.event.head_commit.modified contains 'data_ariadne_nodes.csv'
+
+      - name: Upload to OSF
+        uses: osf-upload/action@v1
+        with:
+          file: auto/ARIADNE Resources.xlsx
+          destination: osfstorage/ARIADNE Resources.xlsx
+          provider: osf
+          target: m8dht # The OSF project ID or shortlink
+          node: m8dht # The OSF node ID or shortlink
+        env:
+          OSF_TOKEN: ${{ secrets.OSF_TOKEN }}
