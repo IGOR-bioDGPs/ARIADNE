@@ -298,7 +298,7 @@
                 const nodes = rows.map(row => {
                     // A split the columns into a looong array of variables
                     // Also columns are splitted with ';'
-                    const [id, label, shape, bgColor, fontColor, rank, subgraph, isTerminal, href, tooltip, descr] = row.split(';');
+                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr] = row.split(';');
                     // And initalise the data structure of the nodes, with using the CSV file and variables
                     return {
                         data: {
@@ -309,6 +309,7 @@
                         font_color: fontColor,
                         rank: rank,
                         subgraph: subgraph,
+                        mainGraph: mainGraph,
                         is_terminal: isTerminal,
                         href: href,
                         tooltip: tooltip,
