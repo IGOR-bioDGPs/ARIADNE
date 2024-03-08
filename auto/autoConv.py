@@ -14,4 +14,4 @@ selected_columns.dropna(inplace=True)
 selected_columns.reset_index(inplace=True)
 selected_columns.drop(labels='index', axis=1, inplace=True)
 # Save to XLSX
-selected_columns.to_excel('ARIADNE Resources.xlsx', index=False)
+selected_columns.to_excel('ARIADNE_Resources.xlsx', index=False)
