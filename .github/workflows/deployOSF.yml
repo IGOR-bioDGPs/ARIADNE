@@ -20,18 +20,11 @@ jobs:
           python-version: 3.x
 
       - name: Install dependencies
-        run: pip install pandas openpyxl
+        run: pip install pandas openpyxl && pip install osfclient
 
       - name: Process CSV and create XLSX
-        run: python auto/autoConv.py
-
-      - name: Upload to OSF
-        uses: osf-upload/action@v1
-        with:
-          file: auto/ARIADNE Resources.xlsx
-          destination: osfstorage/ARIADNE Resources.xlsx
-          provider: osf
-          target: m8dht # The OSF project ID or shortlink
-          node: m8dht # The OSF node ID or shortlink
         env:
           OSF_TOKEN: ${{ secrets.OSF_TOKEN }}
+          OSF_USERNAME: caggursoy
+          OSF_PROJECT: IGOR - DGPs Interessengruppe Offene und Reproduzierbare Forschung
+        run: python auto/autoConv.py && osf upload ARIADNE Resources.xlsx
