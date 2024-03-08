@@ -5,7 +5,7 @@ on:
     paths:
       - "testbook/data/data_ariadne_nodes.csv"
     branches:
-      - main
+      - master
 
 jobs:
   process_and_upload:
