@@ -52,8 +52,6 @@ id;source;target;subgraph;label;background-color
 50;Datasets;Emotions;Datasets;;black
 51;Datasets;24 days of databases;Datasets;;black
 52;Emotions;Popane;Emotions;;black
-;Datasets;Re3data;Datasets;;black
-;Datasets;Sci2sci;Datasets;;black
 53;Imaging data;NeuroSynth;Imagingdata;;black
 54;Study design;Study Implementation;initial;;black
 55;Study Implementation;Preregistration Framework;StudyImplementation;;black
@@ -76,9 +74,11 @@ id;source;target;subgraph;label;background-color
 72;Data collection;fMRI_coll;Datacollection;fMRI;black
 73;fMRI_coll;BIDS;fMRI_coll;;black
 74;Data collection;Existing data;Datacollection;;black
-75;Datasets;24 days of databases;Existingdata;;black
-76;Datasets;Popane dataset;Existingdata;;black
+75;Existing data;24 days of databases;Existingdata;;black
+76;Existing data;Popane dataset;Existingdata;;black
 77;Existing data;Landscaping Longitudinal Research;Existingdata;;black
+;Existing data;Re3data;Existing data;;black
+;Existing data;Sci2sci;Existing data;;black
 78;Data collection;Data validation;initial;;black
 ;Data collection;Mexca;Datacollection;;black
 79;Data validation;Data management;Datavalidation;;black
