@@ -102,9 +102,9 @@ Popane dataset;Popane dataset;ellipse;#D41159;white;3;Existingdata;Datacollectio
 Landscaping Longitudinal Research;Landscaping Longitudinal Research;ellipse;#D41159;white;3;Existingdata;Datacollection;yes;https://www.landscaping-longitudinal-research.com/;https://www.landscaping-longitudinal-research.com/;Landscaped longitudinal datasets from across the world
 Re3data;Re3data;ellipse;#D41159;white;3;Existingdata;Datacollection;yes;https://www.re3data.org/;https://www.re3data.org/;Re3data is a global registry of research data repositories that covers research data repositories from different academic disciplines.
 Sci2sci;Sci2sci;ellipse;#D41159;white;3;Existingdata;Datacollection;yes;https://ods.beta.sci2sci.com/;https://ods.beta.sci2sci.com/;A platform designed to facilitate the search, publication, and acquisition of datasets.
+Mexca;Mexca;ellipse;#D41159;white;3;Existingdata;Datacollection;yes;https://github.com/mexca/mexca;https://github.com/mexca/mexca;Mexca is an open-source Python package which aims to capture human emotion expressions from videos in a single pipeline.
 Data validation;Data validation;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA
 Data validation;Data validation;rectangle;#005AB5;white;1;Datavalidation;Datavalidation;no;NA;;NA
-Mexca;Mexca;ellipse;#D41159;white;2;Datavalidation;Datavalidation;yes;https://github.com/mexca/mexca;https://github.com/mexca/mexca;Mexca is an open-source Python package which aims to capture human emotion expressions from videos in a single pipeline.
 Data management;Data management;diamond;#40B0A6;white;2;Datavalidation;Datavalidation;no;NA;;NA
 Data management;Data management;diamond;#40B0A6;white;2;Datamanagement;Datavalidation;no;NA;;NA
 FAIR data;FAIR data;ellipse;#D41159;white;3;Datamanagement;Datavalidation;yes;https://www.nature.com/articles/sdata201618;https://www.nature.com/articles/sdata201618;The FAIR Guiding Principles for scientific data management and stewardship.

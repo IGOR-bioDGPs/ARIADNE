@@ -78,9 +78,9 @@ id;source;target;subgraph;label;background-color
 77;Existing data;Popane dataset;Existingdata;;black
 78;Existing data;Landscaping Longitudinal Research;Existingdata;;black
 79;Existing data;Re3data;Existingdata;;black
-80;Existing data;Sci2sci;Existingdata;;black
-81;Data collection;Data validation;initial;;black
-82;Data validation;Mexca;Datavalidation;;black
+80;Existing data;Mexca;Existingdata;;black
+81;Existing data;Sci2sci;Existingdata;;black
+82;Data collection;Data validation;initial;;black
 83;Data validation;Data management;Datavalidation;;black
 84;Data management;FAIR data;Datamanagement;;black
 85;Data management;RDMkit;Datamanagement;;black
