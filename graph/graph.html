@@ -291,7 +291,7 @@
         // async function to get nodes from the Github repo
         async function fetchDataNodes() {
             try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_nodes.csv';
+                const githubRawURL = 'https://raw.githubusercontent.com/helenahartmann/ARIADNE/master/testbook/data/data_ariadne_nodes.csv';
                 const response = await fetch(githubRawURL); // fetch the CSV data from the URL
                 const csvData = await response.text(); // and get the response as a text file
                 const rows = csvData.split('\n'); // rows are splitted with '/n'
@@ -331,7 +331,7 @@
         // async function to get edges from the Github repo
         async function fetchDataEdges() {
             try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_edges.csv';
+                const githubRawURL = 'https://raw.githubusercontent.com/helenahartmann/ARIADNE/master/testbook/data/data_ariadne_edges.csv';
                 const response = await fetch(githubRawURL); // fetch the CSV data from the URL
                 const csvData = await response.text(); // and get the response as a text file
                 const rows = csvData.split('\n'); // rows are splitted with '/n'
