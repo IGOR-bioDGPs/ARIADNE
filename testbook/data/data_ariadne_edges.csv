@@ -177,77 +177,77 @@ id;source;target;subgraph;label;background-color
 176;Writing;List of acronyms;Writing;;black
 177;Writing;Quillbot;Writing;;black
 178;Writing;Statcheck;Writing;;black
-;Writing;Grammarly;Writing;;black
-;Writing;PaperPal;Writing;;black
-164;Writing Framework;Word;WritingFramework;;black
-165;Word;APA-style Word template;Word;;black
-166;Word;Preprint templates;Word;;black
-167;Crediting;CRediT;Crediting;;black
-168;Crediting;Scite;Crediting;;black
-169;Crediting;Grateful;Crediting;;black
-170;Writing Framework;Word;WritingFramework;;black
-171;Writing Framework;Papaja;WritingFramework;Rmd;black
-172;Writing Framework;Overleaf;WritingFramework;LaTeX;black
-173;Writing;Citations;Writing;;black
-174;Citations;Citation Managers;Citations;;black
-175;Citation Managers;Zotero;CitationManagers;;black
-176;Citation Managers;Mendeley;CitationManagers;;black
-177;Citation Managers;Citavi;CitationManagers;;black
-178;Citation Managers;Endnote;CitationManagers;;black
-179;Citation Managers;Reference management comparison;CitationManagers;;black
-180;Citation Managers;BibTeX;CitationManagers;;black
-181;Citations;Citation Diversity Statement;Citations;;black
-182;Citations;Recite;Citations;;black
-183;Citations;Citation Gecko;Citations;;black
-184;Writing;Publication;initial;;black
-185;Publication;Journal choice;Publication;;black
-186;Journal choice;JANE;Journalchoice;;black
-187;Journal choice;Journal Rater;Journalchoice;;black
-188;Journal choice;Journal suggester;Journalchoice;;black
-189;Journal choice;Journal abbreviations;Journalchoice;;black
-190;Journal choice;SciRev;Journalchoice;;black
-191;Publication;Preprint;Publication;;black
-192;Preprint;Sherpa Romeo;Preprint;Allowed?;black
-193;Preprint;Preprint server;Preprint;;black
-194;Preprint server;MetArXiv;Preprintserver;Meta-analyses;black
-195;Preprint server;PsyArXiv;Preprintserver;Psychological studies;black
-196;Preprint server;BioArXiv;Preprintserver;Biopsychological studies;black
-197;Publication;ORCID;Publication;;black
-198;Publication;Dissemination;initial;;black
-199;Dissemination;Resource Sharing;Dissemination;;black
-200;Resource Sharing;Data;ResourceSharing;;black
-201;Data;Open Science Framework;Data;;black
-202;Data;Zenodo;Data;;black
-203;Data;NeuroVault;Data;;black
-204;Resource Sharing;Code;ResourceSharing;;black
-205;Code;Open Science Framework;Code;;black
-206;Code;Zenodo;Code;;black
-207;Code;GitHub;Code;;black
-208;Resource Sharing;Materials;ResourceSharing;;black
-209;Materials;Open Science Framework;Materials;;black
-210;Materials;Zenodo;Materials;;black
-211;Materials;GitHub;Materials;;black
-212;Dissemination;Psychology conference timelines;Dissemination;;black
-213;Dissemination;Poster;Dissemination;;black
-214;Poster;Designing conference posters;Poster;;black
-214;Poster;Canva;Poster;;black
-215;Poster;Illustrator;Poster;;black
-216;Poster;PowerPoint;Poster;;black
-217;Poster;Better posters;Poster;;black
-218;Poster;Font size calculator;Poster;;black
-219;Dissemination;Talk;Dissemination;;black
-220;Talk;Slidesgo;Talk;;black
-221;Talk;PowerPoint;Talk;;black
-221;Talk;Talk invitations;Talk;;black
-222;Dissemination;Writing_diss;Dissemination;;black
-223;Writing_diss;In Mind Magazine;Writing_diss;;black
-224;Writing_diss;Gehirn und Geist;Writing_diss;;black
-225;Writing_diss;Scientific American;Writing_diss;;black
-226;Writing_diss;APS Observer;Writing_diss;;black
-227;Writing_diss;APA Monitor on Psychology;Writing_diss;;black
-228;Dissemination;Social Media;Dissemination;;black
-229;Social Media;Twitter;SocialMedia;;black
-230;Social Media;Mastodon;SocialMedia;;black
-231;Social Media;TikTok;SocialMedia;;black
-232;Social Media;Instagram;SocialMedia;;black
-233;Social Media;YouTube;SocialMedia;;black
+179;Writing;Grammarly;Writing;;black
+180;Writing;PaperPal;Writing;;black
+181;Writing Framework;Word;WritingFramework;;black
+182;Word;APA-style Word template;Word;;black
+183;Word;Preprint templates;Word;;black
+184;Crediting;CRediT;Crediting;;black
+185;Crediting;Scite;Crediting;;black
+186;Crediting;Grateful;Crediting;;black
+187;Writing Framework;Word;WritingFramework;;black
+188;Writing Framework;Papaja;WritingFramework;Rmd;black
+189;Writing Framework;Overleaf;WritingFramework;LaTeX;black
+190;Writing;Citations;Writing;;black
+191;Citations;Citation Managers;Citations;;black
+192;Citation Managers;Zotero;CitationManagers;;black
+193;Citation Managers;Mendeley;CitationManagers;;black
+194;Citation Managers;Citavi;CitationManagers;;black
+195;Citation Managers;Endnote;CitationManagers;;black
+196;Citation Managers;Reference management comparison;CitationManagers;;black
+197;Citation Managers;BibTeX;CitationManagers;;black
+198;Citations;Citation Diversity Statement;Citations;;black
+199;Citations;Recite;Citations;;black
+200;Citations;Citation Gecko;Citations;;black
+201;Writing;Publication;initial;;black
+202;Publication;Journal choice;Publication;;black
+203;Journal choice;JANE;Journalchoice;;black
+204;Journal choice;Journal Rater;Journalchoice;;black
+205;Journal choice;Journal suggester;Journalchoice;;black
+206;Journal choice;Journal abbreviations;Journalchoice;;black
+207;Journal choice;SciRev;Journalchoice;;black
+208;Publication;Preprint;Publication;;black
+209;Preprint;Sherpa Romeo;Preprint;Allowed?;black
+210;Preprint;Preprint server;Preprint;;black
+211;Preprint server;MetArXiv;Preprintserver;Meta-analyses;black
+212;Preprint server;PsyArXiv;Preprintserver;Psychological studies;black
+213;Preprint server;BioArXiv;Preprintserver;Biopsychological studies;black
+214;Publication;ORCID;Publication;;black
+215;Publication;Dissemination;initial;;black
+216;Dissemination;Resource Sharing;Dissemination;;black
+217;Resource Sharing;Data;ResourceSharing;;black
+218;Data;Open Science Framework;Data;;black
+219;Data;Zenodo;Data;;black
+220;Data;NeuroVault;Data;;black
+221;Resource Sharing;Code;ResourceSharing;;black
+222;Code;Open Science Framework;Code;;black
+223;Code;Zenodo;Code;;black
+224;Code;GitHub;Code;;black
+225;Resource Sharing;Materials;ResourceSharing;;black
+226;Materials;Open Science Framework;Materials;;black
+227;Materials;Zenodo;Materials;;black
+228;Materials;GitHub;Materials;;black
+229;Dissemination;Psychology conference timelines;Dissemination;;black
+230;Dissemination;Poster;Dissemination;;black
+231;Poster;Designing conference posters;Poster;;black
+232;Poster;Canva;Poster;;black
+233;Poster;Illustrator;Poster;;black
+234;Poster;PowerPoint;Poster;;black
+235;Poster;Better posters;Poster;;black
+236;Poster;Font size calculator;Poster;;black
+237;Dissemination;Talk;Dissemination;;black
+238;Talk;Slidesgo;Talk;;black
+239;Talk;PowerPoint;Talk;;black
+240;Talk;Talk invitations;Talk;;black
+241;Dissemination;Writing_diss;Dissemination;;black
+242;Writing_diss;In Mind Magazine;Writing_diss;;black
+243;Writing_diss;Gehirn und Geist;Writing_diss;;black
+244;Writing_diss;Scientific American;Writing_diss;;black
+245;Writing_diss;APS Observer;Writing_diss;;black
+246;Writing_diss;APA Monitor on Psychology;Writing_diss;;black
+247;Dissemination;Social Media;Dissemination;;black
+248;Social Media;Twitter;SocialMedia;;black
+249;Social Media;Mastodon;SocialMedia;;black
+250;Social Media;TikTok;SocialMedia;;black
+251;Social Media;Instagram;SocialMedia;;black
+252;Social Media;YouTube;SocialMedia;;black
