@@ -51,7 +51,7 @@ id;source;target;subgraph;label;background-color
 49;Datasets;Imaging data;Datasets;;black
 50;Datasets;Emotions;Datasets;;black
 51;Datasets;24 days of databases;Datasets;;black
-52;Emotions;Popane;Datasets;;black
+52;Emotions;Popane;Emotions;;black
 ;Datasets;Re3data;Datasets;;black
 ;Datasets;Sci2sci;Datasets;;black
 53;Imaging data;NeuroSynth;Imagingdata;;black
@@ -80,7 +80,7 @@ id;source;target;subgraph;label;background-color
 76;Existing data;Popane dataset;Existingdata;;black
 77;Existing data;Landscaping Longitudinal Research;Existingdata;;black
 78;Data collection;Data validation;initial;;black
-;Data collection;Mexca;Datavalidation;;black
+;Data collection;Mexca;Datacollection;;black
 79;Data validation;Data management;Datavalidation;;black
 80;Data management;FAIR data;Datamanagement;;black
 81;Data management;RDMkit;Datamanagement;;black
@@ -105,19 +105,19 @@ id;source;target;subgraph;label;background-color
 100;fMRI_viz;RepoNeuroVis;fMRI_viz;;black
 101;fMRI_viz;Brain Atlas Framework;fMRI_viz;;black
 102;Data Visualization;Web plot digitizer;DataVisualization;;black
-;Data Visualization;MolView;DataVisualization;;black
-;Data Visualization;Scholar Goggler;DataVisualization;;black
-;Data Visualization;Photos;DataVisualization;;black
-;Photos;Pixabay;Photos;;black
+103;Data Visualization;MolView;DataVisualization;;black
+104;Data Visualization;Scholar Goggler;DataVisualization;;black
+105;Data Visualization;Photos;DataVisualization;;black
+106;Photos;Pixabay;Photos;;black
 103;Data Visualization;Colors;DataVisualization;;black
 104;Colors;Color converter;Colors;;black
 105;Colors;Cols4all;Colors;;black
 106;Colors;Color oracle;Colors;;black
 107;Colors;Color picker;Colors;;black
-;Colors;Adobe color wheel;Colors;;black
-;Colors;Color blindness simulator;Colors;;black
-108;Data Visualization;Figure Creator;DataVisualization;;black
-;Data Visualization;Laws of user experience;DataVisualization;;black
+108;Colors;Adobe color wheel;Colors;;black
+109;Colors;Color blindness simulator;Colors;;black
+110;Data Visualization;Figure Creator;DataVisualization;;black
+111;Data Visualization;Laws of user experience;DataVisualization;;black
 109;Figure Creator;RAWgraphs;FigureCreator;;black
 110;Figure Creator;BioRender;FigureCreator;;black
 111;Figure Creator;Canva;FigureCreator;;black
@@ -131,19 +131,20 @@ id;source;target;subgraph;label;background-color
 119;Icons;Flaticon;Icons;;black
 120;Icons;Font Awesome;Icons;;black
 121;Icons;Phylopic;Icons;;black
-;Icons;Smart Servier Medical Art;Icons;;black
-;Icons;Health icons;Icons;;black
-122;Data analysis;GitHub;Dataanalysis;;black
-123;GitHub;GitHub cheatsheet;GitHub;;black
+122;Icons;Smart Servier Medical Art;Icons;;black
+123;Icons;Health icons;Icons;;black
+124;Icons;Chemix;Icons;;black
+125;Data analysis;GitHub;Dataanalysis;;black
+126;GitHub;GitHub cheatsheet;GitHub;;black
 124;Data analysis;fNIRS;Dataanalysis;;black
 125;fNIRS;fNIRS cheatsheet;fNIRS;;black
 126;Data analysis;Reproducibility;Dataanalysis;;black
 127;Reproducibility;renv (R);Reproducibility;;black
 128;Reproducibility;Docker;Reproducibility;;black
 129;Reproducibility;Datapasta (R);Reproducibility;;black
-;Reproducibility;Neuroimaging resources;Reproducibility;;black
-130;Data analysis;Analysis Framework;Dataanalysis;;black
-131;Analysis Framework;PSPP;AnalysisFramework;;black
+130;Reproducibility;Neuroimaging resources;Reproducibility;;black
+131;Data analysis;Analysis Framework;Dataanalysis;;black
+132;Analysis Framework;PSPP;AnalysisFramework;;black
 132;Analysis Framework;SPSS;AnalysisFramework;;black
 133;Analysis Framework;R;AnalysisFramework;R;black
 134;R;FSBrain;R;;black
@@ -226,17 +227,17 @@ id;source;target;subgraph;label;background-color
 209;Materials;Open Science Framework;Materials;;black
 210;Materials;Zenodo;Materials;;black
 211;Materials;GitHub;Materials;;black
-;Dissemination;Psychology conference timelines;Dissemination;;black
-212;Dissemination;Poster;Dissemination;;black
-213;Poster;Designing conference posters;Poster;;black
+212;Dissemination;Psychology conference timelines;Dissemination;;black
+213;Dissemination;Poster;Dissemination;;black
+214;Poster;Designing conference posters;Poster;;black
 214;Poster;Canva;Poster;;black
 215;Poster;Illustrator;Poster;;black
 216;Poster;PowerPoint;Poster;;black
 217;Poster;Better posters;Poster;;black
-;Poster;Font size calculator;Poster;;black
-218;Dissemination;Talk;Dissemination;;black
-219;Talk;Slidesgo;Talk;;black
-220;Talk;PowerPoint;Talk;;black
+218;Poster;Font size calculator;Poster;;black
+219;Dissemination;Talk;Dissemination;;black
+220;Talk;Slidesgo;Talk;;black
+221;Talk;PowerPoint;Talk;;black
 221;Talk;Talk invitations;Talk;;black
 222;Dissemination;Writing_diss;Dissemination;;black
 223;Writing_diss;In Mind Magazine;Writing_diss;;black
