@@ -1,0 +1,252 @@
+id;source;target;subgraph;label;background-color
+1;Project Start;Literature;ProjectStart;;black
+2;Literature;Unpaywall;Literature;;black
+3;Literature;How to get a paper;Literature;;black
+4;Literature;Unpaywall;Literature;;black
+5;Literature;How to get a paper;Literature;;black
+6;Literature;Literature Excel organization;Literature;;black
+7;Literature;Elicit;Literature;;black
+8;Literature;Connected Papers;Literature;;black
+9;Literature;Snowball;Literature;;black
+10;Literature;Research Rabbit;Literature;;black
+11;Literature;Scholarcy;Literature;;black
+12;Literature;LitMaps;Literature;;black
+13;Literature;10 ways to OpenAccess;Literature;;black
+14;Literature;Consensus;Literature;;black
+15;Literature;Seaboat;Literature;;black
+16;Literature;Semantic Scholar;Literature;;black
+;Literature;MeSH;Literature;;black
+17;Project Start;Funding;ProjectStart;;black
+18;Funding;Postdoc funding;Funding;;black
+19;Project Start;Organization;ProjectStart;;black
+20;Organization;Brainverse;Organization;;black
+21;Organization;Notion;Organization;;black
+22;Organization;Trello;Organization;;black
+23;Organization;The Good Research Code Handbook;Organization;;black
+24;Organization;Ganttrify;Organization;;black
+25;Organization;Miro;Organization;;black
+26;Organization;Toggl;Organization;;black
+27;Organization;Time Graphic;Organization;;black
+28;Project Start;Study design;initial;;black
+29;Study design;Stimuli;Studydesign;;black
+30;Study design;Sample size;Studydesign;;black
+31;Study design;Design framework;Studydesign;;black
+32;Study design;Data availability;Studydesign;;black
+33;Stimuli;Full body stimuli;Stimuli;;black
+34;Stimuli;EmBody / EmFace;Stimuli;;black
+35;Stimuli;Kapodi stimuli database;Stimuli;;black
+36;Sample size;Sample size justification Shiny app;Samplesize;;black
+37;Sample size;Gpower;Samplesize;;black
+38;Design framework;Presentation;Designframework;;black
+39;Design framework;Pavlovia;Designframework;;black
+40;Design framework;Matlab;Designframework;Lab-based;black
+41;Design framework;Python;Designframework;Online & Lab-based;black
+42;Design framework;Javascript;Designframework;Online & Lab-based;black
+43;Matlab;Psychtoolbox;Matlab;;black
+44;Matlab;Cogent toolbox;Matlab;;black
+45;Python;PsychoPy;Python;;black
+46;Javascript;JsPsych;Javascript;;black
+47;Design framework;Gorilla;Designframework;Online & Lab-based;black
+48;Data availability;Datasets;Dataavailability;Existing data;black
+49;Datasets;Imaging data;Datasets;;black
+50;Datasets;Emotions;Datasets;;black
+51;Datasets;24 days of databases;Datasets;;black
+52;Emotions;Popane;Datasets;;black
+;Datasets;Re3data;Datasets;;black
+;Datasets;Sci2sci;Datasets;;black
+53;Imaging data;NeuroSynth;Imagingdata;;black
+54;Study design;Study Implementation;initial;;black
+55;Study Implementation;Preregistration Framework;StudyImplementation;;black
+56;Study Implementation;Registered Report Framework;StudyImplementation;;black
+57;Preregistration Framework;PROSPERO;PreregistrationFramework;;black
+58;Preregistration Framework;OSF Templates;PreregistrationFramework;;black
+59;Preregistration Framework;AsPredicted;PreregistrationFramework;;black
+60;Study Implementation;Stimulus Material;StudyImplementation;;black
+61;Stimulus Material;EMBODY/EMFACE;StimulusMaterial;;black
+62;Stimulus Material;Empathy for pain;StimulusMaterial;;black
+63;Stimulus Material;Full body stimuli;StimulusMaterial;;black
+64;Stimulus Material;KAPODI;StimulusMaterial;;black
+65;Study Implementation;Piloting;initial;;black
+66;Piloting;Data simulation;Piloting;;black
+67;Piloting;Feasibility studies;Piloting;;black
+68;Piloting;Webinars for pilot studies;Piloting;;black
+69;Piloting;Data collection;initial;;black
+70;Data collection;Survey;Datacollection;;black
+71;Survey;formr;Survey;R;black
+72;Data collection;fMRI_coll;Datacollection;fMRI;black
+73;fMRI_coll;BIDS;fMRI_coll;;black
+74;Data collection;Existing data;Datacollection;;black
+75;Existing data;24 days of databases;Existingdata;;black
+76;Existing data;Popane dataset;Existingdata;;black
+77;Existing data;Landscaping Longitudinal Research;Existingdata;;black
+78;Data collection;Data validation;initial;;black
+;Data collection;Mexca;Datavalidation;;black
+79;Data validation;Data management;Datavalidation;;black
+80;Data management;FAIR data;Datamanagement;;black
+81;Data management;RDMkit;Datamanagement;;black
+82;Data management;Diffchecker;Datamanagement;;black
+83;Data validation;Preprocessing;Datavalidation;;black
+84;Preprocessing;Type of data;Preprocessing;;black
+85;Type of data;fMRI_val;Typeofdata;;black
+86;Type of data;EEG;Typeofdata;;black
+87;fMRI_val;AFNI;fMRI_val;;black
+88;fMRI_val;SPM;fMRI_val;;black
+89;fMRI_val;FSL;fMRI_val;;black
+90;fMRI_val;Freesurfer;fMRI_val;;black
+91;fMRI_val;DICOM tags;fMRI_val;;black
+92;Data validation;Data analysis;initial;;black
+93;Data analysis;Data Visualization;Dataanalysis;;black
+94;Data Visualization;fMRI_viz;DataVisualization;fMRI;black
+95;fMRI_viz;Neurosynth;fMRI_viz;;black
+96;fMRI_viz;MRIcroGL;fMRI_viz;;black
+97;fMRI_viz;MRIcron;fMRI_viz;;black
+98;fMRI_viz;Nipype;fMRI_viz;;black
+99;fMRI_viz;fMRI analysis course;fMRI_viz;;black
+100;fMRI_viz;RepoNeuroVis;fMRI_viz;;black
+101;fMRI_viz;Brain Atlas Framework;fMRI_viz;;black
+102;Data Visualization;Web plot digitizer;DataVisualization;;black
+;Data Visualization;MolView;DataVisualization;;black
+;Data Visualization;Scholar Goggler;DataVisualization;;black
+;Data Visualization;Photos;DataVisualization;;black
+;Photos;Pixabay;Photos;;black
+103;Data Visualization;Colors;DataVisualization;;black
+104;Colors;Color converter;Colors;;black
+105;Colors;Cols4all;Colors;;black
+106;Colors;Color oracle;Colors;;black
+107;Colors;Color picker;Colors;;black
+;Colors;Adobe color wheel;Colors;;black
+;Colors;Color blindness simulator;Colors;;black
+108;Data Visualization;Figure Creator;DataVisualization;;black
+;Data Visualization;Laws of user experience;DataVisualization;;black
+109;Figure Creator;RAWgraphs;FigureCreator;;black
+110;Figure Creator;BioRender;FigureCreator;;black
+111;Figure Creator;Canva;FigureCreator;;black
+112;Figure Creator;Choose your plot;FigureCreator;;black
+113;Figure Creator;Autodraw;FigureCreator;;black
+114;Figure Creator;Brain code selector;FigureCreator;;black
+115;Figure Creator;Make your own scatterplot;FigureCreator;;black
+116;Figure Creator;Mermaid;FigureCreator;;black
+117;Data Visualization;Icons;DataVisualization;;black
+118;Icons;BioIcons;Icons;;black
+119;Icons;Flaticon;Icons;;black
+120;Icons;Font Awesome;Icons;;black
+121;Icons;Phylopic;Icons;;black
+;Icons;Smart Servier Medical Art;Icons;;black
+;Icons;Health icons;Icons;;black
+122;Data analysis;GitHub;Dataanalysis;;black
+123;GitHub;GitHub cheatsheet;GitHub;;black
+124;Data analysis;fNIRS;Dataanalysis;;black
+125;fNIRS;fNIRS cheatsheet;fNIRS;;black
+126;Data analysis;Reproducibility;Dataanalysis;;black
+127;Reproducibility;renv (R);Reproducibility;;black
+128;Reproducibility;Docker;Reproducibility;;black
+129;Reproducibility;Datapasta (R);Reproducibility;;black
+;Reproducibility;Neuroimaging resources;Reproducibility;;black
+130;Data analysis;Analysis Framework;Dataanalysis;;black
+131;Analysis Framework;PSPP;AnalysisFramework;;black
+132;Analysis Framework;SPSS;AnalysisFramework;;black
+133;Analysis Framework;R;AnalysisFramework;R;black
+134;R;FSBrain;R;;black
+135;R;GGhelp;R;;black
+136;R;GGplot tricks;R;;black
+137;R;R visualization;R;;black
+138;R;R graph gallery;R;;black
+139;R;RStudio;R;;black
+140;RStudio;Cheatsheets 1;RStudio;;black
+141;RStudio;Cheatsheets 2;RStudio;;black
+142;Analysis Framework;JASP;AnalysisFramework;;black
+143;Analysis Framework;Python;AnalysisFramework;;black
+144;Python;Jupyter Notebook;Python;;black
+145;Jupyter Notebook;Cheatsheets;JupyterNotebook;;black
+146;Python;Google Colab;Python;;black
+147;Analysis Framework;Matlab;AnalysisFramework;;black
+148;Data analysis;Meta-analysis;Dataanalysis;;black
+149;Meta-analysis;Syllabus;Meta-analysis;;black
+150;Meta-analysis;Metafor (R);Meta-analysis;;black
+151;Meta-analysis;Coda;Meta-analysis;;black
+152;Meta-analysis;Metalab;Meta-analysis;;black
+153;Meta-analysis;Templates;Meta-analysis;;black
+154;Meta-analysis;Neuroquery;Meta-analysis;;black
+155;Data analysis;Writing;initial;;black
+156;Writing;Crediting;Writing;;black
+157;Crediting;Tenzing;Crediting;;black
+158;Writing;Writing Framework;Writing;;black
+159;Writing;Writing effectively;Writing;;black
+160;Writing;Acronymify;Writing;;black
+161;Writing;List of acronyms;Writing;;black
+162;Writing;Quillbot;Writing;;black
+163;Writing;Statcheck;Writing;;black
+;Writing;Grammarly;Writing;;black
+;Writing;PaperPal;Writing;;black
+164;Writing Framework;Word;WritingFramework;;black
+165;Word;APA-style Word template;Word;;black
+166;Word;Preprint templates;Word;;black
+167;Crediting;CRediT;Crediting;;black
+168;Crediting;Scite;Crediting;;black
+169;Crediting;Grateful;Crediting;;black
+170;Writing Framework;Word;WritingFramework;;black
+171;Writing Framework;Papaja;WritingFramework;Rmd;black
+172;Writing Framework;Overleaf;WritingFramework;LaTeX;black
+173;Writing;Citations;Writing;;black
+174;Citations;Citation Managers;Citations;;black
+175;Citation Managers;Zotero;CitationManagers;;black
+176;Citation Managers;Mendeley;CitationManagers;;black
+177;Citation Managers;Citavi;CitationManagers;;black
+178;Citation Managers;Endnote;CitationManagers;;black
+179;Citation Managers;Reference management comparison;CitationManagers;;black
+180;Citation Managers;BibTeX;CitationManagers;;black
+181;Citations;Citation Diversity Statement;Citations;;black
+182;Citations;Recite;Citations;;black
+183;Citations;Citation Gecko;Citations;;black
+184;Writing;Publication;initial;;black
+185;Publication;Journal choice;Publication;;black
+186;Journal choice;JANE;Journalchoice;;black
+187;Journal choice;Journal Rater;Journalchoice;;black
+188;Journal choice;Journal suggester;Journalchoice;;black
+189;Journal choice;Journal abbreviations;Journalchoice;;black
+190;Journal choice;SciRev;Journalchoice;;black
+191;Publication;Preprint;Publication;;black
+192;Preprint;Sherpa Romeo;Preprint;Allowed?;black
+193;Preprint;Preprint server;Preprint;;black
+194;Preprint server;MetArXiv;Preprintserver;Meta-analyses;black
+195;Preprint server;PsyArXiv;Preprintserver;Psychological studies;black
+196;Preprint server;BioArXiv;Preprintserver;Biopsychological studies;black
+197;Publication;ORCID;Publication;;black
+198;Publication;Dissemination;initial;;black
+199;Dissemination;Resource Sharing;Dissemination;;black
+200;Resource Sharing;Data;ResourceSharing;;black
+201;Data;Open Science Framework;Data;;black
+202;Data;Zenodo;Data;;black
+203;Data;NeuroVault;Data;;black
+204;Resource Sharing;Code;ResourceSharing;;black
+205;Code;Open Science Framework;Code;;black
+206;Code;Zenodo;Code;;black
+207;Code;GitHub;Code;;black
+208;Resource Sharing;Materials;ResourceSharing;;black
+209;Materials;Open Science Framework;Materials;;black
+210;Materials;Zenodo;Materials;;black
+211;Materials;GitHub;Materials;;black
+;Dissemination;Psychology conference timelines;Dissemination;;black
+212;Dissemination;Poster;Dissemination;;black
+213;Poster;Designing conference posters;Poster;;black
+214;Poster;Canva;Poster;;black
+215;Poster;Illustrator;Poster;;black
+216;Poster;PowerPoint;Poster;;black
+217;Poster;Better posters;Poster;;black
+;Poster;Font size calculator;Poster;;black
+218;Dissemination;Talk;Dissemination;;black
+219;Talk;Slidesgo;Talk;;black
+220;Talk;PowerPoint;Talk;;black
+221;Talk;Talk invitations;Talk;;black
+222;Dissemination;Writing_diss;Dissemination;;black
+223;Writing_diss;In Mind Magazine;Writing_diss;;black
+224;Writing_diss;Gehirn und Geist;Writing_diss;;black
+225;Writing_diss;Scientific American;Writing_diss;;black
+226;Writing_diss;APS Observer;Writing_diss;;black
+227;Writing_diss;APA Monitor on Psychology;Writing_diss;;black
+228;Dissemination;Social Media;Dissemination;;black
+229;Social Media;Twitter;SocialMedia;;black
+230;Social Media;Mastodon;SocialMedia;;black
+231;Social Media;TikTok;SocialMedia;;black
+232;Social Media;Instagram;SocialMedia;;black
+233;Social Media;YouTube;SocialMedia;;black
