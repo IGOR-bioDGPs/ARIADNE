@@ -80,7 +80,7 @@ id;source;target;subgraph;label;background-color
 ;Existing data;Re3data;Existing data;;black
 ;Existing data;Sci2sci;Existing data;;black
 78;Data collection;Data validation;initial;;black
-;Data collection;Mexca;Datacollection;;black
+;Data validation;Mexca;Data validation;;black
 79;Data validation;Data management;Datavalidation;;black
 80;Data management;FAIR data;Datamanagement;;black
 81;Data management;RDMkit;Datamanagement;;black
