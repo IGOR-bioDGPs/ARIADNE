@@ -52,8 +52,8 @@ id;source;target;subgraph;label;background-color
 50;Datasets;Emotions;Datasets;;black
 51;Datasets;24 days of databases;Datasets;;black
 52;Emotions;Popane;Emotions;;black
-;Existing data;Re3data;Datasets;;black
-;Existing data;Sci2sci;Datasets;;black
+;Existing data;Re3data;Existingdata;;black
+;Existing data;Sci2sci;Existingdata;;black
 53;Imaging data;NeuroSynth;Imagingdata;;black
 54;Study design;Study Implementation;initial;;black
 55;Study Implementation;Preregistration Framework;StudyImplementation;;black
