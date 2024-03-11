@@ -15,7 +15,7 @@ id;source;target;subgraph;label;background-color
 14;Literature;Consensus;Literature;;black
 15;Literature;Seaboat;Literature;;black
 16;Literature;Semantic Scholar;Literature;;black
-;Literature;MeSH;Literature;;black
+17;Literature;MeSH;Literature;;black
 17;Project Start;Funding;ProjectStart;;black
 18;Funding;Postdoc funding;Funding;;black
 19;Project Start;Organization;ProjectStart;;black
@@ -52,8 +52,8 @@ id;source;target;subgraph;label;background-color
 50;Datasets;Emotions;Datasets;;black
 51;Datasets;24 days of databases;Datasets;;black
 52;Emotions;Popane;Emotions;;black
-;Datasets;Re3data;Datasets;;black
-;Datasets;Sci2sci;Datasets;;black
+;Existing data;Re3data;Datasets;;black
+;Existing data;Sci2sci;Datasets;;black
 53;Imaging data;NeuroSynth;Imagingdata;;black
 54;Study design;Study Implementation;initial;;black
 55;Study Implementation;Preregistration Framework;StudyImplementation;;black
