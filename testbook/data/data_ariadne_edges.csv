@@ -77,8 +77,8 @@ id;source;target;subgraph;label;background-color
 75;Existing data;24 days of databases;Existingdata;;black
 76;Existing data;Popane dataset;Existingdata;;black
 77;Existing data;Landscaping Longitudinal Research;Existingdata;;black
-;Existing data;Re3data;Existing data;;black
-;Existing data;Sci2sci;Existing data;;black
+;Existing data;Re3data;Existingdata;;black
+;Existing data;Sci2sci;Existingdata;;black
 78;Data collection;Data validation;initial;;black
 ;Data validation;Mexca;Data validation;;black
 79;Data validation;Data management;Datavalidation;;black
