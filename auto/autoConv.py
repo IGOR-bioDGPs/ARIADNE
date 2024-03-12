@@ -7,7 +7,7 @@ Created on Fri Mar  8 11:45:28 2024
 
 import pandas as pd
 url="https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/testbook/data/data_ariadne_nodes.csv"
-df_csv = pd.read_csv(url, on_bad_lines='skip', delimiter=';')
+df_csv = pd.read_csv(url, on_bad_lines='skip', delimiter=';', encoding = "ISO-8859-1")
 # Select four columns
 selected_columns = df_csv.loc[:, ['id', 'mainGraph', 'subgraph', 'href', 'descr']]
 selected_columns.dropna(inplace=True)
