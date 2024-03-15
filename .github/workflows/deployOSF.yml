@@ -3,7 +3,7 @@ name: Upload CSV to OSF
 on:
   push:
     paths:
-      - "testbook/data/data_ariadne_nodes.csv"
+      - "ariadne/data/data_ariadne_nodes.csv"
     branches:
       - master
 
@@ -27,4 +27,4 @@ jobs:
           OSF_TOKEN: ${{ secrets.OSF_TOKEN }}
           OSF_USERNAME: caggursoy
           OSF_PROJECT: tqjh8
-        run: python auto/autoConv.py && osf remove "2023 ARIADNE/ARIADNE Resources.xlsx" && osf upload ARIADNE_Resources.xlsx "2023 ARIADNE/ARIADNE Resources.xlsx"
+        run: python autoConv/autoConv.py && osf remove "2023 ARIADNE/ARIADNE Resources.xlsx" && osf upload ARIADNE_Resources.xlsx "2023 ARIADNE/ARIADNE Resources.xlsx"
