@@ -108,6 +108,7 @@
     .sugg-gdrive-button:hover {
         background-color: #45a049;
     }
+    .bullet-resource { list-style-type: disc; color: #D41159; }
   </style>
   <script src="./cytoscape/cytoscape.min.js"></script>
   
@@ -124,10 +125,10 @@
             <li>Left click on a node to go to the next levels.</li>
             <li>Right click on anywhere to reset to the initial overview.</li>
             <li>Right click on a node to go back to the previous level in the network.</li>
-            <li>Hover on any resource node to reveal the information regarding the node.</li>
-            <li>Left click on the resource nodes to go to the respective webpages.</li>
+            <li class="bullet-resource">Hover on any resource node to reveal the information regarding the node.</li>
+            <li class="bullet-resource">Left click on the resource nodes to go to the respective webpages.</li>
             <li>Drag and drop on the nodes to rearrange the graph</li>
-            <li>Here's the explanation of all the shapes, just hover over them:</li>
+            <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
             <canvas id="shapesCanvas" width="280" height="100"></canvas>
         </div>
         
@@ -202,6 +203,7 @@
         ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
         ctx.fillRect(popupX, popupY, popupWidth, popupHeight);
         ctx.fillStyle = "black";
+        ctx.font = '12px Arial';
         ctx.fillText(message, popupX + padding, popupY + popupHeight - padding);
     }
 
