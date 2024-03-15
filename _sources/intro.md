@@ -2,10 +2,12 @@
 This is the website belonging to the **ARIADNE** project.
 
 # Who are we?
-We are a group of early career researchers in the fields of biological psychology and neuroscience: Helena Hartmann, Cagatay Guersoy, Alexander Lischke, Marie Mueckstein, Matthias F. J. Sperl, Susanne Vogel, Yu-Fang Yang, Gordon B. Feld, Alexandros Kastrinogiannis and Alina Koppold. We are all members of [IGOR](https://www.dgps.de/fachgruppen/fgbi/aktivitaeten-der-fachgruppe/igor/), the DGPs Interest Group for Open and Reproducible Science.
+We are a group of early career researchers in the fields of biological psychology and neuroscience. <br>
+Helena Hartmann, Cagatay Guersoy, Alexander Lischke, Marie Mueckstein, Matthias F. J. Sperl, Susanne Vogel, Yu-Fang Yang, Gordon B. Feld, Alexandros Kastrinogiannis and Alina Koppold
+
 
 # What is this about?
-We have created a curated scientific resource navigator called **ARIADNE** that will guide researchers in the field of life sciences, especially those at the beginning of their career, through the process of conducting a transparent and reproducible research project from start to finish. The project is presented in the form of 10 steps, with tried-and-tested resources allocated to each step. You can find an outline of these 10 steps below:
+We have created a curated resource navigator called **ARIADNE** that will guide researchers in the field of life sciences, especially those at the beginning of their career, through the process of conducting a transparent and reproducible research project from start to finish. The project is presented in the form of 10 steps, with tried-and-tested resources allocated to each step. You can find an outline of these 10 steps below:
 
 1. Starting a project - from literature research to a research question
 2. Planning and designing experiments - from ethics to sample size
@@ -20,5 +22,4 @@ We have created a curated scientific resource navigator called **ARIADNE** that 
 
 These 10 steps determine the quality and ultimately the success of any research project, yet so far no such guide exists, especially none focussing on novel developments in the field of open and reproducible science practices.
 
-The preprint corresponding to this tool can be found [here](https://osf.io/jfh3t). If you want to contribute a new resource or report a bug, please do so via Google Forms with clicking [this link](https://drive.google.com/drive/folders/1nw8x_OwfNlQ8jpaBRiirHpjYGvUAiB3v) or via GitHub Issues with [this link](https://github.com/IGOR-bioDGPs/ARIADNE/issues/new/choose).
 

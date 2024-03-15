@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -77,15 +76,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -139,11 +129,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="intro.html">
-  
   
   
   
@@ -153,8 +141,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/ARIADNE_Logo.png" class="logo__image only-light" alt="ARIADNE - Home"/>
-    <script>document.write(`<img src="_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="ARIADNE - Home"/>`);</script>
+    <img src="_static/ARIADNE_Logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -184,7 +172,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="step9.html">STEP 9: Publication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step10.html">STEP 10: Dissemination</a></li>
 <li class="toctree-l1"><a class="reference internal" href="discussion.html">Discussion and outlook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zbibliography.html">Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplementary information</span></p>
 <ul class="nav bd-sidenav">
@@ -345,22 +332,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -391,7 +376,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-2-study-design">
 <h1>STEP 2: Study design<a class="headerlink" href="#step-2-study-design" title="Permalink to this heading">#</a></h1>
-<p>In an empirical research project, the study design encompasses conceptualizing and planning the methodology for data collection and analysis. Additionally, documenting the decision-making process throughout the research project is crucial for enhancing reproducibility, enabling other researchers to understand and replicate the study with greater ease. It is essential to maintain flexibility in this pipeline, allowing for adjustments as the project progresses. In this step and for most empirical research projects, approval by the local ethics committee should be applied for. Another important aspect of the study design step is determining the appropriate sample size, target population (e.g., neurotypical individuals or patients), as well as the sampling strategy (e.g., stratified or convenience sampling; Stratton, 2021). To ensure that the study has sufficient statistical power to detect meaningful differences or associations,  justification of one’s sample size is helpful at this stage, e.g., via a power analysis (➜ <a class="reference external" href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower">GPower</a>, ➜ <a class="reference external" href="https://shiny.ieis.tue.nl/sample_size_justification/">Justification Shinyapp</a> or ➜ <a class="reference external" href="https://github.com/Fungisai/g_ci_spm">g_ci_spm</a>; Cohen, 1962; Jones et al., 2003; Kemal, 2020; see Table 1). Considering ethics in experimental design involves taking steps to protect the rights and welfare of participants, weighing costs and benefits while minimizing risks, and ensuring the privacy of participants and the confidentiality of their data. It also involves considering the impact of the findings on society and potential biases that may exist in the study. In essence, the study design step lays out the foundation for the entire project and provides a roadmap for all subsequent steps. Most importantly, it considers data collection, analysis, and interpretation of results (Steps 5-8). It is essential for the study design to be well-conceived, well-executed, and well-documented to ensure the quality, integrity, and generalizability of the findings of the research. Drawing on the experience from supervisor(s), mentor(s), and/or collaborator(s) is key in this step, as they might have specific expertise or experience with certain aspects of the planned project. In this step, the importance of ‘Big Team Science’ and sharing of knowledge and expertise becomes especially clear (Hall et al., 2018). <strong>ARIADNE</strong> can help kick-start this process by providing grounds for tool selection. In this step, criteria, tasks, and rules for (co-)authorship should be discussed already at an early stage of the project, and re-discussed over its course if changes arise (➜ <a class="reference external" href="https://credit.niso.org"><em>CRediT statement</em></a>; Brand et al., 2015; Tay, 2021; see Table 1 and Step 8). Finally, the decision for a suitable task programming environment should take into account whether the study will be lab-based or implemented online and whether the program is freely available (➜ <a class="reference external" href="https://www.psychopy.org/">Psychopy</a> vs. ➜ <a class="reference external" href="http://psychtoolbox.org/">Psychtoolbox</a> in Matlab).</p>
+<p>In an empirical research project, the study design encompasses conceptualizing and planning the methodology for data collection and analysis. For this purpose, the research group should ideally establish a workflow pipeline that outlines the subsequent steps (i.e., Steps 2 to 9; Gantt charts (a bar chart used to illustrate a project schedule, showing start and finish dates of activities and their dependencies; ➜ <a class="reference external" href="https://github.com/giocomai/ganttrify">Ganttrify</a>). It is useful for planning, scheduling, and monitoring projects and work packages  - a set of related tasks within a project. It is the smallest unit of work that can be planned and managed. Additionally, documenting the decision-making process throughout the research project is crucial for enhancing reproducibility, enabling other researchers to understand and replicate the study with greater ease. It is essential to maintain flexibility in this pipeline, allowing for adjustments as the project progresses.</p>
+<p>Another important aspect of the study design step is determining the appropriate sample size, target population (e.g., neurotypical individuals or patients), as well as the sampling strategy (e.g., stratified or convenience sampling; Stratton, 2021). To ensure that the study has sufficient statistical power to detect meaningful differences or associations,  justification of one’s sample size is helpful at this stage, e.g., via a <em>power analysis</em> (➜ <a class="reference external" href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower">GPower</a>, ➜ <a class="reference external" href="https://shiny.ieis.tue.nl/sample_size_justification/">Justification Shinyapp</a> or ➜ <a class="reference external" href="https://github.com/Fungisai/g_ci_spm">g_ci_spm</a>; Cohen, 1962; Jones et al., 2003; Kemal, 2020; see Table 1). Considering ethics in experimental design involves taking steps to protect the rights and welfare of participants, weighing costs and benefits while minimizing risks, and ensuring the privacy of participants and the confidentiality of their data. It also involves considering the impact of the findings on society and potential biases that may exist in the study. In essence, the study design step lays out the foundation for the entire project and provides a roadmap for all subsequent steps. Most importantly, it considers data collection, analysis, and interpretation of results (Steps 5-8). It is essential for the study design to be well-conceived, well-executed, and well-documented to ensure the quality, integrity, and generalizability of the findings of the research. Drawing on the experience from supervisor(s), mentor(s), and/or collaborator(s) is key in this step, as they might have specific expertise or experience with certain aspects of the planned project. In this step, the importance of ‘Big Team Science’ and sharing of knowledge and expertise becomes especially clear (Hall et al., 2018). <strong>ARIADNE</strong> can help kick-start this process by providing grounds for tool selection.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -419,10 +405,11 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="step1.html"
@@ -442,7 +429,10 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -465,7 +455,6 @@ By The IGOR Community
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2023.
@@ -492,8 +481,8 @@ By The IGOR Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
