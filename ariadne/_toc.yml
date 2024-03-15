@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: contentpages/intro
 parts:
   - caption: The road to success
     chapters:
