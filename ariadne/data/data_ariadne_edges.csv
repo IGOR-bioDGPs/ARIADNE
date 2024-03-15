@@ -40,12 +40,12 @@ id;source;target;subgraph;label;background-color
 39;Design framework;Presentation;Designframework;;black
 40;Design framework;Pavlovia;Designframework;;black
 41;Design framework;Matlab;Designframework;Lab-based;black
-42;Design framework;Python;Designframework;"Online &#13;&#10;&&#13;&#10; Lab-based";black
-43;Design framework;Javascript;Designframework;"Online &#13;&#10;&&#13;&#10; Lab-based";black
+42;Design framework;Python;Designframework;Online & Lab-based;black
+43;Design framework;Javascript;Designframework;Online & Lab-based;black
 44;Matlab;Psychtoolbox;Matlab;;black
 45;Python;PsychoPy;Python;;black
 46;Javascript;JsPsych;Javascript;;black
-47;Design framework;Gorilla;Designframework;"Online &#13;&#10;&&#13;&#10; Lab-based";black
+47;Design framework;Gorilla;Designframework;Online & Lab-based;black
 48;Data availability;Datasets;Dataavailability;Existing data;black
 49;Datasets;Imaging data;Datasets;;black
 50;Datasets;Emotions;Datasets;;black
@@ -209,8 +209,8 @@ id;source;target;subgraph;label;background-color
 208;Preprint;Sherpa Romeo;Preprint;Allowed?;black
 209;Preprint;Preprint server;Preprint;;black
 210;Preprint server;MetArXiv;Preprintserver;Meta-analyses;black
-211;Preprint server;PsyArXiv;Preprintserver;"Psychological&#13;&#10;studies";black
-212;Preprint server;BioArXiv;Preprintserver;"Biopsychological&#13;&#10;studies";black
+211;Preprint server;PsyArXiv;Preprintserver;Psychological studies;black
+212;Preprint server;BioArXiv;Preprintserver;Biopsychological studies;black
 213;Publication;ORCID;Publication;;black
 214;Publication;Dissemination;initial;;black
 215;Dissemination;Resource Sharing;Dissemination;;black
