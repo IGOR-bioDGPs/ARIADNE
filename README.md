@@ -1,6 +1,6 @@
 # ARIADNE
 
-![ARIADNE Logo](https://github.com/IGOR-bioDGPs/ARIADNE/blob/master/testbook/ARIADNE_Logo.png)
+![ARIADNE Logo](https://github.com/IGOR-bioDGPs/ARIADNE/blob/master/ariadne/ARIADNE_Logo.png)
 
 
 *The freely available, curated and dynamically “living” tool ARIADNE spans the whole research process and is translated to a dynamic interface for easier use and search for the individual resources.*
