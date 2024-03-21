@@ -225,7 +225,7 @@ id;source;target;subgraph;label;background-color
 224;Resource Sharing;Materials;ResourceSharing;;black
 225;Materials;Open Science Framework;Materials;;black
 226;Materials;Zenodo;Materials;;black
-227;Materials;GitHub;Materials;;black
+227;Materials;GitHub_mat;Materials;;black
 228;Dissemination;Psychology conference timelines;Dissemination;;black
 229;Dissemination;Poster;Dissemination;;black
 230;Poster;Designing conference posters;Poster;;black
