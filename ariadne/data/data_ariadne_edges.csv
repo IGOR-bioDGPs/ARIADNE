@@ -185,7 +185,7 @@ id;source;target;subgraph;label;background-color
 184;Crediting;Scite;Crediting;;black
 185;Crediting;Grateful;Crediting;;black
 186;Writing Framework;Word;WritingFramework;;black
-187;Writing Framework;Papaja;WritingFramework;Rmd;black
+187;Writing Framework;Papaja;WritingFramework;Rmarkdown;black
 188;Writing Framework;Overleaf;WritingFramework;LaTeX;black
 189;Writing;Citations;Writing;;black
 190;Citations;Citation Managers;Citations;;black

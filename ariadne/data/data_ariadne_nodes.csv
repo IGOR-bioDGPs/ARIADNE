@@ -230,6 +230,7 @@ Writing Framework;Writing Framework;diamond;#40B0A6;white;2;WritingFramework;Wri
 Word;Word;diamond;#40B0A6;white;3;WritingFramework;Writing;no;NA;;NA
 Word;Word;diamond;#40B0A6;white;3;Word;Writing;no;NA;;NA
 Preprint templates;Preprint templates;ellipse;#D41159;white;4;Word;Writing;yes;https://osf.io/hsv6a/;https://osf.io/hsv6a/;"Amazing and useful ""Word templates for typesetting preprints. Because your preprint should be a #prettypreprint"" and we don't have time for endless formatting."
+APA-style Word template;APA-style Word template;ellipse;#D41159;white;4;Word;Writing;yes;https://libguides.uww.edu/apa/format;https://libguides.uww.edu/apa/format;A Word template in APA7 style for student papers. Word and Google Docs versions exist
 Papaja;Papaja;ellipse;#D41159;white;3;WritingFramework;Writing;yes;https://github.com/crsh/papaja;https://github.com/crsh/papaja;If you want to create reproducible manuscripts including tables directly from your data in R, use the papaja package.
 Overleaf;Overleaf;ellipse;#D41159;white;3;WritingFramework;Writing;yes;https://www.overleaf.com/;https://www.overleaf.com/;Overleaf is an online collaborative platform used for creating, editing, and sharing scientific documents, particularly LaTeX-based documents, making it popular among researchers and academics for collaborative writing and publishing.
 Citations;Citations;diamond;#40B0A6;white;2;Writing;Writing;no;NA;;NA
@@ -244,7 +245,7 @@ Reference management comparison;Reference management comparison;ellipse;#D41159;
 BibTeX;BibTeX;ellipse;#D41159;white;4;CitationManagers;Writing;yes;https://www.bibtex.org/;https://www.bibtex.org/;Bibliography & reference generator that works quite well with Rmd/Papaja.
 Citation Diversity Statement;Citation Diversity Statement;ellipse;#D41159;white;3;Citations;Writing;yes;https://github.com/dalejn/cleanBib;https://github.com/dalejn/cleanBib;To increase awareness about citation bias and mitigate it, by checking for and transparently reporting proportions of citing male and female first and last authors, use the citation diversity statement by Zurn et al. (2020, TICS).
 Recite;Recite;ellipse;#D41159;white;3;Citations;Writing;yes;https://reciteworks.com/;https://reciteworks.com/;To check your in-text citations and reference lists for errors, use Reciteworks.
-Citation Gecko;Citation Gecko;ellipse;#D41159;white;3;Citations;Writing;yes;https://citationgecko.azurewebsites.net/;https://citationgecko.azurewebsites.net/;"""Gecko is here to help you find the most relevant papers to your research and give you a more complete sense of the research landscape."""
+Citation Gecko;Citation Gecko;ellipse;#D41159;white;3;Citations;Writing;yes;https://citationgecko.azurewebsites.net/;https://citationgecko.azurewebsites.net/;Gecko is here to help you find the most relevant papers to your research and give you a more complete sense of the research landscape.
 Publication;Publication;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA
 Publication;Publication;rectangle;#005AB5;white;1;Publication;Publication;no;NA;;NA
 Journal choice;Journal choice;diamond;#40B0A6;white;2;Publication;Publication;no;NA;;NA
