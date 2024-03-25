@@ -144,7 +144,7 @@
     .bug-gdrive-button:hover {
         background-color: #45a049;
     }
-    .bullet-resource { list-style-type: disc; color: #D41159; }
+    /* .bullet-resource { list-style-type: disc; color: #D41159; } */
   </style>
   <script src="./cytoscape/cytoscape.min.js"></script>
   
@@ -160,11 +160,12 @@
         <span id="infoTitle"><h2>Instructions:</h2> Click to hide/unhide the instructions</span>
         <div id="infoContent">
             <ul>
+            <li>First things first. This is a "dynamic" network. This means that you can drag the nodes around and zoom in/out to resize the view</li>
             <li>Left click on a node to go to the next levels.</li>
             <li>Right click on anywhere to reset to the initial overview.</li>
             <li>Right click on a node to go back to the previous level in the network.</li>
-            <li class="bullet-resource">Hover on any resource node to reveal the information regarding the node.</li>
-            <li class="bullet-resource">Left click on the resource nodes to go to the respective webpages.</li>
+            <li>Hover on any resource node to reveal the information regarding the node.</li>
+            <li>Left click on the resource nodes to go to the respective webpages.</li>
             <li>Drag and drop on the nodes to rearrange the graph</li>
             <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
             <canvas id="shapesCanvas" width="280" height="100"></canvas>
