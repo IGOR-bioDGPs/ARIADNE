@@ -62,18 +62,12 @@ jobs:
           git diff-index --quiet HEAD ||  git commit -am "deploy files"  # commit to the repository (ignore if no modification)
           git push origin $TARGET_BRANCH # push to remote branch
       - name: copy-index
-        env:
-          SRC_FOLDER_PATH: "graph/"
-          TARGET_BRANCH: "gh-pages"
         run: |
-          #files= $(find $SRC_FOLDER_PATH -type f) # get the file list
-          files=$(ls -d **graph/index.html)
-          files_without_graph=${files//graph\//}
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git fetch                         # fetch branches
-          git checkout -f $TARGET_BRANCH       # checkout to your branch
-          git checkout -f ${GITHUB_REF##*/} -- $files_without_graph # copy files from the source branch
-          git add -A
-          git diff-index --quiet HEAD ||  git commit -am "deploy files"  # commit to the repository (ignore if no modification)
-          git push origin $TARGET_BRANCH # push to remote branch
+          cp graph/index.html index.html
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add index.html
+          git commit -m "Copy index redirector"
+          git push origin target-branch
+        env:
+          TARGET_BRANCH: "gh-pages" # Set your target branch name here
