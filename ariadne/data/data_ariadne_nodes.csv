@@ -113,7 +113,7 @@ Preprocessing;Preprocessing;diamond;#40B0A6;white;2;Datavalidation;Datavalidatio
 Preprocessing;Preprocessing;diamond;#40B0A6;white;2;Preprocessing;Datavalidation;no;NA;;NA
 Type of data;Type of data;diamond;#40B0A6;white;3;Preprocessing;Datavalidation;no;NA;;NA
 Type of data;Type of data;diamond;#40B0A6;white;3;Typeofdata;Datavalidation;no;NA;;NA
-EEG;EEG;ellipse;#D41159;white;4;Typeofdata;Datavalidation;yes;https://www.hopkinsmedicine.org/health/treatment-tests-and-therapies/electroencephalogram-eeg;https://www.hopkinsmedicine.org/health/treatment-tests-and-therapies/electroencephalogram-eeg;NA
+EEG;EEG;ellipse;#D41159;white;4;Typeofdata;Datavalidation;yes;https://www.hopkinsmedicine.org/health/treatment-tests-and-therapies/electroencephalogram-eeg;https://www.hopkinsmedicine.org/health/treatment-tests-and-therapies/electroencephalogram-eeg;What is an EEG?
 fMRI_val;fMRI;diamond;#40B0A6;white;4;Typeofdata;Datavalidation;no;NA;;NA
 fMRI_val;fMRI;diamond;#40B0A6;white;4;fMRI_val;Datavalidation;no;NA;;NA
 AFNI;AFNI;ellipse;#D41159;white;5;fMRI_val;Datavalidation;yes;https://afni.nimh.nih.gov/;https://afni.nimh.nih.gov/;AFNI (Analysis of Functional NeuroImages) is a leading software suite of C, Python, R programs and shell scripts primarily developed for the analysis and display of multiple MRI modalities: anatomical, functional MRI (FMRI) and diffusion weighted (DW) data.
@@ -224,7 +224,7 @@ Acronymify;Acronymify;ellipse;#D41159;white;2;Writing;Writing;yes;https://acrony
 List of acronyms;List of acronyms;ellipse;#D41159;white;2;Writing;Writing;yes;https://listofacronyms.com/;https://listofacronyms.com/;Don't waste time collating a list or table of abbreviations manually. This tool does it for you.
 Quillbot;Quillbot;ellipse;#D41159;white;2;Writing;Writing;yes;https://quillbot.com/;https://quillbot.com/;Paraphrase like the awesome boss you are using QuillBot.
 Statcheck;Statcheck;ellipse;#D41159;white;2;Writing;Writing;yes;https://michelenuijten.shinyapps.io/statcheck-web/;https://michelenuijten.shinyapps.io/statcheck-web/;To check a PDF, DOCX or HTML file for errors in statistical reporting, upload it to Statcheck. Some journals even officially request this now (e.g., Psychological Science).
-Grammarly;Grammarly;ellipse;#D41159;white;2;Writing;Writing;yes;https://www.grammarly.com/;https://www.grammarly.com/;Work with an AI writing partner that helps you find the words you need?—?to write that tricky email, to get your point across, to keep your work moving.
+Grammarly;Grammarly;ellipse;#D41159;white;2;Writing;Writing;yes;https://www.grammarly.com/;https://www.grammarly.com/;Work with an AI writing partner that helps you find the words you need to write that tricky email, to get your point across, to keep your work moving.
 PaperPal;PaperPal;ellipse;#D41159;white;2;Writing;Writing;yes;https://paperpal.com/;https://paperpal.com/;Boost your chances of success with real-time, subject-specific language suggestions that help you write better, faster!
 Writing Framework;Writing Framework;diamond;#40B0A6;white;2;Writing;Writing;no;NA;;NA
 Writing Framework;Writing Framework;diamond;#40B0A6;white;2;WritingFramework;Writing;no;NA;;NA

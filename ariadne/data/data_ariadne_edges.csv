@@ -71,7 +71,7 @@ id;source;target;subgraph;label;background-color
 70;Piloting;Data collection;initial;;black
 71;Data collection;Survey;Datacollection;;black
 72;Survey;formr;Survey;R;black
-73;Data collection;fMRI_coll;Datacollection;fMRI;black
+73;Data collection;fMRI_coll;Datacollection;;black
 74;fMRI_coll;BIDS;fMRI_coll;;black
 75;Data collection;Existing data;Datacollection;;black
 76;Existing data;24 days of databases;Existingdata;;black
