@@ -68,6 +68,6 @@ jobs:
           git config --local user.name "GitHub Action"
           git add index.html
           git commit -m "Copy index redirector"
-          git push origin target-branch
+          git push origin $TARGET_BRANCH
         env:
           TARGET_BRANCH: "gh-pages" # Set your target branch name here
