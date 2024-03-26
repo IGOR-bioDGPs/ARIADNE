@@ -63,11 +63,11 @@ jobs:
           git push origin $TARGET_BRANCH # push to remote branch
       - name: copy-index
         run: |
-          cp graph/index.html index.html
+          cp graph/index.html intro.html
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add index.html
-          git commit -m "Copy index redirector"
+          git add intro.html
+          git commit -m "Copy intro redirector"
           git push origin $TARGET_BRANCH
         env:
           TARGET_BRANCH: "gh-pages" # Set your target branch name here
