@@ -96,7 +96,7 @@ id;source;target;subgraph;label;background-color
 95;fMRI_val;DICOM tags;fMRI_val;;black
 96;Data validation;Data analysis;initial;;black
 97;Data analysis;Data Visualization;Dataanalysis;;black
-98;Data Visualization;fMRI_viz;DataVisualization;fMRI;black
+98;Data Visualization;fMRI_viz;DataVisualization;;black
 99;fMRI_viz;Neurosynth;fMRI_viz;;black
 100;fMRI_viz;MRIcroGL;fMRI_viz;;black
 101;fMRI_viz;MRIcron;fMRI_viz;;black
@@ -146,7 +146,7 @@ id;source;target;subgraph;label;background-color
 145;Data analysis;Analysis Framework;Dataanalysis;;black
 146;Analysis Framework;PSPP;AnalysisFramework;;black
 147;Analysis Framework;SPSS;AnalysisFramework;;black
-148;Analysis Framework;R;AnalysisFramework;R;black
+148;Analysis Framework;R;AnalysisFramework;;black
 149;R;FSBrain;R;;black
 150;R;GGhelp;R;;black
 151;R;GGplot tricks;R;;black
