@@ -66,11 +66,14 @@ jobs:
           SRC_FOLDER_PATH: "graph/"
           TARGET_BRANCH: "gh-pages"
         run: |
-          cp ${SRC_FOLDER_PATH}index.html index.html
+          #files= $(find $SRC_FOLDER_PATH -type f) # get the file list
+          files=$(ls -d **graph/index.html)
+          files_without_graph=${files//graph\//}
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git checkout -f $TARGET_BRANCH       # checkout to gh-pages branch
-          git checkout HEAD -- index.html      # make sure index.html is not tracked
-          git add index.html
-          git diff-index --quiet HEAD ||  git commit -m "Deploy index.html"  # commit to the repository (ignore if no modification)
-          git push origin $TARGET_BRANCH # push to remote gh-pages branch
+          git fetch                         # fetch branches
+          git checkout -f $TARGET_BRANCH       # checkout to your branch
+          git checkout -f ${GITHUB_REF##*/} -- $files_without_graph # copy files from the source branch
+          git add -A
+          git diff-index --quiet HEAD ||  git commit -am "deploy files"  # commit to the repository (ignore if no modification)
+          git push origin $TARGET_BRANCH # push to remote branch
