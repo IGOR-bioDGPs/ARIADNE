@@ -283,12 +283,12 @@
 
 
   <script>// Get the width and height of the screen
-        var screenWidth = window.innerWidth;
+        var screenWidth = window.innerWidth*0.8;
         var screenHeight = window.innerHeight;
         // Set CSS variables with screen width and height
         // document.documentElement.style.setProperty('--screen-width', screenWidth + 'px');
         // document.documentElement.style.setProperty('--screen-height', screenHeight*0.8 + 'px');
-        document.documentElement.style.setProperty('--screen-width', screenWidth + 'px');
+        document.documentElement.style.setProperty('--screen-width', screenWidth+ 'px');
         document.documentElement.style.setProperty('--screen-height', screenHeight + 'px');
         // Also the size of the info box
         function updateInfoBoxSize() {
@@ -502,7 +502,7 @@
                 }
                 if (filteredNodes.length < 3){
                     // Calculate the center of the screen
-                    var centerX = window.innerWidth / 2;
+                    var centerX = screenWidth / 2;
                     var centerY = window.innerHeight / 2;
 
                     // Calculate the positions for the nodes
