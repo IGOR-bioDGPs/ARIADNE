@@ -61,3 +61,16 @@ jobs:
           git add -A
           git diff-index --quiet HEAD ||  git commit -am "deploy files"  # commit to the repository (ignore if no modification)
           git push origin $TARGET_BRANCH # push to remote branch
+      - name: copy-index
+        env:
+          SRC_FOLDER_PATH: "graph/"
+          TARGET_BRANCH: "gh-pages"
+        run: |
+          cp ${SRC_FOLDER_PATH}index.html index.html
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git checkout -f $TARGET_BRANCH       # checkout to gh-pages branch
+          git checkout HEAD -- index.html      # make sure index.html is not tracked
+          git add index.html
+          git diff-index --quiet HEAD ||  git commit -m "Deploy index.html"  # commit to the repository (ignore if no modification)
+          git push origin $TARGET_BRANCH # push to remote gh-pages branch
