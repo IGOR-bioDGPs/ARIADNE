@@ -216,7 +216,7 @@ id;source;target;subgraph;label;background-color
 215;Preprint server;MetArXiv;Preprintserver;Meta-analyses;black
 216;Preprint server;PsyArXiv;Preprintserver;Psychological studies;black
 217;Preprint server;BioArXiv;Preprintserver;Biopsychological studies;black
-218;Preprint server;PsychArchives;Preprintserver;Biopsychological studies;black
+218;Preprint server;PsychArchives;Preprintserver;;black
 219;Publication;ORCID;Publication;;black
 220;Publication;Dissemination;initial;;black
 221;Dissemination;Resource Sharing;Dissemination;;black
