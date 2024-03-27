@@ -16,7 +16,7 @@ ARIADNE is supported by the Leibniz Institute for Psychology ([ZPID](https://lei
 
 In the following, we divide the research cycle into 10 steps that determine the quality and the success of research projects. We describe the challenges and choices to be made in each step and provide curated resources from ARIADNE for each of them: 1) project start, 2) study design, 3) study implementation, 4) piloting, 5) data collection, 6) data validation, 7) data analysis, 8) writing, 9) publication, and 10) dissemination. We also introduce key terms relevant in each step , ultimately aiming to facilitate training and communication between experts and people starting out in the world of academia (see Table 1 and italicized words in the main text; for open science-related terms see Parsons et al., 2022). Lastly, we provide a checklist with questions one might ask at each step of a research project in Table 2.
 
-![ARIADNE instructions](https://github.com/IGOR-bioDGPs/ARIADNE/blob/master/ariadne/instructions_ARIADNE_new.png)
+![ARIADNE instructions](https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/instructions_ARIADNE_new.png)
 _Figure 1. Instructions regarding the tool with using exemplary resources_
 
 _Table 1. Mini glossary of science-related terminology, sorted alphabetically._
