@@ -74,6 +74,23 @@
     .back-button:hover {
         background-color: #45a049;
     }
+    .osf-button {
+        position: fixed;
+        top: 100px; /* Adjust the top distance from the top of the screen */
+        left: 20px; /* Adjust the left distance from the left side of the screen */
+        z-index: 9999; /* Ensure the button appears above other elements */
+        font-size: 16.5px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .osf-button:hover {
+        background-color: #45a049;
+    }
     /*suggestion buttons*/
     .sugg-ghub-button {  /*change the name to gdrive & ghub*/
         position: absolute;
@@ -151,6 +168,7 @@
 </head>
 <body>
     <button id="back-button" class="back-button" title="Jump back to ARIADNE-Book">←<br>Back to ARIADNE Book</button>
+    <button id="osf-button" class="osf-button" title="Jump to OSF repository to see the complete resource table">←<br>Jump to OSF repository<br>to see the complete resource table</button>
     <button id="sugg-gdrive-button" class="sugg-gdrive-button" title="If you have a new resource to suggest; please report them to us via Google Forms!">Suggest new resource via Google Forms</button>
     <button id="sugg-ghub-button" class="sugg-ghub-button" title="If you have a new resource to suggest; please report them to us via GitHub issues!">Suggest new resource via GitHub</button>
     <button id="bug-gdrive-button" class="bug-gdrive-button" title="If you have a a bug that you have encountered; please report them to us via Google Forms!">Report a bug via Google Forms</button>
@@ -316,6 +334,14 @@
         redirectToMainButton.addEventListener('click', function() {
             // Redirect the user to the desired webpage
             window.location.href = 'https://igor-biodgps.github.io/ARIADNE/contentpages/intro.html';
+        });
+        // jump to osf button
+        var redirectToOsfButton = document.getElementById('osf-button');
+        // Add a click event listener to the button
+        redirectToOsfButton.addEventListener('click', function() {
+            // Redirect the user to the desired webpage
+            window.open('https://osf.io/tqjh8/', '_blank');
+            // window.location.href = 'https://osf.io/tqjh8/';
         });
         // suggestion buttons
         // Get the button element
