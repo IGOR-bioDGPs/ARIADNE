@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="3; url=https://igor-biodgps.github.io/ARIADNE/graph/graph.html"/>
+<meta http-equiv="refresh" content="1; url=https://igor-biodgps.github.io/ARIADNE/graph/graph.html"/>
 
 # Resource
 
