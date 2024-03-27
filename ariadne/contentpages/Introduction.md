@@ -70,9 +70,9 @@ _Table 2. Checklist of relevant questions for each step of the research process.
 | 4) Piloting                   | Is the study feasible?                                                                                                                                   |
 |                               | Do all manipulations work as intended?                                                                                                                   |
 | 5) Data collection            | How can we make sure my data is safely stored, accessible, and backed up?                                                                                |
-|                               | Is the data collected in a way that protects private information?                                                                                        |
+|                               | Is the data collected in a way that protects private and sensitive information (e.g., of participants?                                                   |
 | 6) Data validation            | How can we ensure the quality and accuracy of the data?                                                                                                  |
-|                               | How can we store the data reproducibly?                                                                                                                  |                                                                        
+|                               | How can we store the data reproducibly?                                                                                                                  |                                                                
 | 7) Data analysis              | What are specific analysis pipelines and programs that can be used for specific types of data (e.g., EEG, (f)MRI, behavior)?                             |
 |                               | What open-source software is a good alternative to proprietary products?                                                                                 |
 |                               | Which tools allow complete replicability of an analysis pipeline, independent of the specific operating system of a user or continuous software updates? |
