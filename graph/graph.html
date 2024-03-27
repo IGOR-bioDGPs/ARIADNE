@@ -210,30 +210,34 @@
     drawShapes();
 
     // Function to show popup message
-    function showPopup(message, x, y) {
+    function showPopup(message, x, y, c_width, c_height) {
         var popupHeight = 20;
         var padding = 5;
 
         // Calculate text width
         var textWidth = ctx.measureText(message).width;
-
+        var textHeight = ctx.measureText(message).height;
+        // if text overflows
+        if (c_width < textWidth){
+            popupHeight = 20*2;
+            var lines = message.split(/\. /g);
+        }
+        
         // Calculate popup width based on text width and padding
         var popupWidth = textWidth + 2 * padding;
+        // var popupHeight = textHeight + 2 * padding;
 
         // Calculate popup position
         var popupX = x - popupWidth / 2;
         var popupY = y - popupHeight - padding;
-
         // Adjust popup position to stay within canvas bounds
         if (popupX < 0) {
             popupX = padding;
-        } else if (popupX + popupWidth > canvas.width) {
-            popupX = canvas.width - popupWidth - padding;
         }
         if (popupY < 0) {
             popupY = y + padding;
         }
-
+        
         // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         // Draw shapes again
@@ -243,7 +247,13 @@
         ctx.fillRect(popupX, popupY, popupWidth, popupHeight);
         ctx.fillStyle = "black";
         ctx.font = '12px Arial';
-        ctx.fillText(message, popupX + padding, popupY + popupHeight - padding);
+        if (c_width < textWidth){
+            ctx.fillText(lines[0], popupX, popupY + 2*padding);
+            ctx.fillText(lines[1], popupX, popupY + popupHeight - padding);
+        }else{
+            ctx.fillText(message, popupX + padding, popupY + popupHeight - padding);
+        }
+        
     }
 
     // Event listener for mouse movement
@@ -257,17 +267,17 @@
                 var dy = mouseY - shape.y;
                 var distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance <= shape.radius) {
-                    showPopup(shape.popupMessage, mouseX, mouseY);
+                    showPopup(shape.popupMessage, mouseX, mouseY, canvas.width, canvas.height);
                 }
             } else if (shape.diamond) {
                 if (mouseX >= shape.x && mouseX <= shape.x + shape.width &&
                     mouseY >= shape.y && mouseY <= shape.y + shape.height) {
-                    showPopup(shape.popupMessage, mouseX, mouseY);
+                    showPopup(shape.popupMessage, mouseX, mouseY, canvas.width, canvas.height);
                 }
             } else {
                 if (mouseX >= shape.x && mouseX <= shape.x + shape.width &&
                     mouseY >= shape.y && mouseY <= shape.y + shape.height) {
-                    showPopup(shape.popupMessage, mouseX, mouseY);
+                    showPopup(shape.popupMessage, mouseX, mouseY, canvas.width, canvas.height);
                 }
             }
         });
