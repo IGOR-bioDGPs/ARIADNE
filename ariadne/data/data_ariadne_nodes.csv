@@ -1,5 +1,5 @@
 id;label;shape;bgcolor;fontcolor;rank;subgraph;mainGraph;is_terminal;href;tooltip;descr;openSource
-Project Start;Project Start;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;TRUE
+Project Start;Project Start;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE
 Project Start;Project Start;rectangle;#005AB5;white;1;ProjectStart;ProjectStart;no;NA;;NA;FALSE
 Literature;Literature;diamond;#40B0A6;white;2;ProjectStart;ProjectStart;no;NA;;NA;FALSE
 Literature;Literature;diamond;#40B0A6;white;2;Literature;ProjectStart;no;NA;;NA;FALSE
