@@ -384,7 +384,7 @@
         // async function to get nodes from the Github repo
         async function fetchDataNodes() {
             try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv';
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_nodes.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_nodes.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv
                 const response = await fetch(githubRawURL); // fetch the CSV data from the URL
                 const csvData = await response.text(); // and get the response as a text file
                 const rows = csvData.split('\n'); // rows are splitted with '/n'
@@ -512,11 +512,11 @@
                         }
                         },
                         {
-                            selector: 'node[openSource=true]',
+                            selector: 'node[openSource=TRUE]',
                             style: {
                             'background-image': 'url(https://cdn.worldvectorlogo.com/logos/open-source.svg)'
                             }
-                        }
+                        },
                         {
                         selector: 'edge', // edge style
                         style: {
