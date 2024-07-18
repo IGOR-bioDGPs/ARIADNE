@@ -391,7 +391,7 @@
                 const nodes = rows.map(row => {
                     // A split the columns into a looong array of variables
                     // Also columns are splitted with ';'
-                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr] = row.split(';');
+                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr, openSource] = row.split(';');
                     // And initalise the data structure of the nodes, with using the CSV file and variables
                     return {
                         data: {
@@ -406,7 +406,8 @@
                         is_terminal: isTerminal,
                         href: href,
                         tooltip: tooltip,
-                        descr: descr
+                        descr: descr,
+                        openSource: openSource
                         }
                     };
                 });
@@ -502,8 +503,20 @@
                             'font-size': 24,
                             'text-wrap': 'wrap', // or 'ellipsis' for truncation
                             'text-max-width': 150, // Set the maximum width for wrapped text
+                            // 'background-image': 'data(openSource)', // https://cdn.worldvectorlogo.com/logos/open-source.svg //testing 
+                            'background-width': '60%', // testing
+                            'background-height': '60%', // testing
+                            'background-offset-x' : '50%', // testing
+                            'background-offset-y' : '50%', // testing
+                            'background-clip' : 'none', // testing
                         }
                         },
+                        {
+                            selector: 'node[openSource=true]',
+                            style: {
+                            'background-image': 'url(https://cdn.worldvectorlogo.com/logos/open-source.svg)'
+                            }
+                        }
                         {
                         selector: 'edge', // edge style
                         style: {
