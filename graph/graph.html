@@ -30,6 +30,7 @@
     }
     .info-box {
         font-family: Helvetica;
+        font-size: 14px;
         position: absolute;
         top: 10px;
         right: 10px;
@@ -40,8 +41,27 @@
         border-radius: 5px;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
         cursor: pointer;
+        z-index: 2;
     }
     .info-box.show {
+        display: none;
+    }
+    .key-box {
+        font-family: Helvetica;
+        font-size: 14px;
+        position: absolute;
+        top: 120px;
+        right: 10px;
+        width: 300px;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+        cursor: pointer;
+        z-index: 1;
+    }
+    .key-box.show {
         display: none;
     }
     body {
@@ -62,7 +82,7 @@
         top: 20px; /* Adjust the top distance from the top of the screen */
         left: 20px; /* Adjust the left distance from the left side of the screen */
         z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 24px;
+        font-size: 16.5px;
         background-color: #4CAF50;
         color: white;
         border: none;
@@ -76,7 +96,7 @@
     }
     .osf-button {
         position: fixed;
-        top: 100px; /* Adjust the top distance from the top of the screen */
+        top: 85px; /* Adjust the top distance from the top of the screen */
         left: 20px; /* Adjust the left distance from the left side of the screen */
         z-index: 9999; /* Ensure the button appears above other elements */
         font-size: 16.5px;
@@ -89,6 +109,23 @@
         transition: background-color 0.3s;
     }
     .osf-button:hover {
+        background-color: #45a049;
+    }
+    .glos-button {
+        position: fixed;
+        top: 150px; /* Adjust the top distance from the top of the screen */
+        left: 20px; /* Adjust the left distance from the left side of the screen */
+        z-index: 9999; /* Ensure the button appears above other elements */
+        font-size: 16.5px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .glos-button:hover {
         background-color: #45a049;
     }
     /*suggestion buttons*/
@@ -167,8 +204,9 @@
   
 </head>
 <body>
-    <button id="back-button" class="back-button" title="Jump back to ARIADNE-Book">←<br>Back to ARIADNE Book</button>
-    <button id="osf-button" class="osf-button" title="Jump to OSF repository to see the complete resource table">←<br>Jump to OSF repository<br>to see the complete resource table</button>
+    <button id="back-button" class="back-button" title="For more information, see the ARIADNE book">←<br>ARIADNE Book</button>
+    <button id="osf-button" class="osf-button" title="Go to the OSF repository to see the complete resource table">←<br>OSF Repository</button>
+    <button id="glos-button" class="glos-button" title="Go to the Glossary of terms used">←<br>Glossary</button>
     <button id="sugg-gdrive-button" class="sugg-gdrive-button" title="If you have a new resource to suggest; please report them to us via Google Forms!">Suggest new resource via Google Forms</button>
     <button id="sugg-ghub-button" class="sugg-ghub-button" title="If you have a new resource to suggest; please report them to us via GitHub issues!">Suggest new resource via GitHub</button>
     <button id="bug-gdrive-button" class="bug-gdrive-button" title="If you have a a bug that you have encountered; please report them to us via Google Forms!">Report a bug via Google Forms</button>
@@ -176,7 +214,7 @@
     <div id="cy"></div>
     <div id="info-box" class="info-box">
         <span id="infoTitle"><h2>Instructions:</h2> Click to hide/unhide the instructions</span>
-        <div id="infoContent">
+        <div id="infoContent" hidden>
             <ul>
             <li>First things first. This is a "dynamic" network. This means that you can drag the nodes around and zoom in/out to resize the view</li>
             <li>Left click on a node to go to the next levels.</li>
@@ -188,7 +226,13 @@
             <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
             <canvas id="shapesCanvas" width="280" height="100"></canvas>
         </div>
-        
+    </div>
+    <div id="key-box" class="key-box">
+        <span id="keyTitle"><h2>Key Questions:</h2> Click to hide/unhide the key questions</span>
+        <div id="keyContent" hidden>
+            <ul>
+            <li>First things first. This is a "dynamic" network. This means that you can drag the nodes around and zoom in/out to resize the view</li>
+        </div>
     </div>
     <script>
         // Get the canvas element
@@ -310,7 +354,8 @@
 
 
 
-  <script>// Get the width and height of the screen
+  <script>
+        // Get the width and height of the screen
         var screenWidth = window.innerWidth*0.8;
         var screenHeight = window.innerHeight;
         // Set CSS variables with screen width and height
@@ -340,7 +385,15 @@
         // Add a click event listener to the button
         redirectToOsfButton.addEventListener('click', function() {
             // Redirect the user to the desired webpage
-            window.open('https://osf.io/tqjh8/', '_blank');
+            window.open('https://osf.io/a2zbf', '_blank');
+            // window.location.href = 'https://osf.io/tqjh8/';
+        });
+        // jump to glossary button
+        var redirectToGlosButton = document.getElementById('glos-button');
+        // Add a click event listener to the button
+        redirectToGlosButton.addEventListener('click', function() {
+            // Redirect the user to the desired webpage
+            window.open('', '_blank');
             // window.location.href = 'https://osf.io/tqjh8/';
         });
         // suggestion buttons
@@ -378,6 +431,20 @@
         var infoContent = document.getElementById('infoContent');
         infoBox.addEventListener('click', function() {
             infoContent.toggleAttribute("hidden");
+            // infoContent.style.zIndex = -1; // when clicked draw it in the most highest z-level
+            // keyContent.style.zIndex = 1; // when clicked draw it in the most highest z-level
+            keyContent.css('z-index', 1);
+            infoContent.css('z-index', 200);
+        });
+        // Add a click event listener to the key-box
+        var keyBox = document.getElementById('key-box');
+        var keyContent = document.getElementById('keyContent');
+        keyBox.addEventListener('click', function() {
+            keyContent.toggleAttribute("hidden");
+            // keyContent.style.zIndex = -1; // when clicked draw it in the most highest z-level
+            // infoContent.style.zIndex = 1; // when clicked draw it in the most highest z-level
+            keyContent.css('z-index', 200);
+            infoContent.css('z-index', 1);
         });
     </script>
     <script>
