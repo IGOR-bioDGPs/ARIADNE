@@ -2,29 +2,29 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: contentpages/intro
 parts:
-    - caption: The road to success
-      chapters:
-       - file: abstract
-       - file: Introduction
-       - file: node_graph_link
-       - file: step1
-       - file: step2
-       - file: step3
-       - file: step4
-       - file: step5
-       - file: step6
-       - file: step7
-       - file: step8
-       - file: step9
-       - file: step10
-       - file: discussion
-       - file: references
-    - caption: Supplementary information
-      chapters:
-       - file: contributions
-       - file: acknowledgments
-       - file: funding
-       - file: competinginterests
-
+  - caption: The road to success
+    chapters:
+      - file: contentpages/abstract
+      - file: contentpages/Introduction
+      - file: contentpages/node_graph_link
+      - file: contentpages/step1
+      - file: contentpages/step2
+      - file: contentpages/step3
+      - file: contentpages/step4
+      - file: contentpages/step5
+      - file: contentpages/step6
+      - file: contentpages/step7
+      - file: contentpages/step8
+      - file: contentpages/step9
+      - file: contentpages/step10
+      - file: contentpages/discussion
+      - file: contentpages/zbibliography
+  - caption: Supplementary information
+    chapters:
+      - file: contentpages/contributions
+      - file: contentpages/acknowledgments
+      - file: contentpages/funding
+      - file: contentpages/competinginterests
+      - file: contentpages/LICENCE

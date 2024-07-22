@@ -27,3 +27,4 @@ parts:
       - file: contentpages/acknowledgments
       - file: contentpages/funding
       - file: contentpages/competinginterests
+      - file: contentpages/LICENCE
