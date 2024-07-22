@@ -28,13 +28,9 @@ id;source;target;subgraph;label;background-color
 27;Organization;Toggl;Organization;;black
 28;Organization;Time Graphic;Organization;;black
 29;Project Start;Study design;initial;;black
-30;Study design;Stimuli;Studydesign;;black
 31;Study design;Sample size;Studydesign;;black
 32;Study design;Design framework;Studydesign;;black
 33;Study design;Data availability;Studydesign;;black
-34;Stimuli;Full body stimuli;Stimuli;;black
-35;Stimuli;EmBody / EmFace;Stimuli;;black
-36;Stimuli;Kapodi stimuli database;Stimuli;;black
 37;Sample size;Sample size justification Shiny app;Samplesize;;black
 38;Sample size;Gpower;Samplesize;;black
 39;Design framework;Presentation;Designframework;;black
