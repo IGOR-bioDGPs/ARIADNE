@@ -492,7 +492,7 @@
         // async function to get edges from the Github repo
         async function fetchDataEdges() {
             try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv';
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_edges.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_edges.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv
                 const response = await fetch(githubRawURL); // fetch the CSV data from the URL
                 const csvData = await response.text(); // and get the response as a text file
                 const rows = csvData.split('\n'); // rows are splitted with '/n'
@@ -606,9 +606,9 @@
                     },
                     zoom: 1
                 });
-                if (sub_graph != 'initial'){
+                if (sub_graph != 'initial'){ // breadthfirst if less than 7 nodes, else circular
                     var styleOptions = cy.layout({
-                        name: 'breadthfirst',
+                        name: 'circle',
                         fit: true, // whether to fit the viewport to the graph
                         avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
                         // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
