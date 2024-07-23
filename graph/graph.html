@@ -458,7 +458,7 @@
                 const nodes = rows.map(row => {
                     // A split the columns into a looong array of variables
                     // Also columns are splitted with ';'
-                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr, openSource] = row.split(';');
+                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr, openSource, keyQuestions] = row.split(';');
                     // And initalise the data structure of the nodes, with using the CSV file and variables
                     return {
                         data: {
@@ -474,7 +474,8 @@
                         href: href,
                         tooltip: tooltip,
                         descr: descr,
-                        openSource: openSource
+                        openSource: openSource,
+                        keyQuestions: keyQuestions,
                         }
                     };
                 });
@@ -606,7 +607,7 @@
                     },
                     zoom: 1
                 });
-                if (sub_graph != 'initial'){ // breadthfirst if less than 7 nodes, else circular
+                if (sub_graph != 'initial'){ 
                     var styleOptions = cy.layout({
                         name: 'circle',
                         fit: true, // whether to fit the viewport to the graph
@@ -638,6 +639,24 @@
                         positions: positions // Assign positions for nodes
                     });
                     styleOptions2.run();
+                } else if(filteredNodes.length >= 3 && filteredNodes.length < 7){ // breadthfirst if less than 7 nodes, else circular
+                    var styleOptions = cy.layout({
+                        name: 'breadthfirst',
+                        fit: true, // whether to fit the viewport to the graph
+                        avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+                        // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
+                        spacingFactor: 1.5,
+                    });
+                    styleOptions.run();
+                } else {
+                    var styleOptions = cy.layout({
+                        name: 'circle',
+                        fit: true, // whether to fit the viewport to the graph
+                        avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+                        // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
+                        spacingFactor: 1.5,
+                    });
+                    styleOptions.run();
                 }
                 main(index, cy, graphPathArr); // and now call the main function so we run it indefinitely
                 index += 1; // increase the index because we run the code once already
@@ -656,6 +675,9 @@
                     var node = event.target; // get the node
                     if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
                         createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
+                        if (node.data('mainGraph') == 'initial'){ // only if it's an initial node we should show the key questions
+                            updateKeyContent(node, 'left_click'); // Call the function to update key content
+                        }
                     }
                     else{ // if it's a terminal node
                         window.open(node.data('tooltip'), '_blank'); // redirect to the respective webpage
@@ -667,6 +689,7 @@
                     const tooltips = document.querySelectorAll('.custom-tooltip'); // get all tooltips, i.e. boxes
                     tooltips.forEach(tooltip => tooltip.remove()); // and remove all of them
                     createNetwork('initial'); // and reset to the initial overview
+                    updateKeyContent('', 'right_click'); // Call the function to update key content
                 });
                 // if there is a right click on a node
                 cyto.on('cxttap', 'node', function(event) {
@@ -710,6 +733,24 @@
                     }
                     cyto.center(); // center the whole graph to viewport 
                 });
+            }
+        }
+        function updateKeyContent(node, clickType) {
+            const keyContent = document.getElementById('keyContent');
+            keyContent.innerHTML = ''; // Clear previous content
+            if (clickType == 'left_click') {
+                // Add new content based on the node's key questions
+                const keyQuestions = node.data('keyQuestions').split('||'); // Split the string into an array
+                keyQuestions.forEach(question => {
+                    const newKey = document.createElement('li');
+                    newKey.textContent = question.trim(); // Trim any extra spaces
+                    keyContent.appendChild(newKey);
+                });
+            } else {
+                // Reset to initial view
+                const newKey = document.createElement('li');
+                newKey.textContent = `Initial view`;
+                keyContent.appendChild(newKey);
             }
         }
         main(index);
