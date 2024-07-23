@@ -1,8 +1,5 @@
 id;label;shape;bgcolor;fontcolor;rank;subgraph;mainGraph;is_terminal;href;tooltip;descr;openSource;keyQuestions
-Project Start;Project Start;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"What is the gap in the literature and the resulting research question?
-Is funding available to conduct the project?
-What are the time plan and work packages of the project?
-Who is responsible for what in the project?"
+Project Start;Project Start;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;What is the gap in the literature and the resulting research question?, Is funding available to conduct the project?, What are the time plan and work packages of the project?, Who is responsible for what in the project?
 Project Start;Project Start;rectangle;#005AB5;white;1;ProjectStart;ProjectStart;no;NA;;NA;FALSE;
 Literature;Literature;diamond;#40B0A6;white;2;ProjectStart;ProjectStart;no;NA;;NA;FALSE;
 Literature;Literature;diamond;#40B0A6;white;2;Literature;ProjectStart;no;NA;;NA;FALSE;
@@ -33,11 +30,7 @@ Ganttrify;Ganttrify;ellipse;#D41159;white;3;Organization;ProjectStart;yes;https:
 Miro;Miro;ellipse;#D41159;white;3;Organization;ProjectStart;yes;https://miro.com/;https://miro.com/;You can use Miro for creating visual presentations of anything, and most of all, for collaboration with others! The possibilities are endless.;FALSE;
 Toggl;Toggl;ellipse;#D41159;white;3;Organization;ProjectStart;yes;https://toggl.com/;https://toggl.com/;Time tracking software to boost performance and get paid for every billable minute. An intuitive tool that makes time tracking painless for the entire team.;FALSE;
 Time Graphic;Time Graphic;ellipse;#D41159;white;3;Organization;ProjectStart;yes;https://time.graphics/de/;https://time.graphics/de/;Free online timeline maker;FALSE;
-Study design;Study design;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"What are the hypotheses and how can they be tested?
-Which independent variables (IVs) are manipulated?
-Which dependent variables (DVs) need to be measured? 
-Is approval by an ethics/institutional review board (IRB) needed?
-How large should the sample be?"
+Study design;Study design;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;What are the hypotheses and how can they be tested?, Which independent variables (IVs) are manipulated?, Which dependent variables (DVs) need to be measured?, Is approval by an ethics/institutional review board (IRB) needed?, How large should the sample be
 Study design;Study design;rectangle;#005AB5;white;1;Studydesign;Studydesign;no;NA;;NA;FALSE;
 Sample size;Sample size;diamond;#40B0A6;white;2;Studydesign;Studydesign;no;NA;;NA;FALSE;
 Design framework;Design framework;diamond;#40B0A6;white;2;Studydesign;Studydesign;no;NA;;NA;FALSE;
@@ -69,9 +62,7 @@ Emotions;Emotions;diamond;#40B0A6;white;4;Emotions;Studydesign;no;NA;;NA;FALSE;
 Popane;Popane;ellipse;#D41159;white;5;Emotions;Studydesign;yes;https://osf.io/94bpx/;https://osf.io/94bpx/;A large database on the psychophysiology of positive and negative emotions. This database involves recording of 1157 healthy participants, collected across seven studies, a continuous recordof self-reported affect along with several biosignals (electrocardiogram, impedance cardiogram, electrodermal activity, hemodynamic measures, e.g., blood pressure), respiration trace, and skin temperature. [The authors] experimentally elicited a wide range of positive and negative emotions, including amusement, anger, disgust, excitement, fear, gratitude, sadness, tenderness, and threat.;FALSE;
 Imaging data;Imaging data;diamond;#40B0A6;white;4;Imagingdata;Studydesign;no;NA;;NA;FALSE;
 NeuroSynth;NeuroSynth;ellipse;#D41159;white;5;Imagingdata;Studydesign;yes;https://neurosynth.org/;https://neurosynth.org/;Neurosynth is a platform for large-scale, automated synthesis of functional magnetic resonance imaging (fMRI) data.;FALSE;
-Study Implementation;Study Implementation;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"What measures are most fitting (tasks, questionnaires, etc.)?
-What stimuli need to be created (e.g., pictures, videos, text)?
-Which programming environment should be used?"
+Study Implementation;Study Implementation;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;What measures are most fitting (tasks, questionnaires, etc.)?, What stimuli need to be created (e.g., pictures, videos, text)?, Which programming environment should be used?
 Study Implementation;Study Implementation;rectangle;#005AB5;white;1;StudyImplementation;StudyImplementation;no;NA;;NA;FALSE;
 Preregistration Framework;Preregistration Framework;diamond;#40B0A6;white;2;StudyImplementation;StudyImplementation;no;NA;;NA;FALSE;
 Registered Report Framework;Registered Report Framework;ellipse;#D41159;white;2;StudyImplementation;StudyImplementation;yes;https://www.cos.io/initiatives/registered-reports;https://www.cos.io/initiatives/registered-reports;Registered Reports is a publishing format that emphasizes the importance of the research question and the quality of methodology by conducting peer review prior to data collection. High quality protocols are then provisionally accepted for publication if the authors follow through with the registered methodology.;FALSE;
@@ -90,14 +81,12 @@ EMBODY/EMFACE;EMBODY/EMFACE;ellipse;#D41159;white;3;StimulusMaterial;StudyImplem
 Empathy for pain;Empathy for pain;ellipse;#D41159;white;3;StimulusMaterial;StudyImplementation;yes;https://osf.io/2q3zu/files/osfstorage;https://osf.io/2q3zu/files/osfstorage;Pictures showing hands in painful situations that can be used to assess empathy for others' pain.;FALSE;
 Full body stimuli;Full body stimuli;ellipse;#D41159;white;3;StimulusMaterial;StudyImplementation;yes;https://www.paulconnorpsych.com/stimuli;https://www.paulconnorpsych.com/stimuli;Need some full-body stimuli in your experiments? Look no further.;FALSE;
 KAPODI;KAPODI;ellipse;#D41159;white;3;StimulusMaterial;StudyImplementation;yes;https://airtable.com/shrnVoUZrwu6riP9b/tbljKUnVvikhzaNvF/viwlo7OvlHBG2q88P?blocks=hide;https://airtable.com/shrnVoUZrwu6riP9b/tbljKUnVvikhzaNvF/viwlo7OvlHBG2q88P?blocks=hide;A huge database of every emotional stimuli you can think of and may want to use in your experiments.;FALSE;
-Piloting;Piloting;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"Is the study feasible?*
-Do all manipulations work as intended?"
+Piloting;Piloting;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;Is the study feasible?, Do all manipulations work as intended?
 Piloting;Piloting;rectangle;#005AB5;white;1;Piloting;Piloting;no;NA;;NA;FALSE;
 Data simulation;Data simulation;ellipse;#D41159;white;2;Piloting;Piloting;yes;https://gretel.ai/blog/data-simulation#:~:text=Data%20simulation%20is%20the%20process,predict%20events%20and%20validate%20models;https://gretel.ai/blog/data-simulation#:~:text=Data%20simulation%20is%20the%20process,predict%20events%20and%20validate%20models;Data simulation in an experiment involves creating artificial or synthetic data that mimics the characteristics of real-world data. This process is commonly used for testing and validation purposes.;FALSE;
 Feasibility studies;Feasibility studies;ellipse;#D41159;white;2;Piloting;Piloting;yes;https://pilotandfeasibilitystudies.qmul.ac.uk/;https://pilotandfeasibilitystudies.qmul.ac.uk/;This website is designed to support those conducting pilot and feasibility studies using randomised and non-randomised designs and those carrying out methodological research on these types of studies.;FALSE;
 Webinars for pilot studies;Webinars for pilot studies;ellipse;#D41159;white;2;Piloting;Piloting;yes;https://www.youtube.com/playlist?list=PL1ZXkt3KzJhk3v3K1GCWYPZxZnydY0FC9;https://www.youtube.com/playlist?list=PL1ZXkt3KzJhk3v3K1GCWYPZxZnydY0FC9;A webinar series highlighting key points to consider when conducting pilot and feasibility studies prior to a definitive randomised controlled trial.;FALSE;
-Data collection;Data collection;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"How can we make sure my data is safely stored, accessible, and backed up?*
-Is the data collected in a way that protects private and sensitive information (e.g., of participants)?*"
+Data collection;Data collection;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;How can we make sure my data is safely stored, accessible, and backed up?, Is the data collected in a way that protects private and sensitive information (e.g., of participants)?
 Data collection;Data collection;rectangle;#005AB5;white;1;Datacollection;Datacollection;no;NA;;NA;FALSE;
 Survey;Survey;diamond;#40B0A6;white;2;Datacollection;Datacollection;no;NA;;NA;FALSE;
 Survey;Survey;diamond;#40B0A6;white;2;Survey;Datacollection;no;NA;;NA;FALSE;
@@ -113,8 +102,7 @@ Landscaping Longitudinal Research;Landscaping Longitudinal Research;ellipse;#D41
 Re3data;Re3data;ellipse;#D41159;white;3;Existingdata;Datacollection;yes;https://www.re3data.org/;https://www.re3data.org/;Re3data is a global registry of research data repositories that covers research data repositories from different academic disciplines.;FALSE;
 Sci2sci;Sci2sci;ellipse;#D41159;white;3;Existingdata;Datacollection;yes;https://ods.beta.sci2sci.com/;https://ods.beta.sci2sci.com/;A platform designed to facilitate the search, publication, and acquisition of datasets.;FALSE;
 Mexca;Mexca;ellipse;#D41159;white;3;Existingdata;Datacollection;yes;https://github.com/mexca/mexca;https://github.com/mexca/mexca;Mexca is an open-source Python package which aims to capture human emotion expressions from videos in a single pipeline.;FALSE;
-Data validation;Data validation;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"How can we ensure the quality and accuracy of the data?*
-How can we store the data reproducibly?*"
+Data validation;Data validation;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;How can we ensure the quality and accuracy of the data?, How can we store the data reproducibly?
 Data validation;Data validation;rectangle;#005AB5;white;1;Datavalidation;Datavalidation;no;NA;;NA;FALSE;
 Data management;Data management;diamond;#40B0A6;white;2;Datavalidation;Datavalidation;no;NA;;NA;FALSE;
 Data management;Data management;diamond;#40B0A6;white;2;Datamanagement;Datavalidation;no;NA;;NA;FALSE;
@@ -133,10 +121,7 @@ SPM;SPM;ellipse;#D41159;white;5;fMRI_val;Datavalidation;yes;https://www.fil.ion.
 FSL;FSL;ellipse;#D41159;white;5;fMRI_val;Datavalidation;yes;https://fsl.fmrib.ox.ac.uk/fsl/fslwiki;https://fsl.fmrib.ox.ac.uk/fsl/fslwiki;FSL is a comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data.;FALSE;
 Freesurfer;Freesurfer;ellipse;#D41159;white;5;fMRI_val;Datavalidation;yes;https://surfer.nmr.mgh.harvard.edu/;https://surfer.nmr.mgh.harvard.edu/;An open source neuroimaging toolkit for processing, analyzing, and visualizing human brain MR images;FALSE;
 DICOM tags;DICOM tags;ellipse;#D41159;white;5;fMRI_val;Datavalidation;yes;https://exiftool.org/TagNames/DICOM.html;https://exiftool.org/TagNames/DICOM.html;Do you want to know where a specific information is saved in the DICOM file of your imaging data. Check out DICOM Tags.;FALSE;
-Data analysis;Data analysis;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"What are specific analysis pipelines and programs that can be used for specific types of data (e.g., EEG, (f)MRI, behavior)?
-What open-source software is a good alternative to proprietary products?* 
-Which tools allow complete replicability of an analysis pipeline, independent of the specific operating system of a user or continuous software updates? 
-How are results visualized in a captivating, yet transparent and maximally inclusive way?"
+Data analysis;Data analysis;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;What are specific analysis pipelines and programs that can be used for specific types of data (e.g., EEG, (f)MRI, behavior)?, What open-source software is a good alternative to proprietary products?* , Which tools allow complete replicability of an analysis pipeline, independent of the specific operating system of a user or continuous software updates? , How are results visualized in a captivating, yet transparent and maximally inclusive way?
 Data analysis;Data analysis;rectangle;#005AB5;white;1;Dataanalysis;Dataanalysis;no;NA;;NA;FALSE;
 Data Visualization;Data Visualization;diamond;#40B0A6;white;2;Dataanalysis;Dataanalysis;no;NA;;NA;FALSE;
 Data Visualization;Data Visualization;diamond;#40B0A6;white;2;DataVisualization;Dataanalysis;no;NA;;NA;FALSE;
@@ -226,13 +211,7 @@ Coda;Coda;ellipse;#D41159;white;3;Meta-analysis;Dataanalysis;yes;https://coopera
 Metalab;Metalab;ellipse;#D41159;white;3;Meta-analysis;Dataanalysis;yes;https://langcog.github.io/metalab/;https://langcog.github.io/metalab/;This website features interactive, community-augmented meta-analysis tools for cognitive development research.;FALSE;
 Templates;Templates;ellipse;#D41159;white;3;Meta-analysis;Dataanalysis;yes;https://psycnet.apa.org/record/2020-66880-001;https://psycnet.apa.org/record/2020-66880-001;"A primer and tutorial paper on ""Conducting a meta-analysis in the age of open science: Tools, tips, and practical recommendations"", including nine templates free for use, from preregistration to code to data.";FALSE;
 Neuroquery;Neuroquery;ellipse;#D41159;white;3;Meta-analysis;Dataanalysis;yes;https://neuroquery.org/;https://neuroquery.org/;NeuroQuery is a tool for meta-analysis of neuroimaging studies, relating text queries to activations as well as associations between terms used together in neuroimaging publications. More info in the corresponding paper.;FALSE;
-Writing;Writing;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"What is the scope of the paper?
-What is the target audience and journal?
-How to write a convincing abstract? 
-How to properly credit authors?
-How to find and cite sources correctly?
-How to structure a manuscript? 
-Which frameworks allow to conveniently write a reproducible manuscript?"
+Writing;Writing;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;What is the scope of the paper?, What is the target audience and journal?, How to write a convincing abstract?, How to properly credit authors?, How to find and cite sources correctly?, How to structure a manuscript?, Which frameworks allow to conveniently write a reproducible manuscript?
 Writing;Writing;rectangle;#005AB5;white;1;Writing;Writing;no;NA;;NA;FALSE;
 Crediting;Crediting;diamond;#40B0A6;white;2;Writing;Writing;no;NA;;NA;FALSE;
 Crediting;Crediting;diamond;#40B0A6;white;2;Crediting;Writing;no;NA;;NA;FALSE;
@@ -268,10 +247,7 @@ BibTeX;BibTeX;ellipse;#D41159;white;4;CitationManagers;Writing;yes;https://www.b
 Citation Diversity Statement;Citation Diversity Statement;ellipse;#D41159;white;3;Citations;Writing;yes;https://github.com/dalejn/cleanBib;https://github.com/dalejn/cleanBib;To increase awareness about citation bias and mitigate it, by checking for and transparently reporting proportions of citing male and female first and last authors, use the citation diversity statement by Zurn et al. (2020, TICS).;FALSE;
 Recite;Recite;ellipse;#D41159;white;3;Citations;Writing;yes;https://reciteworks.com/;https://reciteworks.com/;To check your in-text citations and reference lists for errors, use Reciteworks.;FALSE;
 Citation Gecko;Citation Gecko;ellipse;#D41159;white;3;Citations;Writing;yes;https://citationgecko.azurewebsites.net/;https://citationgecko.azurewebsites.net/;Gecko is here to help you find the most relevant papers to your research and give you a more complete sense of the research landscape.;FALSE;
-Publication;Publication;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"Where to upload data, code, materials, and/or a preprint?*
-Is the published data FAIR (“Findable, Accessible, Interoperable, and Reusable”)?*
-How to write a cover letter?
-How to write a rebuttal to reviewer comments?"
+Publication;Publication;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;Where to upload data, code, materials, and/or a preprint?, Is the published data FAIR (“Findable, Accessible, Interoperable, and Reusable”)?, How to write a cover letter?, How to write a rebuttal to reviewer comments?
 Publication;Publication;rectangle;#005AB5;white;1;Publication;Publication;no;NA;;NA;FALSE;
 Journal choice;Journal choice;diamond;#40B0A6;white;2;Publication;Publication;no;NA;;NA;FALSE;
 Journal choice;Journal choice;diamond;#40B0A6;white;2;Journalchoice;Publication;no;NA;;NA;FALSE;
@@ -290,9 +266,7 @@ PsyArXiv;PsyArXiv;ellipse;#D41159;white;4;Preprintserver;Publication;yes;https:/
 BioArXiv;BioArXiv;ellipse;#D41159;white;4;Preprintserver;Publication;yes;https://www.biorxiv.org/;https://psyarxiv.com/;A preprint platform for publications related to Psychology.;FALSE;
 PsychArchives;PsychArchives;ellipse;#D41159;white;4;Preprintserver;Publication;yes;https://www.psycharchives.org/;https://www.psycharchives.org/;A disciplinary repository for psychological science and neighboring disciplines. Accommodating 20 different digital research object (DRO) types, including articles, preprints, research data, code, supplements, preregistrations, tests and multimedia objects, PsychArchives provides a digital space that integrates all research-related content relevant to psychology.;FALSE;
 ORCID;ORCID;ellipse;#D41159;white;2;Publication;Publication;yes;https://orcid.org/;https://orcid.org/;"Get an ORCID - an ""Open Researcher and Contributor ID"" which is a persistent digital identifier that you own and control, and that distinguishes you from every other researcher. Link your projects and output to your ORCID.";FALSE;
-Dissemination;Dissemination;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;"How to design a poster for a conference?
-How to prepare a scientific presentation?
-How to present your research to a lay audience?"
+Dissemination;Dissemination;rectangle;#005AB5;white;1;initial;initial;no;NA;;NA;FALSE;How to design a poster for a conference?, How to prepare a scientific presentation?, How to present your research to a lay audience?
 Dissemination;Dissemination;rectangle;#005AB5;white;1;Dissemination;Dissemination;no;NA;;NA;FALSE;
 Resource Sharing;Resource Sharing;diamond;#40B0A6;white;2;Dissemination;Dissemination;no;NA;;NA;FALSE;
 Resource Sharing;Resource Sharing;diamond;#40B0A6;white;2;ResourceSharing;Dissemination;no;NA;;NA;FALSE;
