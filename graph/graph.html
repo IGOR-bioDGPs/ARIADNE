@@ -667,8 +667,8 @@
         }
         // main function
         async function main(index, cyto, graphPathArr) {
-            const minZoom = 0.8; // minimum allowed zoom level
-            const maxZoom = 1.2; // maximum allowed zoom level
+            const minZoom = 0.6; // minimum allowed zoom level
+            const maxZoom = 1; // maximum allowed zoom level
             // get cyto .css element first
             var cytoCSS = document.body;
             if (index == 0){ // if it's the first iteration
@@ -691,18 +691,28 @@
                 });
                 // if there is a right click anywhere
                 cyto.on('cxttap', function(event) {
+                    try { // check if a node is clicked, or anywhere else
+                        var isNode = event.target.isNode(); // a variable that checks if a node is clicked
+                    } catch (error){
+                        var isNode = false;
+                    }
                     cytoCSS.style.backgroundImage = 'url("ARIADNE_Logo.png")'; // add background image
                     const tooltips = document.querySelectorAll('.custom-tooltip'); // get all tooltips, i.e. boxes
                     tooltips.forEach(tooltip => tooltip.remove()); // and remove all of them
                     createNetwork('initial'); // and reset to the initial overview
-                    updateKeyContent('', 'right_click'); // Call the function to update key content
+                    if (!isNode) { // only reset if the reset screen right click appears
+                        updateKeyContent('', 'right_click'); // Call the function to update key content
+                    }
                     cyto.zoom(minZoom); // set zoom to the minimum value
                 });
                 // if there is a right click on a node
                 cyto.on('cxttap', 'node', function(event) {
+                    const node = event.target;
                     var auxElem = graphPathArr[index-1]; // get the previous subgraph
                     if (auxElem != 'initial'){
                         cytoCSS.style.backgroundImage = 'url("")'; // add background image
+                    } else if (auxElem == 'initial'){
+                        updateKeyContent('', 'right_click'); // Call the function to update key content
                     }
                     createNetwork(auxElem.replace(' ','')); // and reset to the initial overview
                 });
@@ -752,7 +762,17 @@
                     newKey.textContent = question.trim(); // Trim any extra spaces
                     keyContent.appendChild(newKey);
                 });
-            } else {
+            } else if (clickType == 'right_node_click'){ // if right click is on node
+                // Add new content based on the node's key questions
+                const keyQuestions = node.data('keyQuestions').split('||'); // Split the string into an array
+                keyContent.appendChild(document.createElement('ul'));
+                keyQuestions.forEach(question => {
+                    const newKey = document.createElement('li');
+                    newKey.textContent = question.trim(); // Trim any extra spaces
+                    keyContent.appendChild(newKey);
+                });
+            }
+            else if (clickType == 'right_click'){
                 // Reset to initial view
                 const newKey = document.createElement('li');
                 newKey.textContent = `Initial view`;
