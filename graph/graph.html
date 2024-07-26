@@ -636,6 +636,7 @@
                     });
                     styleOptions.run();
                 }
+                console.log(filteredNodes.length)
                 if (filteredNodes.length < 3){
                     // Calculate the center of the screen
                     var centerX = screenWidth / 2;
@@ -643,8 +644,8 @@
 
                     // Calculate the positions for the nodes
                     var positions = {};
-                    positions[filteredNodes[0].data.id] = { x: centerX, y: centerY - 25 };
-                    positions[filteredNodes[1].data.id] = { x: centerX, y: centerY + 200 };
+                    positions[filteredNodes[0].data.id] = { x: centerX - 175, y: centerY - 200 };
+                    positions[filteredNodes[1].data.id] = { x: centerX - 175, y: centerY + 50 };
 
                     // Define layout options
                     var styleOptions2 = cy.layout({
@@ -653,7 +654,7 @@
                         avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
                         // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
                         // spacingFactor: 1,
-                        // zoom: 0.88,
+                        zoom: 0.88,
                         // pan: { x: centerX, y: centerY },
                         positions: positions // Assign positions for nodes
                     });
@@ -661,6 +662,7 @@
                 } else if(filteredNodes.length >= 3 && filteredNodes.length < 7){ // breadthfirst if less than 7 nodes, else circular
                     var styleOptions = cy.layout({
                         name: 'breadthfirst',
+                        grid:false,
                         fit: true, // whether to fit the viewport to the graph
                         avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
                         // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
@@ -694,7 +696,7 @@
         // main function
         async function main(index, cyto, graphPathArr) {
             const minZoom = 0.6; // minimum allowed zoom level
-            const maxZoom = 1; // maximum allowed zoom level
+            const maxZoom = 1.2; // maximum allowed zoom level
             // get cyto .css element first
             var cytoCSS = document.body;
             if (index == 0){ // if it's the first iteration
