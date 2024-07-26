@@ -15,8 +15,22 @@ id;source;target;subgraph;label;background-color
 14;Literature;Consensus;Literature;;black
 15;Literature;Seaboat;Literature;;black
 16;Literature;Semantic Scholar;Literature;;black
+;Literature;Improving Statistical Questions by Daniel Lakens;Literature;;black
+;Literature;Brain Interpreter;Literature;;black
+;Literature;Open Access Button;Literature;;black
 17;Literature;MeSH;Literature;;black
 ;Project Start;Communities;ProjectStart;;black
+;Communities;Open Knowledge Foundation;Communities;;black
+;Communities;Center for Open Science;Communities;;black
+;Communities;Database of Open Science communities;Communities;;black
+;Communities;International Network of Open Science & Scholarship Communities;Communities;;black
+;Communities;Global Reproducibility Networks;Communities;;black
+;Communities;ReproducibiliTea;Communities;;black
+;Communities;The Society for the Improvement of Psychological Science;Communities;;black
+;Communities;Global Young Academy;Communities;;black
+;Communities;RepliCATS;Communities;;black
+;Communities;Psychological Science Accelerator;Communities;;black
+;Communities;The Turing Way;Communities;;black
 ;Communities;FORRT;Communities;;black
 ;Communities;ABRIR;Communities;;black
 ;Communities;Public Open Science Institute (ZPID);Communities;;black
@@ -30,12 +44,15 @@ id;source;target;subgraph;label;background-color
 25;Organization;Ganttrify;Organization;;black
 26;Organization;Miro;Organization;;black
 27;Organization;Toggl;Organization;;black
+;Organization;GitLab Roadmap;Organization;;black
+;Organization;Big Team Setup;Organization;;black
 28;Organization;Time Graphic;Organization;;black
 29;Project Start;Study design;initial;;black
 30;Study design;Sample size;Studydesign;;black
 31;Study design;Design framework;Studydesign;;black
 32;Study design;Data availability;Studydesign;;black
 33;Sample size;Sample size justification Shiny app;Samplesize;;black
+;Sample size;WebPower online tool;Sample size;;black
 34;Sample size;Gpower;Samplesize;;black
 35;Design framework;Presentation;Designframework;;black
 36;Design framework;Pavlovia;Designframework;;black
@@ -49,9 +66,11 @@ id;source;target;subgraph;label;background-color
 44;Data availability;Datasets;Dataavailability;Existing data;black
 45;Datasets;Imaging data;Datasets;;black
 46;Datasets;Emotions;Datasets;;black
+;Datasets;PsychOpen CAMA;Datasets;;black
 47;Datasets;24 days of databases;Datasets;;black
 48;Datasets;BIONIC project;Datasets;;black
 49;Emotions;Popane;Emotions;;black
+;Imaging data;neurosynth compose;Imaging data;;black
 50;Imaging data;NeuroSynth;Imagingdata;;black
 51;Study design;Study Implementation;initial;;black
 52;Study Implementation;Preregistration Framework;StudyImplementation;;black
@@ -91,6 +110,7 @@ id;source;target;subgraph;label;background-color
 86;Data management;RDMkit;Datamanagement;;black
 87;Data management;Diffchecker;Datamanagement;;black
 88;Data validation;Preprocessing;Datavalidation;;black
+;Preprocessing;Preprocessing guidelines for psychophysiological outcomes;Preprocessing;;black
 89;Preprocessing;Type of data;Preprocessing;;black
 90;Type of data;fMRI_val;Typeofdata;;black
 91;Type of data;EEG;Typeofdata;;black
@@ -220,6 +240,7 @@ id;source;target;subgraph;label;background-color
 215;Preprint server;PeerCommunityIn;Preprintserver;Preprint Feedback;black
 216;Preprint server;PreReview;Preprintserver;Preprint Feedback;black
 217;Preprint server;PsychArchives;Preprintserver;;black
+;Publication;Octopus;Publication;;black
 218;Publication;ORCID;Publication;;black
 219;Publication;TOP Guidelines;Publication;;black
 220;Publication;Dissemination;initial;;black
@@ -239,6 +260,7 @@ id;source;target;subgraph;label;background-color
 234;Data_resource;Protocols;Materials;;black
 235;Materials;Zenodo;Materials;;black
 236;Materials;GitHub_mat;Materials;;black
+;Dissemination;Pint of Science;Dissemination;;black
 237;Dissemination;Psychology conference timelines;Dissemination;;black
 238;Dissemination;Poster;Dissemination;;black
 239;Poster;Designing conference posters;Poster;;black
