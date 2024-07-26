@@ -578,12 +578,13 @@
                             'font-size': 24,
                             'text-wrap': 'wrap', // or 'ellipsis' for truncation
                             'text-max-width': 150, // Set the maximum width for wrapped text
-                            // 'background-image': 'data(openSource)', // https://cdn.worldvectorlogo.com/logos/open-source.svg //testing 
-                            'background-width': '80%', // testing
-                            'background-height': '80%', // testing
-                            'background-offset-x' : '140%', // testing
-                            'background-offset-y' : '140%', // testing
-                            'background-clip' : 'none', // testing
+                            'background-width': '80%', // those four variables fix the position of the images
+                            'background-height': '80%', // those four variables fix the position of the images
+                            'background-offset-x' : '140%', // those four variables fix the position of the images
+                            'background-offset-y' : '140%', // those four variables fix the position of the images
+                            'background-clip' : 'none', // no clipping
+                            'background-image-containment': 'over', // draw the image over the node
+                            'bounds-expansion': 4 // expand the bounding box
                         }
                         },
                         { // testing to production: change /dev/ to master
@@ -636,7 +637,6 @@
                     });
                     styleOptions.run();
                 }
-                console.log(filteredNodes.length)
                 if (filteredNodes.length < 3){
                     // Calculate the center of the screen
                     var centerX = screenWidth / 2;
