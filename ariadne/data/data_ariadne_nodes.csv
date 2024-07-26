@@ -17,6 +17,11 @@ Consensus;Consensus;ellipse;#D41159;white;3;Literature;ProjectStart;yes;https://
 Seaboat;Seaboat;ellipse;#D41159;white;3;Literature;ProjectStart;yes;https://www.seaboat.io/;https://www.seaboat.io/;This app helps you organize your evaluation of a empirical research, focusing on threats to validity. Read the corresponding paper here: https://psyarxiv.com/fc8v3.;FALSE;;
 Semantic Scholar;Semantic Scholar;ellipse;#D41159;white;3;Literature;ProjectStart;yes;https://www.semanticscholar.org/;https://www.semanticscholar.org/;A free, AI-powered research tool to find scientific literature.;FALSE;;
 MeSH;MeSH;ellipse;#D41159;white;3;Literature;ProjectStart;yes;https://www.ncbi.nlm.nih.gov/mesh/;https://www.ncbi.nlm.nih.gov/mesh/;MeSH (Medical Subject Headings) is the NLM controlled vocabulary thesaurus used for indexing PubMed citations. Use the MeSH database to find MeSH terms, including Subheadings, Publication Types, Supplementary Concepts and Pharmacological Actions, and then build a PubMed search. The MeSH database can be searched by MeSH term, MeSH Entry Term, Subheading, Publication Type, Supplementary Concept, or MeSH Scope Note.;FALSE;;
+Communities;Communities;diamond;#40B0A6;white;2;ProjectStart;ProjectStart;no;NA;;NA;FALSE;;
+Communities;Communities;diamond;#40B0A6;white;2;Communities;ProjectStart;no;NA;;NA;;;
+FORRT;FORRT;ellipse;#D41159;white;3;Communities;ProjectStart;yes;https://forrt.org/;https://forrt.org/;NA;TRUE;;
+ABRIR;ABRIR;ellipse;#D41159;white;3;Communities;ProjectStart;yes;https://abrirpsy.org/;https://abrirpsy.org/;NA;TRUE;;
+Public Open Science Institute (ZPID);Public Open Science Institute (ZPID);ellipse;#D41159;white;3;Communities;ProjectStart;yes;https://leibniz-psychology.org/en/;https://leibniz-psychology.org/en/;NA;HYBRID;;
 Funding;Funding;diamond;#40B0A6;white;2;ProjectStart;ProjectStart;no;NA;;NA;;;
 Funding;Funding;diamond;#40B0A6;white;2;Funding;ProjectStart;no;NA;;NA;;;
 Postdoc funding;Postdoc funding;ellipse;#D41159;white;3;Funding;ProjectStart;yes;https://research.jhu.edu/rdt/funding-opportunities/postdoctoral/;https://research.jhu.edu/rdt/funding-opportunities/postdoctoral/;Find a list of postdoctoral funding opportunities (there are also separate lists for neuroscience/neurology and cancer/oncology).;FALSE;;

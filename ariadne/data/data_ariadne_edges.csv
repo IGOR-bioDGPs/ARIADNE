@@ -16,6 +16,10 @@ id;source;target;subgraph;label;background-color
 15;Literature;Seaboat;Literature;;black
 16;Literature;Semantic Scholar;Literature;;black
 17;Literature;MeSH;Literature;;black
+;Project Start;Communities;ProjectStart;;black
+;Communities;FORRT;Communities;;black
+;Communities;ABRIR;Communities;;black
+;Communities;Public Open Science Institute (ZPID);Communities;;black
 18;Project Start;Funding;ProjectStart;;black
 19;Funding;Postdoc funding;Funding;;black
 20;Project Start;Organization;ProjectStart;;black
