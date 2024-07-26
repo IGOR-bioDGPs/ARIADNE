@@ -464,7 +464,7 @@
                 const nodes = rows.map(row => {
                     // A split the columns into a looong array of variables
                     // Also columns are splitted with ';'
-                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr, openSource, keyQuestions] = row.split(';');
+                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr, openSource, keyQuestions, keyLink] = row.split(';');
                     // And initalise the data structure of the nodes, with using the CSV file and variables
                     return {
                         data: {
@@ -482,6 +482,7 @@
                         descr: descr,
                         openSource: openSource,
                         keyQuestions: keyQuestions,
+                        keyLink: keyLink,
                         }
                     };
                 });
@@ -578,29 +579,29 @@
                             'text-wrap': 'wrap', // or 'ellipsis' for truncation
                             'text-max-width': 150, // Set the maximum width for wrapped text
                             // 'background-image': 'data(openSource)', // https://cdn.worldvectorlogo.com/logos/open-source.svg //testing 
-                            'background-width': '60%', // testing
-                            'background-height': '60%', // testing
-                            'background-offset-x' : '50%', // testing
-                            'background-offset-y' : '50%', // testing
+                            'background-width': '80%', // testing
+                            'background-height': '80%', // testing
+                            'background-offset-x' : '140%', // testing
+                            'background-offset-y' : '140%', // testing
                             'background-clip' : 'none', // testing
                         }
                         },
-                        {
+                        { // testing to production: change /dev/ to master
                             selector: 'node[openSource= "TRUE"]',
                             style: {
-                            'background-image': 'url(imgs/lock.png)'
+                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/graph/imgs/unlock.png)'
                             }
                         },
                         {
                             selector: 'node[openSource= "HYBRID"]',
                             style: {
-                            'background-image': 'url(imgs/closed_lock_with_key.png)'
+                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/graph/imgs/closed_lock_with_key.png)'
                             }
                         },
                         {
                             selector: 'node[openSource= "FALSE"]',
                             style: {
-                            'background-image': 'url(imgs/unlock.png)'
+                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/graph/imgs/lock.png)'
                             }
                         },
                         {
@@ -787,6 +788,17 @@
                     newKey.textContent = question.trim(); // Trim any extra spaces
                     keyContent.appendChild(newKey);
                 });
+                // add the keyLink
+                keyContent.appendChild(document.createElement('ul'));
+                const newKeyLink = document.createElement('a');
+                // Set the href attribute
+                newKeyLink.href = node.data('keyLink');
+                newKeyLink.target = '_blank';
+                // Create a text node with the content of keyLink and add it to the newKeyLink
+                newKeyLink.textContent = "Click here to read the step description";
+                // Append the newKeyLink to the keyContent
+                keyContent.appendChild(newKeyLink);
+
             } else if (clickType == 'right_node_click'){ // if right click is on node
                 // Add new content based on the node's key questions
                 const keyQuestions = node.data('keyQuestions').split('||'); // Split the string into an array
@@ -796,6 +808,16 @@
                     newKey.textContent = question.trim(); // Trim any extra spaces
                     keyContent.appendChild(newKey);
                 });
+                // add the keyLink
+                keyContent.appendChild(document.createElement('ul'));
+                const newKeyLink = document.createElement('a');
+                // Set the href attribute
+                newKeyLink.href = node.data('keyLink');
+                newKeyLink.target = '_blank';
+                // Create a text node with the content of keyLink and add it to the newKeyLink
+                newKeyLink.textContent = "Click here to read the step description";
+                // Append the newKeyLink to the keyContent
+                keyContent.appendChild(newKeyLink);
             }
             else if (clickType == 'right_click'){
                 // Reset to initial view
