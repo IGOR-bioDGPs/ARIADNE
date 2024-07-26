@@ -229,7 +229,7 @@
             <canvas id="shapesCanvas" width="280" height="100"></canvas>
         </div>
     </div>
-    <div id="key-box" class="key-box">
+    <div id="key-box" class="key-box" hidden>
         <span id="keyTitle"><h2>Key Questions:</h2> Click to hide/unhide the key questions</span>
         <div id="keyContent" hidden>
             <ul>
@@ -666,6 +666,17 @@
                 }
                 main(index, cy, graphPathArr); // and now call the main function so we run it indefinitely
                 index += 1; // increase the index because we run the code once already
+                // in the next block, keybox is set
+                var keyBox = document.getElementById('key-box');
+                if (sub_graph !== 'initial'){
+                    if (keyBox.hasAttribute('hidden')) {
+                    // If it is set, remove the attribute to show the element
+                        keyBox.removeAttribute('hidden');
+                    } 
+                }else {
+                    // If it is not set, add the attribute to hide the element
+                    keyBox.setAttribute('hidden', '');
+                }
         }
         // main function
         async function main(index, cyto, graphPathArr) {
@@ -755,6 +766,18 @@
         function updateKeyContent(node, clickType) {
             const keyContent = document.getElementById('keyContent');
             keyContent.innerHTML = '\n'; // Clear previous content
+            // var keyBox = document.getElementById('key-box');
+            // console.log(keyBox.hasAttribute('hidden'))
+            // if (typeof variable !== 'undefined'){
+            //     console.log(node.data('subgraph'));
+            //     if (keyBox.hasAttribute('hidden')) {
+            //     // If it is set, remove the attribute to show the element
+            //         keyBox.removeAttribute('hidden');
+            //     } else {
+            //     // If it is not set, add the attribute to hide the element
+            //         keyBox.setAttribute('hidden', '');
+            //     }
+            // }
             if (clickType == 'left_click') {
                 // Add new content based on the node's key questions
                 const keyQuestions = node.data('keyQuestions').split('||'); // Split the string into an array
