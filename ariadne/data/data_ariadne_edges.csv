@@ -223,16 +223,16 @@ id;source;target;subgraph;label;background-color
 226;Resource Sharing;Data;ResourceSharing;;black
 227;Data;Open Science Framework;Data;;black
 228;Data;FigShare;Data;;black
-229;Data;Protocols;Materials;;black
-230;Data;Zenodo;Data;;black
-231;Data;NeuroVault;Data;;black
-232;Resource Sharing;Code;ResourceSharing;;black
-233;Code;Open Science Framework;Code;;black
-234;Code;DataCite;Code;;black
-235;Code;Zenodo;Code;;black
-236;Code;GitHub;Code;;black
-237;Resource Sharing;Materials;ResourceSharing;;black
-238;Materials;Open Science Framework;Materials;;black
+229;Data;Zenodo;Data;;black
+230;Data;NeuroVault;Data;;black
+231;Resource Sharing;Code;ResourceSharing;;black
+232;Code;Open Science Framework;Code;;black
+233;Code;DataCite;Code;;black
+234;Code;Zenodo;Code;;black
+235;Code;GitHub;Code;;black
+236;Resource Sharing;Materials;ResourceSharing;;black
+237;Materials;Open Science Framework;Materials;;black
+238;Data;Protocols;Materials;;black
 239;Materials;Zenodo;Materials;;black
 240;Materials;GitHub_mat;Materials;;black
 241;Dissemination;Psychology conference timelines;Dissemination;;black
