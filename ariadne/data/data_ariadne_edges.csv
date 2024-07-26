@@ -225,9 +225,9 @@ id;source;target;subgraph;label;background-color
 228;Data_resource;FigShare;Data_resource;;black
 229;Data_resource;Zenodo;Data_resource;;black
 230;Data_resource;NeuroVault;Data_resource;;black
+233;Data_resource;DataCite;Data_resource;;black
 231;Resource Sharing;Code_resource;ResourceSharing;;black
 232;Code_resource;Open Science Framework;Code_resource;;black
-233;Code_resource;DataCite;Code_resource;;black
 234;Code_resource;Zenodo;Code_resource;;black
 235;Code_resource;GitHub;Code_resource;;black
 236;Resource Sharing;Materials;ResourceSharing;;black
