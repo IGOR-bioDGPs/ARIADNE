@@ -458,7 +458,7 @@
         // async function to get nodes from the Github repo
         async function fetchDataNodes() {
             try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_nodes.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_nodes.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_nodes.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv
                 const response = await fetch(githubRawURL); // fetch the CSV data from the URL
                 const csvData = await response.text(); // and get the response as a text file
                 const rows = csvData.split('\n'); // rows are splitted with '/n'
@@ -501,7 +501,7 @@
         // async function to get edges from the Github repo
         async function fetchDataEdges() {
             try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_edges.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_edges.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_edges.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv
                 const response = await fetch(githubRawURL); // fetch the CSV data from the URL
                 const csvData = await response.text(); // and get the response as a text file
                 const rows = csvData.split('\n'); // rows are splitted with '/n'
@@ -591,19 +591,19 @@
                         { // testing to production: change /dev/ to master
                             selector: 'node[openSource= "TRUE"]',
                             style: {
-                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/graph/imgs/unlock.png)'
+                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/unlock.png)'
                             }
                         },
                         {
                             selector: 'node[openSource= "HYBRID"]',
                             style: {
-                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/graph/imgs/closed_lock_with_key.png)'
+                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/closed_lock_with_key.png)'
                             }
                         },
                         {
                             selector: 'node[openSource= "FALSE"]',
                             style: {
-                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/graph/imgs/lock.png)'
+                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/lock.png)'
                             }
                         },
                         {
