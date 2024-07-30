@@ -231,58 +231,58 @@ id;source;target;subgraph;label;background-color
 230;Journal choice;Journal suggester;Journalchoice;;black
 231;Journal choice;Journal abbreviations;Journalchoice;;black
 232;Journal choice;SciRev;Journalchoice;;black
-233;Publication;Preprint;Publication;;black
-234;Preprint;Sherpa Romeo;Preprint;Allowed?;black
-235;Preprint;Preprint server;Preprint;;black
-236;Preprint server;MetArXiv;Preprintserver;Meta-analyses;black
-237;Preprint server;PsyArXiv;Preprintserver;Psychological studies;black
-238;Preprint server;BioArXiv;Preprintserver;Biopsychological studies;black
-239;Preprint server;PeerCommunityIn;Preprintserver;Preprint Feedback;black
-240;Preprint server;PreReview;Preprintserver;Preprint Feedback;black
-241;Preprint server;PsychArchives;Preprintserver;;black
-242;Publication;Octopus;Publication;;black
-243;Publication;ORCID;Publication;;black
-244;Publication;TOP Guidelines;Publication;;black
-245;Publication;Dissemination;initial;;black
-246;Dissemination;Resource Sharing;Dissemination;;black
-247;Resource Sharing;Data_resource;ResourceSharing;;black
-248;Data_resource;Open Science Framework;Data_resource;;black
-249;Data_resource;FigShare;Data_resource;;black
-250;Data_resource;Zenodo;Data_resource;;black
-251;Data_resource;NeuroVault;Data_resource;;black
-252;Data_resource;DataCite;Data_resource;;black
-253;Resource Sharing;Code_resource;ResourceSharing;;black
-254;Code_resource;Open Science Framework;Code_resource;;black
-255;Code_resource;Zenodo;Code_resource;;black
-256;Code_resource;GitHub;Code_resource;;black
-257;Resource Sharing;Materials;ResourceSharing;;black
-258;Materials;Open Science Framework;Materials;;black
-259;Data_resource;Protocols;Materials;;black
-260;Materials;Zenodo;Materials;;black
-261;Materials;GitHub_mat;Materials;;black
-262;Dissemination;Pint of Science;Dissemination;;black
-263;Dissemination;Psychology conference timelines;Dissemination;;black
-264;Dissemination;Poster;Dissemination;;black
-265;Poster;Designing conference posters;Poster;;black
-266;Poster;Canva;Poster;;black
-267;Poster;Illustrator;Poster;;black
-268;Poster;PowerPoint;Poster;;black
-269;Poster;Better posters;Poster;;black
-270;Poster;Font size calculator;Poster;;black
-271;Dissemination;Talk;Dissemination;;black
-272;Talk;Slidesgo;Talk;;black
-273;Talk;PowerPoint;Talk;;black
-274;Talk;Talk invitations;Talk;;black
-275;Talk;Prezi;Talk;;black
-276;Dissemination;Writing_diss;Dissemination;;black
-277;Writing_diss;In Mind Magazine;Writing_diss;;black
-278;Writing_diss;Gehirn und Geist;Writing_diss;;black
-279;Writing_diss;Scientific American;Writing_diss;;black
-280;Writing_diss;APS Observer;Writing_diss;;black
-281;Writing_diss;APA Monitor on Psychology;Writing_diss;;black
-282;Dissemination;Social Media;Dissemination;;black
-283;Social Media;Twitter;SocialMedia;;black
-284;Social Media;Mastodon;SocialMedia;;black
-285;Social Media;TikTok;SocialMedia;;black
-286;Social Media;Instagram;SocialMedia;;black
-287;Social Media;YouTube;SocialMedia;;black
+233;Publication;Resource Sharing;Dissemination;;black
+234;Resource Sharing;Data_resource;ResourceSharing;;black
+235;Data_resource;Open Science Framework;Data_resource;;black
+236;Data_resource;FigShare;Data_resource;;black
+237;Data_resource;Zenodo;Data_resource;;black
+238;Data_resource;NeuroVault;Data_resource;;black
+239;Data_resource;DataCite;Data_resource;;black
+240;Resource Sharing;Code_resource;ResourceSharing;;black
+241;Code_resource;Open Science Framework;Code_resource;;black
+242;Code_resource;Zenodo;Code_resource;;black
+243;Code_resource;GitHub;Code_resource;;black
+244;Resource Sharing;Materials;ResourceSharing;;black
+245;Materials;Open Science Framework;Materials;;black
+246;Materials;Protocols;Materials;;black
+247;Materials;Zenodo;Materials;;black
+248;Materials;GitHub_mat;Materials;;black
+249;Publication;Preprint;Publication;;black
+250;Preprint;Sherpa Romeo;Preprint;Allowed?;black
+251;Preprint;Preprint server;Preprint;;black
+252;Preprint server;MetArXiv;Preprintserver;Meta-analyses;black
+253;Preprint server;PsyArXiv;Preprintserver;Psychological studies;black
+254;Preprint server;BioArXiv;Preprintserver;Biopsychological studies;black
+255;Preprint server;PeerCommunityIn;Preprintserver;Preprint Feedback;black
+256;Preprint server;PreReview;Preprintserver;Preprint Feedback;black
+257;Preprint server;PsychArchives;Preprintserver;;black
+258;Publication;Octopus;Publication;;black
+259;Publication;ORCID;Publication;;black
+260;Publication;TOP Guidelines;Publication;;black
+261;Publication;Dissemination;initial;;black
+278;Dissemination;Pint of Science;Dissemination;;black
+279;Dissemination;Psychology conference timelines;Dissemination;;black
+280;Dissemination;Poster;Dissemination;;black
+281;Poster;Designing conference posters;Poster;;black
+282;Poster;Canva;Poster;;black
+283;Poster;Illustrator;Poster;;black
+284;Poster;PowerPoint;Poster;;black
+285;Poster;Better posters;Poster;;black
+286;Poster;Font size calculator;Poster;;black
+287;Dissemination;Talk;Dissemination;;black
+;Talk;Slidesgo;Talk;;black
+;Talk;PowerPoint;Talk;;black
+;Talk;Talk invitations;Talk;;black
+;Talk;Prezi;Talk;;black
+;Dissemination;Writing_diss;Dissemination;;black
+;Writing_diss;In Mind Magazine;Writing_diss;;black
+;Writing_diss;Gehirn und Geist;Writing_diss;;black
+;Writing_diss;Scientific American;Writing_diss;;black
+;Writing_diss;APS Observer;Writing_diss;;black
+;Writing_diss;APA Monitor on Psychology;Writing_diss;;black
+;Dissemination;Social Media;Dissemination;;black
+;Social Media;Twitter;SocialMedia;;black
+;Social Media;Mastodon;SocialMedia;;black
+;Social Media;TikTok;SocialMedia;;black
+;Social Media;Instagram;SocialMedia;;black
+;Social Media;YouTube;SocialMedia;;black
