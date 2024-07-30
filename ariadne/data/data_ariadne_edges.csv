@@ -52,7 +52,7 @@ id;source;target;subgraph;label;background-color
 51;Study design;Design framework;Studydesign;;black
 52;Study design;Data availability;Studydesign;;black
 53;Sample size;Sample size justification Shiny app;Samplesize;;black
-54;Sample size;WebPower online tool;Sample size;;black
+54;Sample size;WebPower online tool;Samplesize;;black
 55;Sample size;Gpower;Samplesize;;black
 56;Design framework;Presentation;Designframework;;black
 57;Design framework;Pavlovia;Designframework;;black
