@@ -230,7 +230,6 @@ id;source;target;subgraph;label;background-color
 229;Journal choice;Journal suggester;Journalchoice;;black
 230;Journal choice;Journal abbreviations;Journalchoice;;black
 231;Journal choice;SciRev;Journalchoice;;black
-232;Publication;Resource Sharing;Dissemination;;black
 233;Resource Sharing;Data_resource;ResourceSharing;;black
 234;Data_resource;Open Science Framework;Data_resource;;black
 235;Data_resource;FigShare;Data_resource;;black
