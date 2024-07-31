@@ -1,6 +1,7 @@
 # Welcome to **ARIADNE**
 
-This is the website belonging to the **ARIADNE** project.
+This is the website belonging to the **ARIADNE** project. Click [here](https://igor-biodgps.github.io/ARIADNE/contentpages/intro.html) to go to the resource. 
+Please **note** that the tool is best viewed on a large laptop or external screen.
 
 # Who are we?
 
@@ -22,5 +23,6 @@ We have created a curated scientific resource navigator called **ARIADNE** that 
 10. Disseminating the publication - from data sharing to science communication
 
 These 10 steps determine the quality and ultimately the success of any research project, yet so far no such guide exists, especially none focussing on novel developments in the field of open and reproducible science practices.
+
 
 The preprint corresponding to this tool can be found [here](https://osf.io/jfh3t). If you want to contribute a new resource or report a bug, please do so via Google Forms with clicking [this link](https://drive.google.com/drive/folders/1nw8x_OwfNlQ8jpaBRiirHpjYGvUAiB3v) or via GitHub Issues with [this link](https://github.com/IGOR-bioDGPs/ARIADNE/issues/new/choose).
