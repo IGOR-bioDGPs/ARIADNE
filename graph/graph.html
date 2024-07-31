@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- <script async data-id="101459976" src="//static.getclicky.com/js"></script> Clicky webpage tracker service -->
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +32,7 @@
     }
     .info-box {
         font-family: Helvetica;
+        font-size: 14px;
         position: absolute;
         top: 10px;
         right: 10px;
@@ -40,8 +43,27 @@
         border-radius: 5px;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
         cursor: pointer;
+        z-index: 2;
     }
     .info-box.show {
+        display: none;
+    }
+    .key-box {
+        font-family: Helvetica;
+        font-size: 14px;
+        position: absolute;
+        top: 120px;
+        right: 10px;
+        width: 300px;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+        cursor: pointer;
+        z-index: 1;
+    }
+    .key-box.show {
         display: none;
     }
     body {
@@ -62,7 +84,7 @@
         top: 20px; /* Adjust the top distance from the top of the screen */
         left: 20px; /* Adjust the left distance from the left side of the screen */
         z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 24px;
+        font-size: 16.5px;
         background-color: #4CAF50;
         color: white;
         border: none;
@@ -76,7 +98,7 @@
     }
     .osf-button {
         position: fixed;
-        top: 100px; /* Adjust the top distance from the top of the screen */
+        top: 85px; /* Adjust the top distance from the top of the screen */
         left: 20px; /* Adjust the left distance from the left side of the screen */
         z-index: 9999; /* Ensure the button appears above other elements */
         font-size: 16.5px;
@@ -89,6 +111,23 @@
         transition: background-color 0.3s;
     }
     .osf-button:hover {
+        background-color: #45a049;
+    }
+    .glos-button {
+        position: fixed;
+        top: 150px; /* Adjust the top distance from the top of the screen */
+        left: 20px; /* Adjust the left distance from the left side of the screen */
+        z-index: 9999; /* Ensure the button appears above other elements */
+        font-size: 16.5px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .glos-button:hover {
         background-color: #45a049;
     }
     /*suggestion buttons*/
@@ -167,8 +206,9 @@
   
 </head>
 <body>
-    <button id="back-button" class="back-button" title="Jump back to ARIADNE-Book">←<br>Back to ARIADNE Book</button>
-    <button id="osf-button" class="osf-button" title="Jump to OSF repository to see the complete resource table">←<br>Jump to OSF repository<br>to see the complete resource table</button>
+    <button id="back-button" class="back-button" title="For more information, see the ARIADNE book">←<br>ARIADNE Book</button>
+    <button id="osf-button" class="osf-button" title="Go to the OSF repository to see the complete resource table">←<br>OSF Repository</button>
+    <button id="glos-button" class="glos-button" title="Go to the Glossary of terms used">←<br>Glossary</button>
     <button id="sugg-gdrive-button" class="sugg-gdrive-button" title="If you have a new resource to suggest; please report them to us via Google Forms!">Suggest new resource via Google Forms</button>
     <button id="sugg-ghub-button" class="sugg-ghub-button" title="If you have a new resource to suggest; please report them to us via GitHub issues!">Suggest new resource via GitHub</button>
     <button id="bug-gdrive-button" class="bug-gdrive-button" title="If you have a a bug that you have encountered; please report them to us via Google Forms!">Report a bug via Google Forms</button>
@@ -176,7 +216,7 @@
     <div id="cy"></div>
     <div id="info-box" class="info-box">
         <span id="infoTitle"><h2>Instructions:</h2> Click to hide/unhide the instructions</span>
-        <div id="infoContent">
+        <div id="infoContent" hidden>
             <ul>
             <li>First things first. This is a "dynamic" network. This means that you can drag the nodes around and zoom in/out to resize the view</li>
             <li>Left click on a node to go to the next levels.</li>
@@ -188,7 +228,13 @@
             <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
             <canvas id="shapesCanvas" width="280" height="100"></canvas>
         </div>
-        
+    </div>
+    <div id="key-box" class="key-box" hidden>
+        <span id="keyTitle"><h2>Key Questions:</h2> Click to hide/unhide the key questions</span>
+        <div id="keyContent" hidden>
+            <ul>
+            <li></li>
+        </div>
     </div>
     <script>
         // Get the canvas element
@@ -310,7 +356,8 @@
 
 
 
-  <script>// Get the width and height of the screen
+  <script>
+        // Get the width and height of the screen
         var screenWidth = window.innerWidth*0.8;
         var screenHeight = window.innerHeight;
         // Set CSS variables with screen width and height
@@ -333,14 +380,23 @@
         // Add a click event listener to the button
         redirectToMainButton.addEventListener('click', function() {
             // Redirect the user to the desired webpage
-            window.location.href = 'https://igor-biodgps.github.io/ARIADNE/contentpages/intro.html';
+            window.open('https://igor-biodgps.github.io/ARIADNE/contentpages/intro.html', '_blank');
+            // window.location.href = 'https://igor-biodgps.github.io/ARIADNE/contentpages/intro.html';
         });
         // jump to osf button
         var redirectToOsfButton = document.getElementById('osf-button');
         // Add a click event listener to the button
         redirectToOsfButton.addEventListener('click', function() {
             // Redirect the user to the desired webpage
-            window.open('https://osf.io/tqjh8/', '_blank');
+            window.open('https://osf.io/a2zbf', '_blank');
+            // window.location.href = 'https://osf.io/tqjh8/';
+        });
+        // jump to glossary button
+        var redirectToGlosButton = document.getElementById('glos-button');
+        // Add a click event listener to the button
+        redirectToGlosButton.addEventListener('click', function() {
+            // Redirect the user to the desired webpage
+            window.open('https://igor-biodgps.github.io/ARIADNE/contentpages/Glossary.html', '_blank'); 
             // window.location.href = 'https://osf.io/tqjh8/';
         });
         // suggestion buttons
@@ -378,20 +434,38 @@
         var infoContent = document.getElementById('infoContent');
         infoBox.addEventListener('click', function() {
             infoContent.toggleAttribute("hidden");
+            // infoContent.style.zIndex = -1; // when clicked draw it in the most highest z-level
+            // keyContent.style.zIndex = 1; // when clicked draw it in the most highest z-level
+            // keyContent.css('z-index', 1);
+            keyContent.style.zIndex = 1;
+            // infoContent.css('z-index', 200);
+            infoContent.style.zIndex = 200;
+        });
+        // Add a click event listener to the key-box
+        var keyBox = document.getElementById('key-box');
+        var keyContent = document.getElementById('keyContent');
+        keyBox.addEventListener('click', function() {
+            keyContent.toggleAttribute("hidden");
+            // keyContent.style.zIndex = -1; // when clicked draw it in the most highest z-level
+            // infoContent.style.zIndex = 1; // when clicked draw it in the most highest z-level
+            // keyContent.css('z-index', 200);
+            keyContent.style.zIndex = 200;
+            // infoContent.css('z-index', 1);
+            infoContent.style.zIndex = 1;
         });
     </script>
     <script>
         // async function to get nodes from the Github repo
         async function fetchDataNodes() {
             try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv';
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_nodes.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv
                 const response = await fetch(githubRawURL); // fetch the CSV data from the URL
                 const csvData = await response.text(); // and get the response as a text file
                 const rows = csvData.split('\n'); // rows are splitted with '/n'
                 const nodes = rows.map(row => {
                     // A split the columns into a looong array of variables
                     // Also columns are splitted with ';'
-                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr] = row.split(';');
+                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr, openSource, keyQuestions, keyLink] = row.split(';');
                     // And initalise the data structure of the nodes, with using the CSV file and variables
                     return {
                         data: {
@@ -406,7 +480,10 @@
                         is_terminal: isTerminal,
                         href: href,
                         tooltip: tooltip,
-                        descr: descr
+                        descr: descr,
+                        openSource: openSource,
+                        keyQuestions: keyQuestions,
+                        keyLink: keyLink,
                         }
                     };
                 });
@@ -424,7 +501,7 @@
         // async function to get edges from the Github repo
         async function fetchDataEdges() {
             try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv';
+                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_edges.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv
                 const response = await fetch(githubRawURL); // fetch the CSV data from the URL
                 const csvData = await response.text(); // and get the response as a text file
                 const rows = csvData.split('\n'); // rows are splitted with '/n'
@@ -502,7 +579,32 @@
                             'font-size': 24,
                             'text-wrap': 'wrap', // or 'ellipsis' for truncation
                             'text-max-width': 150, // Set the maximum width for wrapped text
+                            'background-width': '80%', // those four variables fix the position of the images
+                            'background-height': '80%', // those four variables fix the position of the images
+                            'background-offset-x' : '140%', // those four variables fix the position of the images
+                            'background-offset-y' : '140%', // those four variables fix the position of the images
+                            'background-clip' : 'none', // no clipping
+                            'background-image-containment': 'over', // draw the image over the node
+                            'bounds-expansion': 4 // expand the bounding box
                         }
+                        },
+                        { // testing to production: change /dev/ to master
+                            selector: 'node[openSource= "TRUE"]',
+                            style: {
+                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/unlock.png)'
+                            }
+                        },
+                        {
+                            selector: 'node[openSource= "HYBRID"]',
+                            style: {
+                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/closed_lock_with_key.png)'
+                            }
+                        },
+                        {
+                            selector: 'node[openSource= "FALSE"]',
+                            style: {
+                            'background-image': 'url(https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/lock.png)'
+                            }
                         },
                         {
                         selector: 'edge', // edge style
@@ -526,9 +628,9 @@
                     },
                     zoom: 1
                 });
-                if (sub_graph != 'initial'){
+                if (sub_graph != 'initial'){ 
                     var styleOptions = cy.layout({
-                        name: 'breadthfirst',
+                        name: 'circle',
                         fit: true, // whether to fit the viewport to the graph
                         avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
                         // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
@@ -543,8 +645,8 @@
 
                     // Calculate the positions for the nodes
                     var positions = {};
-                    positions[filteredNodes[0].data.id] = { x: centerX, y: centerY - 25 };
-                    positions[filteredNodes[1].data.id] = { x: centerX, y: centerY + 200 };
+                    positions[filteredNodes[0].data.id] = { x: centerX - 175, y: centerY - 200 };
+                    positions[filteredNodes[1].data.id] = { x: centerX - 175, y: centerY + 50 };
 
                     // Define layout options
                     var styleOptions2 = cy.layout({
@@ -553,17 +655,49 @@
                         avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
                         // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
                         // spacingFactor: 1,
-                        // zoom: 0.88,
+                        zoom: 0.88,
                         // pan: { x: centerX, y: centerY },
                         positions: positions // Assign positions for nodes
                     });
                     styleOptions2.run();
+                } else if(filteredNodes.length >= 3 && filteredNodes.length < 7){ // breadthfirst if less than 7 nodes, else circular
+                    var styleOptions = cy.layout({
+                        name: 'breadthfirst',
+                        grid:false,
+                        fit: true, // whether to fit the viewport to the graph
+                        avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+                        // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
+                        spacingFactor: 1.5,
+                    });
+                    styleOptions.run();
+                } else {
+                    var styleOptions = cy.layout({
+                        name: 'circle',
+                        fit: true, // whether to fit the viewport to the graph
+                        avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+                        // avoidOverlapPadding: 20, // extra spacing around nodes when avoidOverlap: true
+                        spacingFactor: 1.5,
+                    });
+                    styleOptions.run();
                 }
                 main(index, cy, graphPathArr); // and now call the main function so we run it indefinitely
                 index += 1; // increase the index because we run the code once already
+                // in the next block, keybox is set
+                var keyBox = document.getElementById('key-box');
+                if (sub_graph !== 'initial'){
+                    if (keyBox.hasAttribute('hidden')) {
+                    // If it is set, remove the attribute to show the element
+                        keyBox.removeAttribute('hidden');
+                    } 
+                }else {
+                    // If it is not set, add the attribute to hide the element
+                    keyBox.setAttribute('hidden', '');
+                }
         }
         // main function
         async function main(index, cyto, graphPathArr) {
+            const minZoom = 0.6; // minimum allowed zoom level
+            const maxZoom = 1.2; // maximum allowed zoom level
             // get cyto .css element first
             var cytoCSS = document.body;
             if (index == 0){ // if it's the first iteration
@@ -576,6 +710,9 @@
                     var node = event.target; // get the node
                     if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
                         createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
+                        if (node.data('mainGraph') == 'initial'){ // only if it's an initial node we should show the key questions
+                            updateKeyContent(node, 'left_click'); // Call the function to update key content
+                        }
                     }
                     else{ // if it's a terminal node
                         window.open(node.data('tooltip'), '_blank'); // redirect to the respective webpage
@@ -583,16 +720,28 @@
                 });
                 // if there is a right click anywhere
                 cyto.on('cxttap', function(event) {
+                    try { // check if a node is clicked, or anywhere else
+                        var isNode = event.target.isNode(); // a variable that checks if a node is clicked
+                    } catch (error){
+                        var isNode = false;
+                    }
                     cytoCSS.style.backgroundImage = 'url("ARIADNE_Logo.png")'; // add background image
                     const tooltips = document.querySelectorAll('.custom-tooltip'); // get all tooltips, i.e. boxes
                     tooltips.forEach(tooltip => tooltip.remove()); // and remove all of them
                     createNetwork('initial'); // and reset to the initial overview
+                    if (!isNode) { // only reset if the reset screen right click appears
+                        updateKeyContent('', 'right_click'); // Call the function to update key content
+                    }
+                    cyto.zoom(minZoom); // set zoom to the minimum value
                 });
                 // if there is a right click on a node
                 cyto.on('cxttap', 'node', function(event) {
+                    const node = event.target;
                     var auxElem = graphPathArr[index-1]; // get the previous subgraph
                     if (auxElem != 'initial'){
                         cytoCSS.style.backgroundImage = 'url("")'; // add background image
+                    } else if (auxElem == 'initial'){
+                        updateKeyContent('', 'right_click'); // Call the function to update key content
                     }
                     createNetwork(auxElem.replace(' ','')); // and reset to the initial overview
                 });
@@ -618,8 +767,6 @@
                     tooltips.forEach(tooltip => tooltip.remove()); // and remove them
                 });
                 // also we want to lock the amount of zoom
-                const minZoom = 0.8; // minimum allowed zoom level
-                const maxZoom = 1.2; // maximum allowed zoom level
                 cyto.on('zoom', function(event) { // handle the zooming part
                     const currentZoom = cyto.zoom();
                     // limit the zoom level to the specified range
@@ -630,6 +777,56 @@
                     }
                     cyto.center(); // center the whole graph to viewport 
                 });
+            }
+        }
+        function updateKeyContent(node, clickType) {
+            const keyContent = document.getElementById('keyContent');
+            keyContent.innerHTML = '\n'; // Clear previous content
+            if (clickType == 'left_click') {
+                // Add new content based on the node's key questions
+                const keyQuestions = node.data('keyQuestions').split('||'); // Split the string into an array
+                keyContent.appendChild(document.createElement('ul'));
+                keyQuestions.forEach(question => {
+                    const newKey = document.createElement('li');
+                    newKey.textContent = question.trim(); // Trim any extra spaces
+                    keyContent.appendChild(newKey);
+                });
+                // add the keyLink
+                keyContent.appendChild(document.createElement('ul'));
+                const newKeyLink = document.createElement('a');
+                // Set the href attribute
+                newKeyLink.href = node.data('keyLink');
+                newKeyLink.target = '_blank';
+                // Create a text node with the content of keyLink and add it to the newKeyLink
+                newKeyLink.textContent = "Click here to read the step description";
+                // Append the newKeyLink to the keyContent
+                keyContent.appendChild(newKeyLink);
+
+            } else if (clickType == 'right_node_click'){ // if right click is on node
+                // Add new content based on the node's key questions
+                const keyQuestions = node.data('keyQuestions').split('||'); // Split the string into an array
+                keyContent.appendChild(document.createElement('ul'));
+                keyQuestions.forEach(question => {
+                    const newKey = document.createElement('li');
+                    newKey.textContent = question.trim(); // Trim any extra spaces
+                    keyContent.appendChild(newKey);
+                });
+                // add the keyLink
+                keyContent.appendChild(document.createElement('ul'));
+                const newKeyLink = document.createElement('a');
+                // Set the href attribute
+                newKeyLink.href = node.data('keyLink');
+                newKeyLink.target = '_blank';
+                // Create a text node with the content of keyLink and add it to the newKeyLink
+                newKeyLink.textContent = "Click here to read the step description";
+                // Append the newKeyLink to the keyContent
+                keyContent.appendChild(newKeyLink);
+            }
+            else if (clickType == 'right_click'){
+                // Reset to initial view
+                const newKey = document.createElement('li');
+                newKey.textContent = `Initial view`;
+                keyContent.appendChild(newKey);
             }
         }
         main(index);

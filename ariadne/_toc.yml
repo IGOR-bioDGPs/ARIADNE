@@ -8,6 +8,7 @@ parts:
     chapters:
       - file: contentpages/abstract
       - file: contentpages/Introduction
+      - file: contentpages/Glossary
       - file: contentpages/node_graph_link
       - file: contentpages/step1
       - file: contentpages/step2
@@ -27,3 +28,4 @@ parts:
       - file: contentpages/acknowledgments
       - file: contentpages/funding
       - file: contentpages/competinginterests
+      - file: contentpages/LICENCE
