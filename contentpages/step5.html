@@ -367,7 +367,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -383,6 +385,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -394,7 +404,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-5-data-collection">
 <h1>STEP 5: Data collection<a class="headerlink" href="#step-5-data-collection" title="Permalink to this heading">#</a></h1>
-<p>Before starting with data collection, it is recommended to create a standardized manual (SOP; see Step 3 and Table 1; Manghani, 2011) and document the experimental procedure in a lab-book (Schnell, 2015) that lists unforeseen events and information for each participant/session. The latter ensures that important details, such as equipment malfunctioning, reasons for participant dropout, noticeable participant behavior, and any crucial decisions or modifications made on the fly, are not lost or forgotten. Note that writing up the method section before Step 5 promises to save time prospectively and enhances the precision and reproducibility of the research project. Here, data management strategies such as intuitive data saving structures can help to avoid misunderstandings as well as waste of time due to data rearrangement or rewriting scripts (Michener, 2015). Making sure you have all data backed up is essential to prevent valuable data from being accidentally lost. These practices later facilitate data, code, and material sharing as part of the publication (Step 9; Contaxis et al., 2022). Even though the scientific community still lacks consensus on data arrangement structures and is constantly finding new approaches, there are already well-established structures such as the ➜ <a class="reference external" href="https://bids.neuroimaging.io/">Brain Imaging Data Structure</a> (BIDS; Gorgolewski et al., 2017) for complex neuroimaging data, which are listed in <strong>ARIADNE</strong>. Furthermore, data anonymization or pseudonymization are critical techniques to protect participants’ rights and privacy (Meyer, 2018 for ethical data sharing; Hallinan et al., 2023 for European Union regulations on data privacy). <strong>ARIADNE</strong> also provides examples of existing data that can be used for some research questions.</p>
+<p>Before starting with data collection, researchers can create a standardized manual (SOP; see Step 3 and glossary; Manghani, 2011) and document the experimental procedure in a lab-book (Schnell, 2015) that lists unforeseen events and information for each participant/session. The latter ensures that important details, such as equipment malfunctioning, reasons for participant dropout, noticeable participant behavior, and any crucial decisions or modifications made on the fly, are not lost or forgotten. Crucially, a lab book can and should be used in all kinds of studies, whether they are online- or lab-based, to clearly document any issues, methodological decisions and changes to the protocol. Note that writing up the methods section during Step 5 promises to save time prospectively and enhances the precision and reproducibility of the research project. Here, data management strategies from previous steps, such as intuitive data saving structures, can help to avoid misunderstandings as well as waste of time due to data rearrangement or script rewriting(Michener, 2015). Importantly, having all data regularly backed up during data collection is essential to prevent valuable data from being accidentally lost. These practices later facilitate data, code, and material sharing as part of the publication (Step 9; Contaxis et al., 2022). Ideally, decisions regarding the data management structure are already taken in Step 2. Even though the scientific community still lacks consensus on data arrangement structures and is constantly finding new approaches, there are already well-established structures such as BIDS. Furthermore, data anonymization or pseudonymization are critical techniques to protect participants’ rights and privacy (Meyer, 2018 for ethical data sharing; Hallinan et al., 2023 for European Union regulations on data privacy).</p>
+<section id="key-questions-in-this-step">
+<h2>Key questions in this step<a class="headerlink" href="#key-questions-in-this-step" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>How can we make sure my data is safely stored, accessible, and backed up?*</p></li>
+<li><p>Is the data collected in a way that protects private and sensitive information (e.g., of participants?*</p></li>
+</ul>
+<p><em>Questions with an asterisk indicate that these should ideally already be explored before starting a project.</em></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -451,6 +469,20 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
