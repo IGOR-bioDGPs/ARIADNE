@@ -1,6 +1,6 @@
 # STEP 9: Publication
 
-There are many ways in which to disseminate scientific work (Bourne, 2005; see Step 10), some of which are summarized in ARIADNE.
+There are many ways in which to disseminate scientific work (Bourne, 2005; see Step 10), some of these are summarized in ARIADNE.
 
 _Preprints_. Preprints facilitate early access to the manuscript, which helps researchers to document their scientific or academic work and may even be used to assert priority (e.g., ➜ [MetaArXiv](https://osf.io/preprints/metaarxiv/), ➜ [BioArXiv](https://www.biorxiv.org/), ➜ [PsyArXiv](https://osf.io/preprints/psyarxiv), or ➜ [PsychArchives](https://www.psycharchives.org/)). Preprint publication often happens simultaneously with the submission to the target journal. The accessibility and reception of a preprint may make it easier to assess the quality of scientific work than bold claims about the novelty or impact of the work (Brembs, 2019). However, be aware that some journals still prohibit the upload of all or specific manuscript versions as preprints (➜ [Sherpa Romeo](https://www.sherpa.ac.uk/romeo/)).
 
