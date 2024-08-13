@@ -24,6 +24,7 @@ parts:
       - file: contentpages/zbibliography
   - caption: Supplementary information
     chapters:
+      - file: contentpages/testimonials
       - file: contentpages/contributions
       - file: contentpages/acknowledgments
       - file: contentpages/funding
