@@ -562,8 +562,9 @@
             });
             graphPathArr.push(sub_graph);
             // filter the nodes&edges wrt. to selected node's subgraph
-            const filteredNodes = nodesArray.filter(item => item.data.subgraph === sub_graph);
-            const filteredEdges = edgesArray.filter(item => item.data.subgraph === sub_graph);
+            console.log(nodesArray.filter(item => item.data?.subgraph?.toLowerCase() === sub_graph?.toLowerCase()))
+            const filteredNodes = nodesArray.filter(item => item.data?.subgraph?.toLowerCase() === sub_graph?.toLowerCase());
+            const filteredEdges = edgesArray.filter(item => item.data?.subgraph?.toLowerCase() === sub_graph?.toLowerCase());
             // now combine the arrays
             const filteredAll = filteredNodes.concat(filteredEdges);
                 // configure the cytoscape graph here
