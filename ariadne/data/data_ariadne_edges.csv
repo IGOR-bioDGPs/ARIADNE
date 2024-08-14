@@ -186,104 +186,108 @@ id;source;target;subgraph;label;background-color
 185;Jupyter Notebook;Cheatsheets;JupyterNotebook;;black
 186;Python;Google Colab;Python;;black
 187;Analysis Framework;Matlab;AnalysisFramework;;black
-188;Data analysis;Meta-analysis;Dataanalysis;;black
-189;Meta-analysis;Syllabus;Meta-analysis;;black
-190;Meta-analysis;Metafor (R);Meta-analysis;;black
-191;Meta-analysis;Coda;Meta-analysis;;black
-192;Meta-analysis;Metalab;Meta-analysis;;black
-193;Meta-analysis;Templates;Meta-analysis;;black
-194;Meta-analysis;Neuroquery;Meta-analysis;;black
-195;Data analysis;Writing;initial;;black
-196;Writing;Crediting;Writing;;black
-197;Crediting;Tenzing;Crediting;;black
-198;Writing;Writing Framework;Writing;;black
-199;Writing;Writing effectively;Writing;;black
-200;Writing;Acronymify;Writing;;black
-201;Writing;List of acronyms;Writing;;black
-202;Writing;Quillbot;Writing;;black
-203;Writing;Statcheck;Writing;;black
-204;Writing;Grammarly;Writing;;black
-205;Writing;PaperPal;Writing;;black
-206;Writing Framework;Word;WritingFramework;;black
-207;Word;APA-style Word template;Word;;black
-208;Word;Preprint templates;Word;;black
-209;Crediting;CRediT;Crediting;;black
-210;Crediting;Scite;Crediting;;black
-211;Crediting;Grateful;Crediting;;black
-212;Writing Framework;Word;WritingFramework;;black
-213;Writing Framework;Papaja;WritingFramework;Rmarkdown;black
-214;Writing Framework;Overleaf;WritingFramework;LaTeX;black
-215;Writing;Citations;Writing;;black
-216;Citations;Citation Managers;Citations;;black
-217;Citation Managers;Zotero;CitationManagers;;black
-218;Citation Managers;Mendeley;CitationManagers;;black
-219;Citation Managers;Citavi;CitationManagers;;black
-220;Citation Managers;Endnote;CitationManagers;;black
-221;Citation Managers;Reference management comparison;CitationManagers;;black
-222;Citation Managers;BibTeX;CitationManagers;;black
-223;Citations;Citation Diversity Statement;Citations;;black
-224;Citations;Recite;Citations;;black
-225;Citations;Citation Gecko;Citations;;black
-226;Writing;Publication;initial;;black
-227;Journal choice;JANE;Journalchoice;;black
-228;Journal choice;Journal Rater;Journalchoice;;black
-229;Journal choice;Journal suggester;Journalchoice;;black
-230;Journal choice;Journal abbreviations;Journalchoice;;black
-231;Journal choice;SciRev;Journalchoice;;black
-233;Resource Sharing;Data_resource;ResourceSharing;;black
-234;Data_resource;Open Science Framework;Data_resource;;black
-235;Data_resource;FigShare;Data_resource;;black
-236;Data_resource;Zenodo;Data_resource;;black
-237;Data_resource;NeuroVault;Data_resource;;black
-238;Data_resource;DataCite;Data_resource;;black
-239;Resource Sharing;Code_resource;ResourceSharing;;black
-240;Code_resource;Open Science Framework;Code_resource;;black
-241;Code_resource;Zenodo;Code_resource;;black
-242;Code_resource;GitHub;Code_resource;;black
-243;Resource Sharing;Materials;ResourceSharing;;black
-244;Materials;Open Science Framework;Materials;;black
-245;Materials;Protocols;Materials;;black
-246;Materials;Zenodo;Materials;;black
-247;Materials;GitHub_mat;Materials;;black
-248;Publication;Preprint;Publication;;black
-249;Preprint;Sherpa Romeo;Preprint;Allowed?;black
-250;Preprint;Preprint server;Preprint;;black
-251;Preprint server;MetArXiv;Preprintserver;Meta-analyses;black
-252;Preprint server;PsyArXiv;Preprintserver;Psychological studies;black
-253;Preprint server;BioArXiv;Preprintserver;Biopsychological studies;black
-254;Preprint server;PeerCommunityIn;Preprintserver;Preprint Feedback;black
-255;Preprint server;PreReview;Preprintserver;Preprint Feedback;black
-256;Preprint server;PsychArchives;Preprintserver;;black
-257;Publication;Octopus;Publication;;black
-258;Publication;ORCID;Publication;;black
-259;Publication;TOP Guidelines;Publication;;black
-260;Publication;Journal choice;Publication;;black
-261;Publication;Resource Sharing;Publication;;black
-262;Publication;Dissemination;initial;;black
-263;Dissemination;Pint of Science;Dissemination;;black
-264;Dissemination;Psychology conference timelines;Dissemination;;black
-265;Dissemination;Poster;Dissemination;;black
-266;Poster;Designing conference posters;Poster;;black
-267;Poster;Canva;Poster;;black
-268;Poster;Illustrator;Poster;;black
-269;Poster;PowerPoint;Poster;;black
-270;Poster;Better posters;Poster;;black
-271;Poster;Font size calculator;Poster;;black
-272;Dissemination;Talk;Dissemination;;black
-273;Talk;Slidesgo;Talk;;black
-274;Talk;PowerPoint;Talk;;black
-275;Talk;Talk invitations;Talk;;black
-276;Talk;Prezi;Talk;;black
-277;Dissemination;Writing_diss;Dissemination;;black
-278;Writing_diss;In Mind Magazine;Writing_diss;;black
-279;Writing_diss;Gehirn und Geist;Writing_diss;;black
-280;Writing_diss;Scientific American;Writing_diss;;black
-281;Writing_diss;APS Observer;Writing_diss;;black
-282;Writing_diss;APA Monitor on Psychology;Writing_diss;;black
-283;Dissemination;Social Media;Dissemination;;black
-284;Social Media;Twitter;SocialMedia;;black
-285;Social Media;Mastodon;SocialMedia;;black
-286;Social Media;TikTok;SocialMedia;;black
-287;Social Media;Instagram;SocialMedia;;black
-288;Social Media;YouTube;SocialMedia;;black
-289;Social Media;Bluesky;SocialMedia;;black
+188;Data analysis;Data-extraction;Dataanalysis;;black
+189;Data-extraction;juicr;Data-extraction;;black
+190;Data-extraction;juicr;Data-extraction;;black
+191;Data-extraction;shinyDigitise;Data-extraction;;black
+192;Data analysis;Meta-analysis;Dataanalysis;;black
+193;Meta-analysis;Syllabus;Meta-analysis;;black
+194;Meta-analysis;Metafor (R);Meta-analysis;;black
+195;Meta-analysis;Coda;Meta-analysis;;black
+196;Meta-analysis;Metalab;Meta-analysis;;black
+197;Meta-analysis;Templates;Meta-analysis;;black
+198;Meta-analysis;Neuroquery;Meta-analysis;;black
+199;Data analysis;Writing;initial;;black
+200;Writing;Crediting;Writing;;black
+201;Crediting;Tenzing;Crediting;;black
+202;Writing;Writing Framework;Writing;;black
+203;Writing;Writing effectively;Writing;;black
+204;Writing;Acronymify;Writing;;black
+205;Writing;List of acronyms;Writing;;black
+206;Writing;Quillbot;Writing;;black
+207;Writing;Statcheck;Writing;;black
+208;Writing;Grammarly;Writing;;black
+209;Writing;PaperPal;Writing;;black
+210;Writing Framework;Word;WritingFramework;;black
+211;Word;APA-style Word template;Word;;black
+212;Word;Preprint templates;Word;;black
+213;Crediting;CRediT;Crediting;;black
+214;Crediting;Scite;Crediting;;black
+215;Crediting;Grateful;Crediting;;black
+216;Writing Framework;Word;WritingFramework;;black
+217;Writing Framework;Papaja;WritingFramework;Rmarkdown;black
+218;Writing Framework;Overleaf;WritingFramework;LaTeX;black
+219;Writing;Citations;Writing;;black
+220;Citations;Citation Managers;Citations;;black
+221;Citation Managers;Zotero;CitationManagers;;black
+222;Citation Managers;Mendeley;CitationManagers;;black
+223;Citation Managers;Citavi;CitationManagers;;black
+224;Citation Managers;Endnote;CitationManagers;;black
+225;Citation Managers;Reference management comparison;CitationManagers;;black
+226;Citation Managers;BibTeX;CitationManagers;;black
+227;Citations;Citation Diversity Statement;Citations;;black
+228;Citations;Recite;Citations;;black
+229;Citations;Citation Gecko;Citations;;black
+230;Writing;Publication;initial;;black
+231;Journal choice;JANE;Journalchoice;;black
+232;Journal choice;Journal Rater;Journalchoice;;black
+233;Journal choice;Journal suggester;Journalchoice;;black
+234;Journal choice;Journal abbreviations;Journalchoice;;black
+235;Journal choice;SciRev;Journalchoice;;black
+236;Resource Sharing;Data_resource;ResourceSharing;;black
+237;Data_resource;Open Science Framework;Data_resource;;black
+238;Data_resource;FigShare;Data_resource;;black
+239;Data_resource;Zenodo;Data_resource;;black
+240;Data_resource;NeuroVault;Data_resource;;black
+241;Data_resource;DataCite;Data_resource;;black
+242;Resource Sharing;Code_resource;ResourceSharing;;black
+243;Code_resource;Open Science Framework;Code_resource;;black
+244;Code_resource;Zenodo;Code_resource;;black
+245;Code_resource;GitHub;Code_resource;;black
+246;Resource Sharing;Materials;ResourceSharing;;black
+247;Materials;Open Science Framework;Materials;;black
+248;Materials;Protocols;Materials;;black
+249;Materials;Zenodo;Materials;;black
+250;Materials;GitHub_mat;Materials;;black
+251;Publication;Preprint;Publication;;black
+252;Preprint;Sherpa Romeo;Preprint;Allowed?;black
+253;Preprint;Preprint server;Preprint;;black
+254;Preprint server;MetArXiv;Preprintserver;Meta-analyses;black
+255;Preprint server;PsyArXiv;Preprintserver;Psychological studies;black
+256;Preprint server;BioArXiv;Preprintserver;Biopsychological studies;black
+257;Preprint server;PeerCommunityIn;Preprintserver;Preprint Feedback;black
+258;Preprint server;PreReview;Preprintserver;Preprint Feedback;black
+259;Preprint server;PsychArchives;Preprintserver;;black
+260;Publication;Octopus;Publication;;black
+261;Publication;ORCID;Publication;;black
+262;Publication;TOP Guidelines;Publication;;black
+263;Publication;Journal choice;Publication;;black
+264;Publication;Resource Sharing;Publication;;black
+265;Publication;Dissemination;initial;;black
+266;Dissemination;Pint of Science;Dissemination;;black
+267;Dissemination;Psychology conference timelines;Dissemination;;black
+268;Dissemination;Poster;Dissemination;;black
+269;Poster;Designing conference posters;Poster;;black
+270;Poster;Canva;Poster;;black
+271;Poster;Illustrator;Poster;;black
+272;Poster;PowerPoint;Poster;;black
+273;Poster;Better posters;Poster;;black
+274;Poster;Font size calculator;Poster;;black
+275;Dissemination;Talk;Dissemination;;black
+276;Talk;Slidesgo;Talk;;black
+277;Talk;PowerPoint;Talk;;black
+278;Talk;Talk invitations;Talk;;black
+279;Talk;Prezi;Talk;;black
+280;Dissemination;Writing_diss;Dissemination;;black
+281;Writing_diss;In Mind Magazine;Writing_diss;;black
+282;Writing_diss;Gehirn und Geist;Writing_diss;;black
+283;Writing_diss;Scientific American;Writing_diss;;black
+284;Writing_diss;APS Observer;Writing_diss;;black
+285;Writing_diss;APA Monitor on Psychology;Writing_diss;;black
+286;Dissemination;Social Media;Dissemination;;black
+287;Social Media;Twitter;SocialMedia;;black
+288;Social Media;Mastodon;SocialMedia;;black
+289;Social Media;TikTok;SocialMedia;;black
+290;Social Media;Instagram;SocialMedia;;black
+291;Social Media;YouTube;SocialMedia;;black
+292;Social Media;Bluesky;SocialMedia;;black
