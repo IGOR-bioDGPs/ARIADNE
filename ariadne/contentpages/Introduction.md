@@ -16,5 +16,5 @@ _Long-term sustainability_. Many community driven projects suffer, when core mem
 
 _The tutorial_. In the following tutorial, we will guide researchers through a standard research project in psychological science, facilitated by ARIADNE. We divide the research cycle into 10 steps that determine the quality and the success of research projects. We describe the challenges and choices to be made in each step and provide curated resources from ARIADNE for each of them: 1) project start, 2) study design, 3) study implementation, 4) piloting, 5) data collection, 6) data validation, 7) data analysis, 8) writing, 9) publication, and 10) dissemination. We also introduce key terms relevant in each step to facilitate training and communication between experienced and new academics (see Table 1 and italicized words in the main text). Lastly, we provide a checklist with questions one might ask at each step of a research project in Table 2. Please keep in mind that some of these questions may be relevant before starting a certain step.
 
-![ARIADNE instructions](https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/instructions_ARIADNE_new.png)
+![ARIADNE instructions](https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/ariadne_Fig1_V2.png)
 _Figure 1. Instructions regarding the tool with using exemplary resources._
