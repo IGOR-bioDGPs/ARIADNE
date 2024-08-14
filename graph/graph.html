@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- <a title="Privacy-friendly Web Analytics" href="https://clicky.com/101459976"><img alt="Clicky" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a> -->
-<script async data-id="101459976" src="//static.getclicky.com/js"></script><!-- Clicky webpage tracker service -->
+<!-- Clicky webpage tracker service -->
+<!-- <script async data-id="101459976" src="//static.getclicky.com/js"></script> -->
 
 <head>
   <meta charset="UTF-8">
@@ -227,7 +228,7 @@
             <li>Left click on the resource nodes to go to the respective webpages.</li>
             <li>Drag and drop on the nodes to rearrange the graph</li>
             <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
-            <canvas id="shapesCanvas" width="280" height="100"></canvas>
+            <canvas id="shapesCanvas" width="280" height="140"></canvas>
         </div>
     </div>
     <div id="key-box" class="key-box" hidden>
@@ -241,118 +242,185 @@
         // Get the canvas element
         var canvas = document.getElementById("shapesCanvas");
         var ctx = canvas.getContext("2d");
-    
+
         // Define shapes and their respective popup messages
         var shapes = [
-            { x: 0, y: 25, width: 50, height: 50, color: "#005AB5", popupMessage: "Initial node, there are more nodes inside this one!" },
-            { x: 175, y: 50, radius: 25, color: "#D41159", popupMessage: "Final node. Click this node to go to the resource's website!" }, 
-            { x: 75, y: 25, width: 50, height: 50, color: "#40B0A6", diamond: true, popupMessage: "Decision node, filter the nodes and move deeper!" } 
+            { x: 0, y: 20, width: 40, height: 40, color: "#005AB5", rect: true, 
+            popupMessage: "Initial node, there are more nodes inside this one!" },
+            { x: 130, y: 40, radius: 20, color: "#D41159", 
+            popupMessage: "Final node. Click this node to go to the resource's website!" }, 
+            { x: 55, y: 20, width: 40, height: 40, color: "#40B0A6", diamond: true, 
+            popupMessage: "Decision node, filter the nodes and move deeper!" },
+            { 
+                x: 0, y: 80, width: 35, height: 35, 
+                src: "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/closed_lock_with_key.png", 
+                popupMessage: "Fully open access!" 
+            },
+            { 
+                x: 50, y: 80, width: 35, height: 35, 
+                src: "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/lock.png", 
+                popupMessage: "Hybrid (partially) open access resource!" 
+            },
+            { 
+                x: 100, y: 80, width: 35, height: 35, 
+                src: "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/unlock.png", 
+                popupMessage: "Fully open access resource!" 
+            } 
         ];
-    
+
+        var loadedImages = [];
+        var imagesToLoad = shapes.filter(shape => shape.src).length;
+        var imagesLoaded = 0;
+
+        // Preload images
+        shapes.forEach(function(shape, index) {
+            if (shape.src) {
+                var img = new Image();
+                img.src = shape.src;
+                img.onload = function() {
+                    loadedImages[index] = img;
+                    imagesLoaded++;
+                    if (imagesLoaded === imagesToLoad) {
+                        drawShapes();
+                    }
+                };
+            }
+        });
+
         // Draw shapes on the canvas
-    function drawShapes() {
-        shapes.forEach(function (shape) {
-            ctx.fillStyle = shape.color;
-            if (shape.radius) {
-                ctx.beginPath();
-                ctx.arc(shape.x, shape.y, shape.radius, 0, Math.PI * 2);
-                ctx.fill();
-            } else if (shape.diamond) {
-                ctx.beginPath();
-                ctx.moveTo(shape.x + shape.width / 2, shape.y);
-                ctx.lineTo(shape.x + shape.width, shape.y + shape.height / 2);
-                ctx.lineTo(shape.x + shape.width / 2, shape.y + shape.height);
-                ctx.lineTo(shape.x, shape.y + shape.height / 2);
-                ctx.closePath();
-                ctx.fill();
-            } else {
-                ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
-            }
-        });
-    }
-
-    // Draw initial shapes
-    drawShapes();
-
-    // Function to show popup message
-    function showPopup(message, x, y, c_width, c_height) {
-        var popupHeight = 20;
-        var padding = 5;
-
-        // Calculate text width
-        var textWidth = ctx.measureText(message).width;
-        var textHeight = ctx.measureText(message).height;
-        // if text overflows
-        if (c_width < textWidth){
-            popupHeight = 20*2;
-            var lines = message.split(/\. /g);
-        }
-        
-        // Calculate popup width based on text width and padding
-        var popupWidth = textWidth + 2 * padding;
-        // var popupHeight = textHeight + 2 * padding;
-
-        // Calculate popup position
-        var popupX = x - popupWidth / 2;
-        var popupY = y - popupHeight - padding;
-        // Adjust popup position to stay within canvas bounds
-        if (popupX < 0) {
-            popupX = padding;
-        }
-        if (popupY < 0) {
-            popupY = y + padding;
-        }
-        
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // Draw shapes again
-        drawShapes();
-        // Draw popup message
-        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-        ctx.fillRect(popupX, popupY, popupWidth, popupHeight);
-        ctx.fillStyle = "black";
-        ctx.font = '12px Arial';
-        if (c_width < textWidth){
-            ctx.fillText(lines[0], popupX, popupY + 2*padding);
-            ctx.fillText(lines[1], popupX, popupY + popupHeight - padding);
-        }else{
-            ctx.fillText(message, popupX + padding, popupY + popupHeight - padding);
-        }
-        
-    }
-
-    // Event listener for mouse movement
-    canvas.addEventListener("mousemove", function (event) {
-        var mouseX = event.clientX - canvas.getBoundingClientRect().left;
-        var mouseY = event.clientY - canvas.getBoundingClientRect().top;
-
-        shapes.forEach(function (shape) {
-            if (shape.radius) {
-                var dx = mouseX - shape.x;
-                var dy = mouseY - shape.y;
-                var distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance <= shape.radius) {
-                    showPopup(shape.popupMessage, mouseX, mouseY, canvas.width, canvas.height);
+        function drawShapes() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas completely
+            shapes.forEach(function (shape, index) {
+                if (shape.src && loadedImages[index]) {
+                    ctx.drawImage(loadedImages[index], shape.x, shape.y, shape.width, shape.height);
+                } else {
+                    ctx.fillStyle = shape.color;
+                    if (shape.radius) {
+                        ctx.beginPath();
+                        ctx.arc(shape.x, shape.y, shape.radius, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else if (shape.diamond) {
+                        ctx.beginPath();
+                        ctx.moveTo(shape.x + shape.width / 2, shape.y);
+                        ctx.lineTo(shape.x + shape.width, shape.y + shape.height / 2);
+                        ctx.lineTo(shape.x + shape.width / 2, shape.y + shape.height);
+                        ctx.lineTo(shape.x, shape.y + shape.height / 2);
+                        ctx.closePath();
+                        ctx.fill();
+                    } else if (shape.rect) {
+                        ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
+                    }
                 }
-            } else if (shape.diamond) {
-                if (mouseX >= shape.x && mouseX <= shape.x + shape.width &&
-                    mouseY >= shape.y && mouseY <= shape.y + shape.height) {
-                    showPopup(shape.popupMessage, mouseX, mouseY, canvas.width, canvas.height);
-                }
-            } else {
-                if (mouseX >= shape.x && mouseX <= shape.x + shape.width &&
-                    mouseY >= shape.y && mouseY <= shape.y + shape.height) {
-                    showPopup(shape.popupMessage, mouseX, mouseY, canvas.width, canvas.height);
+            });
+        }
+
+        // Function to show popup message
+        function showPopup(message, x, y, c_width, c_height) {
+            var padding = 10;
+            ctx.font = '12px Arial';
+
+            // Determine the maximum width for the popup (e.g., a percentage of the canvas width)
+            var maxPopupWidth = Math.min(200, canvas.width - 5 * padding);
+            // var maxPopupWidth = 500;
+
+            // Split the message into lines if it exceeds the maximum width
+            var words = message.split(' ');
+            var lines = [];
+            var currentLine = words[0];
+
+            for (var i = 1; i < words.length; i++) {
+                var testLine = currentLine + ' ' + words[i];
+                var testWidth = ctx.measureText(testLine).width;
+                if (testWidth > 100) {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                } else {
+                    currentLine = testLine;
                 }
             }
-        });
-    });
+            lines.push(currentLine);
 
-    // Event listener to clear popup when mouse leaves the canvas
-    canvas.addEventListener("mouseleave", function () {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawShapes();
-    });
+            // get the longest word to calculate the popup width
+            function getLongestWord(wordList) {
+                var longestWord = wordList.reduce(function(a, b) {
+                    return a.length > b.length ? a : b;
+                }, ""); // Find and return the longest word
+                
+                return longestWord;
+            }
+            var longestWord = getLongestWord(lines);
+
+            // Calculate the height of the popup based on the number of lines
+            var lineHeight = 20;
+            var popupHeight = lineHeight * lines.length;
+            var popupWidth = Math.min(ctx.measureText(longestWord).width + 2 * padding, maxPopupWidth);
+
+            // Calculate popup position based on mouse position
+            var popupX = x;
+            var popupY = y - popupHeight - padding;
+
+            // Adjust popup position to stay within canvas bounds
+            if (popupX + popupWidth > canvas.width) {
+                popupX = canvas.width - popupWidth - padding;
+            }
+            if (popupY < 0) {
+                popupY = y + padding;
+            }
+
+            // Clear the canvas and redraw shapes
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawShapes();
+
+            // Draw the popup background
+            ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+            ctx.fillRect(popupX, popupY, popupWidth, popupHeight);
+
+            // Draw the popup text line by line
+            ctx.fillStyle = "black";
+            lines.forEach((line, index) => {
+                ctx.fillText(line, popupX + padding, popupY + padding + (index * lineHeight));
+            });
+        }
+
+        // Event listener for mouse movement
+        canvas.addEventListener('mousemove', function (e) {
+            var mouseX = e.offsetX;
+            var mouseY = e.offsetY;
+            var popupShown = false;
+
+            // Iterate through the shapes to detect if the mouse is over any shape
+            shapes.forEach(function (shape) {
+                if (shape.radius) {
+                    var dx = mouseX - shape.x;
+                    var dy = mouseY - shape.y;
+                    var distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance <= shape.radius) {
+                        // Show popup for circular shapes
+                        showPopup(shape.popupMessage, mouseX, mouseY, canvas.width, canvas.height);
+                        popupShown = true;
+                    }
+                } else {
+                    if (mouseX >= shape.x && mouseX <= shape.x + shape.width &&
+                        mouseY >= shape.y && mouseY <= shape.y + shape.height) {
+                        // Show popup for rectangular shapes
+                        showPopup(shape.popupMessage, mouseX, mouseY, canvas.width, canvas.height);
+                        popupShown = true;
+                    }
+                }
+            });
+
+            // If no popup is shown, clear the popup area only
+            if (!popupShown) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawShapes();
+            }
+        });
+
+        // Event listener to clear popup when mouse leaves the canvas
+        canvas.addEventListener("mouseleave", function () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawShapes();
+});
 </script>
 
 
@@ -562,7 +630,6 @@
             });
             graphPathArr.push(sub_graph);
             // filter the nodes&edges wrt. to selected node's subgraph
-            console.log(nodesArray.filter(item => item.data?.subgraph?.toLowerCase() === sub_graph?.toLowerCase()))
             const filteredNodes = nodesArray.filter(item => item.data?.subgraph?.toLowerCase() === sub_graph?.toLowerCase());
             const filteredEdges = edgesArray.filter(item => item.data?.subgraph?.toLowerCase() === sub_graph?.toLowerCase());
             // now combine the arrays
