@@ -1,6 +1,6 @@
 # Welcome to **ARIADNE**
 
-This is the website belonging to the **ARIADNE** project. Click [here](https://igor-biodgps.github.io/ARIADNE/contentpages/intro.html) to go to the resource. 
+This is the website belonging to the **ARIADNE** project. Click [here](https://igor-biodgps.github.io/ARIADNE/graph/graph.html) to go to the resource. 
 Please **note** that the tool is best viewed on a large laptop or external screen.
 
 # Who are we?
