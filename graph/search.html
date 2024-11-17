@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Knowledge Graph Search</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.21.2/cytoscape.min.js"></script>
+    <style>
+      #cy {
+        width: 100%;
+        height: 800px;
+      }
+      #search-container {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Search..." />
+      <button id="search-button">Search</button>
+    </div>
+    <div id="cy"></div>
+
+    <script>
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const csvData = await response.text();
+          const rows = csvData
+            .split("\n")
+            .filter((row) => row.trim() !== "")
+            .map((row) => row.split(";"));
+
+          // Check if the first row is a header and remove it
+          if (rows[0].every((field) => /^[a-zA-Z_]+$/.test(field))) {
+            rows.shift();
+          }
+
+          return rows.map((fields) => ({
+            data: {
+              id: fields[0],
+              label: fields[1],
+              shape: fields[2],
+              background_color: fields[3],
+              font_color: fields[4],
+              rank: fields[5],
+              subgraph: fields[6],
+              mainGraph: fields[7],
+              is_terminal: fields[8],
+              href: fields[9],
+              tooltip: fields[10],
+              descr: fields[11],
+              openSource: fields[12],
+              keyQuestions: fields[13],
+              keyLink: fields[14],
+            },
+          }));
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          return null;
+        }
+      }
+
+      async function createCytoscapeGraph(nodes) {
+        const cy = cytoscape({
+          container: document.getElementById("cy"),
+          elements: nodes,
+          style: [
+            {
+              selector: "node",
+              style: {
+                "background-color": "data(background_color)",
+                label: "data(label)",
+                shape: "data(shape)",
+                "font-size": 24,
+                "text-wrap": "wrap", // or 'ellipsis' for truncation
+                "text-max-width": 150, // Set the maximum width for wrapped text
+              },
+            },
+          ],
+        });
+
+        cy.on("tap", "node", function (evt) {
+          const node = evt.target;
+          if (node.data("href")) {
+            window.open(node.data("href"), "_blank");
+          }
+        });
+
+        cy.layout({ name: "cose", fit: true }).run();
+        return cy;
+      }
+
+      async function init() {
+        const githubNodesURL =
+          "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv";
+        let allNodes = await fetchData(githubNodesURL);
+        if (!allNodes) {
+          console.error("Failed to fetch data.");
+          return;
+        }
+
+        let cy; // Declare cy here so it can be reused
+
+        document
+          .getElementById("search-button")
+          .addEventListener("click", async () => {
+            const searchTerm = document
+              .getElementById("search-input")
+              .value.toLowerCase();
+
+            // Find initially matching nodes by ID
+            let initiallyFilteredNodes = allNodes.filter((node) =>
+              String(node.data.id).toLowerCase().includes(searchTerm)
+            );
+
+            //If no nodes are matched by ID try with labels
+            if (initiallyFilteredNodes.length == 0) {
+              initiallyFilteredNodes = allNodes.filter((node) =>
+                String(node.data.label).toLowerCase().includes(searchTerm)
+              );
+            }
+
+            let filteredNodes = initiallyFilteredNodes;
+
+            if (filteredNodes.length > 0) {
+              const relatedNodes = findRelatedNodes(filteredNodes, allNodes);
+              console.log(relatedNodes);
+              filteredNodes = filteredNodes.concat(relatedNodes); //Combine the results (no duplicates due to Set usage)
+            }
+
+            if (cy) {
+              cy.destroy(); // Destroy the previous instance
+            }
+            cy = await createCytoscapeGraph(filteredNodes);
+          });
+      }
+
+      function findRelatedNodes(filteredNodes, allNodes) {
+        const relatedNodes = new Set(); //Use a Set to add related while preventing repetition
+
+        filteredNodes.forEach((node) => {
+          // Find nodes related by subgraph and add them to the related set
+          allNodes.forEach((relatedBySubgraph) => {
+            if (
+              relatedBySubgraph.data.subgraph == node.data.label ||
+              relatedBySubgraph.data.label == node.data.subgraph
+            ) {
+              relatedNodes.add(relatedBySubgraph);
+            }
+          });
+
+          allNodes.forEach((otherNode) => {
+            if (otherNode.data.id == node.data.subgraph) {
+              relatedNodes.add(otherNode);
+            }
+          });
+        });
+
+        return Array.from(relatedNodes); //Convert back to array
+      }
+
+      init();
+    </script>
+  </body>
+</html>
