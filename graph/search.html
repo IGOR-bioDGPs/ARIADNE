@@ -99,7 +99,14 @@
           }
         });
 
-        cy.layout({ name: "circle", fit: true }).run();
+        cy.layout({
+          name: "circle",
+          fit: true,
+          grid: false,
+          avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+          spacingFactor: 1,
+        }).run();
+        cy.zoom(0.8);
         return cy;
       }
 
