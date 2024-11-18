@@ -99,7 +99,7 @@
           }
         });
 
-        cy.layout({ name: "cose", fit: true }).run();
+        cy.layout({ name: "circle", fit: true }).run();
         return cy;
       }
 
@@ -127,7 +127,7 @@
 
             let filteredNodes = initiallyFilteredNodes;
 
-            if (filteredNodes.length > 0) {
+            if (filteredNodes.length >= 0) {
               const pathRelatedNodes = findRelatedNodesByPath(
                 filteredNodes,
                 allNodes
@@ -137,7 +137,6 @@
               initiallyFilteredNodes = allNodes.filter((node) =>
                 String(node.data.label).toLowerCase().includes(searchTerm)
               );
-
               filteredNodes = findRelatedNodes(
                 initiallyFilteredNodes,
                 allNodes
@@ -145,9 +144,20 @@
             }
 
             if (filteredNodes.length > 0) {
-              filteredNodes = [...new Set(filteredNodes)];
+              const firstNode = filteredNodes[0];
+              if (firstNode && firstNode.data.path) {
+                const nodePaths = firstNode.data.path
+                  .split(" > ")
+                  .map((id) => id.replace(/\r/g, ""));
+                console.log("nodePaths:", nodePaths);
+                filteredNodes.sort((a, b) => {
+                  return (
+                    nodePaths.indexOf(a.data.id) - nodePaths.indexOf(b.data.id)
+                  );
+                });
+              }
             }
-            console.log(filteredNodes);
+
             const edges = createEdges(filteredNodes, allNodes);
 
             if (cy) {
@@ -162,8 +172,9 @@
 
         filteredNodes.forEach((node) => {
           if (node.data.path) {
-            const nodePaths = node.data.path.split(" > ");
-            console.log(nodePaths);
+            const nodePaths = node.data.path
+              .split(" > ")
+              .map((id) => id.replace(/\r/g, ""));
             nodePaths.forEach((id) => {
               const pathNode = allNodes.find((n) => n.data.id === id);
               if (pathNode) {
@@ -180,11 +191,12 @@
         const nodeMap = new Map(nodes.map((node) => [node.data.id, node]));
 
         nodes.forEach((node) => {
-          const nodePaths = (node.data.path || "").split(" > ");
+          const nodePaths = (node.data.path || "")
+            .split(" > ")
+            .map((id) => id.replace(/\r/g, ""));
           for (let i = 0; i < nodePaths.length - 1; i++) {
             const sourceNodeId = nodePaths[i];
             const targetNodeId = nodePaths[i + 1];
-
             // Ensure both source and target nodes are part of the filtered nodes
             if (nodeMap.has(sourceNodeId) && nodeMap.has(targetNodeId)) {
               edges.push({
@@ -211,7 +223,7 @@
 
             if (rank == 1) return;
 
-            const parentNode = allNodes.find((n) => n.data.label == subgraph);
+            const parentNode = allNodes.find((n) => n.data.label === subgraph);
 
             if (parentNode) {
               relatedNodes.add(parentNode);
@@ -220,7 +232,7 @@
             }
 
             allNodes
-              .filter((n) => n.data.subgraph == node.data.label)
+              .filter((n) => n.data.subgraph === node.data.label)
               .forEach((n) => {
                 relatedNodes.add(n);
                 findRecursiveRelatedNodes(n, allNodes);
