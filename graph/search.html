@@ -148,7 +148,7 @@
               filteredNodes = [...new Set(filteredNodes)];
             }
             console.log(filteredNodes);
-            const edges = createEdges(filteredNodes);
+            const edges = createEdges(filteredNodes, allNodes);
 
             if (cy) {
               cy.destroy();
@@ -175,19 +175,29 @@
         return Array.from(allRelatedNodes);
       }
 
-      function createEdges(nodes) {
+      function createEdges(nodes, allNodes) {
         const edges = [];
-        nodes.forEach((node, index) => {
-          if (index < nodes.length - 1) {
-            edges.push({
-              data: {
-                id: `${nodes[index].data.id}-${nodes[index + 1].data.id}`,
-                source: nodes[index].data.id,
-                target: nodes[index + 1].data.id,
-              },
-            });
+        const nodeMap = new Map(nodes.map((node) => [node.data.id, node]));
+
+        nodes.forEach((node) => {
+          const nodePaths = (node.data.path || "").split(" > ");
+          for (let i = 0; i < nodePaths.length - 1; i++) {
+            const sourceNodeId = nodePaths[i];
+            const targetNodeId = nodePaths[i + 1];
+
+            // Ensure both source and target nodes are part of the filtered nodes
+            if (nodeMap.has(sourceNodeId) && nodeMap.has(targetNodeId)) {
+              edges.push({
+                data: {
+                  id: `${sourceNodeId}-${targetNodeId}`,
+                  source: sourceNodeId,
+                  target: targetNodeId,
+                },
+              });
+            }
           }
         });
+
         return edges;
       }
 
