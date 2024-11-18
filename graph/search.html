@@ -4,21 +4,55 @@
     <title>Knowledge Graph Search</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.21.2/cytoscape.min.js"></script>
     <style>
+      body {
+        display: flex;
+        flex-direction: row;
+      }
       #cy {
-        width: 100%;
+        width: 70%;
         height: 800px;
       }
       #search-container {
+        width: 30%;
         padding: 20px;
+      }
+      #terminal-nodes {
+        margin-top: 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
       }
     </style>
   </head>
   <body>
+    <div id="cy"></div>
     <div id="search-container">
       <input type="text" id="search-input" placeholder="Search..." />
       <button id="search-button">Search</button>
+      <div id="terminal-nodes">
+        <h3>Terminal Nodes</h3>
+        <table id="terminal-node-table">
+          <thead>
+            <tr>
+              <th colspan="4" style="text-align: center">
+                List of all resources
+              </th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
-    <div id="cy"></div>
 
     <script>
       async function fetchData(url) {
@@ -46,14 +80,15 @@
               font_color: fields[4],
               rank: fields[5],
               subgraph: fields[6],
-              mainGraph: fields[7],
-              is_terminal: fields[8],
-              href: fields[9],
-              tooltip: fields[10],
-              descr: fields[11],
-              openSource: fields[12],
-              keyQuestions: fields[13],
-              keyLink: fields[14],
+              subgraphDet: fields[7],
+              mainGraph: fields[8],
+              is_terminal: fields[9] === "yes", // Convert to boolean
+              href: fields[10],
+              tooltip: fields[11],
+              descr: fields[12],
+              openSource: fields[13],
+              keyQuestions: fields[14],
+              keyLink: fields[15],
               path: fields[16], // Assuming this is the correct index for the 'path' column
             },
           }));
@@ -99,14 +134,7 @@
           }
         });
 
-        cy.layout({
-          name: "circle",
-          fit: true,
-          grid: false,
-          avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-          spacingFactor: 1,
-        }).run();
-        cy.zoom(0.8);
+        cy.layout({ name: "breadthfirst", fit: true }).run();
         return cy;
       }
 
@@ -118,8 +146,10 @@
           console.error("Failed to fetch data.");
           return;
         }
-        let cy;
+        console.log(allNodes);
+        displayTerminalNodes(allNodes);
 
+        let cy;
         document
           .getElementById("search-button")
           .addEventListener("click", async () => {
@@ -156,7 +186,6 @@
                 const nodePaths = firstNode.data.path
                   .split(" > ")
                   .map((id) => id.replace(/\r/g, ""));
-                console.log("nodePaths:", nodePaths);
                 filteredNodes.sort((a, b) => {
                   return (
                     nodePaths.indexOf(a.data.id) - nodePaths.indexOf(b.data.id)
@@ -204,7 +233,6 @@
           for (let i = 0; i < nodePaths.length - 1; i++) {
             const sourceNodeId = nodePaths[i];
             const targetNodeId = nodePaths[i + 1];
-            // Ensure both source and target nodes are part of the filtered nodes
             if (nodeMap.has(sourceNodeId) && nodeMap.has(targetNodeId)) {
               edges.push({
                 data: {
@@ -234,7 +262,6 @@
 
             if (parentNode) {
               relatedNodes.add(parentNode);
-
               findRecursiveRelatedNodes(parentNode, allNodes);
             }
 
@@ -253,6 +280,28 @@
         });
 
         return Array.from(relatedNodes);
+      }
+
+      function displayTerminalNodes(allNodes) {
+        const terminalNodeTableBody = document
+          .getElementById("terminal-node-table")
+          .querySelector("tbody");
+        terminalNodeTableBody.innerHTML = ""; // Clear previous content
+
+        const terminalNodes = allNodes.filter((node) => node.data.is_terminal);
+        const columns = 4;
+        const rows = Math.ceil(terminalNodes.length / columns);
+
+        for (let i = 0; i < rows; i++) {
+          const row = document.createElement("tr");
+          for (let j = 0; j < columns; j++) {
+            const cell = document.createElement("td");
+            const nodeIndex = i + j * rows;
+            cell.textContent = terminalNodes[nodeIndex]?.data.label || "";
+            row.appendChild(cell);
+          }
+          terminalNodeTableBody.appendChild(row);
+        }
       }
 
       init();
