@@ -37,7 +37,6 @@
           if (rows[0].every((field) => /^[a-zA-Z_]+$/.test(field))) {
             rows.shift();
           }
-
           return rows.map((fields) => ({
             data: {
               id: fields[0],
@@ -55,6 +54,7 @@
               openSource: fields[12],
               keyQuestions: fields[13],
               keyLink: fields[14],
+              path: fields[16], // Assuming this is the correct index for the 'path' column
             },
           }));
         } catch (error) {
@@ -63,10 +63,10 @@
         }
       }
 
-      async function createCytoscapeGraph(nodes) {
+      async function createCytoscapeGraph(nodes, edges) {
         const cy = cytoscape({
           container: document.getElementById("cy"),
-          elements: nodes,
+          elements: nodes.concat(edges), // Combine nodes and edges
           style: [
             {
               selector: "node",
@@ -75,8 +75,18 @@
                 label: "data(label)",
                 shape: "data(shape)",
                 "font-size": 24,
-                "text-wrap": "wrap", // or 'ellipsis' for truncation
-                "text-max-width": 150, // Set the maximum width for wrapped text
+                "text-wrap": "wrap",
+                "text-max-width": 150,
+              },
+            },
+            {
+              selector: "edge",
+              style: {
+                width: 3,
+                "line-color": "#ccc",
+                "target-arrow-color": "#ccc",
+                "target-arrow-shape": "triangle",
+                "curve-style": "bezier",
               },
             },
           ],
@@ -95,14 +105,13 @@
 
       async function init() {
         const githubNodesURL =
-          "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv";
+          "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_nodes.csv";
         let allNodes = await fetchData(githubNodesURL);
         if (!allNodes) {
           console.error("Failed to fetch data.");
           return;
         }
-
-        let cy; // Declare cy here so it can be reused
+        let cy;
 
         document
           .getElementById("search-button")
@@ -111,55 +120,110 @@
               .getElementById("search-input")
               .value.toLowerCase();
 
-            // Find initially matching nodes by ID
+            // Find matching nodes by label
             let initiallyFilteredNodes = allNodes.filter((node) =>
-              String(node.data.id).toLowerCase().includes(searchTerm)
+              String(node.data.label).toLowerCase().includes(searchTerm)
             );
-
-            //If no nodes are matched by ID try with labels
-            if (initiallyFilteredNodes.length == 0) {
-              initiallyFilteredNodes = allNodes.filter((node) =>
-                String(node.data.label).toLowerCase().includes(searchTerm)
-              );
-            }
 
             let filteredNodes = initiallyFilteredNodes;
 
             if (filteredNodes.length > 0) {
-              const relatedNodes = findRelatedNodes(filteredNodes, allNodes);
-              console.log(relatedNodes);
-              filteredNodes = filteredNodes.concat(relatedNodes); //Combine the results (no duplicates due to Set usage)
+              const pathRelatedNodes = findRelatedNodesByPath(
+                filteredNodes,
+                allNodes
+              );
+              filteredNodes = filteredNodes.concat(pathRelatedNodes);
+            } else {
+              initiallyFilteredNodes = allNodes.filter((node) =>
+                String(node.data.label).toLowerCase().includes(searchTerm)
+              );
+
+              filteredNodes = findRelatedNodes(
+                initiallyFilteredNodes,
+                allNodes
+              );
             }
 
-            if (cy) {
-              cy.destroy(); // Destroy the previous instance
+            if (filteredNodes.length > 0) {
+              filteredNodes = [...new Set(filteredNodes)];
             }
-            cy = await createCytoscapeGraph(filteredNodes);
+            console.log(filteredNodes);
+            const edges = createEdges(filteredNodes);
+
+            if (cy) {
+              cy.destroy();
+            }
+            cy = await createCytoscapeGraph(filteredNodes, edges);
           });
       }
 
-      function findRelatedNodes(filteredNodes, allNodes) {
-        const relatedNodes = new Set(); //Use a Set to add related while preventing repetition
+      function findRelatedNodesByPath(filteredNodes, allNodes) {
+        const allRelatedNodes = new Set();
 
         filteredNodes.forEach((node) => {
-          // Find nodes related by subgraph and add them to the related set
-          allNodes.forEach((relatedBySubgraph) => {
-            if (
-              relatedBySubgraph.data.subgraph == node.data.label ||
-              relatedBySubgraph.data.label == node.data.subgraph
-            ) {
-              relatedNodes.add(relatedBySubgraph);
-            }
-          });
+          if (node.data.path) {
+            const nodePaths = node.data.path.split(" > ");
+            console.log(nodePaths);
+            nodePaths.forEach((id) => {
+              const pathNode = allNodes.find((n) => n.data.id === id);
+              if (pathNode) {
+                allRelatedNodes.add(pathNode);
+              }
+            });
+          }
+        });
+        return Array.from(allRelatedNodes);
+      }
 
-          allNodes.forEach((otherNode) => {
-            if (otherNode.data.id == node.data.subgraph) {
-              relatedNodes.add(otherNode);
+      function createEdges(nodes) {
+        const edges = [];
+        nodes.forEach((node, index) => {
+          if (index < nodes.length - 1) {
+            edges.push({
+              data: {
+                id: `${nodes[index].data.id}-${nodes[index + 1].data.id}`,
+                source: nodes[index].data.id,
+                target: nodes[index + 1].data.id,
+              },
+            });
+          }
+        });
+        return edges;
+      }
+
+      function findRelatedNodes(filteredNodes, allNodes) {
+        const relatedNodes = new Set();
+
+        function findRecursiveRelatedNodes(node, allNodes) {
+          if (node) {
+            let subgraph = node.data.subgraph;
+            let rank = parseInt(node.data.rank);
+
+            if (rank == 1) return;
+
+            const parentNode = allNodes.find((n) => n.data.label == subgraph);
+
+            if (parentNode) {
+              relatedNodes.add(parentNode);
+
+              findRecursiveRelatedNodes(parentNode, allNodes);
             }
-          });
+
+            allNodes
+              .filter((n) => n.data.subgraph == node.data.label)
+              .forEach((n) => {
+                relatedNodes.add(n);
+                findRecursiveRelatedNodes(n, allNodes);
+              });
+          }
+        }
+
+        filteredNodes.forEach((node) => {
+          findRecursiveRelatedNodes(node, allNodes);
+          relatedNodes.add(node);
         });
 
-        return Array.from(relatedNodes); //Convert back to array
+        return Array.from(relatedNodes);
       }
 
       init();
