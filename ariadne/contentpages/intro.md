@@ -1,7 +1,9 @@
 # Welcome to **ARIADNE**
 
 This is the website belonging to the **ARIADNE** project. Click [here](https://igor-biodgps.github.io/ARIADNE/graph/graph.html) to go to the resource. 
-Please **note** that the tool is best viewed on a large laptop or external screen.
+Please **note** that the tool is best viewed on a large laptop or external screen. 
+
+The corresponding paper "ARIADNE: A Scientific Navigator to Find Your Way Through the Resource Labyrinth of Psychological Sciences" was published in January 2025 in _Advances in Methods and Practices in Psychological Science_. It is a tutorial, guiding (especially early-career) researchers through a standard research project using ARIADNE along the way. Read it [here](https://doi.org/10.1177/25152459241297674).
 
 # Who are we?
 
