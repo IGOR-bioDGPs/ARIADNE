@@ -1,7 +1,9 @@
 # Welcome to **ARIADNE**
 
-This is the website belonging to the **ARIADNE** project. Click [here](https://igor-biodgps.github.io/ARIADNE/graph/graph.html) to go to the resource. 
+This is the website belonging to the **ARIADNE** project. Click [here](https://igor-biodgps.github.io/ARIADNE/graph/graph.html) to go to the resource.
 Please **note** that the tool is best viewed on a large laptop or external screen.
+
+The corresponding paper "ARIADNE: A Scientific Navigator to Find Your Way Through the Resource Labyrinth of Psychological Sciences" was published in January 2025 in _Advances in Methods and Practices in Psychological Science_. It is a tutorial, guiding (especially early-career) researchers through a standard research project using ARIADNE along the way (Hartmann, Gürsoy, et al., 2025). Read it [here](https://doi.org/10.1177/25152459241297674).
 
 # Who are we?
 
@@ -24,5 +26,4 @@ We have created a curated scientific resource navigator called **ARIADNE** that 
 
 These 10 steps determine the quality and ultimately the success of any research project, yet so far no such guide exists, especially none focussing on novel developments in the field of open and reproducible science practices.
 
-
-The preprint corresponding to this tool can be found [here](https://osf.io/jfh3t). If you want to contribute a new resource or report a bug, please do so via Google Forms with clicking [this link](https://drive.google.com/drive/folders/1nw8x_OwfNlQ8jpaBRiirHpjYGvUAiB3v) or via GitHub Issues with [this link](https://github.com/IGOR-bioDGPs/ARIADNE/issues/new/choose).
+Our publication linked to the tool is out now! [Click here](https://journals.sagepub.com/doi/10.1177/25152459241297674) to reach the open access version of the publication. The preprint corresponding to this tool can be found [here](https://osf.io/jfh3t). If you want to contribute a new resource or report a bug, please do so via Google Forms with clicking [this link](https://drive.google.com/drive/folders/1nw8x_OwfNlQ8jpaBRiirHpjYGvUAiB3v) or via GitHub Issues with [this link](https://github.com/IGOR-bioDGPs/ARIADNE/issues/new/choose).
