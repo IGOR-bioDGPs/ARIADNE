@@ -1,0 +1,17 @@
+name: ariadne
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.11
+  - jupyter-book
+  - matplotlib
+  - numpy
+  - networkx
+  - pandas
+  - pip
+  - pip:
+      - ghp-import
+      - sphinxcontrib-apa
+      - pybtex==0.22.2
+      - pybtex-apa-style==1.3
