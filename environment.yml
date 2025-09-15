@@ -13,5 +13,5 @@ dependencies:
   - pip:
       - ghp-import
       - sphinxcontrib-apa
-      - pybtex==0.22.2
+      - pybtex==0.24.0
       - pybtex-apa-style==1.3
