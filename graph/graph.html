@@ -524,82 +524,94 @@
         });
     </script>
     <script>
-        // async function to get nodes from the Github repo
+        // async function to get nodes (local OR GitHub)
         async function fetchDataNodes() {
-            try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_nodes.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv
-                const response = await fetch(githubRawURL); // fetch the CSV data from the URL
-                const csvData = await response.text(); // and get the response as a text file
-                const rows = csvData.split('\n'); // rows are splitted with '/n'
-                const nodes = rows.map(row => {
-                    // A split the columns into a looong array of variables
-                    // Also columns are splitted with ';'
-                    const [id, label, shape, bgColor, fontColor, rank, subgraph, mainGraph, isTerminal, href, tooltip, descr, openSource, keyQuestions, keyLink] = row.split(';');
-                    // And initalise the data structure of the nodes, with using the CSV file and variables
-                    return {
-                        data: {
-                        id: id,
-                        label: label,
-                        shape: shape,
-                        background_color: bgColor,
-                        font_color: fontColor,
-                        rank: rank,
-                        subgraph: subgraph,
-                        mainGraph: mainGraph,
-                        is_terminal: isTerminal,
-                        href: href,
-                        tooltip: tooltip,
-                        descr: descr,
-                        openSource: openSource,
-                        keyQuestions: keyQuestions,
-                        keyLink: keyLink,
-                        }
-                    };
-                });
-                // Create a nodes variable with a sub structure 
-                const nodesArr = {
-                    nodes: nodes
-                };
-                // And return the nodes
-                return nodesArr;
-            } catch (err) { // catch a possible fetch error here
-                console.error('Error fetching data from GitHub:', err);
-                return null;
+        try {
+            // --- OLD GitHub method (for deployment) ---
+            // const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv';
+
+            // --- NEW local method (for local testing) ---
+            const localURL = 'data/data_ariadne_nodes.csv'; 
+            const response = await fetch(localURL);
+            const csvData = await response.text();
+            const rows = csvData.split('\n');
+
+            function clean(v) {
+            return (v === "NA" || v === "" || v === undefined) ? null : v;
             }
+
+            const nodes = rows.map(row => {  
+            const [  
+                id, label, shape, bgColor, fontColor, rank,  
+                subgraph, subgraphDet, mainGraph, isTerminal,  
+                href, tooltip, descr, openSource, keyQuestions,  
+                keyLink, path  
+            ] = row.split(';');  
+    
+            return {  
+                data: {  
+                id: clean(id),  
+                label: clean(label),  
+                shape: clean(shape),  
+                background_color: clean(bgColor),  
+                font_color: clean(fontColor),  
+                rank: clean(rank),  
+                subgraph: clean(subgraph),  
+                subgraphDet: clean(subgraphDet),  
+                mainGraph: clean(mainGraph),  
+                is_terminal: clean(isTerminal),  
+                href: clean(href),  
+                tooltip: clean(tooltip),  
+                descr: clean(descr),  
+                openSource: clean(openSource),  
+                keyQuestions: clean(keyQuestions),  
+                keyLink: clean(keyLink),  
+                path: clean(path),  
+                }  
+            };  
+            });
+
+            return { nodes };
+        } catch (err) {
+            console.error('Error fetching nodes CSV:', err);
+            return null;
         }
-        // async function to get edges from the Github repo
+        }
+        // async function to get edges (local OR GitHub)
         async function fetchDataEdges() {
-            try {
-                const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv'; // testing: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_edges.csv // deployment: https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv
-                const response = await fetch(githubRawURL); // fetch the CSV data from the URL
-                const csvData = await response.text(); // and get the response as a text file
-                const rows = csvData.split('\n'); // rows are splitted with '/n'
-                const edges = rows.map(row => {
-                    // A split the columns into a looong array of variables
-                    // Also columns are splitted with ';'
-                    const [id, source, target, subgraph, label, bgColor] = row.split(';');
-                    // And initalise the data structure of the nodes, with using the CSV file and variables
-                    return {
-                        data: {
-                        id: id,
-                        source: source,
-                        target: target,
-                        background_color: bgColor,
-                        subgraph: subgraph,
-                        label: label,
-                        }
-                    };
-                });
-                // Create an edges variable with a sub structure 
-                const edgesArr = {
-                    edges: edges
-                };
-                // And return the nodes
-                return edgesArr;
-            } catch (err) { // catch a possible fetch error here
-                console.error('Error fetching data from GitHub:', err);
-                return null;
+        try {
+            // --- OLD GitHub method (for deployment) ---
+            // const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv';
+
+            // --- NEW local method (for local testing) ---
+            const localURL = 'data/data_ariadne_edges.csv'; 
+            const response = await fetch(localURL);
+            const csvData = await response.text();
+            const rows = csvData.split('\n');
+
+            function clean(v) {
+            return (v === "NA" || v === "" || v === undefined) ? null : v;
             }
+
+            const edges = rows.map(row => {  
+            const [id, source, target, subgraph, label, bgColor] = row.split(';');  
+            return {  
+                data: {  
+                id: clean(id),  
+                source: clean(source),  
+                target: clean(target),  
+                subgraph: clean(subgraph),  
+                label: clean(label),  
+                background_color: clean(bgColor),  
+                }  
+            };  
+            });
+
+            return { edges };
+        } catch (err) {
+            console.error('Error fetching edges CSV:', err);
+            return null;
+        }
         }
         // index variable for keeping track of the first run or others
         let index = 0;
@@ -777,6 +789,8 @@
                 cyto.on('click', 'node', function(event) {
                     cytoCSS.style.backgroundImage = 'url("")'; // remove background image
                     var node = event.target; // get the node
+                    console.log(node.data('id'));
+                    console.log(node.data('is_terminal'));
                     if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
                         createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
                         if (node.data('mainGraph') == 'initial'){ // only if it's an initial node we should show the key questions
