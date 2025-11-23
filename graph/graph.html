@@ -527,12 +527,18 @@
         // async function to get nodes (local OR GitHub)
         async function fetchDataNodes() {
         try {
-            // --- OLD GitHub method (for deployment) ---
-            // const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv';
-
-            // --- NEW local method (for local testing) ---
-            const localURL = 'data/data_ariadne_nodes.csv'; 
-            const response = await fetch(localURL);
+            // Auto-detect: use local if running on localhost, otherwise use GitHub
+            const isLocal = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' ||
+                        window.location.protocol === 'file:';
+            
+            const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv';
+            const localURL = 'data/data_ariadne_nodes.csv';
+            
+            const dataURL = isLocal ? localURL : githubRawURL;
+            
+            console.log('Environment:', isLocal ? 'Local' : 'GitHub', '- Fetching from:', dataURL);
+            const response = await fetch(dataURL);
             const csvData = await response.text();
             const rows = csvData.split('\n');
 
@@ -580,12 +586,18 @@
         // async function to get edges (local OR GitHub)
         async function fetchDataEdges() {
         try {
-            // --- OLD GitHub method (for deployment) ---
-            // const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv';
-
-            // --- NEW local method (for local testing) ---
-            const localURL = 'data/data_ariadne_edges.csv'; 
-            const response = await fetch(localURL);
+            // Auto-detect: use local if running on localhost, otherwise use GitHub
+            const isLocal = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' ||
+                        window.location.protocol === 'file:';
+            
+            const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv';
+            const localURL = 'data/data_ariadne_edges.csv';
+            
+            const dataURL = isLocal ? localURL : githubRawURL;
+            
+            console.log('Environment:', isLocal ? 'Local' : 'GitHub', '- Fetching from:', dataURL);
+            const response = await fetch(dataURL);
             const csvData = await response.text();
             const rows = csvData.split('\n');
 
@@ -789,8 +801,6 @@
                 cyto.on('click', 'node', function(event) {
                     cytoCSS.style.backgroundImage = 'url("")'; // remove background image
                     var node = event.target; // get the node
-                    console.log(node.data('id'));
-                    console.log(node.data('is_terminal'));
                     if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
                         createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
                         if (node.data('mainGraph') == 'initial'){ // only if it's an initial node we should show the key questions
