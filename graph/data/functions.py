@@ -7,7 +7,19 @@ where nodes represent resources and edges represent connections between them.
 """
 
 import csv, os, sys
+import tkinter as tk
+from tkinter import filedialog
 from typing import Optional, List, Dict, Tuple
+
+# Global CSV file paths
+NODES_FILE = 'data_ariadne_nodes.csv'
+EDGES_FILE = 'data_ariadne_edges.csv'
+
+def set_csv_file_paths(nodes_file, edges_file):
+    """Set the global CSV file paths."""
+    global NODES_FILE, EDGES_FILE
+    NODES_FILE = nodes_file
+    EDGES_FILE = edges_file
 
 
 def load_csv_data(filepath: str, delimiter: str = ';') -> Tuple[List[Dict], List[str]]:
@@ -48,19 +60,21 @@ def save_csv_data(filepath: str, data: List[Dict], headers: List[str], delimiter
         writer.writerows(data)
 
 
-def get_available_subgraphs(nodes_filepath: str = 'data_ariadne_nodes.csv') -> List[str]:
+def get_available_subgraphs(nodes_filepath: str = None) -> List[str]:
     """
     Get list of all available subgraphs from the nodes file.
     
     Returns:
         List of unique subgraph names
     """
+    if nodes_filepath is None:
+        nodes_filepath = NODES_FILE
     all_nodes_data, _ = load_csv_data(nodes_filepath)
     subgraphs = sorted(set(node.get('subgraph', '') for node in all_nodes_data if node.get('subgraph')))
     return [sg for sg in subgraphs if sg]
 
 
-def get_subgraph_details(subgraph_name: str, nodes_filepath: str = 'data_ariadne_nodes.csv') -> Optional[Dict]:
+def get_subgraph_details(subgraph_name: str, nodes_filepath: str = None) -> Optional[Dict]:
     """
     Get details about a specific subgraph.
     
@@ -71,6 +85,8 @@ def get_subgraph_details(subgraph_name: str, nodes_filepath: str = 'data_ariadne
     Returns:
         Dictionary with subgraph details or None if not found
     """
+    if nodes_filepath is None:
+        nodes_filepath = NODES_FILE
     all_nodes_data, _ = load_csv_data(nodes_filepath)
     
     for node in all_nodes_data:
@@ -85,7 +101,7 @@ def get_subgraph_details(subgraph_name: str, nodes_filepath: str = 'data_ariadne
     return None
 
 
-def get_nodes_in_subgraph(subgraph_name: str, nodes_filepath: str = 'data_ariadne_nodes.csv') -> List[Dict]:
+def get_nodes_in_subgraph(subgraph_name: str, nodes_filepath: str = None) -> List[Dict]:
     """
     Get all nodes that belong to a specific subgraph.
     
@@ -96,6 +112,8 @@ def get_nodes_in_subgraph(subgraph_name: str, nodes_filepath: str = 'data_ariadn
     Returns:
         List of nodes in the subgraph
     """
+    if nodes_filepath is None:
+        nodes_filepath = NODES_FILE
     all_nodes_data, _ = load_csv_data(nodes_filepath)
     return [node for node in all_nodes_data if node.get('subgraph') == subgraph_name]
 
@@ -218,14 +236,18 @@ def create_top_node_for_subgraph(subgraph_name: str, rank: str, main_graph: str)
         'path': ''
     }
 
-def get_graph_statistics(nodes_filepath: str = 'data_ariadne_nodes.csv',
-                        edges_filepath: str = 'data_ariadne_edges.csv') -> Dict:
+def get_graph_statistics(nodes_filepath: str = None,
+                        edges_filepath: str = None) -> Dict:
     """
     Get statistics about the graph structure.
     
     Returns:
         Dictionary containing graph statistics
     """
+    if nodes_filepath is None:
+        nodes_filepath = NODES_FILE
+    if edges_filepath is None:
+        edges_filepath = EDGES_FILE
     nodes_data, _ = load_csv_data(nodes_filepath)
     edges_data, _ = load_csv_data(edges_filepath)
     
@@ -646,12 +668,12 @@ def add_graph_entry(new_node_id, new_node_label, new_node_rank, new_node_subgrap
     tuple: (success: bool, message: str)
     """
 
-    NODES_FILE = "data_ariadne_nodes.csv"
-    EDGES_FILE = "data_ariadne_edges.csv"
+    nodes_file_path = NODES_FILE
+    edges_file_path = EDGES_FILE
     
     # Load existing data
-    nodes_data, nodes_headers = load_csv_data(NODES_FILE)
-    edges_data, edges_headers = load_csv_data(EDGES_FILE)
+    nodes_data, nodes_headers = load_csv_data(nodes_file_path)
+    edges_data, edges_headers = load_csv_data(edges_file_path)
     
     if nodes_data is None or edges_data is None:
         return False, "Failed to load CSV files"
@@ -796,7 +818,7 @@ def add_resource_interactive():
     print_section("Step 4: Connect to Parent Node")
     
     # Get nodes in selected subgraph and parent nodes
-    nodes_data, _ = load_csv_data('data_ariadne_nodes.csv')
+    nodes_data, _ = load_csv_data(NODES_FILE)
     relevant_nodes = [n for n in nodes_data if n.get('subgraph') == subgraph or n.get('id') == subgraph]
     
     if not relevant_nodes:
@@ -905,9 +927,11 @@ def add_resource_interactive():
     
     input("\n  Press Enter to continue...")
 
-def regenerate_all_paths(nodes_file='data_ariadne_nodes.csv'):
+def regenerate_all_paths(nodes_file=None):
     """Regenerate all path fields in the nodes CSV based on subgraphDet hierarchy."""
     import csv
+    if nodes_file is None:
+        nodes_file = NODES_FILE
     
     # Load the CSV file
     data = []
@@ -980,3 +1004,48 @@ def regenerate_paths_interactive():
         print("\nOperation cancelled.")
     
     input("\nPress Enter to continue...")
+
+
+def select_csv_files():
+    """Open GUI file dialogs to select CSV files."""
+    print("\n" + "=" * 70)
+    print("  CSV File Selection")
+    print("=" * 70 + "\n")
+    print("  Please select the CSV files using the file dialogs...\n")
+  
+    # Create a hidden root window
+    root = tk.Tk()
+    root.withdraw()
+    root.attributes('-topmost', True)
+  
+    # Select nodes CSV file
+    print("  1. Select the NODES CSV file (e.g., data_ariadne_nodes.csv)")
+    nodes_file = filedialog.askopenfilename(
+        initialdir=os.getcwd(),
+        title="Select Nodes CSV File",
+        filetypes=[("CSV files", "*.csv"), ("All files", "*.*")]
+    )
+  
+    if not nodes_file:
+        print("\n  ✗ No nodes file selected. Exiting...")
+        sys.exit(1)
+  
+    print(f"  ✓ Selected nodes file: {nodes_file}")
+  
+    # Select edges CSV file
+    print("\n  2. Select the EDGES CSV file (e.g., data_ariadne_edges.csv)")
+    edges_file = filedialog.askopenfilename(
+        initialdir=os.getcwd(),
+        title="Select Edges CSV File",
+        filetypes=[("CSV files", "*.csv"), ("All files", "*.*")]
+    )
+  
+    if not edges_file:
+        print("\n  ✗ No edges file selected. Exiting...")
+        sys.exit(1)
+  
+    print(f"  ✓ Selected edges file: {edges_file}")
+  
+    root.destroy()
+  
+    return nodes_file, edges_file

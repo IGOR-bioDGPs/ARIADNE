@@ -25,11 +25,14 @@ from functions import (
     select_from_list,
     add_resource_interactive,
     regenerate_all_paths,
-    regenerate_paths_interactive
+    regenerate_paths_interactive,
+    select_csv_files
 )
 
 def main():
     """Main application loop."""
+    nodes_file, edges_file = select_csv_files()
+
     while True:
         clear_screen()
         print_header("ARIADNE Graph Resource Manager")
