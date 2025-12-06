@@ -533,7 +533,7 @@
                         window.location.protocol === 'file:';
             
             const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv';
-            const localURL = 'data/data_ariadne_nodes.csv';
+            const localURL = './data/data_ariadne_nodes.csv';
             
             const dataURL = isLocal ? localURL : githubRawURL;
             
@@ -589,10 +589,11 @@
             // Auto-detect: use local if running on localhost, otherwise use GitHub
             const isLocal = window.location.hostname === 'localhost' || 
                         window.location.hostname === '127.0.0.1' ||
-                        window.location.protocol === 'file:';
+                        window.location.protocol === 'file:' ||
+                        window.location.hostname === "[::1]";
             
             const githubRawURL = 'https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_edges.csv';
-            const localURL = 'data/data_ariadne_edges.csv';
+            const localURL = './data/data_ariadne_edges.csv';
             
             const dataURL = isLocal ? localURL : githubRawURL;
             
