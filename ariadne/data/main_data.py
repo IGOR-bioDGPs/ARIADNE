@@ -21,7 +21,7 @@ from functions import (
 
 def main():
     """Main application loop."""
-    nodes_file, edges_file = select_csv_files()
+    select_csv_files()
 
     while True:
         clear_screen()
