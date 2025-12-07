@@ -7,6 +7,7 @@ This application provides an interactive command-line interface for managing res
 The ARIADNE project uses a graph-based structure to organize research resources, tools, and workflows. The graph consists of:
 - **Nodes**: Individual resources or steps in the research workflow
 - **Edges**: Connections between nodes showing relationships and flow
+- **Subgraphs**: Logical groupings of related nodes
 
 ## Files
 
@@ -49,43 +50,74 @@ The application will launch an interactive menu in your terminal/command prompt.
 
 When you select option 1 (Add new resource), the script guides you through the following steps:
 
-### Step 1: Select Subgraph
-Choose the subgraph where you want to add the resource. Available options include:
+### Step 1: Basic Information
+Enter the fundamental details for your new resource:
+- **Node ID**: Unique identifier (e.g., "OpenScience", "Zotero")
+- **Display Label**: Human-readable name (e.g., "Open Science", "Zotero")
+
+### Step 2: Choose Subgraph
+
+**NEW FEATURE:** You now have two options:
+
+#### Option 1: Use an Existing Subgraph
+Choose from the list of available subgraphs where you want to add the resource. Available options include:
 - ProjectStart
 - Literature
 - Communities
 - Data Management
 - And more...
 
-### Step 2: Select Target Node
-Choose the parent node that will connect to your new resource. The script displays:
+#### Option 2: Create a New Subgraph
+If your resource doesn't fit into any existing subgraph, you can create a new one! The wizard will guide you through:
+
+1. **Enter New Subgraph Label**: Provide a descriptive name (e.g., "Data structure and management")
+2. **Select Parent Subgraph**: Choose which existing subgraph this new one should connect to
+3. **Set Rank**: Define the hierarchical level (must be greater than parent's rank)
+4. **Select Parent Node**: Choose the specific node in the parent subgraph to connect to
+
+**How New Subgraphs Work:**
+When you create a new subgraph, the system automatically creates a **dual-node structure**:
+- A **bridge node** in the parent subgraph (diamond-shaped, teal)
+- A **top node** in the new subgraph itself (diamond-shaped, teal)
+- An **edge** connecting the parent node to the bridge node
+
+This structure ensures proper graph connectivity and visualization.
+
+### Step 3: Node Properties
+Define the hierarchical position:
+- **Node Rank**: The level in the graph hierarchy (must be ≥ subgraph rank)
+
+The system displays existing nodes in the selected subgraph with their ranks to help you choose an appropriate rank.
+
+### Step 4: Connect to Parent Node
+Select the parent node that will connect to your new resource. The script displays:
 - All nodes in the selected subgraph
 - Node IDs and labels
 - Current rank information
 
-### Step 3: Select Node Type
+### Step 5: Resource Details
+
+#### Node Type
 Choose the type of node you're creating:
-- **Terminal node** (ellipse, red background) - End points or final resources
-- **Initial node** (rectangle, blue background) - Starting points or entry nodes
-- **Intermediate node** (diamond, teal background) - Middle steps or decision points
-
-### Step 4: Enter Node Details
-
-You'll be prompted to provide:
+- **Terminal/Final node** (ellipse, red background) - End points or final resources
+- **Initial/Starting node** (rectangle, blue background) - Starting points or entry nodes
+- **Intermediate/Parent node** (diamond, teal background) - Middle steps or decision points
 
 #### Required Fields:
-- **Node ID**: Unique identifier (e.g., "Unpaywall", "Research Rabbit")
-- **Label**: Display name for the node
-- **Tooltip**: Brief description shown on hover
+- **Resource URL**: Link to the resource (optional, press Enter to skip)
 - **Description**: Detailed explanation of the resource
 
-#### Optional Fields:
-- **URL (href)**: Link to the resource (press Enter to skip)
-- **Open Source**: Whether the resource is open source (yes/no)
-- **Key Questions**: Important questions related to this resource (use || as separator)
-- **Key Link**: Additional reference link
+#### Open Source Status:
+- TRUE (Open source)
+- FALSE (Proprietary)
+- HYBRID (Freemium/Mixed)
 
-### Step 5: Confirmation
+### Step 6: Optional Properties
+Additional metadata you can provide:
+- **Tooltip**: Brief hover text (defaults to URL if provided)
+- **Edge Label**: Label for the connecting edge (usually left empty)
+
+### Step 7: Confirmation
 Review all entered information and confirm to add the resource to the graph.
 
 ## Data Structure
@@ -104,7 +136,7 @@ Review all entered information and confirm to add the resource to the graph.
 - `href` - URL link
 - `tooltip` - Hover text
 - `descr` - Description
-- `openSource` - Open source flag
+- `openSource` - Open source flag (TRUE/FALSE/HYBRID)
 - `keyQuestions` - Key questions (|| separated)
 - `keyLink` - Reference link
 - `path` - Hierarchical path (e.g., "Project Start > Literature > Unpaywall")
@@ -123,7 +155,7 @@ Review all entered information and confirm to add the resource to the graph.
 |-----------|-------|------------------|----------|
 | Terminal | Ellipse | Red (#D41159) | Final resources, tools, endpoints |
 | Initial | Rectangle | Blue (#005AB5) | Starting points, entry nodes |
-| Intermediate | Diamond | Teal (#40B0A6) | Decision points, intermediate steps |
+| Intermediate | Diamond | Teal (#40B0A6) | Decision points, intermediate steps, subgraph nodes |
 
 ## Path Hierarchy
 
@@ -133,6 +165,32 @@ The `path` field automatically builds a hierarchical structure:
 - Uses " > " as separator
 - Example: `Project Start > Literature > Unpaywall`
 
+## Creating New Subgraphs: Best Practices
+
+When creating a new subgraph, consider the following:
+
+1. **Naming Convention**: Use descriptive names that clearly indicate the subgraph's purpose
+2. **Hierarchy**: Ensure the new subgraph's rank is higher than its parent's rank
+3. **Parent Selection**: Choose a parent subgraph that logically relates to your new subgraph
+4. **Connection Point**: Select a parent node that makes sense as the entry point to your new subgraph
+
+### Example: Creating a New Subgraph
+
+Let's say you want to create a new subgraph for "Data Visualization Tools":
+
+1. Launch ARIADNE Manager
+2. Select option 1 (Add new resource)
+3. Enter Node ID: "DataVizHub"
+4. Enter Label: "Data Visualization Hub"
+5. Choose option 2 (Create a new subgraph)
+6. Enter subgraph label: "Data Visualization Tools"
+7. Select parent subgraph: "Data Management"
+8. Enter rank: 4 (if Data Management has rank 3)
+9. Select parent node: "Data Management" (the top node)
+10. Continue with resource details...
+
+The system will automatically create the dual-node structure, and you can then add specific visualization tools (Tableau, PowerBI, etc.) as child nodes within this new subgraph.
+
 ## Tips
 
 - Use descriptive node IDs that are easy to reference
@@ -141,22 +199,40 @@ The `path` field automatically builds a hierarchical structure:
 - Include URLs when available to link to external resources
 - Use the || separator for multiple key questions
 - Review the subgraph structure before adding nodes to ensure proper placement
+- When creating new subgraphs, think about the logical hierarchy and how it fits into the overall graph structure
+- New subgraphs should represent distinct categories or phases in the research workflow
 
-## Example Workflow
+## Example Workflow: Adding to Existing Subgraph
 
 1. Launch the ARIADNE Manager executable
-2. Select option 4 (Add new resource)
-3. Choose subgraph: "Literature"
-4. Select target node: "Literature" (the main node)
-5. Choose node type: "Terminal node"
-6. Enter details:
-   - ID: "Zotero"
-   - Label: "Zotero"
-   - Tooltip: "Free reference management software"
-   - Description: "Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
-   - URL: "https://www.zotero.org/"
-   - Open Source: "yes"
-7. Confirm and save
+2. Select option 1 (Add new resource)
+3. Enter Node ID: "Zotero"
+4. Enter Label: "Zotero"
+5. Choose option 1 (Use existing subgraph)
+6. Choose subgraph: "Literature"
+7. Enter rank: 3
+8. Select target node: "Literature" (the main node)
+9. Choose node type: "Terminal node"
+10. Enter URL: "https://www.zotero.org/"
+11. Enter description: "Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
+12. Select Open Source: "TRUE"
+13. Confirm and save
+
+## Example Workflow: Creating New Subgraph
+
+1. Launch the ARIADNE Manager executable
+2. Select option 1 (Add new resource)
+3. Enter Node ID: "EthicsHub"
+4. Enter Label: "Research Ethics Hub"
+5. Choose option 2 (Create new subgraph)
+6. Enter subgraph label: "Research Ethics"
+7. Select parent subgraph: "ProjectStart"
+8. Enter rank: 2
+9. Select parent node: "ProjectStart"
+10. Enter rank for new node: 2
+11. Choose node type: "Intermediate node"
+12. Enter description: "Central hub for research ethics resources and guidelines"
+13. Confirm and save
 
 ## Data Backup
 
@@ -167,6 +243,8 @@ The script automatically saves changes to the CSV files. Consider backing up you
 - **Invalid node ID**: Ensure the ID doesn't already exist
 - **Missing target node**: Verify the target node exists in the selected subgraph
 - **CSV errors**: Check that CSV files are properly formatted and not corrupted
+- **Rank validation errors**: Ensure new node ranks are greater than or equal to the subgraph rank
+- **Subgraph creation fails**: Verify the parent subgraph exists and the parent node ID is correct
 
 ## Support
 
