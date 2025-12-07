@@ -45,10 +45,10 @@ for row in data:
 fieldnames = list(data[0].keys()) + ['path']
 
 # Write the updated data to a new CSV
-with open('data_ariadne_nodes_with_paths.csv', 'w', encoding='latin-1', newline='') as csvfile:
+with open('data_ariadne_nodes.csv', 'w', encoding='latin-1', newline='') as csvfile:
     writer = csv.DictWriter(csvfile, delimiter=';', fieldnames=fieldnames)
     writer.writeheader()
     for row in data:
         writer.writerow(row)
 
-print("CSV file updated with paths successfully.")
+print("Original CSV file 'data_ariadne_nodes.csv' updated with paths successfully.")
