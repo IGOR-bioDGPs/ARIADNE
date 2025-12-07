@@ -10,6 +10,7 @@ import csv, os, sys
 import tkinter as tk
 from tkinter import filedialog
 from typing import Optional, List, Dict, Tuple
+import pandas as pd
 
 # Global CSV file paths
 NODES_FILE = 'data_ariadne_nodes.csv'
@@ -74,30 +75,27 @@ def get_available_subgraphs(nodes_filepath: str = None) -> List[str]:
     return [sg for sg in subgraphs if sg]
 
 
-def get_subgraph_details(subgraph_name: str, nodes_filepath: str = None) -> Optional[Dict]:
-    """
-    Get details about a specific subgraph.
-    
-    Args:
-        subgraph_name: Name of the subgraph
-        nodes_filepath: Path to nodes CSV file
-        
-    Returns:
-        Dictionary with subgraph details or None if not found
-    """
-    if nodes_filepath is None:
-        nodes_filepath = NODES_FILE
-    all_nodes_data, _ = load_csv_data(nodes_filepath)
-    
-    for node in all_nodes_data:
-        if node.get('id') == subgraph_name and node.get('label') == subgraph_name:
-            return {
-                'name': subgraph_name,
-                'rank': node.get('rank'),
-                'mainGraph': node.get('mainGraph'),
-                'shape': node.get('shape'),
-                'bgcolor': node.get('bgcolor')
-            }
+def get_subgraph_details(subgraph_name):
+    """Get details of a subgraph's top node."""
+    nodes_df = load_nodes()
+
+    # First try exact match: id and label both equal subgraph_name
+    top_node = nodes_df[
+        (nodes_df['id'] == subgraph_name) &
+        (nodes_df['label'] == subgraph_name)
+    ]
+
+    if not top_node.empty:
+        return top_node.iloc[0].to_dict()
+
+    # Fallback: find any node in this subgraph and return the one with lowest rank
+    subgraph_nodes = nodes_df[nodes_df['subgraph'] == subgraph_name]
+
+    if not subgraph_nodes.empty:
+        # Return the node with the lowest rank (top node)
+        top_node = subgraph_nodes.sort_values('rank').iloc[0]
+        return top_node.to_dict()
+
     return None
 
 
@@ -261,162 +259,6 @@ def get_graph_statistics(nodes_filepath: str = None,
         'terminal_nodes': len(terminal_nodes),
         'subgraphs': subgraphs
     }
-
-# def add_resource_interactive():
-#     """Interactive wizard to add a new resource."""
-#     print_header("Add New Resource to ARIADNE Graph")
-    
-#     print("  This wizard will guide you through adding a new resource.\n")
-    
-#     # Step 1: Basic Information
-#     print_section("Step 1: Basic Information")
-    
-#     node_id = get_user_input("  Enter unique Node ID (e.g., 'OpenScience')", required=True)
-#     node_label = get_user_input("  Enter display label (e.g., 'Open Science')", required=True)
-    
-#     # Step 2: Choose Subgraph
-#     print_section("Step 2: Choose Subgraph")
-    
-#     subgraphs = get_available_subgraphs()
-#     print("\n  Would you like to:")
-#     print("    1. Use an existing subgraph")
-#     print("    2. Create a new subgraph")
-    
-#     sg_choice = get_user_input("  Enter choice", default="1")
-    
-#     if sg_choice == "1":
-#         subgraph, _ = select_from_list(
-#             subgraphs,
-#             "Select a subgraph",
-#             lambda x: f"{x:30s} (Rank: {get_subgraph_details(x)['rank'] if get_subgraph_details(x) else 'N/A'})"
-#         )
-        
-#         if subgraph is None:
-#             print("\n  ✗ Cancelled.")
-#             input("\n  Press Enter to continue...")
-#             return
-        
-#         # Get subgraph rank for validation
-#         sg_details = get_subgraph_details(subgraph)
-#         min_rank = int(sg_details['rank']) if sg_details else 1
-#         print(f"\n  Selected subgraph: {subgraph} (Minimum rank: {min_rank})")
-        
-#     else:
-#         subgraph = get_user_input("  Enter new subgraph name", required=True)
-#         min_rank = 1
-#         print(f"\n  New subgraph '{subgraph}' will be created.")
-    
-#     # Step 3: Node Properties
-#     print_section("Step 3: Node Properties")
-    
-#     # Show existing nodes in the subgraph with their ranks
-#     if sg_choice == "1":  # Existing subgraph
-#         nodes_in_sg = get_nodes_in_subgraph(subgraph)
-#         if nodes_in_sg:
-#             print(f"\n  Current nodes in '{subgraph}':")
-#             # Sort by rank for better visualization
-#             sorted_nodes = sorted(nodes_in_sg, key=lambda x: int(x.get('rank', 0)))
-#             for node in sorted_nodes[:10]:  # Show first 10 to avoid clutter
-#                 print(f"    Rank {node.get('rank'):2s}: {node.get('label')}")
-#             if len(nodes_in_sg) > 10:
-#                 print(f"    ... and {len(nodes_in_sg) - 10} more nodes")
-#             print()
-    
-#     node_rank = get_user_input(f"  Enter node rank (minimum: {min_rank})", 
-#                                default=str(min_rank + 1))
-    
-#     # Step 4: Target Node (Connection)
-#     print_section("Step 4: Connect to Parent Node")
-    
-#     # Get nodes in selected subgraph and parent nodes
-#     nodes_data, _ = load_csv_data('data_ariadne_nodes.csv')
-#     relevant_nodes = [n for n in nodes_data if n.get('subgraph') == subgraph or n.get('id') == subgraph]
-    
-#     if not relevant_nodes:
-#         print(f"\n  ⚠ No existing nodes found in subgraph '{subgraph}'.")
-#         print(f"  You'll need to specify a parent node manually.")
-#         target_node = get_user_input("  Enter parent node ID", required=True)
-#     else:
-#         print("\n  Available parent nodes:")
-#         target_node, _ = select_from_list(
-#             relevant_nodes,
-#             "Select parent node to connect to",
-#             lambda x: f"{x.get('label'):40s} (ID: {x.get('id')}, Rank: {x.get('rank')})"
-#         )
-        
-#         if target_node is None:
-#             print("\n  ✗ Cancelled.")
-#             input("\n  Press Enter to continue...")
-#             return
-        
-#         target_node = target_node.get('id')
-    
-#     # Step 5: Resource Details
-#     print_section("Step 5: Resource Details")
-    
-#     node_href = get_user_input("  Enter resource URL", required=True)
-#     node_descr = get_user_input("  Enter description", required=False)
-    
-#     # Open source status
-#     print("\n  Is this resource open source?")
-#     print("    1. TRUE (Open source)")
-#     print("    2. FALSE (Proprietary)")
-#     print("    3. HYBRID (Freemium/Mixed)")
-    
-#     os_choice = get_user_input("  Enter choice [1]", default="1")
-#     open_source_map = {"1": "TRUE", "2": "FALSE", "3": "HYBRID"}
-#     node_openSource = open_source_map.get(os_choice, "TRUE")
-    
-#     # Step 6: Optional Properties
-#     print_section("Step 6: Optional Properties (press Enter to skip)")
-    
-#     node_shape = get_user_input("  Node shape", default="ellipse", required=False)
-#     node_bgcolor = get_user_input("  Background color (hex)", default="#D41159", required=False)
-#     node_tooltip = get_user_input("  Tooltip text", default=node_href, required=False)
-#     edge_label = get_user_input("  Edge label", required=False)
-    
-#     # Step 7: Confirmation
-#     print_section("Step 7: Confirmation")
-    
-#     print("\n  Summary:")
-#     print(f"    Node ID:          {node_id}")
-#     print(f"    Label:            {node_label}")
-#     print(f"    Subgraph:         {subgraph}")
-#     print(f"    Rank:             {node_rank}")
-#     print(f"    Parent Node:      {target_node}")
-#     print(f"    URL:              {node_href}")
-#     print(f"    Description:      {node_descr or '(none)'}")
-#     print(f"    Open Source:      {node_openSource}")
-    
-#     if not get_yes_no("\n  Proceed with adding this resource?", default=True):
-#         print("\n  ✗ Cancelled.")
-#         input("\n  Press Enter to continue...")
-#         return
-    
-#     # Add the resource
-#     print("\n  Adding resource...")
-    
-#     success, message = add_graph_entry(
-#         new_node_id=node_id,
-#         new_node_label=node_label,
-#         new_node_rank=node_rank,
-#         new_node_subgraph=subgraph,
-#         target_node_id=target_node,
-#         new_edge_label=edge_label,
-#         node_shape=node_shape,
-#         node_bgcolor=node_bgcolor,
-#         node_href=node_href,
-#         node_tooltip=node_tooltip,
-#         node_descr=node_descr,
-#         node_openSource=node_openSource
-#     )
-    
-#     if success:
-#         print(f"\n  {message}")
-#     else:
-#         print(f"\n  ✗ Error: {message}")
-    
-#     input("\n  Press Enter to continue...")
 
 def validate_node_id(node_id, nodes_data):
     """
@@ -790,11 +632,69 @@ def add_resource_interactive():
         min_rank = int(sg_details['rank']) if sg_details else 1
         print(f"\n  Selected subgraph: {subgraph} (Minimum rank: {min_rank})")
         
-    else:
-        subgraph = get_user_input("  Enter new subgraph name", required=True)
-        min_rank = 1
-        print(f"\n  New subgraph '{subgraph}' will be created.")
-    
+    else:  # Create new subgraph
+        # Get new subgraph details  
+        subgraph_label = get_user_input("  Enter new subgraph label (e.g., 'Data structure and management')", required=True)  
+        subgraph = subgraph_label.replace(" ", "")  # Remove spaces for ID  
+        
+        # Select parent subgraph  
+        print("\n  Select parent subgraph:")  
+        parent_subgraph, _ = select_from_list(  
+            subgraphs,  
+            "Select parent subgraph",  
+            lambda x: f"{x:30s} (Rank: {get_subgraph_details(x)['rank'] if get_subgraph_details(x) else 'N/A'})"  
+        )  
+        
+        if parent_subgraph is None:  
+            print("\n  ✗ Cancelled.")  
+            input("\n  Press Enter to continue...")  
+            return  
+        
+        # Get parent subgraph details  
+        parent_sg_details = get_subgraph_details(parent_subgraph)  
+        parent_rank = int(parent_sg_details['rank']) if parent_sg_details else 1  
+        
+        # Get rank for new subgraph  
+        new_sg_rank = get_user_input(f"  Enter rank for new subgraph (minimum: {parent_rank + 1})",   
+                                    default=str(parent_rank + 1))  
+        
+        # Select parent node to connect to  
+        parent_nodes = get_nodes_in_subgraph(parent_subgraph)  
+        if not parent_nodes:  
+            print(f"\n  ✗ No nodes found in parent subgraph '{parent_subgraph}'.")  
+            input("\n  Press Enter to continue...")  
+            return  
+        
+        print("\n  Select parent node to connect to:")  
+        parent_node, _ = select_from_list(  
+            parent_nodes,  
+            "Select parent node",  
+            lambda x: f"{x.get('label'):40s} (Rank: {x.get('rank')})"  
+        )  
+        
+        if parent_node is None:  
+            print("\n  ✗ Cancelled.")  
+            input("\n  Press Enter to continue...")  
+            return  
+        
+        # Create the new subgraph structure  
+        success, message = create_new_subgraph_structure(  
+            new_subgraph_name=subgraph,  
+            new_subgraph_label=subgraph_label,  
+            new_subgraph_rank=new_sg_rank,  
+            parent_subgraph_name=parent_subgraph,  
+            parent_node_id=parent_node.get('id')  
+        )  
+        
+        if not success:  
+            print(f"\n  ✗ Error: {message}")  
+            input("\n  Press Enter to continue...")  
+            return  
+        
+        print(f"\n  {message}")  
+        min_rank = int(new_sg_rank)  
+        print(f"\n  New subgraph '{subgraph}' created. You can now add resources to it.")
+        
     # Step 3: Node Properties
     print_section("Step 3: Node Properties")
     
@@ -843,7 +743,7 @@ def add_resource_interactive():
     # Step 5: Resource Details
     print_section("Step 5: Resource Details")
     
-    node_href = get_user_input("  Enter resource URL", required=True)
+    node_href = get_user_input("  Enter resource URL", required=False)
     node_descr = get_user_input("  Enter description", required=False)
     
     # Node type (determines shape and color)
@@ -873,8 +773,8 @@ def add_resource_interactive():
     print("    2. FALSE (Proprietary)")
     print("    3. HYBRID (Freemium/Mixed)")
     
-    os_choice = get_user_input("  Enter choice", default="1")
-    open_source_map = {"1": "TRUE", "2": "FALSE", "3": "HYBRID"}
+    os_choice = get_user_input("  Enter choice", default="0")
+    open_source_map = {"1": "TRUE", "2": "FALSE", "3": "HYBRID", "0": ""}
     node_openSource = open_source_map.get(os_choice, "TRUE")
     
     # Step 6: Optional Properties
@@ -1049,3 +949,193 @@ def select_csv_files():
     root.destroy()
   
     return nodes_file, edges_file
+
+def create_new_subgraph_structure(subgraph_name, parent_subgraph, rank, main_graph):
+    """
+    Create the complete structure for a new subgraph.
+    This includes:
+    1. A diamond node in the parent subgraph
+    2. A duplicate diamond node in the new subgraph itself
+    3. An edge connecting the parent subgraph to the new node
+    
+    Args:
+        subgraph_name: Name of the new subgraph
+        parent_subgraph: Name of the parent subgraph to connect to
+        rank: Rank for the new subgraph nodes
+        main_graph: The main graph this belongs to
+    
+    Returns:
+        bool: True if successful, False otherwise
+    """
+    nodes_data, nodes_headers = load_csv_data(NODES_FILE)
+    edges_data, edges_headers = load_csv_data(EDGES_FILE)
+    
+    # Check if subgraph already exists
+    if any(node.get('id') == subgraph_name for node in nodes_data):
+        print(f"  ⚠ Subgraph '{subgraph_name}' already exists.")
+        return False
+    
+    # Get the next edge ID
+    next_edge_id = get_next_edge_id(edges_data)
+    
+    # Create Node 1: Diamond node in parent subgraph
+    node_in_parent = {
+        'id': subgraph_name,
+        'label': subgraph_name,
+        'shape': 'diamond',
+        'bgcolor': '#40B0A6',
+        'fontcolor': 'white',
+        'rank': str(rank),
+        'subgraph': parent_subgraph,
+        'subgraphDet': parent_subgraph,
+        'mainGraph': main_graph,
+        'is_terminal': 'no',
+        'href': '',
+        'tooltip': '',
+        'descr': '',
+        'openSource': '',
+        'keyQuestions': '',
+        'keyLink': '',
+        'path': ''
+    }
+    
+    # Create Node 2: Diamond node in its own subgraph
+    node_in_own = {
+        'id': subgraph_name,
+        'label': subgraph_name,
+        'shape': 'diamond',
+        'bgcolor': '#40B0A6',
+        'fontcolor': 'white',
+        'rank': str(rank),
+        'subgraph': subgraph_name,
+        'subgraphDet': subgraph_name,
+        'mainGraph': main_graph,
+        'is_terminal': 'no',
+        'href': '',
+        'tooltip': '',
+        'descr': '',
+        'openSource': '',
+        'keyQuestions': '',
+        'keyLink': '',
+        'path': ''
+    }
+    
+    # Create edge from parent subgraph top node to new node
+    new_edge = {
+        'id': str(next_edge_id),
+        'source': parent_subgraph,
+        'target': subgraph_name,
+        'subgraph': parent_subgraph,
+        'label': '',
+        'background-color': 'black'
+    }
+    
+    # Add to data
+    nodes_data.append(node_in_parent)
+    nodes_data.append(node_in_own)
+    edges_data.append(new_edge)
+    
+    # Save
+    save_csv_data(NODES_FILE, nodes_data, nodes_headers)
+    save_csv_data(EDGES_FILE, edges_data, edges_headers)
+    
+    return True
+
+def load_nodes():  
+    """Load nodes from CSV file."""  
+    return pd.read_csv('data_ariadne_nodes.csv', sep=';', dtype=str)  
+  
+def load_edges():  
+    """Load edges from CSV file."""  
+    return pd.read_csv('data_ariadne_edges.csv', sep=';', dtype=str)
+
+def create_new_subgraph_structure(new_subgraph_name, new_subgraph_label, new_subgraph_rank, parent_subgraph_name, parent_node_id):
+    """
+    Create the dual-node structure required for a new subgraph.
+    
+    Creates:
+    1. Bridge node in the parent subgraph
+    2. Top node in the new subgraph itself
+    3. Edge connecting parent to bridge node
+    
+    Args:
+        new_subgraph_name: Name/ID of the new subgraph (no spaces)
+        new_subgraph_label: Display label of the new subgraph (can have spaces)
+        new_subgraph_rank: Rank for the new subgraph
+        parent_subgraph_name: Name of the parent subgraph
+        parent_node_id: ID of the parent node to connect to
+    
+    Returns:
+        tuple: (success: bool, message: str)
+    """
+    nodes_data, nodes_headers = load_csv_data(NODES_FILE)
+    edges_data, edges_headers = load_csv_data(EDGES_FILE)
+    
+    # Get parent subgraph details
+    parent_sg_details = get_subgraph_details(parent_subgraph_name)
+    if not parent_sg_details:
+        return False, f"Parent subgraph '{parent_subgraph_name}' not found"
+    
+    # 1. Create bridge node in PARENT subgraph
+    bridge_node = {
+        'id': new_subgraph_label,
+        'label': new_subgraph_label,
+        'shape': 'diamond',
+        'bgcolor': '#40B0A6',
+        'fontcolor': 'white',
+        'rank': str(new_subgraph_rank),
+        'subgraph': parent_subgraph_name,  # Belongs to PARENT subgraph
+        'subgraphDet': parent_subgraph_name,
+        'mainGraph': parent_sg_details['mainGraph'],
+        'is_terminal': 'no',
+        'href': '',
+        'tooltip': '',
+        'descr': '',
+        'openSource': '',
+        'keyQuestions': '',
+        'keyLink': '',
+        'path': new_subgraph_label
+    }
+    
+    # 2. Create top node in NEW subgraph
+    top_node = {
+        'id': new_subgraph_name,
+        'label': new_subgraph_label,
+        'shape': 'diamond',
+        'bgcolor': '#40B0A6',
+        'fontcolor': 'white',
+        'rank': str(new_subgraph_rank),
+        'subgraph': new_subgraph_name,  # Belongs to NEW subgraph
+        'subgraphDet': new_subgraph_name,
+        'mainGraph': new_subgraph_name,
+        'is_terminal': 'no',
+        'href': '',
+        'tooltip': '',
+        'descr': '',
+        'openSource': '',
+        'keyQuestions': '',
+        'keyLink': '',
+        'path': new_subgraph_label
+    }
+    
+    # 3. Create edge from parent node to bridge node
+    max_edge_id = max([int(e.get('id', 0)) for e in edges_data if e.get('id', '').isdigit()] + [0])
+    new_edge = {
+        'id': str(max_edge_id + 1),
+        'source': parent_node_id,
+        'target': new_subgraph_label,
+        'subgraph': parent_subgraph_name,
+        'label': '',
+        'background-color': 'black'
+    }
+    
+    # Add nodes and edge
+    nodes_data.append(bridge_node)
+    nodes_data.append(top_node)
+    edges_data.append(new_edge)
+    
+    # Save
+    save_csv_data(NODES_FILE, nodes_data, nodes_headers)
+    save_csv_data(EDGES_FILE, edges_data, edges_headers)
+    
+    return True, f"✓ Created new subgraph '{new_subgraph_label}' with dual-node structure"
