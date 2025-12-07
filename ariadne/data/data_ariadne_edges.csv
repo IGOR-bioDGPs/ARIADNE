@@ -170,17 +170,16 @@ id;source;target;subgraph;label;background-color
 169;Reproducibility;Neuroimaging resources;Reproducibility;;black
 170;Data analysis;Analysis Framework;Dataanalysis;;black
 171;Analysis Framework;PSPP;AnalysisFramework;;black
-172;Analysis Framework;SPSS;AnalysisFramework;;black
-173;Analysis Framework;R;AnalysisFramework;;black
-174;R;FSBrain;R;;black
-175;R;GGhelp;R;;black
-176;R;GGplot tricks;R;;black
-177;R;R visualization;R;;black
-178;R;R graph gallery;R;;black
-179;R;RStudio;R;;black
-180;RStudio;Cheatsheets 1;RStudio;;black
-181;RStudio;Cheatsheets 2;RStudio;;black
-182;Analysis Framework;JASP;AnalysisFramework;;black
+173;Analysis Framework;SPSS;AnalysisFramework;;black
+174;Analysis Framework;R;AnalysisFramework;;black
+175;R;FSBrain;R;;black
+176;R;GGhelp;R;;black
+177;R;GGplot tricks;R;;black
+178;R;R visualization;R;;black
+179;R;R graph gallery;R;;black
+180;R;RStudio;R;;black
+181;RStudio;Cheatsheets 1;RStudio;;black
+182;RStudio;Cheatsheets 2;RStudio;;black
 183;Analysis Framework;Python;AnalysisFramework;;black
 184;Python;Jupyter Notebook;Python;;black
 185;Jupyter Notebook;Cheatsheets;JupyterNotebook;;black
@@ -308,7 +307,7 @@ id;source;target;subgraph;label;background-color
 307;Stimulus Material;TUNA App;StimulusMaterial;;black
 308;Survey;LimeSurvey;Survey;;black
 309;Survey;SoSciSurvey;Survey;;black
-310;Analysis Framework;Matlab_analysis;AnalysisFramework;;black
+310;R;jamovi;R;;black
 311;Matlab_analysis;Mask_explorer;Matlab_analysis;;black
-312;R;jamovi;R;;black
-313;Writing;Checks;Writing;;black
+312;Analysis Framework;Matlab_analysis;AnalysisFramework;;black
+313;R;JASP;R;;black
