@@ -292,3 +292,28 @@ id;source;target;subgraph;label;background-color
 291;Social Media;YouTube;SocialMedia;;black
 292;Social Media;Bluesky;SocialMedia;;black
 293;fMRI_val;MRIDeface;fMRI_val;;black
+49;Organization;Error Tight by Julia Strand;Organization;;black
+50;Organization;Zettlr;Organization;;black
+52;Study design;Ethical considerations and approvals;Studydesign;;black
+53;Ethical considerations and approvals;TransMIT Center fuer wissenschaftlich-psychologische Dienstleistungen (DGPs);Ethicalconsiderationsandapprovals;;black
+54;Study design;Data structure and management;Studydesign;;black
+55;Data structure and management;GENEMEDE Metadata Standard;Datastructureandmanagement;;black
+56;Study design;VALID Checklist;Studydesign;;black
+57;Study design;Documentation and flexibility;Studydesign;;black
+58;Documentation and flexibility;Electronic lab notebooks;Documentationandflexibility;;black
+59;Documentation and flexibility;DataWiz;Documentationandflexibility;;black
+60;Documentation and flexibility;OpenMinds;Documentationandflexibility;;black
+67;Sample size;PowerLMM.js;Samplesize;;black
+70;Design framework;Matlab_design;Designframework;Lab-based;black
+73;Matlab_design;Psychtoolbox;Matlab_design;;black
+78;Data availability;Open Pain;Dataavailability;;black
+103;Stimulus Material;TUNA App;StimulusMaterial;;black
+111;Survey;LimeSurvey;Survey;;black
+112;Survey;SoSciSurvey;Survey;;black
+147;fMRI_viz;neurosynth compose;fMRI_viz;;black
+197;R;jamovi;R;;black
+201;Analysis Framework;JASP - new Meta-Analysis Module;AnalysisFramework;;black
+206;Analysis Framework;Matlab_analysis;AnalysisFramework;;black
+207;Matlab_analysis;Mask_explorer;Matlab_analysis;;black
+222;Writing;Checks;Writing;;black
+251;Checks;Statcheck simple edition;Checks;;black

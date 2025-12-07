@@ -35,11 +35,11 @@ If you'd like to develop and/or build the TestBook book, you should:
 
 1. Clone this repository
 2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-3. (Optional) Edit the books source files located in the `testbook/` directory
-4. Run `jupyter-book clean testbook/` to remove any existing builds
-5. Run `jupyter-book build testbook/`
+3. (Optional) Edit the books source files located in the `ariadne/` directory
+4. Run `jupyter-book clean ariadne/` to remove any existing builds
+5. Run `jupyter-book build ariadne/`
 
-A fully-rendered HTML version of the book will be built in `testbook/_build/html/`.
+A fully-rendered HTML version of the book will be built in `ariadne/_build/html/`.
 
 ### Hosting the book
 
