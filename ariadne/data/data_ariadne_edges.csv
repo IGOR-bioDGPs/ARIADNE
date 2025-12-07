@@ -296,5 +296,19 @@ id;source;target;subgraph;label;background-color
 295;Organization;Zettlr;Organization;;black
 296;Study design;Ethical considerations and approvals;Studydesign;;black
 297;Ethicalconsiderationsandapprovals;TransMIT Center fuer wissenschaftlich-psychologische Dienstleistungen (DGPs);Ethicalconsiderationsandapprovals;;black
-298;Study design;Datastructureandmanagement;Studydesign;;black
-299;Datastructureandmanagement;Data structure and management;Datastructureandmanagement;;black
+298;Study design;Data structure and management;Studydesign;;black
+299;Datastructureandmanagement;GENEMEDE Metadata Standard;Datastructureandmanagement;;black
+300;Study design;VALID Checklist;Studydesign;;black
+301;Study design;Documentation and flexibility;Studydesign;;black
+302;Documentationandflexibility;Electronic lab notebooks;Documentationandflexibility;;black
+303;Documentationandflexibility;DataWiz;Documentationandflexibility;;black
+304;Documentationandflexibility;OpenMinds;Documentationandflexibility;;black
+305;Sample size;PowerLMM.js;Samplesize;;black
+306;Data availability;Open Pain;Dataavailability;;black
+307;Stimulus Material;TUNA App;StimulusMaterial;;black
+308;Survey;LimeSurvey;Survey;;black
+309;Survey;SoSciSurvey;Survey;;black
+310;Analysis Framework;Matlab_analysis;AnalysisFramework;;black
+311;Matlab_analysis;Mask_explorer;Matlab_analysis;;black
+312;R;jamovi;R;;black
+313;Writing;Checks;Writing;;black
