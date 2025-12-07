@@ -311,3 +311,4 @@ id;source;target;subgraph;label;background-color
 311;Matlab_analysis;Mask_explorer;Matlab_analysis;;black
 312;Analysis Framework;Matlab_analysis;AnalysisFramework;;black
 313;R;JASP;R;;black
+314;Meta-analysis;JASP new Meta-Analysis Module;Meta-analysis;;black
