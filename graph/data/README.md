@@ -26,27 +26,28 @@ Simply double-click the executable file or run it from the command line:
 
 **Windows:**
 ```bash
-ariadne_manager.exe
+ARIADNE_manager.exe
 ```
 
 **macOS/Linux:**
 ```bash
-./ariadne_manager
+./ARIADNE_manager
 ```
 
 The application will launch an interactive menu in your terminal/command prompt.
 
 ## Main Menu Options
 
-1. **View available subgraphs** - Display all subgraphs in the system
-2. **View subgraph details** - See detailed information about a specific subgraph
-3. **View statistics** - Display overall graph statistics
-4. **Add new resource** - Add a new node and edge to the graph
-5. **Exit** - Close the application
+1. **Add new resource (node + edge)** - Add a new node and edge to the graph
+2. **View available subgraphs** - Display all subgraphs in the system
+3. **View subgraph details** - See detailed information about a specific subgraph
+4. **View statistics** - Display overall graph statistics 
+5. **Regenerate all node paths** - Regenerate the auto-generated node paths 
+6. **Exit** - Close the application
 
 ## Adding a New Resource
 
-When you select option 4 (Add new resource), the script guides you through the following steps:
+When you select option 1 (Add new resource), the script guides you through the following steps:
 
 ### Step 1: Select Subgraph
 Choose the subgraph where you want to add the resource. Available options include:
