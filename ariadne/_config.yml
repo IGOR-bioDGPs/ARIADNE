@@ -43,3 +43,9 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+## Add Umami tracker for traffic tracking
+  extra_footer: |
+    <script async defer
+            data-website-id="f43f2b89-2868-441a-bb2d-8ba50db808dc"
+            src="https://cloud.umami.is/script.js">
+    </script>
