@@ -22,6 +22,11 @@ jobs:
 
       - name: Install dependencies
         run: pip install pandas openpyxl && pip install osfclient
+        
+      - name: Debug paths
+        run: |
+          pwd
+          ls -lah
 
       - name: Process CSV and create XLSX
         env:
