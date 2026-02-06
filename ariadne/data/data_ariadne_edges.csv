@@ -313,3 +313,9 @@ id;source;target;subgraph;label;background-color
 313;R;JASP;R;;black
 314;Meta-analysis;JASP new Meta-Analysis Module;Meta-analysis;;black
 315;fMRI_val;DeidentificationwithFieldtrip;fMRI_val;;black
+316;Study design;Type of Study;Studydesign;;black
+317;TypeofStudy;metaBUS;TypeofStudy;;black
+318;fMRI_val;PYdeface;fMRI_val;;black
+319;Literature;RegCheck;Literature;;black
+320;Literature;GPTZeroCitationChecker;Literature;;black
+321;Organization;Todoist;Organization;;black
