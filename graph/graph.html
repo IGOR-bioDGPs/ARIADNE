@@ -18,6 +18,8 @@
         width: var(--screen-width);
         height: var(--screen-height);
         left: 25px;
+        position: relative;
+        margin: 0 auto;
         /* width: 80vw;
         height: 80vh; */
         /* position: absolute; */
@@ -34,10 +36,11 @@
     }
     .info-box {
         font-family: Helvetica;
-        font-size: 14px;
-        position: absolute;
+        font-size: 15px;
+        position: fixed;
         top: 10px;
         right: 10px;
+        left: auto;
         width: 300px;
         background-color: #ffffff;
         border: 1px solid #cccccc;
@@ -45,17 +48,39 @@
         border-radius: 5px;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
         cursor: pointer;
-        z-index: 2;
+        z-index: 9998;
     }
     .info-box.show {
         display: none;
     }
+    /* Optimize list spacing inside info-box and key-box */
+    .info-box ul,
+    .key-box ul {
+        margin: 5px 0;
+        padding-left: 18px;
+    }
+    .info-box li,
+    .key-box li {
+        margin-bottom: 4px;
+        line-height: 1.3;
+    }
+    #infoContent,
+    #keyContent {
+        margin: 0;
+        padding: 0;
+    }
+    .info-box h2,
+    .key-box h2 {
+        margin: 0 0 5px 0;
+        font-size: 16px;
+    }
     .key-box {
         font-family: Helvetica;
-        font-size: 14px;
-        position: absolute;
+        font-size: 15px;
+        position: fixed;
         top: 120px;
         right: 10px;
+        left: auto;
         width: 300px;
         background-color: #ffffff;
         border: 1px solid #cccccc;
@@ -63,7 +88,7 @@
         border-radius: 5px;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
         cursor: pointer;
-        z-index: 1;
+        z-index: 9997;
     }
     .key-box.show {
         display: none;
@@ -81,140 +106,275 @@
         background-position: center center;
         /* position: relative; */
     }
-    .back-button {
-        position: fixed;
-        top: 20px; /* Adjust the top distance from the top of the screen */
-        left: 20px; /* Adjust the left distance from the left side of the screen */
-        z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 16.5px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    .back-button:hover {
-        background-color: #45a049;
-    }
-    .osf-button {
-        position: fixed;
-        top: 85px; /* Adjust the top distance from the top of the screen */
-        left: 20px; /* Adjust the left distance from the left side of the screen */
-        z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 16.5px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    .osf-button:hover {
-        background-color: #45a049;
-    }
+    /* Shared button styles - positions now controlled by containers */
+    .back-button,
+    .osf-button,
     .glos-button {
-        position: fixed;
-        top: 150px; /* Adjust the top distance from the top of the screen */
-        left: 20px; /* Adjust the left distance from the left side of the screen */
-        z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 16.5px;
+        font-size: 15px;
         background-color: #4CAF50;
         color: white;
         border: none;
-        padding: 10px 20px;
+        padding: 10px 16px;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
+        white-space: nowrap;
     }
+    .back-button:hover,
+    .osf-button:hover,
     .glos-button:hover {
         background-color: #45a049;
     }
-    /*suggestion buttons*/
-    .sugg-ghub-button {  /*change the name to gdrive & ghub*/
-        position: absolute;
-        bottom: 10px; /* Adjust the top distance from the top of the screen */
-        left: 20px; /* Adjust the left distance from the left side of the screen */
-        z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 16px;
+    /* Suggestion & Bug buttons - positions now controlled by containers */
+    .sugg-ghub-button,
+    .sugg-gdrive-button,
+    .bug-ghub-button,
+    .bug-gdrive-button {
+        font-size: 14px;
         background-color: #4CAF50;
         color: white;
         border: none;
-        padding: 10px 20px;
+        padding: 10px 14px;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
+        white-space: nowrap;
     }
-    .sugg-ghub-button:hover {
-        background-color: #45a049;
-    }
-    .sugg-gdrive-button { /*change the name to gdrive & ghub*/
-        position: absolute;
-        bottom: 50px; /* Adjust the top distance from the top of the screen */
-        left: 20px; /* Adjust the left distance from the left side of the screen */
-        z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 16px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    .sugg-gdrive-button:hover {
-        background-color: #45a049;
-    }
-    /*bug buttons*/
-    .bug-ghub-button {  /*change the name to gdrive & ghub*/
-        position: absolute;
-        bottom: 10px; /* Adjust the top distance from the top of the screen */
-        right: 20px; /* Adjust the left distance from the left side of the screen */
-        z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 16px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    .bug-ghub-button:hover {
-        background-color: #45a049;
-    }
-    .bug-gdrive-button { /*change the name to gdrive & ghub*/
-        position: absolute;
-        bottom: 50px; /* Adjust the top distance from the top of the screen */
-        right: 20px; /* Adjust the left distance from the left side of the screen */
-        z-index: 9999; /* Ensure the button appears above other elements */
-        font-size: 16px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
+    .sugg-ghub-button:hover,
+    .sugg-gdrive-button:hover,
+    .bug-ghub-button:hover,
     .bug-gdrive-button:hover {
         background-color: #45a049;
     }
     /* .bullet-resource { list-style-type: disc; color: #D41159; } */
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    
+    /* Button containers for better organization */
+    .nav-btn-container {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .bottom-btn-container {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        z-index: 9999;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px;
+        pointer-events: none;
+    }
+    
+    .bottom-btn-container button {
+        pointer-events: auto;
+    }
+    
+    .bottom-left-group,
+    .bottom-right-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    /* Common button base styles */
+    .nav-btn-container button,
+    .bottom-btn-container button {
+        font-size: 14px;
+        padding: 8px 14px;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+    }
+    
+    /* Medium screens (tablets) */
+    @media (max-width: 900px) {
+        .info-box {
+            width: 220px;
+            font-size: 13px;
+            padding: 8px;
+            right: 10px;
+            left: auto;
+            top: 10px;
+        }
+        
+        .key-box {
+            width: 220px;
+            font-size: 13px;
+            padding: 8px;
+            right: 10px;
+            left: auto;
+            top: 110px;
+        }
+        
+        #cy {
+            left: 10px;
+        }
+        
+        .nav-btn-container button,
+        .bottom-btn-container button {
+            font-size: 13px;
+            padding: 8px 12px;
+        }
+
+        body {
+            background-size: 200px 200px;
+        }
+    }
+    
+    /* Mobile screens */
+    @media (max-width: 600px) {
+        .info-box {
+            width: auto;
+            max-width: 180px;
+            font-size: 11px;
+            padding: 6px;
+            right: 5px;
+            left: auto;
+            top: 5px;
+        }
+        
+        .key-box {
+            width: auto;
+            max-width: 180px;
+            font-size: 11px;
+            padding: 6px;
+            right: 5px;
+            left: auto;
+            top: 80px;
+        }
+        
+        #cy {
+            left: 5px;
+        }
+        
+        .nav-btn-container {
+            top: 5px;
+            left: 5px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+            max-width: none;
+        }
+        
+        .nav-btn-container button {
+            font-size: 11px;
+            padding: 5px 8px;
+            width: auto;
+        }
+        
+        .bottom-btn-container {
+            flex-direction: column;
+            align-items: stretch;
+            bottom: 5px;
+            left: 5px;
+            right: 5px;
+        }
+        
+        .bottom-left-group,
+        .bottom-right-group {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 5px;
+        }
+        
+        .bottom-btn-container button {
+            font-size: 10px;
+            padding: 6px 8px;
+            flex: 1 1 auto;
+            max-width: calc(50% - 5px);
+        }
+        
+        .custom-tooltip {
+            max-width: calc(100vw - 40px);
+            font-size: 12px;
+            padding: 8px;
+        }
+
+        body {
+            background-size: 150px 150px;
+        }
+        
+        #shapesCanvas {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+    }
+    
+    /* Extra small screens */
+    @media (max-width: 400px) {
+        .nav-btn-container button {
+            font-size: 10px;
+            padding: 5px 6px;
+        }
+        
+        .bottom-btn-container button {
+            font-size: 9px;
+            padding: 5px 6px;
+        }
+        
+        .info-box, .key-box {
+            font-size: 11px;
+        }
+    }
+    
+    /* Large screens */
+    @media (min-width: 1200px) {
+        .info-box, .key-box {
+            font-size: 16px;
+            width: 340px;
+        }
+        
+        .info-box h2, .key-box h2 {
+            font-size: 18px;
+        }
+        
+        .nav-btn-container button {
+            font-size: 16px;
+            padding: 12px 18px;
+        }
+        
+        .bottom-btn-container button {
+            font-size: 15px;
+            padding: 10px 16px;
+        }
+    }
   </style>
   <script src="./cytoscape/cytoscape.min.js"></script>
   
 </head>
 <body>
-    <button id="back-button" class="back-button" title="For more information, see the ARIADNE book">←<br>ARIADNE Book</button>
-    <button id="osf-button" class="osf-button" title="Go to the OSF repository to see the complete resource table">←<br>OSF Repository</button>
-    <button id="glos-button" class="glos-button" title="Go to the Glossary of terms used">←<br>Glossary</button>
-    <button id="sugg-gdrive-button" class="sugg-gdrive-button" title="If you have a new resource to suggest; please report them to us via Google Forms!">Suggest new resource via Google Forms</button>
-    <button id="sugg-ghub-button" class="sugg-ghub-button" title="If you have a new resource to suggest; please report them to us via GitHub issues!">Suggest new resource via GitHub</button>
-    <button id="bug-gdrive-button" class="bug-gdrive-button" title="If you have a a bug that you have encountered; please report them to us via Google Forms!">Report a bug via Google Forms</button>
-    <button id="bug-ghub-button" class="bug-ghub-button" title="If you have a bug that you have encountered; please report them to us via GitHub issues!">Report a bug via GitHub</button>
+    <!-- Top-left navigation buttons -->
+    <div class="nav-btn-container">
+        <button id="back-button" class="back-button" title="For more information, see the ARIADNE book">← ARIADNE Book</button>
+        <button id="osf-button" class="osf-button" title="Go to the OSF repository to see the complete resource table">← OSF Repository</button>
+        <button id="glos-button" class="glos-button" title="Go to the Glossary of terms used">← Glossary</button>
+    </div>
+    
+    <!-- Bottom action buttons -->
+    <div class="bottom-btn-container">
+        <div class="bottom-left-group">
+            <button id="sugg-gdrive-button" class="sugg-gdrive-button" title="If you have a new resource to suggest; please report them to us via Google Forms!">+ Suggest new resource via Google Forms</button>
+            <button id="sugg-ghub-button" class="sugg-ghub-button" title="If you have a new resource to suggest; please report them to us via GitHub issues!">+ Suggest new resource via GitHub</button>
+        </div>
+        <div class="bottom-right-group">
+            <button id="bug-gdrive-button" class="bug-gdrive-button" title="If you have a bug that you have encountered; please report them to us via Google Forms!">Report a bug via Google Forms</button>
+            <button id="bug-ghub-button" class="bug-ghub-button" title="If you have a bug that you have encountered; please report them to us via GitHub issues!">Report a bug via GitHub</button>
+        </div>
+    </div>
+    
     <div id="cy"></div>
     <div id="info-box" class="info-box">
         <span id="infoTitle"><h2>Instructions:</h2> Click to hide/unhide the instructions</span>
@@ -426,21 +586,90 @@
 
 
   <script>
-        // Get the width and height of the screen
-        var screenWidth = window.innerWidth*0.8;
-        var screenHeight = window.innerHeight;
-        // Set CSS variables with screen width and height
-        // document.documentElement.style.setProperty('--screen-width', screenWidth + 'px');
-        // document.documentElement.style.setProperty('--screen-height', screenHeight*0.8 + 'px');
-        document.documentElement.style.setProperty('--screen-width', screenWidth+ 'px');
-        document.documentElement.style.setProperty('--screen-height', screenHeight + 'px');
+        // Get the width and height of the screen - responsive calculation
+        function updateScreenDimensions() {
+            var screenWidth = window.innerWidth;
+            var screenHeight = window.innerHeight;
+            
+            // Responsive width calculation based on screen size
+            var graphWidth, graphLeft;
+            if (screenWidth <= 600) {
+                // Mobile: use more screen space
+                graphWidth = screenWidth * 0.95;
+                graphLeft = '2.5%';
+            } else if (screenWidth <= 900) {
+                // Tablet: moderate margins
+                graphWidth = screenWidth * 0.88;
+                graphLeft = '6%';
+            } else {
+                // Desktop: original behavior
+                graphWidth = screenWidth * 0.8;
+                graphLeft = '10%';
+            }
+            
+            // Set CSS variables with screen dimensions
+            document.documentElement.style.setProperty('--screen-width', graphWidth + 'px');
+            document.documentElement.style.setProperty('--screen-height', screenHeight + 'px');
+            
+            // Update graph container position
+            var cyContainer = document.getElementById('cy');
+            if (cyContainer) {
+                cyContainer.style.left = graphLeft;
+            }
+            
+            return { screenWidth, screenHeight, graphWidth };
+        }
+        
+        // Initial call
+        var dims = updateScreenDimensions();
+        var screenWidth = dims.screenWidth;
+        var screenHeight = dims.screenHeight;
+        
         // Also the size of the info box
         function updateInfoBoxSize() {
-            screenWidth = window.innerWidth;
+            dims = updateScreenDimensions();
+            screenWidth = dims.screenWidth;
             var infoBox = document.getElementById('info-box');
-            // Adjust the width of the info box based on the screen width
-            infoBox.style.width = screenWidth >= 768 ? '300px' : '150px';
-            // You can add additional size adjustments based on screen width if needed
+            var keyBox = document.getElementById('key-box');
+            
+            // Adjust the width and position of boxes based on screen width
+            if (screenWidth <= 600) {
+                // Mobile: smaller width, positioned on right to avoid nav buttons
+                infoBox.style.width = 'auto';
+                infoBox.style.maxWidth = '180px';
+                infoBox.style.right = '5px';
+                infoBox.style.left = 'auto';
+                if (keyBox) {
+                    keyBox.style.width = 'auto';
+                    keyBox.style.maxWidth = '180px';
+                    keyBox.style.right = '5px';
+                    keyBox.style.left = 'auto';
+                }
+            } else if (screenWidth <= 900) {
+                // Tablet: moderate width
+                infoBox.style.width = '220px';
+                infoBox.style.maxWidth = '';
+                infoBox.style.right = '10px';
+                infoBox.style.left = 'auto';
+                if (keyBox) {
+                    keyBox.style.width = '220px';
+                    keyBox.style.maxWidth = '';
+                    keyBox.style.right = '10px';
+                    keyBox.style.left = 'auto';
+                }
+            } else {
+                // Desktop
+                infoBox.style.width = '300px';
+                infoBox.style.maxWidth = '';
+                infoBox.style.right = '10px';
+                infoBox.style.left = 'auto';
+                if (keyBox) {
+                    keyBox.style.width = '300px';
+                    keyBox.style.maxWidth = '';
+                    keyBox.style.right = '10px';
+                    keyBox.style.left = 'auto';
+                }
+            }
         }
         // Call the function when the window is resized
         window.addEventListener('resize', updateInfoBoxSize);
@@ -630,6 +859,29 @@
         let index = 0;
         // get previous subgraph
         let graphPathArr = [];
+        // Global reference to current Cytoscape instance for resize handling
+        let cyInstance = null;
+        
+        // Helper function to get responsive font size
+        function getResponsiveFontSize() {
+            var width = window.innerWidth;
+            if (width <= 400) return 14;
+            if (width <= 600) return 16;
+            if (width <= 900) return 20;
+            return 24;
+        }
+        
+        // Window resize handler for Cytoscape
+        window.addEventListener('resize', function() {
+            // Update CSS variables for graph container size
+            updateScreenDimensions();
+            
+            if (cyInstance) {
+                cyInstance.resize();
+                cyInstance.fit();
+            }
+        });
+        
         // async function to create and draw the graph
         async function createNetwork(sub_graph = '') {
             // wait for nodes
@@ -659,6 +911,9 @@
             const filteredEdges = edgesArray.filter(item => item.data?.subgraph?.toLowerCase() === sub_graph?.toLowerCase());
             // now combine the arrays
             const filteredAll = filteredNodes.concat(filteredEdges);
+            // Get responsive font size
+            const nodeFontSize = getResponsiveFontSize();
+            const edgeFontSize = Math.max(12, nodeFontSize - 4);
                 // configure the cytoscape graph here
                 const cy = cytoscape({
                     container: document.getElementById('cy'), // will be drawn on div tag 'cy'
@@ -670,9 +925,9 @@
                             'background-color': 'data(background_color)',
                             'shape': 'data(shape)',
                             'label': 'data(label)',
-                            'font-size': 24,
+                            'font-size': nodeFontSize,
                             'text-wrap': 'wrap', // or 'ellipsis' for truncation
-                            'text-max-width': 150, // Set the maximum width for wrapped text
+                            'text-max-width': window.innerWidth <= 600 ? 100 : 150, // Responsive text width
                             'background-width': '80%', // those four variables fix the position of the images
                             'background-height': '80%', // those four variables fix the position of the images
                             'background-offset-x' : '140%', // those four variables fix the position of the images
@@ -704,12 +959,12 @@
                         selector: 'edge', // edge style
                         style: {
                             'width': 2,
-                            'font-size': 24,
+                            'font-size': edgeFontSize,
                             'line-color': '#ccc',
                             'target-arrow-color': '#ccc',
                             'target-arrow-shape': 'triangle',
                             'text-wrap': 'wrap',
-                            'text-max-width': 100,
+                            'text-max-width': window.innerWidth <= 600 ? 60 : 100,
                             'text-wrap': 'wrap',
                             'label': 'data(label)'
                         }
@@ -774,6 +1029,8 @@
                     });
                     styleOptions.run();
                 }
+                // Store reference to current cy instance for resize handling
+                cyInstance = cy;
                 main(index, cy, graphPathArr); // and now call the main function so we run it indefinitely
                 index += 1; // increase the index because we run the code once already
                 // in the next block, keybox is set
