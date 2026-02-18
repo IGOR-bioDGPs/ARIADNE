@@ -1080,12 +1080,49 @@
             const maxZoom = 1.2; // maximum allowed zoom level
             // get cyto .css element first
             var cytoCSS = document.body;
+            // Shared function for context action on background/anywhere
+            function handleBackgroundContextAction(isNode) {
+                cytoCSS.style.backgroundImage = 'url("ARIADNE_Logo.png")';
+                const tooltips = document.querySelectorAll('.custom-tooltip');
+                tooltips.forEach(tooltip => tooltip.remove());
+                createNetwork('initial');
+                if (!isNode) {
+                    updateKeyContent('', 'right_click');
+                }
+                cyto.zoom(minZoom);
+            }
+
+            // Shared function for context action on nodes
+            function handleNodeContextAction(node) {
+                var auxElem = graphPathArr[index-1];
+                
+                if (auxElem != 'initial'){
+                    cytoCSS.style.backgroundImage = 'url("")';
+                } else if (auxElem == 'initial'){
+                    updateKeyContent('', 'right_click');
+                }
+                createNetwork(auxElem.replace(' ',''));
+            }
             if (index == 0){ // if it's the first iteration
                 cyto = await createNetwork('initial'); // draw the initial overview
             }
             else{ // if it's not the first iteration
                 // if there is a left click on a node
                 cyto.on('click', 'node', function(event) {
+                    cytoCSS.style.backgroundImage = 'url("")'; // remove background image
+                    var node = event.target; // get the node
+                    if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
+                        createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
+                        if (node.data('mainGraph') == 'initial'){ // only if it's an initial node we should show the key questions
+                            updateKeyContent(node, 'left_click'); // Call the function to update key content
+                        }
+                    }
+                    else{ // if it's a terminal node
+                        window.open(node.data('tooltip'), '_blank'); // redirect to the respective webpage
+                    }
+                });
+                // if there is a tap on a node; do the same as left click because mobile phones do not have left click
+                cyto.on('tap', 'node', function(event) {
                     cytoCSS.style.backgroundImage = 'url("")'; // remove background image
                     var node = event.target; // get the node
                     if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
@@ -1157,6 +1194,44 @@
                     }
                     cyto.center(); // center the whole graph to viewport 
                 });
+                // following block is for long press to go one level up alternative for mobile
+                // ===== MOBILE: Long-press handlers =====
+                let pressTimer;
+                let pressTarget = null;
+
+                // Long-press on node
+                cyto.on('tapstart', 'node', function(event) {
+                    const node = event.target;
+                    pressTarget = node;
+                    pressTimer = setTimeout(function() {
+                        handleNodeContextAction(node);
+                        pressTarget = null;
+                    }, 600);
+                });
+
+                // Long-press on background
+                cyto.on('tapstart', function(event) {
+                    // Check if it's the background (not a node or edge)
+                    try {
+                        var isNode = event.target.isNode();
+                    } catch (error) {
+                        var isNode = false;
+                    }
+                    
+                    if (!isNode && event.target === cyto) {
+                        pressTimer = setTimeout(function() {
+                            handleBackgroundContextAction(false);
+                        }, 600);
+                    }
+                });
+
+                // Cancel long-press on tap end or drag
+                cyto.on('tapend drag', function() {
+                    clearTimeout(pressTimer);
+                    pressTarget = null;
+                });
+                //
+
             }
         }
         function updateKeyContent(node, clickType) {
