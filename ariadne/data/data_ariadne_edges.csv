@@ -170,17 +170,16 @@ id;source;target;subgraph;label;background-color
 169;Reproducibility;Neuroimaging resources;Reproducibility;;black
 170;Data analysis;Analysis Framework;Dataanalysis;;black
 171;Analysis Framework;PSPP;AnalysisFramework;;black
-172;Analysis Framework;SPSS;AnalysisFramework;;black
-173;Analysis Framework;R;AnalysisFramework;;black
-174;R;FSBrain;R;;black
-175;R;GGhelp;R;;black
-176;R;GGplot tricks;R;;black
-177;R;R visualization;R;;black
-178;R;R graph gallery;R;;black
-179;R;RStudio;R;;black
-180;RStudio;Cheatsheets 1;RStudio;;black
-181;RStudio;Cheatsheets 2;RStudio;;black
-182;Analysis Framework;JASP;AnalysisFramework;;black
+173;Analysis Framework;SPSS;AnalysisFramework;;black
+174;Analysis Framework;R;AnalysisFramework;;black
+175;R;FSBrain;R;;black
+176;R;GGhelp;R;;black
+177;R;GGplot tricks;R;;black
+178;R;R visualization;R;;black
+179;R;R graph gallery;R;;black
+180;R;RStudio;R;;black
+181;RStudio;Cheatsheets 1;RStudio;;black
+182;RStudio;Cheatsheets 2;RStudio;;black
 183;Analysis Framework;Python;AnalysisFramework;;black
 184;Python;Jupyter Notebook;Python;;black
 185;Jupyter Notebook;Cheatsheets;JupyterNotebook;;black
@@ -291,3 +290,25 @@ id;source;target;subgraph;label;background-color
 290;Social Media;Instagram;SocialMedia;;black
 291;Social Media;YouTube;SocialMedia;;black
 292;Social Media;Bluesky;SocialMedia;;black
+293;fMRI_val;MRIDeface;fMRI_val;;black
+294;Organization;Error Tight by Julia Strand;Organization;;black
+295;Organization;Zettlr;Organization;;black
+296;Study design;Ethical considerations and approvals;Studydesign;;black
+297;Ethicalconsiderationsandapprovals;TransMIT Center fuer wissenschaftlich-psychologische Dienstleistungen (DGPs);Ethicalconsiderationsandapprovals;;black
+298;Study design;Data structure and management;Studydesign;;black
+299;Datastructureandmanagement;GENEMEDE Metadata Standard;Datastructureandmanagement;;black
+300;Study design;VALID Checklist;Studydesign;;black
+301;Study design;Documentation and flexibility;Studydesign;;black
+302;Documentationandflexibility;Electronic lab notebooks;Documentationandflexibility;;black
+303;Documentationandflexibility;DataWiz;Documentationandflexibility;;black
+304;Documentationandflexibility;OpenMinds;Documentationandflexibility;;black
+305;Sample size;PowerLMM.js;Samplesize;;black
+306;Data availability;Open Pain;Dataavailability;;black
+307;Stimulus Material;TUNA App;StimulusMaterial;;black
+308;Survey;LimeSurvey;Survey;;black
+309;Survey;SoSciSurvey;Survey;;black
+310;R;jamovi;R;;black
+311;Matlab_analysis;Mask_explorer;Matlab_analysis;;black
+312;Analysis Framework;Matlab_analysis;AnalysisFramework;;black
+313;R;JASP;R;;black
+314;Meta-analysis;JASP new Meta-Analysis Module;Meta-analysis;;black

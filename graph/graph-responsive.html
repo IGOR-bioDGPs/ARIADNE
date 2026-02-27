@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIADNE: A Graphical and Curated Resource Navigator</title>
+  <link rel="icon" type="image/x-icon" href="ARIADNE_Logo.png">
+  <link rel="stylesheet" href="ariadne-responsive.css">
+  <script src="./cytoscape/cytoscape.min.js"></script>
+</head>
+<body>
+  
+  <div id="ariadne-app">
+    
+    <!-- ==================== DESKTOP LAYOUT (Your existing UI) ==================== -->
+    <div id="ariadne-desktop" class="desktop-only">
+      <button id="back-button" class="back-button" title="For more information, see the ARIADNE book">←<br>ARIADNE Book</button>
+      <button id="osf-button" class="osf-button" title="Go to the OSF repository to see the complete resource table">←<br>OSF Repository</button>
+      <button id="glos-button" class="glos-button" title="Go to the Glossary of terms used">←<br>Glossary</button>
+      <button id="sugg-gdrive-button" class="sugg-gdrive-button" title="If you have a new resource to suggest; please report them to us via Google Forms!">Suggest new resource via Google Forms</button>
+      <button id="sugg-ghub-button" class="sugg-ghub-button" title="If you have a new resource to suggest; please report them to us via GitHub issues!">Suggest new resource via GitHub</button>
+      <button id="bug-gdrive-button" class="bug-gdrive-button" title="If you have a a bug that you have encountered; please report them to us via Google Forms!">Report a bug via Google Forms</button>
+      <button id="bug-ghub-button" class="bug-ghub-button" title="If you have a bug that you have encountered; please report them to us via GitHub issues!">Report a bug via GitHub</button>
+      
+      <div id="cy"></div>
+      
+      <div id="info-box" class="info-box">
+        <span id="infoTitle"><h2>Instructions:</h2> Click to hide/unhide the instructions</span>
+        <div id="infoContent" hidden>
+          <ul>
+            <li>First things first. This is a "dynamic" network. This means that you can drag the nodes around and zoom in/out to resize the view</li>
+            <li>Left click on a node to go to the next levels.</li>
+            <li>Right click on anywhere to reset to the initial overview.</li>
+            <li>Right click on a node to go back to the previous level in the network.</li>
+            <li>Hover on any resource node to reveal the information regarding the node.</li>
+            <li>Left click on the resource nodes to go to the respective webpages.</li>
+            <li>Drag and drop on the nodes to rearrange the graph</li>
+            <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
+            <canvas id="shapesCanvas" width="280" height="140"></canvas>
+          </ul>
+        </div>
+      </div>
+      
+      <div id="key-box" class="key-box" hidden>
+        <span id="keyTitle"><h2>Key Questions:</h2> Click to hide/unhide the key questions</span>
+        <div id="keyContent" hidden></div>
+      </div>
+    </div>
+
+    <!-- ==================== MOBILE LAYOUT (New simplified UI) ==================== -->
+    <div id="ariadne-mobile" class="mobile-only">
+      <header id="mobile-header">
+        <h1>ARIADNE</h1>
+        <p class="mobile-subtitle">Scientific Resource Navigator</p>
+        <input id="mobile-search" type="search" placeholder="Search resources..." />
+      </header>
+
+      <nav id="mobile-tabs">
+        <button data-tab="steps" class="active">Steps</button>
+        <button data-tab="map">Map</button>
+        <button data-tab="info">Info</button>
+      </nav>
+
+      <main id="mobile-main">
+        <!-- Tab: Steps -->
+        <section id="tab-steps" class="tab active">
+          <div id="step-list"></div>
+        </section>
+
+        <!-- Tab: Map -->
+        <section id="tab-map" class="tab">
+          <div id="cy-mobile"></div>
+          <div class="mobile-controls">
+            <button id="mobile-reset-view" type="button">Reset View</button>
+            <button id="mobile-back" type="button">← Back</button>
+          </div>
+        </section>
+
+        <!-- Tab: Info -->
+        <section id="tab-info" class="tab">
+          <div class="info-content">
+            <h2>About ARIADNE</h2>
+            <p>ARIADNE is a living resource navigator that helps researchers navigate the 'labyrinth' of research tools and resources.</p>
+            
+            <h3>Quick Links</h3>
+            <a href="https://igor-biodgps.github.io/ARIADNE/contentpages/intro.html" target="_blank" class="mobile-link-button">📖 ARIADNE Book</a>
+            <a href="https://osf.io/tqjh8/" target="_blank" class="mobile-link-button">📊 OSF Repository</a>
+            <a href="https://igor-biodgps.github.io/ARIADNE/contentpages/Glossary.html" target="_blank" class="mobile-link-button">📚 Glossary</a>
+            
+            <h3>Contribute</h3>
+            <a href="https://docs.google.com/forms/d/1Xqk6MyLYvjdu9cbs1-R40hn9mIZ6KtKL-4LcpI80I_I/" target="_blank" class="mobile-link-button">➕ Suggest Resource</a>
+            <a href="https://docs.google.com/forms/d/1sCcvmlokUuWc4EG5mz0vXx-QRkyfqN69ibK5b3PqArA/" target="_blank" class="mobile-link-button">🐛 Report Bug</a>
+            
+            <h3>Legend</h3>
+            <div class="mobile-legend">
+              <div class="legend-item">
+                <span class="legend-icon">🔓</span>
+                <span>Fully open access</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-icon">🔐</span>
+                <span>Hybrid access</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-icon">🔒</span>
+                <span>Closed access</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Bottom sheet for resource details -->
+      <div id="resource-sheet" class="sheet">
+        <div class="sheet-header">
+          <button id="close-resource-sheet" type="button" aria-label="Close">×</button>
+        </div>
+        <div id="resource-sheet-content"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="ariadne-responsive.js"></script>
+</body>
+</html>

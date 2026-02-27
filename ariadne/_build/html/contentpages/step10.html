@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>STEP 10: Dissemination &#8212; ARIADNE</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -139,9 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -151,8 +153,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="ARIADNE - Home"/>
+    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="ARIADNE - Home"/>`);</script>
   
   
 </a></div>
@@ -188,6 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplementary information</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="testimonials.html">Testimonials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributions.html">Author contributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funding.html">Funding</a></li>
@@ -346,6 +349,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -356,6 +360,7 @@ document.write(`
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -363,7 +368,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -379,6 +386,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -390,7 +405,18 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-10-dissemination">
 <h1>STEP 10: Dissemination<a class="headerlink" href="#step-10-dissemination" title="Permalink to this heading">#</a></h1>
-<p>Once a study has been pre-printed and/or published, the dissemination process does not necessarily end, and ARIADNE showcases the many ways in which you can continue to publicize or present your work (Bourne, 2007). It can be important to pursue additional dissemination strategies in order to reach as many people as possible to benefit from the new findings (Ross-Hellauer et al., 2020). Typically, the results should be presented at conferences in the form of talks or posters (Pain, 2022), and potentially circulated on online platforms (e.g., ➜ <a class="reference external" href="https://twitter.com/?lang=de">X</a> or ➜ <a class="reference external" href="https://joinmastodon.org/">Mastodon</a>). These dissemination forms might happen before or during Step 9 as part of the preprint upload, or even as early as Step 7 to get peer feedback on the freshly analyzed results. Generally, two target groups should be differentiated when it comes to dissemination: Other researchers and the general public. Regarding the latter, science communication journals can also be addressed (➜ <a class="reference external" href="https://www.in-mind.org/">In-Mind</a>, ➜ <a class="reference external" href="https://www.scientificamerican.com/">Scientific American</a>, ➜ <a class="reference external" href="https://www.psychologicalscience.org/observer">APS Observer</a>, ➜ <a class="reference external" href="https://www.apa.org/monitor">APA Monitor on Psychology</a>, or ➜ <a class="reference external" href="https://www.spektrum.de/magazin/gehirn-und-geist/">Gehirn und Geist</a>), and usually the outreach offices of many institutions can be contacted to circulate a press release among regional and national news outlets. Ultimately, sharing open materials, including codes and data (Contaxis et al., 2022) with licenses, is highly favorable considering the rise in open science practices. The server’s privacy policies and the respective lawful basis (e.g., General Data Protection Regulation; Houtkoop et al., 2018, Peloquin et al., 2020) should be carefully considered when choosing an appropriate platform (➜ <a class="reference external" href="https://osf.io/">Open Science Framework</a>, ➜ <a class="reference external" href="https://zenodo.org/">Zenodo</a>, or ➜ <a class="reference external" href="https://www.psycharchives.org/">PsychArchives</a>). A wide-reach dissemination strategy is highly recommended. Eventually, research only has value when the methods and results leave the academic <em>ivory tower</em> (see Table 1) and are communicated to the general public and stakeholders.</p>
+<p>Once a study has been pre-printed and/or published, the dissemination process does not necessarily end (Bourne, 2007). It can be important to pursue additional dissemination strategies in order to reach as many people as possible to benefit from the new findings (Ross-Hellauer et al., 2020). Generally, two target groups should be differentiated when it comes to dissemination: Other researchers and the general public.</p>
+<p><em>Academic audiences</em>. Typically, new findings are presented at conferences in the form of talks or posters (Pain, 2022), and circulated on social media platforms (e.g., ➜ <a class="reference external" href="https://twitter.com/?lang=de">X</a> or ➜ <a class="reference external" href="https://joinmastodon.org/">Mastodon</a>). These dissemination forms might happen before or during Step 9 as part of the preprint upload, or even as early as Step 7 to get peer feedback on the freshly analyzed results.</p>
+<p><em>Non-academic audiences</em>. Regarding reaching the general public , science communication journals can also be addressed (➜ <a class="reference external" href="https://www.in-mind.org/">In-Mind</a>, ➜ <a class="reference external" href="https://www.scientificamerican.com/">Scientific American</a>, ➜ <a class="reference external" href="https://www.psychologicalscience.org/observer">APS Observer</a>, ➜ <a class="reference external" href="https://www.apa.org/monitor">APA Monitor on Psychology</a>, or ➜ <a class="reference external" href="https://www.spektrum.de/magazin/gehirn-und-geist/">Gehirn und Geist</a>), and usually the outreach offices of many institutions can be contacted to circulate a press release among regional and national news outlets.</p>
+<p>A wide-reach dissemination strategy is highly recommended, as research has increased value beyond the academic community, when a study’s findings leave the academic ivory tower (see glossary) and are communicated to the general public and stakeholders such as funders.</p>
+<section id="key-questions-in-this-step">
+<h2>Key questions in this step<a class="headerlink" href="#key-questions-in-this-step" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>How to design a poster for a conference?</p></li>
+<li><p>How to prepare a scientific presentation?</p></li>
+<li><p>How to present your research to a lay audience?</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -421,7 +447,7 @@ document.write(`
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="step9.html"
@@ -448,6 +474,20 @@ document.write(`
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -464,6 +504,7 @@ By The IGOR Community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -479,6 +520,12 @@ By The IGOR Community
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <script async defer
+        data-website-id="f43f2b89-2868-441a-bb2d-8ba50db808dc"
+        src="https://cloud.umami.is/script.js">
+</script>
+</div>
   </div>
   
 </div>
@@ -490,8 +537,8 @@ By The IGOR Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

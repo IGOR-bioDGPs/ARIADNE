@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>STEP 9: Publication &#8212; ARIADNE</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -139,9 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -151,8 +153,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="ARIADNE - Home"/>
+    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="ARIADNE - Home"/>`);</script>
   
   
 </a></div>
@@ -188,6 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplementary information</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="testimonials.html">Testimonials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributions.html">Author contributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funding.html">Funding</a></li>
@@ -346,6 +349,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -356,6 +360,7 @@ document.write(`
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -363,7 +368,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -379,6 +386,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -390,7 +405,22 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-9-publication">
 <h1>STEP 9: Publication<a class="headerlink" href="#step-9-publication" title="Permalink to this heading">#</a></h1>
-<p>There are many ways in which to disseminate scientific work (Bourne, 2005; see Step 10) or are summarized in <strong>ARIADNE</strong>. Preprints facilitate early access to the manuscript, which helps researchers to document their scientific or academic work and may even be used to assert priority (e.g. ➜ <a class="reference external" href="https://osf.io/preprints/metaarxiv/">MetaArXiv</a> or ➜ <a class="reference external" href="https://www.biorxiv.org/">BioArXiv</a>). Preprint publication often happens simultaneously with the submission to the target journal of choice. The accessibility and reception of a preprint may make it easier to assess the quality of scientific work than bold claims about the novelty or impact of the work (Brembs, 2019). However, be aware that some journals prohibit the upload of preprints (➜ Sherpa Romeo). Additionally, fellow researchers who have access to this work may provide comments that may be useful for a critical re-evaluation of the manuscript, which might also happen simultaneously to its peer review at a journal (see Table 1). Most journals ask researchers to submit the manuscript together with a <em>cover letter</em> (see Table 1). The cover letter allows researchers to demonstrate the relevance and quality of their work. However, some journals also actively discourage the submission of a cover letter to let the manuscript “speak for itself”. Once the manuscript is under review, reviewers might raise more or less critical issues about the manuscript and inform the editor handling your paper (Suls et al., 2009). More often, the editor then recommends either acceptance, minor revisions (both rarely happen on the first submission), major revisions (sometimes also called <em>revise and resubmit</em>; see Table 1), or rejection. Addressing each issue raised by the reviewers in a well-crafted, point-by-point response rebuttal letter (Palminteri, 2023; see Table 1) allows researchers to demonstrate that criticized parts of the manuscript have been revised to an extent that warrants the acceptance of the manuscript (Noble, 2017) or to argue why suggested changes have not been adapted. Following acceptance, researchers may think about publishing their data and code together with the manuscript in a way that allows easy access to and reuse of the work (Goodman et al., 2014). This process until seeing your paper published can take several months (in rare cases even years) and this time should be factored in Step 1, where a time plan of the project is first fixed. If your manuscript is rejected by your first journal choice, a submission to an alternative journal of equal or slightly lower rank is usually warranted. Only in exceptional cases an appeal could be considered. Crucially, if you notice an error only after publication (e.g., a software bug or faulty code/input data), this should be discussed with the co-authors and corrected in the published article as soon as possible (Bruns et al., 2019).</p>
+<p>There are many ways in which to disseminate scientific work (Bourne, 2005; see Step 10), some of these are summarized in ARIADNE.</p>
+<p><em>Preprints</em>. Preprints facilitate early access to the manuscript, which helps researchers to document their scientific or academic work and may even be used to assert priority (e.g., ➜ <a class="reference external" href="https://osf.io/preprints/metaarxiv/">MetaArXiv</a>, ➜ <a class="reference external" href="https://www.biorxiv.org/">BioArXiv</a>, ➜ <a class="reference external" href="https://osf.io/preprints/psyarxiv">PsyArXiv</a>, or ➜ <a class="reference external" href="https://www.psycharchives.org/">PsychArchives</a>; Bourne et al., 2017). Preprint publication often happens simultaneously with the submission to the target journal. Some have suggested that the accessibility and reception of a manuscript may make it easier to assess the quality of scientific work than bold claims about the novelty or impact of the work (e.g., in scholar-governed information infrastructures as opposed to legacy journals; Brembs, 2019). However, be aware that some journals still prohibit the upload of all or specific manuscript versions as preprints (➜ <a class="reference external" href="https://www.sherpa.ac.uk/romeo/">Sherpa Romeo</a>).</p>
+<p><em>Journal submission</em>. Most journals ask researchers to submit the manuscript together with a cover letter (see glossary). The cover letter allows researchers to demonstrate the relevance and quality of their work. However, some journals also actively discourage the submission of a cover letter to let the manuscript “speak for itself”.</p>
+<p><em>Peer review</em>. Once the manuscript is under peer review (see glossary), reviewers might raise more or less critical issues about the manuscript and inform the editor handling your paper (Suls &amp; Martin, 2009). In this context, fellow researchers provide comments that may be useful for a critical re-evaluation of the manuscript. The editor then recommends either acceptance, minor revisions (both rarely happen on the first submission), major revisions, revise and resubmit (see glossary), or rejection. It is important to note that these terms and their meaning may vary from journal to journal (for example, ‘reject’ might sometimes indicate an option to resubmit a revised version and sometimes not). Some journals (e.g., Collabra), include a page with the meaning of these different statuses. Addressing each issue raised by the reviewers in a well-crafted, point-by-point response rebuttal letter (Palminteri, 2023; see glossary) allows researchers to demonstrate that criticized parts of the manuscript have been revised to an extent that warrants the acceptance of the manuscript (Noble, 2017) or to argue why suggested changes have not been implemented.</p>
+<p><em>Open code, data, and materials</em>. Following acceptance, researchers may think about publishing their data and code together with the manuscript in a way that allows easy access to and reuse of the work (Goodman et al., 2014). Ultimately, sharing open code, data, and materials with licenses, is highly favorable considering the rise in open science practices (Contaxis et al., 2022). However, server’s privacy policies and the respective lawful basis (e.g., General Data Protection Regulation; Houtkoop et al., 2018, Peloquin et al., 2020) should be carefully considered when choosing a platform (➜ <a class="reference external" href="https://osf.io/dashboard">Open Science Framework</a>, ➜ <a class="reference external" href="https://zenodo.org/">Zenodo</a>, or ➜ <a class="reference external" href="https://www.psycharchives.org/">PsychArchives</a>). Published products can be assigned their own Digital Object Identifier (DOI) and constitute important research outputs next to published manuscripts (e.g., in modular publishing using ➜ <a class="reference external" href="https://www.octopus.ac/">Octopus</a> or ➜ <a class="reference external" href="https://www.researchequals.com/">ResearchEquals</a>).</p>
+<p><em>Publication</em>. This process until seeing your paper published can take several months (in rare cases even years) and this time should be factored in Step 1, where a time plan of the project is first established. If your manuscript is rejected by your first journal choice, a submission to an alternative journal is usually warranted. An appeal (i.e., contesting the rejection) can only be considered in exceptional cases. Crucially, if you notice an error only after publication (e.g., a software bug or faulty code/input data), this should be discussed with the co-authors and corrected in the published article as soon as possible (Bruns et al., 2019).</p>
+<section id="key-questions-in-this-step">
+<h2>Key questions in this step<a class="headerlink" href="#key-questions-in-this-step" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Where to upload data, code, materials, and/or a preprint?*</p></li>
+<li><p>Is the published data FAIR (“Findable, Accessible, Interoperable, and Reusable”)?*</p></li>
+<li><p>How to write a cover letter?</p></li>
+<li><p>How to write a rebuttal to reviewer comments?</p></li>
+</ul>
+<p><em>Questions with an asterisk indicate that these should ideally already be explored before starting a project.</em></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -421,7 +451,7 @@ document.write(`
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="step8.html"
@@ -448,6 +478,20 @@ document.write(`
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -464,6 +508,7 @@ By The IGOR Community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -479,6 +524,12 @@ By The IGOR Community
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <script async defer
+        data-website-id="f43f2b89-2868-441a-bb2d-8ba50db808dc"
+        src="https://cloud.umami.is/script.js">
+</script>
+</div>
   </div>
   
 </div>
@@ -490,8 +541,8 @@ By The IGOR Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

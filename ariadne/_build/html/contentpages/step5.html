@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>STEP 5: Data collection &#8212; ARIADNE</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -139,9 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -151,8 +153,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="ARIADNE - Home"/>
+    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="ARIADNE - Home"/>`);</script>
   
   
 </a></div>
@@ -188,6 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplementary information</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="testimonials.html">Testimonials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributions.html">Author contributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funding.html">Funding</a></li>
@@ -346,6 +349,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -356,6 +360,7 @@ document.write(`
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -363,7 +368,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -379,6 +386,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -390,7 +405,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-5-data-collection">
 <h1>STEP 5: Data collection<a class="headerlink" href="#step-5-data-collection" title="Permalink to this heading">#</a></h1>
-<p>Before starting with data collection, it is recommended to create a standardized manual (SOP; see Step 3 and Table 1; Manghani, 2011) and document the experimental procedure in a lab-book (Schnell, 2015) that lists unforeseen events and information for each participant/session. The latter ensures that important details, such as equipment malfunctioning, reasons for participant dropout, noticeable participant behavior, and any crucial decisions or modifications made on the fly, are not lost or forgotten. Note that writing up the method section before Step 5 promises to save time prospectively and enhances the precision and reproducibility of the research project. Here, data management strategies such as intuitive data saving structures can help to avoid misunderstandings as well as waste of time due to data rearrangement or rewriting scripts (Michener, 2015). Making sure you have all data backed up is essential to prevent valuable data from being accidentally lost. These practices later facilitate data, code, and material sharing as part of the publication (Step 9; Contaxis et al., 2022). Even though the scientific community still lacks consensus on data arrangement structures and is constantly finding new approaches, there are already well-established structures such as the ➜ <a class="reference external" href="https://bids.neuroimaging.io/">Brain Imaging Data Structure</a> (BIDS; Gorgolewski et al., 2017) for complex neuroimaging data, which are listed in <strong>ARIADNE</strong>. Furthermore, data anonymization or pseudonymization are critical techniques to protect participants’ rights and privacy (Meyer, 2018 for ethical data sharing; Hallinan et al., 2023 for European Union regulations on data privacy). <strong>ARIADNE</strong> also provides examples of existing data that can be used for some research questions.</p>
+<p>Before starting with data collection, researchers can create a standardized manual (SOP; see Step 3 and glossary; Manghani, 2011) and document the experimental procedure in a lab-book (Schnell, 2015) that lists unforeseen events and information for each participant/session. The latter ensures that important details, such as equipment malfunctioning, reasons for participant dropout, noticeable participant behavior, and any crucial decisions or modifications made on the fly, are not lost or forgotten. Crucially, a lab book can and should be used in all kinds of studies, whether they are online- or lab-based, to clearly document any issues, methodological decisions, and changes to the protocol. Note that writing up the methods section during Step 5 promises to save time prospectively and enhances the precision and reproducibility of the research project. Here, data management strategies from previous steps, such as intuitive data saving structures, can help to avoid misunderstandings as well as waste of time due to data rearrangement or script rewriting (Michener, 2015). Importantly, having all data regularly backed up during data collection is essential to prevent valuable data from being accidentally lost. These practices later facilitate data, code, and material sharing as part of the publication (Step 9; Contaxis et al., 2022). Ideally, decisions regarding the data management structure are already taken in Step 2. Even though the scientific community still lacks consensus on data arrangement structures and is constantly finding new approaches, there are already well-established structures such as BIDS. Furthermore, data anonymization or pseudonymization are critical techniques to protect participants’ rights and privacy (Meyer, 2018 for ethical data sharing; Hallinan et al., 2023 for European Union regulations on data privacy).</p>
+<section id="key-questions-in-this-step">
+<h2>Key questions in this step<a class="headerlink" href="#key-questions-in-this-step" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>How can we make sure my data is safely stored, accessible, and backed up?*</p></li>
+<li><p>Is the data collected in a way that protects private and sensitive information (e.g., of participants?*</p></li>
+</ul>
+<p><em>Questions with an asterisk indicate that these should ideally already be explored before starting a project.</em></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -421,7 +444,7 @@ document.write(`
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="step4.html"
@@ -448,6 +471,20 @@ document.write(`
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -464,6 +501,7 @@ By The IGOR Community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -479,6 +517,12 @@ By The IGOR Community
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <script async defer
+        data-website-id="f43f2b89-2868-441a-bb2d-8ba50db808dc"
+        src="https://cloud.umami.is/script.js">
+</script>
+</div>
   </div>
   
 </div>
@@ -490,8 +534,8 @@ By The IGOR Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

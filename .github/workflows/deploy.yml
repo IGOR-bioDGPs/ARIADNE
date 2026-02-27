@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python-version: [3.8]
+        python-version: [3.11.13]
     steps:
       - uses: actions/checkout@v2
 
@@ -32,6 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install --upgrade pybtex
 
       # Build the book
       - name: Build the book

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>STEP 1: Project start &#8212; ARIADNE</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -139,9 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -151,8 +153,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="ARIADNE - Home"/>
+    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="ARIADNE - Home"/>`);</script>
   
   
 </a></div>
@@ -188,6 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplementary information</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="testimonials.html">Testimonials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributions.html">Author contributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funding.html">Funding</a></li>
@@ -346,6 +349,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -356,6 +360,7 @@ document.write(`
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -363,7 +368,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -379,6 +386,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -390,8 +405,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-1-project-start">
 <h1>STEP 1: Project start<a class="headerlink" href="#step-1-project-start" title="Permalink to this heading">#</a></h1>
-<p>Even before the start of a project, researchers already have to make a variety of decisions. Most important is the formulation of an interesting research question. Critically, a research gap or limitation of previous work should be derived from the literature (Pautasso, 2013). This requires a comprehensive and systematic literature search, using subject-specific databases and search engines, which are listed in <strong>ARIADNE</strong> (e.g., ➜ <a class="reference external" href="https://www.apa.org/pubs/databases/psycinfo">PsycInfo</a>, American Psychological Association (APA); ➜ <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/">PubMed</a>, National Institutes of Health). However, novel research findings that are still in the peer-review process cannot be found via these databases. Therefore, researchers should also widen their search towards preprint repositories (e.g., ➜ <a class="reference external" href="https://osf.io/preprints/metaarxiv/">MetaArXiv</a>, ➜ <a class="reference external" href="https://www.biorxiv.org/">bioRxiv</a>, ➜ <a class="reference external" href="https://psyarxiv.com/">PsyArXiv</a>, or ➜ <a class="reference external" href="https://www.psycharchives.org/">PsychArchives</a>) for appropriate content, keeping in mind that the latter work has not been peer-reviewed yet. Adopting an open science approach is also useful to avoid one’s idea or project being scooped by other researchers (e.g., a <em>preregistration</em> or <em>Registered Report</em> documents one’s original ideas; Laine, 2017; ➜ <a class="reference external" href="https://www.connectedpapers.com/">Connected Papers</a> or ➜ <a class="reference external" href="https://www.researchrabbit.ai/">Research Rabbit</a>; see Table 1). Moreover, direct or conceptual replications of prior work have been highlighted to be critical to scientific progress (Nosek &amp; Errington, 2017).</p>
-<p>Depending on the research question, different amounts of funding are required, so a third-party funding application might be necessary. Researchers who depend on grants have to keep in mind that such applications take substantial amounts of time and are not guaranteed to succeed. If there is not enough money available, it may be an option to adapt the research question accordingly at this stage (e.g., switching from a lab experiment to an online experiment). Researchers can also first conduct a <em>pilot study</em> for feasibility testing and use the obtained results for a funding application (see Step 4; e.g., a behavioral study before employing more complex and costly neuroscientific methods). One should also consider whether the research question can be answered in the time available, in particular if they work on fixed contracts. Researchers who work on a joint research project have to discuss (and document) the responsibilities of each member of the project teams. Possibly, during the following steps, the research group may realize that further expertise is required, which can lead to the inclusion of additional co-authors. Finally, the research group should ideally establish a workflow pipeline that outlines the subsequent steps (i.e., Steps 2 to 9; Gantt charts: bar charts used to illustrate a project schedule, showing start and finish dates of activities and their dependencies ➜ <a class="reference external" href="https://github.com/giocomai/ganttrify">Ganttrify</a>. This is particularly useful for a set of related tasks within a project (e.g., planning, scheduling, and monitoring projects and work packages).</p>
+<p><em>Research question</em>. Even before the start of a project, researchers already have to make a variety of decisions. Most important is the formulation of an interesting research question, which can be done based on past work or based on an observation in one’s own data. Here, researchers also need to decide if their question warrants an original or replication study design. Critically, a research gap or limitation of previous work can be derived from published and unpublished literature (Pautasso, 2013).
+Literature search. Defining the gap may require a comprehensive and systematic literature search, using subject-specific databases and search engines (e.g., ➜ <a class="reference external" href="https://www.apa.org/pubs/databases/psycinfo">PsycInfo</a>, American Psychological Association (APA); ➜ <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/">PubMed</a>, National Institutes of Health). However, as novel research findings that are still in the peer-review process cannot be found via these databases, researchers should also widen their search towards preprint repositories (e.g., ➜ <a class="reference external" href="https://osf.io/preprints/metaarxiv/">MetaArXiv</a>, ➜ <a class="reference external" href="https://www.biorxiv.org/">bioRxiv</a>, ➜ <a class="reference external" href="https://psyarxiv.com/">PsyArXiv</a>, or ➜ <a class="reference external" href="https://www.psycharchives.org/">PsychArchives</a>) for appropriate content, keeping in mind that the latter work may not have undergone peer-review yet. Typically, preprint servers add a note to the manuscripts that have already been published. Additionally, linking identified papers to maintain an overview of their interrelationships is essential for tracking and comprehending the compiled scientific literature (e.g, ➜ <a class="reference external" href="https://www.connectedpapers.com/">Connected Papers</a> or ➜ <a class="reference external" href="https://www.researchrabbit.ai/">Research Rabbit</a>.</p>
+<p><em>Hypothesis and research design</em>. The more data on a question already exists and the more rigorous this data has been collected and analyzed the more likely it may be that a research question can be derived for which hypotheses can be operationalised that will be supported by the new data to be collected. However, this enhanced likelihood may come at the expense of novelty, i.e., if the probability of support for the hypothesis is 100% (or close)  there is no point in running the experiment. Currently, psychological science, in almost all cases, cannot support such a high a priori probability and thus direct or conceptual replications of prior work have been highlighted to be critical to scientific progress (Nosek &amp; Errington, 2017; Röseler et al., 2024).</p>
+<p><em>Funding and feasibility</em>. Depending on the research question, different amounts of funding are required, so a third-party funding application might be necessary. Researchers who depend on grants have to keep in mind that such applications take substantial amounts of time and are not guaranteed to succeed. If there is not enough money available, it may be an option to adapt the research question accordingly at this stage (e.g., switching from a lab experiment to an online experiment). Researchers can also first conduct a pilot study for feasibility testing and use the obtained results for a funding application (see Step 4). One should also consider whether the research question can be answered in the time available, in particular in the case of fixed-term contracts.</p>
+<p><em>Teamwork</em>. Researchers who work on a joint research project have to discuss (and document) the responsibilities of each member of the project team. Possibly, during the following steps, the research group may realize that further expertise is required, which can lead to the inclusion of additional co-authors. Finally, the research group should establish a workflow pipeline together that outlines the subsequent steps (i.e., Steps 2 to 9; Gantt charts: bar charts used to illustrate a project schedule, showing start and finish dates of activities, responsibilities, and their dependencies ➜ <a class="reference external" href="https://github.com/giocomai/ganttrify">Ganttrify</a>). This is particularly useful for a set of related tasks within a project (e.g., planning, scheduling, and monitoring projects and work packages). ARIADNE thus also features many resources surrounding time planning and project organization. Moreover, our tool highlights the role of communities and Big Team Science (see glossary) by providing examples of organizations and groups that conduct large-scale research together across the globe.</p>
+<section id="key-questions-in-this-step">
+<h2>Key questions in this step<a class="headerlink" href="#key-questions-in-this-step" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What is the gap in the literature and my resulting research question?*</p></li>
+<li><p>Is funding available to conduct the project?*</p></li>
+<li><p>What are the time plan and work packages of the project?*</p></li>
+<li><p>Who is responsible for what in the project?*</p></li>
+</ul>
+<p><em>Questions with an asterisk indicate that these should ideally already be explored before starting a project.</em></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -422,7 +450,7 @@ document.write(`
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="node_graph_link.html"
@@ -449,6 +477,20 @@ document.write(`
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -465,6 +507,7 @@ By The IGOR Community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -480,6 +523,12 @@ By The IGOR Community
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <script async defer
+        data-website-id="f43f2b89-2868-441a-bb2d-8ba50db808dc"
+        src="https://cloud.umami.is/script.js">
+</script>
+</div>
   </div>
   
 </div>
@@ -491,8 +540,8 @@ By The IGOR Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

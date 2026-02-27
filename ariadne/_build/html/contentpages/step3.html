@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>STEP 3: Study implementation &#8212; ARIADNE</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -139,9 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -151,8 +153,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/ARIADNE_Logo.png" class="logo__image only-light" alt="ARIADNE - Home"/>
+    <script>document.write(`<img src="../_static/ARIADNE_Logo.png" class="logo__image only-dark" alt="ARIADNE - Home"/>`);</script>
   
   
 </a></div>
@@ -188,6 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplementary information</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="testimonials.html">Testimonials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributions.html">Author contributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funding.html">Funding</a></li>
@@ -346,6 +349,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -356,6 +360,7 @@ document.write(`
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -363,7 +368,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -379,6 +386,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -390,7 +405,18 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="step-3-study-implementation">
 <h1>STEP 3: Study implementation<a class="headerlink" href="#step-3-study-implementation" title="Permalink to this heading">#</a></h1>
-<p>Study implementation refers to the development of a task or paradigm that will be used to manipulate the independent variables (IVs) and measure the dependent variables (DVs) of interest, as well as the creation of the necessary stimuli and control conditions. Here, stimulus control refers to the methods used to control and manipulate the stimuli that participants are exposed to during the experiment. This might include creating specific visual, auditory, tactile, or other types of stimuli, as well as controlling the timing, duration, and intensity of the stimuli. The selection of openly available stimuli on platforms such as the ➜ <a class="reference external" href="https://airtable.com/shrnVoUZrwu6riP9b/tbljKUnVvikhzaNvF/viwlo7OvlHBG2q88P?blocks=hide">Kapodi Stimuli database</a> or ➜ <a class="reference external" href="https://csea.phhp.ufl.edu/media.html">International Affective Picture System</a> is recommended enhancing not only reproducibility, but also ensuring the use of stimuli that underwent a proper standardization procedure (Lang et al., 2008). <strong>ARIADNE</strong> helps in providing curated, tried-and-tested resources. Crucially, and of note, the trap of “questionable measurement practices” as indicated by Flake (2020) should be avoided by favoring materials proven for standardization, reliability, and validity (e.g., stimuli, tasks, questionnaires; ➜ <a class="reference external" href="https://www.apa.org/pubs/databases/psyctests">APA PsycTests</a> or ➜ <a class="reference external" href="https://www.testarchiv.eu/en">Open Test Archive</a>). However, researchers should consider that task reliability can mean different things in experimental and correlational research (Hedge et al., 2018; Nebe et al., 2023). Other aspects of study implementation may include the development of a <em>standard operating procedure</em> (SOP; Maghani, 2011; see Table 1) or protocol to guide the experimenter through the study, the creation of a data collection and analysis plan, and the implementation of procedures to ensure the reliability and validity of the study (see also Step 6). It is immensely helpful to note down decisions and the reasons for these decisions, as those will be relevant for the later writing process (Step 8). In this context, preregistration, which entails documenting and uploading the research plan before the outset of data collection, including the hypothesis, design, and analysis plan, has received a great deal of attention recently and been employed as a crucial tool in transparent and reproducible scientific research (Toth et al., 2021; see Table 1; ➜ <a class="reference external" href="https://www.crd.york.ac.uk/prospero/">PROSPERO</a> for systematic reviews, ➜ <a class="reference external" href="https://osf.io/zg78t">Open Science Framework templates</a>, or ➜ <a class="reference external" href="https://prereg-psych.org/index.php/rrp">PreReg</a>). This practice helps to prevent an inflation of the false-positive rate by reducing <em>researcher degrees of freedom</em> and/or limiting decisions within the garden of forking paths (see Table 1). Furthermore, it improves transparency and reproducibility of the study (Peikert et al., 2021). An extension of preregistration, so-called Registered Reports (Henderson &amp; Chambers, 2022; see Table 1), even shift the peer-review process from after to before data collection, allowing researchers to get feedback on their work early in the process and to be able to adapt their research design before the study starts (Scheel et al., 2021).</p>
+<p>In contrast to Step 2, which focuses on planning the research project, Step 3, Study Implementation, involves translating those plans into action. It entails developing tasks or paradigms to manipulate independent variables (IVs) and measure dependent variables (DVs), as well as creating necessary stimuli and control conditions. While Step 2 sets the theoretical and methodological framework, Study Implementation (Step 3) addresses the practical execution, including the precise crafting of stimuli and control over experimental conditions. This phase ensures the smooth transition from theory to practice, focusing on the creation of tasks, stimuli, and control conditions to achieve the research objectives outlined in the study design.</p>
+<p><em>Stimuli selection and standardization</em>. The selection of openly available stimuli on platforms such as the ➜ <a class="reference external" href="https://airtable.com/shrnVoUZrwu6riP9b/tbljKUnVvikhzaNvF/viwlo7OvlHBG2q88P?blocks=hide">Kapodi Stimuli database</a> or ➜ <a class="reference external" href="https://csea.phhp.ufl.edu/media.html">International Affective Picture System</a> (IAPS) is recommended enhancing not only reproducibility, but also ensuring the use of stimuli that underwent a proper standardization procedure (Lang et al., 2008). Crucially, and of note, the trap of “questionable measurement practices” as indicated by Flake &amp; Fried (2020) should be avoided by favoring materials which have been tested for standardization, reliability, and validity (e.g., stimuli, tasks, questionnaires; ➜ <a class="reference external" href="https://www.apa.org/pubs/databases/psyctests">APA PsycTests</a> or ➜ <a class="reference external" href="https://www.testarchiv.eu/en">Open Test Archive</a>). However, researchers should consider that task reliability can mean different things in experimental and correlational research (Hedge et al., 2018; Nebe et al., 2023).</p>
+<p><em>Developing procedures and protocols</em>. Other aspects of study implementation may include the development of a standard operating procedure (SOP; Maghani, 2011; see glossary) or protocol to guide the experimenter through the study, the creation of a data collection and analysis plan, and the implementation of procedures to ensure the reliability and validity of the study (see also Step 6). It is immensely helpful to note down decisions and the reasons for these decisions, as those will be relevant for the later writing process (Step 8). For example, the decision for a suitable task programming environment should take into account whether the study will be lab-based or implemented online and whether the program is available at no costs (➜ Psychopy vs. ➜ Psychtoolbox in Matlab).</p>
+<p><em>Preregistration and Registered Reports</em>. In this context, preregistration, which entails documenting and uploading the research plan before the outset of data collection, including the hypothesis, design, and analysis plan, can be employed as a crucial tool in transparent and reproducible scientific research (Toth et al., 2021; see glossary; ➜ <a class="reference external" href="https://www.crd.york.ac.uk/prospero/">PROSPERO</a> for systematic reviews, ➜ <a class="reference external" href="https://osf.io/zg78t">Open Science Framework templates</a>, or ➜ <a class="reference external" href="https://prereg-psych.org/index.php/rrp">PreReg</a>). This practice helps to prevent an inflation of the false-positive rate (see Type I error in Table 1) by reducing researcher degrees of freedom and/or limiting decisions within the garden of forking paths (see glossary). Furthermore, it improves transparency and reproducibility of the study (Peikert et al., 2021). An extension of preregistration, so-called Registered Reports (Henderson &amp; Chambers, 2022; see glossary), even shifts the peer-review process from after to before data collection, allowing researchers to get feedback on their work early in the process and to be able to adapt their research design before the study starts (Scheel et al., 2021).</p>
+<section id="key-questions-in-this-step">
+<h2>Key questions in this step<a class="headerlink" href="#key-questions-in-this-step" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What measures are most fitting (tasks, questionnaires, etc.)?</p></li>
+<li><p>What stimuli need to be created (e.g., pictures, videos, text)?</p></li>
+<li><p>Which programming environment should be used?</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -421,7 +447,7 @@ document.write(`
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="step2.html"
@@ -448,6 +474,20 @@ document.write(`
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-questions-in-this-step">Key questions in this step</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -464,6 +504,7 @@ By The IGOR Community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -479,6 +520,12 @@ By The IGOR Community
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <script async defer
+        data-website-id="f43f2b89-2868-441a-bb2d-8ba50db808dc"
+        src="https://cloud.umami.is/script.js">
+</script>
+</div>
   </div>
   
 </div>
@@ -490,8 +537,8 @@ By The IGOR Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
