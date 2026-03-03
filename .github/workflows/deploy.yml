@@ -74,13 +74,16 @@ jobs:
         env:
           TARGET_BRANCH: "gh-pages"
       - name: copy-resource-manager
-        run: |
-          mkdir -p resource-manager
-          cp master/resource-manager/index.html resource-manager/index.html
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add resource-manager/index.html
-          git commit -m "Copy resource manager tool"
-          git push origin $TARGET_BRANCH
         env:
+          SRC_FOLDER_PATH: "resource-manager/"
           TARGET_BRANCH: "gh-pages"
+        run: |
+          files=$(ls -d **resource-manager/*)
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git fetch
+          git checkout -f $TARGET_BRANCH
+          git checkout -f ${GITHUB_REF##*/} -- $files
+          git add -A
+          git diff-index --quiet HEAD || git commit -am "deploy resource-manager files"
+          git push origin $TARGET_BRANCH
