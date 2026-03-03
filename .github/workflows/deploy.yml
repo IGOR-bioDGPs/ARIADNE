@@ -72,4 +72,15 @@ jobs:
           git commit -m "Copy intro redirector"
           git push origin $TARGET_BRANCH
         env:
-          TARGET_BRANCH: "gh-pages" # Set your target branch name here
+          TARGET_BRANCH: "gh-pages"
+      - name: copy-resource-manager
+        run: |
+          mkdir -p resource-manager
+          cp master/resource-manager/index.html resource-manager/index.html
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add resource-manager/index.html
+          git commit -m "Copy resource manager tool"
+          git push origin $TARGET_BRANCH
+        env:
+          TARGET_BRANCH: "gh-pages"
