@@ -7,6 +7,7 @@ Created on Fri Mar  8 11:45:28 2024
 import os
 from osfclient import OSF
 import pandas as pd
+from pathlib import Path
 
 ## First convert CSV to XLSX
 url="https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/ariadne/data/data_ariadne_nodes.csv"

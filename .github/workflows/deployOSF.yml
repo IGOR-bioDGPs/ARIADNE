@@ -6,6 +6,7 @@ on:
       - "ariadne/data/data_ariadne_nodes.csv"
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   process_and_upload:
