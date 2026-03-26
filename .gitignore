@@ -4,3 +4,6 @@ ariadne/.DS_Store
 *.pyc
 
 ariadne/_build/*
+
+.venv/
+.env/
