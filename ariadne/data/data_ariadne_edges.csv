@@ -327,3 +327,14 @@ id;source;target;subgraph;label;background-color
 328;Skills;PhDCompetenceModel;Skills;;black
 329;Communities;RIOTScienceClub;Communities;;black
 330;Literature;Rayyan;Literature;;black
+331;R;PsyTeachR;R;;black
+332;Data management;OpenRefine;Datamanagement;;black
+333;Icons;TheNounProject;Icons;;black
+334;Icons;SVGRepo;Icons;;black
+335;Photos;Unsplash;Photos;;black
+336;Data Visualization;TheDataVisualizationCatalogue;DataVisualization;;black
+337;Organization;PlanYourScience;Organization;;black
+338;Publication;AlternativePublishingModels;Publication;;black
+339;AlternativePublishingModels;ScienceOpen;AlternativePublishingModels;;black
+340;AlternativePublishingModels;ResearchEquals;AlternativePublishingModels;;black
+341;Data-extraction;DataWeasel;Data-extraction;;black
