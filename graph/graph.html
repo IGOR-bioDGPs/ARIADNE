@@ -1171,11 +1171,12 @@
                         tooltip.textContent = node.data('descr'); // and show the descriptions of the nodes
                         document.body.appendChild(tooltip); // and append to the div tag created
                         // Position the tooltip relative to the node's position and dimensions
-                        const nodePosition = node.renderedPosition(); // node's position
-                        const nodeHeight = node.height(); // node's height
-                        const nodeWidth = node.width(); // node's width
-                        tooltip.style.left = nodePosition.x + 'px'; // distance from left
-                        tooltip.style.top = nodePosition.y + nodeHeight + 10 + 'px'; // distance from top
+                        const nodePosition = node.renderedPosition(); // node's center in container coords
+                        const nodeHeight = node.renderedHeight(); // node's rendered height in screen coords
+                        const nodeWidth = node.renderedWidth(); // node's rendered width in screen coords
+                        const containerRect = cyto.container().getBoundingClientRect(); // container's offset on the page
+                        tooltip.style.left = containerRect.left + window.scrollX + nodePosition.x - nodeWidth / 2 + 'px';
+                        tooltip.style.top = containerRect.top + window.scrollY + nodePosition.y + nodeHeight / 2 + 10 + 'px';
                     }
                 });
                 // if the mouse is moved outside of a node
