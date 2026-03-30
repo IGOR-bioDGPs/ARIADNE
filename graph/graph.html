@@ -435,12 +435,23 @@
         document.documentElement.style.setProperty('--screen-width', screenWidth+ 'px');
         document.documentElement.style.setProperty('--screen-height', screenHeight + 'px');
         // Also the size of the info box
+        let resizeTimer;
         function updateInfoBoxSize() {
             screenWidth = window.innerWidth;
             var infoBox = document.getElementById('info-box');
             // Adjust the width of the info box based on the screen width
             infoBox.style.width = screenWidth >= 768 ? '300px' : '150px';
-            // You can add additional size adjustments based on screen width if needed
+            // Update the #cy container dimensions to match the new window size
+            document.documentElement.style.setProperty('--screen-width', window.innerWidth * 0.8 + 'px');
+            document.documentElement.style.setProperty('--screen-height', window.innerHeight + 'px');
+            // Debounce cy resize so it doesn't fire excessively while dragging
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (cy) {
+                    cy.resize();
+                    cy.fit();
+                }
+            }, 100);
         }
         // Call the function when the window is resized
         window.addEventListener('resize', updateInfoBoxSize);
@@ -626,6 +637,8 @@
             return null;
         }
         }
+        // outer-scoped cy instance so the resize handler can reach it
+        let cy = null;
         // index variable for keeping track of the first run or others
         let index = 0;
         // get previous subgraph
@@ -660,7 +673,7 @@
             // now combine the arrays
             const filteredAll = filteredNodes.concat(filteredEdges);
                 // configure the cytoscape graph here
-                const cy = cytoscape({
+                cy = cytoscape({
                     container: document.getElementById('cy'), // will be drawn on div tag 'cy'
                     elements: filteredAll, // only the filtered elements
                     style: [ // now construct the style of the nodes and edges from the filtered variables
