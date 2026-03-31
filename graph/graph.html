@@ -366,17 +366,16 @@
             <button id="bug-ghub-button" class="bug-ghub-button" title="If you have a bug that you have encountered; please report them to us via GitHub issues!">Report a bug via GitHub</button>
         </div>
     </div>
-    
+
     <div id="cy"></div>
     <div id="info-box" class="info-box">
         <span id="infoTitle"><h2>Instructions:</h2> Click to hide/unhide the instructions</span>
         <div id="infoContent" hidden>
-            <ul>
-            <li>First things first. This is a "dynamic" network. This means that you can drag the nodes around and zoom in/out to resize the view</li>
+            <ul id="instructions-list">
             <li>Left click on a node to go to the next levels.</li>
             <li>Right click on anywhere to reset to the initial overview.</li>
             <li>Right click on a node to go back to the previous level in the network.</li>
-            <li>Hover on any resource node to reveal the information regarding the node.</li>
+            <li>Move mouse over terminal nodes for more details.</li>
             <li>Left click on the resource nodes to go to the respective webpages.</li>
             <li>Drag and drop on the nodes to rearrange the graph</li>
             <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
@@ -806,6 +805,42 @@
             return null;
         }
         }
+
+        // Device-aware function to update instructions based on device type
+        function updateInstructionsByDeviceType() {
+            var instructionsList = document.getElementById('instructions-list');
+            if (!instructionsList) return;
+            var isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+            var isTabletOrMobileWidth = window.innerWidth <= 1024;
+            var isMobileOrTablet = isTouchDevice || isTabletOrMobileWidth;
+
+            if (isMobileOrTablet) {
+                instructionsList.innerHTML = `
+                    <li>Tap on a node to go to the next levels.</li>
+                    <li>Long tap on anywhere to reset to the initial overview.</li>
+                    <li>Long tap on a node to go back to the previous level in the network.</li>
+                    <li>Tap on the resource nodes to go to the respective webpages.</li>
+                    <li>Drag and drop on the nodes to rearrange the graph</li>
+                    <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
+                    <canvas id="shapesCanvas" width="280" height="140"></canvas>
+                `;
+            } else {
+                instructionsList.innerHTML = `
+                    <li>Left click on a node to go to the next levels.</li>
+                    <li>Right click on anywhere to reset to the initial overview.</li>
+                    <li>Right click on a node to go back to the previous level in the network.</li>
+                    <li>Move mouse over terminal nodes for more details.</li>
+                    <li>Left click on the resource nodes to go to the respective webpages.</li>
+                    <li>Drag and drop on the nodes to rearrange the graph</li>
+                    <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
+                    <canvas id="shapesCanvas" width="280" height="140"></canvas>
+                `;
+            }
+        }
+
+
+
+
         // async function to get edges (local OR GitHub)
         async function fetchDataEdges() {
         try {
@@ -883,6 +918,7 @@
             // Update CSS variables for graph container size
             updateScreenDimensions();
             updateInfoBoxSize();
+            updateInstructionsByDeviceType();
             
             if (cyInstance) {
                 // Update node and edge styles based on new screen size
@@ -890,7 +926,7 @@
                 const edgeFontSize = Math.max(12, nodeFontSize - 4);
                 const textMaxWidth = window.innerWidth <= 600 ? 100 : 150;
                 const edgeTextMaxWidth = window.innerWidth <= 600 ? 60 : 100;
-                
+
                 // Apply updated styles
                 cyInstance.style()
                     .selector('node')
@@ -1094,12 +1130,17 @@
 
             // Shared function for context action on nodes
             function handleNodeContextAction(node) {
-                var auxElem = graphPathArr[index-1];
-                
-                if (auxElem != 'initial'){
-                    cytoCSS.style.backgroundImage = 'url("")';
-                } else if (auxElem == 'initial'){
+                const tooltips = document.querySelectorAll('.custom-tooltip');
+                tooltips.forEach(tooltip => tooltip.remove());
+                var auxElem = graphPathArr[index-2];
+                if (!auxElem) {
+                    auxElem = 'initial';
+                }
+                if (auxElem == 'initial'){
+                    cytoCSS.style.backgroundImage = 'url("ARIADNE_Logo.png")';
                     updateKeyContent('', 'right_click');
+                } else {
+                    cytoCSS.style.backgroundImage = 'url("")';
                 }
                 createNetwork(auxElem.replace(' ',''));
             }
@@ -1137,30 +1178,19 @@
                 });
                 // if there is a right click anywhere
                 cyto.on('cxttap', function(event) {
-                    try { // check if a node is clicked, or anywhere else
-                        var isNode = event.target.isNode(); // a variable that checks if a node is clicked
-                    } catch (error){
-                        var isNode = false;
-                    }
-                    cytoCSS.style.backgroundImage = 'url("ARIADNE_Logo.png")'; // add background image
-                    const tooltips = document.querySelectorAll('.custom-tooltip'); // get all tooltips, i.e. boxes
-                    tooltips.forEach(tooltip => tooltip.remove()); // and remove all of them
-                    createNetwork('initial'); // and reset to the initial overview
-                    if (!isNode) { // only reset if the reset screen right click appears
-                        updateKeyContent('', 'right_click'); // Call the function to update key content
-                    }
-                    cyto.zoom(minZoom); // set zoom to the minimum value
+                    if (event.target !== cyto) return;
+                    cytoCSS.style.backgroundImage = 'url("ARIADNE_Logo.png")';
+                    const tooltips = document.querySelectorAll('.custom-tooltip');
+                    tooltips.forEach(tooltip => tooltip.remove());
+                    createNetwork('initial');
+                    updateKeyContent('', 'right_click');
+                    cyto.zoom(minZoom);
                 });
+
                 // if there is a right click on a node
                 cyto.on('cxttap', 'node', function(event) {
                     const node = event.target;
-                    var auxElem = graphPathArr[index-1]; // get the previous subgraph
-                    if (auxElem != 'initial'){
-                        cytoCSS.style.backgroundImage = 'url("")'; // add background image
-                    } else if (auxElem == 'initial'){
-                        updateKeyContent('', 'right_click'); // Call the function to update key content
-                    }
-                    createNetwork(auxElem.replace(' ','')); // and reset to the initial overview
+                    handleNodeContextAction(node);
                 });
                 // if there mouse is on a node
                 cyto.on('mouseover', 'node', function(event) {
