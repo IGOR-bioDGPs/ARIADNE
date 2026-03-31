@@ -379,6 +379,7 @@
             <li>Left click on the resource nodes to go to the respective webpages.</li>
             <li>Drag and drop on the nodes to rearrange the graph</li>
             <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
+            </ul>
             <canvas id="shapesCanvas" width="280" height="140"></canvas>
         </div>
     </div>
@@ -390,56 +391,88 @@
         </div>
     </div>
     <script>
-        // Get the canvas element
-        var canvas = document.getElementById("shapesCanvas");
-        var ctx = canvas.getContext("2d");
-
-        // Define shapes and their respective popup messages
+        // Canvas variables
+        var canvas, ctx;
         var shapes = [
-            { x: 0, y: 20, width: 40, height: 40, color: "#005AB5", rect: true, 
+            { x: 0, y: 20, width: 40, height: 40, color: "#005AB5", rect: true,
             popupMessage: "Initial node, there are more nodes inside this one!" },
-            { x: 130, y: 40, radius: 20, color: "#D41159", 
-            popupMessage: "Final node. Click this node to go to the resource's website!" }, 
-            { x: 55, y: 20, width: 40, height: 40, color: "#40B0A6", diamond: true, 
+            { x: 130, y: 40, radius: 20, color: "#D41159",
+            popupMessage: "Final node. Click this node to go to the resource's website!" },
+            { x: 55, y: 20, width: 40, height: 40, color: "#40B0A6", diamond: true,
             popupMessage: "Decision node, filter the nodes and move deeper!" },
-            { 
-                x: 0, y: 80, width: 35, height: 35, 
-                src: "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/closed_lock_with_key.png", 
-                popupMessage: "Hybrid (partially) open access resource!" 
+            {
+                x: 0, y: 80, width: 35, height: 35,
+                src: "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/closed_lock_with_key.png",
+                popupMessage: "Hybrid (partially) open access resource!"
             },
-            { 
-                x: 50, y: 80, width: 35, height: 35, 
-                src: "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/lock.png", 
-                popupMessage: "Fully closed access resource!" 
+            {
+                x: 50, y: 80, width: 35, height: 35,
+                src: "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/lock.png",
+                popupMessage: "Fully closed access resource!"
             },
-            { 
-                x: 100, y: 80, width: 35, height: 35, 
-                src: "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/unlock.png", 
-                popupMessage: "Fully open access resource!" 
-            } 
+            {
+                x: 100, y: 80, width: 35, height: 35,
+                src: "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/master/graph/imgs/unlock.png",
+                popupMessage: "Fully open access resource!"
+            }
         ];
-
         var loadedImages = [];
-        var imagesToLoad = shapes.filter(shape => shape.src).length;
+        var imagesToLoad = 0;
         var imagesLoaded = 0;
 
-        // Preload images
-        shapes.forEach(function(shape, index) {
-            if (shape.src) {
-                var img = new Image();
-                img.src = shape.src;
-                img.onload = function() {
-                    loadedImages[index] = img;
-                    imagesLoaded++;
-                    if (imagesLoaded === imagesToLoad) {
-                        drawShapes();
-                    }
-                };
+        // Function to initialize the shapes canvas
+        function initializeShapesCanvas() {
+            // Get the canvas element
+            canvas = document.getElementById("shapesCanvas");
+            if (!canvas) return;
+
+            ctx = canvas.getContext("2d");
+
+            // Reset image loading state
+            loadedImages = [];
+            imagesToLoad = shapes.filter(shape => shape.src).length;
+            imagesLoaded = 0;
+
+            // Preload images
+            shapes.forEach(function(shape, index) {
+                if (shape.src) {
+                    var img = new Image();
+                    img.src = shape.src;
+                    img.onload = function() {
+                        loadedImages[index] = img;
+                        imagesLoaded++;
+                        if (imagesLoaded === imagesToLoad) {
+                            drawShapes();
+                        }
+                    };
+                    img.onerror = function() {
+                        // Handle image loading errors
+                        console.warn("Failed to load image: " + shape.src);
+                        imagesLoaded++;
+                        if (imagesLoaded === imagesToLoad) {
+                            drawShapes();
+                        }
+                    };
+                }
+            });
+
+            // If there are no images to load, draw immediately
+            if (imagesToLoad === 0) {
+                drawShapes();
             }
-        });
+
+            // Remove existing event listeners to avoid duplicates
+            canvas.removeEventListener('mousemove', handleMouseMove);
+            canvas.removeEventListener('mouseleave', handleMouseLeave);
+
+            // Add event listeners
+            canvas.addEventListener('mousemove', handleMouseMove);
+            canvas.addEventListener('mouseleave', handleMouseLeave);
+        }
 
         // Draw shapes on the canvas
         function drawShapes() {
+            if (!ctx || !canvas) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas completely
             shapes.forEach(function (shape, index) {
                 if (shape.src && loadedImages[index]) {
@@ -467,12 +500,12 @@
 
         // Function to show popup message
         function showPopup(message, x, y, c_width, c_height) {
+            if (!ctx || !canvas) return;
             var padding = 10;
             ctx.font = '12px Arial';
 
             // Determine the maximum width for the popup (e.g., a percentage of the canvas width)
             var maxPopupWidth = Math.min(200, canvas.width - 5 * padding);
-            // var maxPopupWidth = 500;
 
             // Split the message into lines if it exceeds the maximum width
             var words = message.split(' ');
@@ -496,7 +529,7 @@
                 var longestWord = wordList.reduce(function(a, b) {
                     return a.length > b.length ? a : b;
                 }, ""); // Find and return the longest word
-                
+
                 return longestWord;
             }
             var longestWord = getLongestWord(lines);
@@ -533,8 +566,9 @@
             });
         }
 
-        // Event listener for mouse movement
-        canvas.addEventListener('mousemove', function (e) {
+        // Event handler for mouse movement
+        function handleMouseMove(e) {
+            if (!ctx || !canvas) return;
             var mouseX = e.offsetX;
             var mouseY = e.offsetY;
             var popupShown = false;
@@ -565,14 +599,20 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 drawShapes();
             }
-        });
+        }
 
-        // Event listener to clear popup when mouse leaves the canvas
-        canvas.addEventListener("mouseleave", function () {
+        // Event handler to clear popup when mouse leaves the canvas
+        function handleMouseLeave() {
+            if (!ctx || !canvas) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawShapes();
-});
-</script>
+        }
+
+        // Initialize canvas when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeShapesCanvas();
+        });
+    </script>
 
 
 
@@ -822,7 +862,6 @@
                     <li>Tap on the resource nodes to go to the respective webpages.</li>
                     <li>Drag and drop on the nodes to rearrange the graph</li>
                     <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
-                    <canvas id="shapesCanvas" width="280" height="140"></canvas>
                 `;
             } else {
                 instructionsList.innerHTML = `
@@ -833,7 +872,6 @@
                     <li>Left click on the resource nodes to go to the respective webpages.</li>
                     <li>Drag and drop on the nodes to rearrange the graph</li>
                     <li>Here's the explanation of all the shapes, just hover over them to reveal the details:</li>
-                    <canvas id="shapesCanvas" width="280" height="140"></canvas>
                 `;
             }
         }
@@ -1144,89 +1182,164 @@
                 }
                 createNetwork(auxElem.replace(' ',''));
             }
+
+            // Function to handle terminal node interactions (hover/tap)
+            function handleTerminalNodeInteraction(node, isHover = true) {
+                if (node.data('is_terminal') == 'yes') {
+                    if (isHover) {
+                        // Desktop: hover over terminal node
+                        var tooltip = document.createElement('div');
+                        tooltip.className = 'custom-tooltip';
+                        tooltip.textContent = node.data('descr');
+                        document.body.appendChild(tooltip);
+
+                        const nodePosition = node.renderedPosition();
+                        const nodeHeight = node.renderedHeight();
+                        const nodeWidth = node.renderedWidth();
+                        const containerRect = cyto.container().getBoundingClientRect();
+                        tooltip.style.left = containerRect.left + window.scrollX + nodePosition.x - nodeWidth / 2 + 'px';
+                        tooltip.style.top = containerRect.top + window.scrollY + nodePosition.y + nodeHeight / 2 + 10 + 'px';
+                    } else {
+                        // Mobile: tap on terminal node - first tap shows tooltip, second tap navigates
+                        const existingTooltip = document.querySelector('.custom-tooltip');
+                        if (existingTooltip) {
+                            // Second tap - remove tooltip and navigate
+                            existingTooltip.remove();
+                            window.open(node.data('tooltip'), '_blank');
+                        } else {
+                            // First tap - show tooltip
+                            var tooltip = document.createElement('div');
+                            tooltip.className = 'custom-tooltip';
+                            tooltip.textContent = node.data('descr');
+                            document.body.appendChild(tooltip);
+
+                            const nodePosition = node.renderedPosition();
+                            const nodeHeight = node.renderedHeight();
+                            const nodeWidth = node.renderedWidth();
+                            const containerRect = cyto.container().getBoundingClientRect();
+                            tooltip.style.left = containerRect.left + window.scrollX + nodePosition.x - nodeWidth / 2 + 'px';
+                            tooltip.style.top = containerRect.top + window.scrollY + nodePosition.y + nodeHeight / 2 + 10 + 'px';
+                        }
+                    }
+                }
+            }
+
+            // Function to handle non-terminal node interactions
+            function handleNonTerminalNodeInteraction(node) {
+                cytoCSS.style.backgroundImage = 'url("")';
+                if (node.data('is_terminal') == 'no') {
+                    createNetwork(node.data('id').replaceAll(' ',''));
+                    if (node.data('mainGraph') == 'initial') {
+                        updateKeyContent(node, 'left_click');
+                    }
+                } else {
+                    window.open(node.data('tooltip'), '_blank');
+                }
+            }
+
             if (index == 0){ // if it's the first iteration
                 cyto = await createNetwork('initial'); // draw the initial overview
             }
             else{ // if it's not the first iteration
-                // if there is a left click on a node
+                // Desktop interactions
+                // Left click on a node → Move one level down (explore sub-graph)
                 cyto.on('click', 'node', function(event) {
-                    cytoCSS.style.backgroundImage = 'url("")'; // remove background image
-                    var node = event.target; // get the node
-                    if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
-                        createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
-                        if (node.data('mainGraph') == 'initial'){ // only if it's an initial node we should show the key questions
-                            updateKeyContent(node, 'left_click'); // Call the function to update key content
-                        }
+                    var node = event.target;
+                    if (node.data('is_terminal') == 'no') {
+                        // Non-terminal node - move one level down
+                        handleNonTerminalNodeInteraction(node);
+                    } else {
+                        // Terminal node - navigate to resource link
+                        window.open(node.data('tooltip'), '_blank');
                     }
-                    else{ // if it's a terminal node
-                        window.open(node.data('tooltip'), '_blank'); // redirect to the respective webpage
-                    }
-                });
-                // if there is a tap on a node; do the same as left click because mobile phones do not have left click
-                cyto.on('tap', 'node', function(event) {
-                    cytoCSS.style.backgroundImage = 'url("")'; // remove background image
-                    var node = event.target; // get the node
-                    if (node.data('is_terminal') == 'no'){ // if it's not a terminal node
-                        createNetwork(node.data('id').replaceAll(' ','')); // and give it to the network function as 'subgraph'
-                        if (node.data('mainGraph') == 'initial'){ // only if it's an initial node we should show the key questions
-                            updateKeyContent(node, 'left_click'); // Call the function to update key content
-                        }
-                    }
-                    else{ // if it's a terminal node
-                        window.open(node.data('tooltip'), '_blank'); // redirect to the respective webpage
-                    }
-                });
-                // if there is a right click anywhere
-                cyto.on('cxttap', function(event) {
-                    if (event.target !== cyto) return;
-                    cytoCSS.style.backgroundImage = 'url("ARIADNE_Logo.png")';
-                    const tooltips = document.querySelectorAll('.custom-tooltip');
-                    tooltips.forEach(tooltip => tooltip.remove());
-                    createNetwork('initial');
-                    updateKeyContent('', 'right_click');
-                    cyto.zoom(minZoom);
                 });
 
-                // if there is a right click on a node
+                // Hover over a terminal node → Display tooltip with resource description
+                cyto.on('mouseover', 'node', function(event) {
+                    const node = event.target;
+                    handleTerminalNodeInteraction(node, true); // true for hover
+                });
+
+                cyto.on('mouseout', 'node', function() {
+                    // Only remove tooltips on mouseout for desktop
+                    const tooltips = document.querySelectorAll('.custom-tooltip');
+                    tooltips.forEach(tooltip => tooltip.remove());
+                });
+
+                // Right click anywhere → Return to initial overview
+                cyto.on('cxttap', function(event) {
+                    if (event.target !== cyto) return;
+                    handleBackgroundContextAction(false);
+                });
+
+                // Right click on a node → Go one level up (back to parent graph)
                 cyto.on('cxttap', 'node', function(event) {
                     const node = event.target;
                     handleNodeContextAction(node);
                 });
-                // if there mouse is on a node
-                cyto.on('mouseover', 'node', function(event) {
+
+                // Mobile/Tablet interactions
+                // Tap on a non-terminal node → Move one level down (explore sub-graph)
+                // Tap on a terminal node (first tap) → Display tooltip with resource description
+                // Tap on a terminal node (second tap) → Hide tooltip and navigate to the resource link
+                let tapCount = 0;
+                let lastTapTime = 0;
+                let lastTapNode = null;
+
+                cyto.on('tap', 'node', function(event) {
                     const node = event.target;
-                    if (node.data('is_terminal') == 'yes'){ // and it's a terminal node
-                        var tooltip = document.createElement('div'); // create a tooltip div tag
-                        tooltip.className = 'custom-tooltip'; // using the respective CSS 
-                        tooltip.textContent = node.data('descr'); // and show the descriptions of the nodes
-                        document.body.appendChild(tooltip); // and append to the div tag created
-                        // Position the tooltip relative to the node's position and dimensions
-                        const nodePosition = node.renderedPosition(); // node's center in container coords
-                        const nodeHeight = node.renderedHeight(); // node's rendered height in screen coords
-                        const nodeWidth = node.renderedWidth(); // node's rendered width in screen coords
-                        const containerRect = cyto.container().getBoundingClientRect(); // container's offset on the page
-                        tooltip.style.left = containerRect.left + window.scrollX + nodePosition.x - nodeWidth / 2 + 'px';
-                        tooltip.style.top = containerRect.top + window.scrollY + nodePosition.y + nodeHeight / 2 + 10 + 'px';
+                    const currentTime = new Date().getTime();
+                    const tapInterval = currentTime - lastTapTime;
+
+                    // Check if it's a double tap on the same node (for going up)
+                    if (lastTapNode === node && tapInterval < 300) {
+                        // Double tap on node - go one level up
+                        handleNodeContextAction(node);
+                        tapCount = 0;
+                        lastTapTime = 0;
+                        lastTapNode = null;
+                        return;
+                    }
+
+                    // Regular tap handling
+                    lastTapNode = node;
+                    lastTapTime = currentTime;
+
+                    if (node.data('is_terminal') == 'no') {
+                        // Non-terminal node - move one level down
+                        handleNonTerminalNodeInteraction(node);
+                    } else {
+                        // Terminal node - handle tap interaction
+                        handleTerminalNodeInteraction(node, false); // false for tap
                     }
                 });
-                // if the mouse is moved outside of a node
-                cyto.on('mouseout', 'node', function() {
-                    const tooltips = document.querySelectorAll('.custom-tooltip'); // get all the boxes
-                    tooltips.forEach(tooltip => tooltip.remove()); // and remove them
-                });
-                // also we want to lock the amount of zoom
-                cyto.on('zoom', function(event) { // handle the zooming part
-                    const currentZoom = cyto.zoom();
-                    // limit the zoom level to the specified range
-                    if (currentZoom < minZoom) {
-                        cyto.zoom(minZoom); // set zoom to the minimum value
-                    } else if (currentZoom > maxZoom) {
-                        cyto.zoom(maxZoom); // set zoom to the maximum value
+
+                // Tap and hold anywhere → Return to initial overview
+                // Double tap on background → Return to initial overview
+                let backgroundTapCount = 0;
+                let lastBackgroundTapTime = 0;
+
+                cyto.on('tap', function(event) {
+                    // Check if background was tapped
+                    if (event.target === cyto) {
+                        const currentTime = new Date().getTime();
+                        const tapInterval = currentTime - lastBackgroundTapTime;
+
+                        // Check for double tap on background
+                        if (tapInterval < 300) {
+                            // Double tap on background - return to initial overview
+                            handleBackgroundContextAction(false);
+                            backgroundTapCount = 0;
+                            lastBackgroundTapTime = 0;
+                            return;
+                        }
+
+                        backgroundTapCount++;
+                        lastBackgroundTapTime = currentTime;
                     }
-                    cyto.center(); // center the whole graph to viewport 
                 });
-                // following block is for long press to go one level up alternative for mobile
-                // ===== MOBILE: Long-press handlers =====
+
+                // Long press handlers for mobile (already implemented but let's improve them)
                 let pressTimer;
                 let pressTarget = null;
 
@@ -1248,7 +1361,7 @@
                     } catch (error) {
                         var isNode = false;
                     }
-                    
+
                     if (!isNode && event.target === cyto) {
                         pressTimer = setTimeout(function() {
                             handleBackgroundContextAction(false);
@@ -1261,8 +1374,18 @@
                     clearTimeout(pressTimer);
                     pressTarget = null;
                 });
-                //
 
+                // also we want to lock the amount of zoom
+                cyto.on('zoom', function(event) { // handle the zooming part
+                    const currentZoom = cyto.zoom();
+                    // limit the zoom level to the specified range
+                    if (currentZoom < minZoom) {
+                        cyto.zoom(minZoom); // set zoom to the minimum value
+                    } else if (currentZoom > maxZoom) {
+                        cyto.zoom(maxZoom); // set zoom to the maximum value
+                    }
+                    cyto.center(); // center the whole graph to viewport
+                });
             }
         }
         function updateKeyContent(node, clickType) {
@@ -1324,6 +1447,26 @@
             }
         }
         main(index);
+
+        // Ensure instructions are loaded on initial page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateInstructionsByDeviceType();
+        });
+
+        // Also call it immediately in case DOM is already loaded
+        function initializePage() {
+            updateInstructionsByDeviceType();
+            // Also initialize the shapes canvas directly to ensure it works
+            setTimeout(initializeShapesCanvas, 100);
+        }
+
+        // Call it when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePage);
+        } else {
+            // DOM is already loaded
+            initializePage();
+        }
   </script>
 </body>
 </html>
