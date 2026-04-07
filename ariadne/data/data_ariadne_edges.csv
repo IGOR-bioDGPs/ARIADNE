@@ -339,3 +339,5 @@ id;source;target;subgraph;label;background-color
 340;AlternativePublishingModels;ResearchEquals;AlternativePublishingModels;;black
 341;Data-extraction;DataWeasel;Data-extraction;;black
 342;Reproducibility;DES_RAP_Book;Reproducibility;;black
+343;Writing;DERP;Writing;;black
+344;Citations;CiteMe;Citations;;black
