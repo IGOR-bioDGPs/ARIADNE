@@ -339,3 +339,6 @@ id;source;target;subgraph;label;background-color
 340;AlternativePublishingModels;ResearchEquals;AlternativePublishingModels;;black
 341;Data-extraction;DataWeasel;Data-extraction;;black
 342;Reproducibility;DES_RAP_Book;Reproducibility;;black
+343;Data-extraction;PlotDigitizer;Data-extraction;;black
+344;Meta-analysis;EffectSizeCalculator;Meta-analysis;;black
+345;Meta-analysis;EffectSizeConverter;Meta-analysis;;black
