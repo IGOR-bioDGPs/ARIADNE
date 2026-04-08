@@ -1012,7 +1012,9 @@
                 edge.data.id = 'node_' + Math.random().toString(36).substr(2, 9);
             }
             });
-            graphPathArr.push(sub_graph);
+            if (graphPathArr[graphPathArr.length - 1] !== sub_graph) {
+                graphPathArr.push(sub_graph);
+            }
             // filter the nodes&edges wrt. to selected node's subgraph
             const filteredNodes = nodesArray.filter(item => item.data?.subgraph?.toLowerCase() === sub_graph?.toLowerCase());
             const filteredEdges = edgesArray.filter(item => item.data?.subgraph?.toLowerCase() === sub_graph?.toLowerCase());
@@ -1171,10 +1173,13 @@
             }
 
             // Shared function for context action on nodes
-            function handleNodeContextAction(node) {
+            function handleNodeContextAction() {
                 const tooltips = document.querySelectorAll('.custom-tooltip');
                 tooltips.forEach(tooltip => tooltip.remove());
-                var auxElem = graphPathArr[index-2];
+                if (graphPathArr.length > 0) {
+                    graphPathArr.pop();
+                }
+                var auxElem = graphPathArr[graphPathArr.length - 1];
                 if (!auxElem) {
                     auxElem = 'initial';
                 }
@@ -1184,7 +1189,7 @@
                 } else {
                     cytoCSS.style.backgroundImage = 'url("")';
                 }
-                createNetwork(auxElem.replace(' ',''));
+                createNetwork(auxElem.replaceAll(' ',''));
             }
 
             // Function to handle terminal node interactions (hover/tap)
@@ -1246,6 +1251,8 @@
             }
             else{ // if it's not the first iteration
                 const isMobileOrTablet = isMobileOrTabletDevice();
+                let pressTimer = null;
+                let pressTarget = null;
 
                 if (!isMobileOrTablet) {
                     // Desktop interactions
@@ -1281,8 +1288,8 @@
 
                     // Right click on a node → Go one level up (back to parent graph)
                     cyto.on('cxttap', 'node', function(event) {
-                        const node = event.target;
-                        handleNodeContextAction(node);
+                        if (event.target === cyto) return;
+                        handleNodeContextAction();
                     });
                 } else {
                     // Mobile/Tablet interactions
@@ -1347,8 +1354,8 @@
                     });
 
                     // Long press handlers for mobile (already implemented but let's improve them)
-                    let pressTimer;
-                    let pressTarget = null;
+                    pressTimer = null;
+                    pressTarget = null;
 
                     // Long-press on node
                     cyto.on('tapstart', 'node', function(event) {
