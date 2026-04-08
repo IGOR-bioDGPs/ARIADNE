@@ -342,3 +342,5 @@ id;source;target;subgraph;label;background-color
 343;Data-extraction;PlotDigitizer;Data-extraction;;black
 344;Meta-analysis;EffectSizeCalculator;Meta-analysis;;black
 345;Meta-analysis;EffectSizeConverter;Meta-analysis;;black
+346;Writing;DERP;Writing;;black
+347;Citations;CiteMe;Citations;;black
