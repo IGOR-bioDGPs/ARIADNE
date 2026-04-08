@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Knowledge Graph Search</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.21.2/cytoscape.min.js"></script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: row;
+      }
+      #cy {
+        width: 70%;
+        height: 800px;
+      }
+      #search-container {
+        width: 30%;
+        padding: 20px;
+      }
+      #terminal-nodes {
+        margin-top: 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cy"></div>
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Search..." />
+      <button id="search-button">Search</button>
+      <div id="terminal-nodes">
+        <h3>Terminal Nodes</h3>
+        <table id="terminal-node-table">
+          <thead>
+            <tr>
+              <th colspan="4" style="text-align: center">
+                List of all resources
+              </th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      async function fetchData(url) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const csvData = await response.text();
+          const rows = csvData
+            .split("\n")
+            .filter((row) => row.trim() !== "")
+            .map((row) => row.split(";"));
+
+          // Check if the first row is a header and remove it
+          if (rows[0].every((field) => /^[a-zA-Z_]+$/.test(field))) {
+            rows.shift();
+          }
+          return rows.map((fields) => ({
+            data: {
+              id: fields[0],
+              label: fields[1],
+              shape: fields[2],
+              background_color: fields[3],
+              font_color: fields[4],
+              rank: fields[5],
+              subgraph: fields[6],
+              subgraphDet: fields[7],
+              mainGraph: fields[8],
+              is_terminal: fields[9] === "yes", // Convert to boolean
+              href: fields[10],
+              tooltip: fields[11],
+              descr: fields[12],
+              openSource: fields[13],
+              keyQuestions: fields[14],
+              keyLink: fields[15],
+              path: fields[16], // Assuming this is the correct index for the 'path' column
+            },
+          }));
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          return null;
+        }
+      }
+
+      async function createCytoscapeGraph(nodes, edges) {
+        const cy = cytoscape({
+          container: document.getElementById("cy"),
+          elements: nodes.concat(edges), // Combine nodes and edges
+          style: [
+            {
+              selector: "node",
+              style: {
+                "background-color": "data(background_color)",
+                label: "data(label)",
+                shape: "data(shape)",
+                "font-size": 24,
+                "text-wrap": "wrap",
+                "text-max-width": 150,
+              },
+            },
+            {
+              selector: "edge",
+              style: {
+                width: 6,
+                "line-color": "#ccc",
+                "target-arrow-color": "#ccc",
+                "target-arrow-shape": "triangle",
+                "curve-style": "bezier",
+              },
+            },
+          ],
+        });
+
+        cy.on("tap", "node", function (evt) {
+          const node = evt.target;
+          if (node.data("href")) {
+            window.open(node.data("href"), "_blank");
+          }
+        });
+
+        cy.layout({ name: "breadthfirst", fit: true }).run();
+        return cy;
+      }
+
+      async function init() {
+        const githubNodesURL =
+          "https://raw.githubusercontent.com/IGOR-bioDGPs/ARIADNE/dev/ariadne/data/data_ariadne_nodes.csv";
+        let allNodes = await fetchData(githubNodesURL);
+        if (!allNodes) {
+          console.error("Failed to fetch data.");
+          return;
+        }
+        console.log(allNodes);
+        displayTerminalNodes(allNodes);
+
+        let cy;
+        document
+          .getElementById("search-button")
+          .addEventListener("click", async () => {
+            const searchTerm = document
+              .getElementById("search-input")
+              .value.toLowerCase();
+
+            // Find matching nodes by label
+            let initiallyFilteredNodes = allNodes.filter((node) =>
+              String(node.data.label).toLowerCase().includes(searchTerm)
+            );
+
+            let filteredNodes = initiallyFilteredNodes;
+
+            if (filteredNodes.length >= 0) {
+              const pathRelatedNodes = findRelatedNodesByPath(
+                filteredNodes,
+                allNodes
+              );
+              filteredNodes = filteredNodes.concat(pathRelatedNodes);
+            } else {
+              initiallyFilteredNodes = allNodes.filter((node) =>
+                String(node.data.label).toLowerCase().includes(searchTerm)
+              );
+              filteredNodes = findRelatedNodes(
+                initiallyFilteredNodes,
+                allNodes
+              );
+            }
+
+            if (filteredNodes.length > 0) {
+              const firstNode = filteredNodes[0];
+              if (firstNode && firstNode.data.path) {
+                const nodePaths = firstNode.data.path
+                  .split(" > ")
+                  .map((id) => id.replace(/\r/g, ""));
+                filteredNodes.sort((a, b) => {
+                  return (
+                    nodePaths.indexOf(a.data.id) - nodePaths.indexOf(b.data.id)
+                  );
+                });
+              }
+            }
+
+            const edges = createEdges(filteredNodes, allNodes);
+
+            if (cy) {
+              cy.destroy();
+            }
+            cy = await createCytoscapeGraph(filteredNodes, edges);
+          });
+      }
+
+      function findRelatedNodesByPath(filteredNodes, allNodes) {
+        const allRelatedNodes = new Set();
+
+        filteredNodes.forEach((node) => {
+          if (node.data.path) {
+            const nodePaths = node.data.path
+              .split(" > ")
+              .map((id) => id.replace(/\r/g, ""));
+            nodePaths.forEach((id) => {
+              const pathNode = allNodes.find((n) => n.data.id === id);
+              if (pathNode) {
+                allRelatedNodes.add(pathNode);
+              }
+            });
+          }
+        });
+        return Array.from(allRelatedNodes);
+      }
+
+      function createEdges(nodes, allNodes) {
+        const edges = [];
+        const nodeMap = new Map(nodes.map((node) => [node.data.id, node]));
+
+        nodes.forEach((node) => {
+          const nodePaths = (node.data.path || "")
+            .split(" > ")
+            .map((id) => id.replace(/\r/g, ""));
+          for (let i = 0; i < nodePaths.length - 1; i++) {
+            const sourceNodeId = nodePaths[i];
+            const targetNodeId = nodePaths[i + 1];
+            if (nodeMap.has(sourceNodeId) && nodeMap.has(targetNodeId)) {
+              edges.push({
+                data: {
+                  id: `${sourceNodeId}-${targetNodeId}`,
+                  source: sourceNodeId,
+                  target: targetNodeId,
+                },
+              });
+            }
+          }
+        });
+
+        return edges;
+      }
+
+      function findRelatedNodes(filteredNodes, allNodes) {
+        const relatedNodes = new Set();
+
+        function findRecursiveRelatedNodes(node, allNodes) {
+          if (node) {
+            let subgraph = node.data.subgraph;
+            let rank = parseInt(node.data.rank);
+
+            if (rank == 1) return;
+
+            const parentNode = allNodes.find((n) => n.data.label === subgraph);
+
+            if (parentNode) {
+              relatedNodes.add(parentNode);
+              findRecursiveRelatedNodes(parentNode, allNodes);
+            }
+
+            allNodes
+              .filter((n) => n.data.subgraph === node.data.label)
+              .forEach((n) => {
+                relatedNodes.add(n);
+                findRecursiveRelatedNodes(n, allNodes);
+              });
+          }
+        }
+
+        filteredNodes.forEach((node) => {
+          findRecursiveRelatedNodes(node, allNodes);
+          relatedNodes.add(node);
+        });
+
+        return Array.from(relatedNodes);
+      }
+
+      function displayTerminalNodes(allNodes) {
+        const terminalNodeTableBody = document
+          .getElementById("terminal-node-table")
+          .querySelector("tbody");
+        terminalNodeTableBody.innerHTML = ""; // Clear previous content
+
+        const terminalNodes = allNodes.filter((node) => node.data.is_terminal);
+        const columns = 4;
+        const rows = Math.ceil(terminalNodes.length / columns);
+
+        for (let i = 0; i < rows; i++) {
+          const row = document.createElement("tr");
+          for (let j = 0; j < columns; j++) {
+            const cell = document.createElement("td");
+            const nodeIndex = i + j * rows;
+            cell.textContent = terminalNodes[nodeIndex]?.data.label || "";
+            row.appendChild(cell);
+          }
+          terminalNodeTableBody.appendChild(row);
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>
