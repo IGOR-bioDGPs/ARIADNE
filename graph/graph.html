@@ -847,12 +847,16 @@
         }
 
         // Device-aware function to update instructions based on device type
+        function isMobileOrTabletDevice() {
+            var isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+            var isTabletOrMobileWidth = window.innerWidth <= 1024;
+            return isTouchDevice || isTabletOrMobileWidth;
+        }
+
         function updateInstructionsByDeviceType() {
             var instructionsList = document.getElementById('instructions-list');
             if (!instructionsList) return;
-            var isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-            var isTabletOrMobileWidth = window.innerWidth <= 1024;
-            var isMobileOrTablet = isTouchDevice || isTabletOrMobileWidth;
+            var isMobileOrTablet = isMobileOrTabletDevice();
 
             if (isMobileOrTablet) {
                 instructionsList.innerHTML = `
@@ -1241,136 +1245,146 @@
                 cyto = await createNetwork('initial'); // draw the initial overview
             }
             else{ // if it's not the first iteration
-                // Desktop interactions
-                // Left click on a node → Move one level down (explore sub-graph)
-                cyto.on('click', 'node', function(event) {
-                    var node = event.target;
-                    if (node.data('is_terminal') == 'no') {
-                        // Non-terminal node - move one level down
-                        handleNonTerminalNodeInteraction(node);
-                    } else {
-                        // Terminal node - navigate to resource link
-                        window.open(node.data('tooltip'), '_blank');
-                    }
-                });
+                const isMobileOrTablet = isMobileOrTabletDevice();
 
-                // Hover over a terminal node → Display tooltip with resource description
-                cyto.on('mouseover', 'node', function(event) {
-                    const node = event.target;
-                    handleTerminalNodeInteraction(node, true); // true for hover
-                });
+                if (!isMobileOrTablet) {
+                    // Desktop interactions
+                    // Left click on a node → Move one level down (explore sub-graph)
+                    cyto.on('click', 'node', function(event) {
+                        var node = event.target;
+                        if (node.data('is_terminal') == 'no') {
+                            // Non-terminal node - move one level down
+                            handleNonTerminalNodeInteraction(node);
+                        } else {
+                            // Terminal node - navigate to resource link
+                            window.open(node.data('tooltip'), '_blank');
+                        }
+                    });
 
-                cyto.on('mouseout', 'node', function() {
-                    // Only remove tooltips on mouseout for desktop
-                    const tooltips = document.querySelectorAll('.custom-tooltip');
-                    tooltips.forEach(tooltip => tooltip.remove());
-                });
+                    // Hover over a terminal node → Display tooltip with resource description
+                    cyto.on('mouseover', 'node', function(event) {
+                        const node = event.target;
+                        handleTerminalNodeInteraction(node, true); // true for hover
+                    });
 
-                // Right click anywhere → Return to initial overview
-                cyto.on('cxttap', function(event) {
-                    if (event.target !== cyto) return;
-                    handleBackgroundContextAction(false);
-                });
+                    cyto.on('mouseout', 'node', function() {
+                        // Only remove tooltips on mouseout for desktop
+                        const tooltips = document.querySelectorAll('.custom-tooltip');
+                        tooltips.forEach(tooltip => tooltip.remove());
+                    });
 
-                // Right click on a node → Go one level up (back to parent graph)
-                cyto.on('cxttap', 'node', function(event) {
-                    const node = event.target;
-                    handleNodeContextAction(node);
-                });
+                    // Right click anywhere → Return to initial overview
+                    cyto.on('cxttap', function(event) {
+                        if (event.target !== cyto) return;
+                        handleBackgroundContextAction(false);
+                    });
 
-                // Mobile/Tablet interactions
-                // Tap on a non-terminal node → Move one level down (explore sub-graph)
-                // Tap on a terminal node (first tap) → Display tooltip with resource description
-                // Tap on a terminal node (second tap) → Hide tooltip and navigate to the resource link
-                let tapCount = 0;
-                let lastTapTime = 0;
-                let lastTapNode = null;
-
-                cyto.on('tap', 'node', function(event) {
-                    const node = event.target;
-                    const currentTime = new Date().getTime();
-                    const tapInterval = currentTime - lastTapTime;
-
-                    // Check if it's a double tap on the same node (for going up)
-                    if (lastTapNode === node && tapInterval < 300) {
-                        // Double tap on node - go one level up
+                    // Right click on a node → Go one level up (back to parent graph)
+                    cyto.on('cxttap', 'node', function(event) {
+                        const node = event.target;
                         handleNodeContextAction(node);
-                        tapCount = 0;
-                        lastTapTime = 0;
-                        lastTapNode = null;
-                        return;
-                    }
+                    });
+                } else {
+                    // Mobile/Tablet interactions
+                    // Tap on a non-terminal node → Move one level down (explore sub-graph)
+                    // Tap on a terminal node (first tap) → Display tooltip with resource description
+                    // Tap on a terminal node (second tap) → Hide tooltip and navigate to the resource link
+                    let tapCount = 0;
+                    let lastTapTime = 0;
+                    let lastTapNode = null;
 
-                    // Regular tap handling
-                    lastTapNode = node;
-                    lastTapTime = currentTime;
-
-                    if (node.data('is_terminal') == 'no') {
-                        // Non-terminal node - move one level down
-                        handleNonTerminalNodeInteraction(node);
-                    } else {
-                        // Terminal node - handle tap interaction
-                        handleTerminalNodeInteraction(node, false); // false for tap
-                    }
-                });
-
-                // Tap and hold anywhere → Return to initial overview
-                // Double tap on background → Return to initial overview
-                let backgroundTapCount = 0;
-                let lastBackgroundTapTime = 0;
-
-                cyto.on('tap', function(event) {
-                    // Check if background was tapped
-                    if (event.target === cyto) {
+                    cyto.on('tap', 'node', function(event) {
+                        const node = event.target;
                         const currentTime = new Date().getTime();
-                        const tapInterval = currentTime - lastBackgroundTapTime;
+                        const tapInterval = currentTime - lastTapTime;
 
-                        // Check for double tap on background
-                        if (tapInterval < 300) {
-                            // Double tap on background - return to initial overview
-                            handleBackgroundContextAction(false);
-                            backgroundTapCount = 0;
-                            lastBackgroundTapTime = 0;
+                        // Check if it's a double tap on the same node (for going up)
+                        if (lastTapNode === node && tapInterval < 300) {
+                            // Double tap on node - go one level up
+                            handleNodeContextAction(node);
+                            tapCount = 0;
+                            lastTapTime = 0;
+                            lastTapNode = null;
                             return;
                         }
 
-                        backgroundTapCount++;
-                        lastBackgroundTapTime = currentTime;
-                    }
-                });
+                        // Regular tap handling
+                        lastTapNode = node;
+                        lastTapTime = currentTime;
 
-                // Long press handlers for mobile (already implemented but let's improve them)
-                let pressTimer;
-                let pressTarget = null;
+                        if (node.data('is_terminal') == 'no') {
+                            // Non-terminal node - move one level down
+                            handleNonTerminalNodeInteraction(node);
+                        } else {
+                            // Terminal node - handle tap interaction
+                            handleTerminalNodeInteraction(node, false); // false for tap
+                        }
+                    });
 
-                // Long-press on node
-                cyto.on('tapstart', 'node', function(event) {
-                    const node = event.target;
-                    pressTarget = node;
-                    pressTimer = setTimeout(function() {
-                        handleNodeContextAction(node);
-                        pressTarget = null;
-                    }, 600);
-                });
+                    // Tap and hold anywhere → Return to initial overview
+                    // Double tap on background → Return to initial overview
+                    let backgroundTapCount = 0;
+                    let lastBackgroundTapTime = 0;
 
-                // Long-press on background
-                cyto.on('tapstart', function(event) {
-                    // Check if it's the background (not a node or edge)
-                    try {
-                        var isNode = event.target.isNode();
-                    } catch (error) {
-                        var isNode = false;
-                    }
+                    cyto.on('tap', function(event) {
+                        // Check if background was tapped
+                        if (event.target === cyto) {
+                            const currentTime = new Date().getTime();
+                            const tapInterval = currentTime - lastBackgroundTapTime;
 
-                    if (!isNode && event.target === cyto) {
+                            // Check for double tap on background
+                            if (tapInterval < 300) {
+                                // Double tap on background - return to initial overview
+                                handleBackgroundContextAction(false);
+                                backgroundTapCount = 0;
+                                lastBackgroundTapTime = 0;
+                                return;
+                            }
+
+                            backgroundTapCount++;
+                            lastBackgroundTapTime = currentTime;
+                        }
+                    });
+
+                    // Long press handlers for mobile (already implemented but let's improve them)
+                    let pressTimer;
+                    let pressTarget = null;
+
+                    // Long-press on node
+                    cyto.on('tapstart', 'node', function(event) {
+                        const node = event.target;
+                        pressTarget = node;
                         pressTimer = setTimeout(function() {
-                            handleBackgroundContextAction(false);
+                            handleNodeContextAction(node);
+                            pressTarget = null;
                         }, 600);
-                    }
-                });
+                    });
 
-                // Cancel long-press on tap end or drag
-                cyto.on('tapend drag', function() {
+                    // Long-press on background
+                    cyto.on('tapstart', function(event) {
+                        // Check if it's the background (not a node or edge)
+                        try {
+                            var isNode = event.target.isNode();
+                        } catch (error) {
+                            var isNode = false;
+                        }
+
+                        if (!isNode && event.target === cyto) {
+                            pressTimer = setTimeout(function() {
+                                handleBackgroundContextAction(false);
+                            }, 600);
+                        }
+                    });
+
+                    // Cancel long-press on tap end or drag
+                    cyto.on('tapend drag', function() {
+                        clearTimeout(pressTimer);
+                        pressTarget = null;
+                    });
+                }
+
+                // also we want to lock the amount of zoom
+                cyto.on('zoom', function(event) { // handle the zooming part
                     clearTimeout(pressTimer);
                     pressTarget = null;
                 });
