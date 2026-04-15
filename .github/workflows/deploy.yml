@@ -38,7 +38,7 @@ jobs:
       - name: Build the book
         run: |
           jupyter-book clean ariadne/
-          jupyter-book build ariadne
+          jupyter-book build --all ariadne/
 
       # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action
