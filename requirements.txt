@@ -76,8 +76,8 @@ mdurl>=0.1.2
 linkify-it-py>=2.0.3
 uc-micro-py>=1.0.3
 
-# Jupyter Book itself (upgrade)
-jupyter-book>=1.0.0
+# Jupyter Book itself (pinned to 0.15.x to avoid MyST CLI issues)
+jupyter-book>=0.15.0,<1.0.0
 jupyter-cache>=1.0.0
 nbclient>=0.10.0
 nbformat>=5.10.0
