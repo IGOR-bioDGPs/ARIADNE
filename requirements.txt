@@ -55,9 +55,9 @@ fastjsonschema>=2.21.0
 packaging>=25.0
 typing-extensions>=4.13.0
 
-# Sphinx + Jupyter Book toolchain (upgrade from old 0.15.1 stack)
-sphinx>=7.2.0
-docutils>=0.20.1
+# Sphinx + Jupyter Book toolchain (compatible with jupyter-book 0.15.x)
+sphinx>=4.0,<6.0
+docutils>=0.15,<0.19
 jinja2>=3.1.4
 markupsafe>=2.1.5
 babel>=2.16.0
@@ -67,9 +67,9 @@ snowballstemmer>=2.2.0
 soupsieve>=2.7
 beautifulsoup4>=4.12.3
 
-# MyST / Markdown ecosystem (compatible with modern Sphinx)
-myst-parser>=2.0.0
-myst-nb>=1.1.0
+# MyST / Markdown ecosystem (compatible with jupyter-book 0.15.x)
+myst-parser>=0.18.0,<1.0.0
+myst-nb>=0.17.0,<1.0.0
 markdown-it-py>=3.0.0
 mdit-py-plugins>=0.4.0
 mdurl>=0.1.2
@@ -78,26 +78,26 @@ uc-micro-py>=1.0.3
 
 # Jupyter Book itself (pinned to 0.15.x to avoid MyST CLI issues)
 jupyter-book>=0.15.0,<1.0.0
-jupyter-cache>=1.0.0
-nbclient>=0.10.0
+jupyter-cache>=0.5.0,<1.0.0
+nbclient>=0.5.0,<1.0.0
 nbformat>=5.10.0
 pyyaml>=6.0.2
 tabulate>=0.9.0
 sqlalchemy>=2.0.35
 greenlet>=3.1.1 ; platform_system != "Windows"
 
-# Themes / sphinx extensions (modern versions)
-pydata-sphinx-theme>=0.16.0
-sphinx-book-theme>=1.1.0
+# Themes / sphinx extensions (compatible with jupyter-book 0.15.x)
+pydata-sphinx-theme>=0.13.0,<0.15.0
+sphinx-book-theme>=0.3.0,<1.0.0
 sphinx-copybutton>=0.5.2
-sphinx-design>=0.6.0
-sphinx-external-toc>=1.0.1
+sphinx-design>=0.3.0,<0.5.0
+sphinx-external-toc>=0.3.0,<1.0.0
 sphinx-togglebutton>=0.3.2
 
-# Bibliography stack
-pybtex>=0.25.1
-pybtex-docutils>=1.0.3
-sphinxcontrib-bibtex>=2.6.0
+# Bibliography stack (compatible with older sphinx)
+pybtex>=0.24.0
+pybtex-docutils>=1.0.0
+sphinxcontrib-bibtex>=2.4.0,<2.6.0
 latexcodec>=3.0.0
 
 # Optional pygments accessibility plugin
