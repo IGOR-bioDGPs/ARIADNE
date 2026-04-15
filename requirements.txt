@@ -70,11 +70,11 @@ beautifulsoup4>=4.12.3
 # MyST / Markdown ecosystem (compatible with jupyter-book 0.15.x)
 myst-parser>=0.18.0,<1.0.0
 myst-nb>=0.17.0,<1.0.0
-markdown-it-py>=3.0.0
-mdit-py-plugins>=0.4.0
-mdurl>=0.1.2
-linkify-it-py>=2.0.3
-uc-micro-py>=1.0.3
+markdown-it-py>=1.0.0,<3.0.0
+mdit-py-plugins>=0.3.0
+mdurl>=0.1.0
+linkify-it-py>=1.0.0
+uc-micro-py>=1.0.0
 
 # Jupyter Book itself (pinned to 0.15.x to avoid MyST CLI issues)
 jupyter-book>=0.15.0,<1.0.0
