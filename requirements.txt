@@ -62,6 +62,7 @@ jupyter-book>=0.15.0,<1.0.0
 # Bibliography - sphinxcontrib.apa compatibility
 pybtex>=0.24.0
 pybtex-docutils>=1.0.0
+pybtex-apa-style
 sphinxcontrib-bibtex
 sphinxcontrib-apa
 latexcodec>=3.0.0
