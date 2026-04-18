@@ -38,7 +38,7 @@ REMOTE_PATH = '2023 ARIADNE/ARIADNE Resources.xlsx'
 project = osf.project(PROJECT_ID)
 
 # Get the storage (osfstorage is the default)
-storage = project.storage('Osfstorage')
+storage = project.storage('osfstorage')
 
 # Upload/update the file (creates new version automatically)
 print(f"Uploading {LOCAL_FILE} to {REMOTE_PATH}...")
