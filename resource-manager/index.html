@@ -185,6 +185,20 @@
       <!-- ══ UPLOAD PAGE ══ -->
       <div id="page-upload" class="page active">
         <div class="section-title">📂 Load CSV Files</div>
+        <div class="card mb-2">
+          <div class="card-title">📁 Auto-Load from Repository</div>
+          <p style="color:var(--muted);font-size:0.9rem;margin-bottom:12px">
+            Select your ARIADNE repository's main directory, and we'll automatically find and load the CSV files from <code>ariadne/data/</code>.
+          </p>
+          <div class="upload-zone" id="repo-zone" onclick="document.getElementById('repo-picker').click()"
+            ondragover="dragOver(event,'repo-zone')" ondragleave="dragLeave('repo-zone')" ondrop="dropFile(event,'repo')">
+            <input type="file" id="repo-picker" webkitdirectory directory mozdirectory onchange="loadFromRepository(event)">
+            <div class="icon">📂</div>
+            <p>Click or drag & drop your <strong>repository main directory</strong></p>
+            <div class="filename" id="repo-status">No directory selected</div>
+          </div>
+          <div id="repo-load-status"></div>
+        </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
           <div class="card">
             <div class="card-title">🔵 Nodes CSV</div>
@@ -437,6 +451,49 @@ function navigate(page) {
 // ═══════════════════════════════════════════════════════════════
 //  FILE LOADING
 // ═══════════════════════════════════════════════════════════════
+function loadFromRepository(event) {
+  const files = Array.from(event.target.files);
+  const statusEl = document.getElementById('repo-load-status');
+  
+  if (!files.length) return;
+  
+  const nodesFile = files.find(f => f.webkitRelativePath && f.webkitRelativePath.endsWith('data_ariadne_nodes.csv'));
+  const edgesFile = files.find(f => f.webkitRelativePath && f.webkitRelativePath.endsWith('data_ariadne_edges.csv'));
+  
+  if (!nodesFile) {
+    statusEl.innerHTML = '<div class="alert alert-error">✗ Could not find "ariadne/data/data_ariadne_nodes.csv" in the selected directory</div>';
+    toast('Missing nodes CSV file', 'error');
+    return;
+  }
+  if (!edgesFile) {
+    statusEl.innerHTML = '<div class="alert alert-error">✗ Could not find "ariadne/data/data_ariadne_edges.csv" in the selected directory</div>';
+    toast('Missing edges CSV file', 'error');
+    return;
+  }
+  
+  const repoDir = files[0].webkitRelativePath.split('/')[0];
+  document.getElementById('repo-status').textContent = `✓ ${repoDir}`;
+  statusEl.innerHTML = '<div class="alert alert-info">⏳ Loading CSV files from repository...</div>';
+  
+  let loadedCount = 0;
+  
+  parseCSV(nodesFile, 'nodes', () => {
+    loadedCount++;
+    if (loadedCount === 2) {
+      statusEl.innerHTML = '<div class="alert alert-success">✅ CSV files loaded successfully from repository!</div>';
+      toast('Repository files loaded', 'success');
+    }
+  });
+  
+  parseCSV(edgesFile, 'edges', () => {
+    loadedCount++;
+    if (loadedCount === 2) {
+      statusEl.innerHTML = '<div class="alert alert-success">✅ CSV files loaded successfully from repository!</div>';
+      toast('Repository files loaded', 'success');
+    }
+  });
+}
+
 function loadFile(event, type) {
   const file = event.target.files[0];
   if (!file) return;
@@ -448,11 +505,19 @@ function dropFile(e, type) {
   e.preventDefault();
   const zoneId = type + '-zone';
   dragLeave(zoneId);
-  const file = e.dataTransfer.files[0];
-  if (file) parseCSV(file, type);
+  if (type === 'repo') {
+    const files = Array.from(e.dataTransfer.files);
+    if (files.length) {
+      const event = { target: { files: files } };
+      loadFromRepository(event);
+    }
+  } else {
+    const file = e.dataTransfer.files[0];
+    if (file) parseCSV(file, type);
+  }
 }
 
-function parseCSV(file, type) {
+function parseCSV(file, type, callback) {
   Papa.parse(file, {
     header: true,
     delimiter: ';',
@@ -470,6 +535,7 @@ function parseCSV(file, type) {
         document.getElementById('edges-filename').textContent = '✓ ' + file.name;
       }
       checkBothLoaded();
+      if (callback) callback();
     },
     error: function(err) {
       toast('Error parsing ' + type + ' CSV: ' + err.message, 'error');
