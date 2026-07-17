@@ -32,6 +32,7 @@
 
     /* ── Sidebar ── */
     #sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 16px 0; flex-shrink: 0; }
+    #sidebar.hidden { display: none; }
     .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 20px; cursor: pointer; color: var(--muted); font-size: 0.9rem; transition: all .15s; border-left: 3px solid transparent; }
     .nav-item:hover { background: var(--surface2); color: var(--text); }
     .nav-item.active { background: var(--surface2); color: var(--accent); border-left-color: var(--accent); }
@@ -60,11 +61,11 @@
     .form-group { display: flex; flex-direction: column; gap: 5px; }
     .form-group.full { grid-column: 1 / -1; }
     label { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
-    input[type=text], input[type=url], select, textarea {
+    input[type=text], input[type=url], input[type=password], select, textarea {
       background: var(--surface2); border: 1px solid var(--border); border-radius: 6px;
       color: var(--text); padding: 8px 10px; font-size: 0.9rem; outline: none; transition: border .15s;
     }
-    input[type=text]:focus, input[type=url]:focus, select:focus, textarea:focus { border-color: var(--accent); }
+    input[type=text]:focus, input[type=url]:focus, input[type=password]:focus, select:focus, textarea:focus { border-color: var(--accent); }
     select option { background: var(--surface2); }
     textarea { resize: vertical; min-height: 70px; }
 
@@ -152,6 +153,12 @@
     <span style="font-size:1.5rem">🕸️</span>
     <h1>ARIADNE Graph Resource Manager</h1>
     <span id="header-status">— Upload CSV files to begin</span>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 12px;">
+      <span id="auth-user" style="font-size: 0.85rem; color: var(--muted);"></span>
+      <span id="pr-counter" style="font-size: 0.85rem; color: var(--accent); display: none;">📦 <span id="pr-count">0</span> resources to commit</span>
+      <button id="create-pr-btn" class="btn btn-primary" onclick="createCumulativePR()" style="display:none;">🚀 Create PR</button>
+      <button id="logout-btn" class="btn btn-secondary" onclick="logout()" style="display:none;">🚪 Logout</button>
+    </div>
   </header>
   <main>
     <!-- Sidebar -->
@@ -182,9 +189,51 @@
     <!-- Content -->
     <div id="content">
 
+      <!-- ══ LOGIN PAGE ══ -->
+      <div id="page-login" class="page active">
+        <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+          <div class="card" style="max-width: 400px; width: 100%;">
+            <div class="card-title" style="text-align: center; font-size: 1.3rem; margin-bottom: 24px;">🔐 Login to ARIADNE</div>
+            <div class="form-group full">
+              <label>GitHub Username</label>
+              <input type="text" id="login-username" placeholder="e.g., octocat" />
+            </div>
+            <div class="form-group full">
+              <label>Repository</label>
+              <input type="text" id="login-repo" value="IGOR-bioDGPs/ARIADNE" readonly style="background: var(--surface2); opacity: 0.7; cursor: not-allowed;" />
+              <p style="color:var(--muted);font-size:0.8rem;margin-top:6px;">Fixed to official ARIADNE repository</p>
+            </div>
+            <div class="form-group full">
+              <label>GitHub Personal Access Token</label>
+              <input type="password" id="login-token" placeholder="ghp_..." />
+              <p style="color:var(--muted);font-size:0.8rem;margin-top:6px;">
+                Create a token at <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--accent)">github.com/settings/tokens</a>
+                with <strong>repo</strong> and <strong>workflow</strong> permissions.
+              </p>
+            </div>
+            <button class="btn btn-primary" onclick="login()" style="width:100%;justify-content:center;margin-top:20px;">Login</button>
+            <div id="login-error" style="margin-top: 12px; color: var(--error); font-size: 0.85rem;"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- ══ UPLOAD PAGE ══ -->
-      <div id="page-upload" class="page active">
+      <div id="page-upload" class="page">
         <div class="section-title">📂 Load CSV Files</div>
+        <div class="card mb-2">
+          <div class="card-title">📁 Auto-Load from Repository</div>
+          <p style="color:var(--muted);font-size:0.9rem;margin-bottom:12px">
+            Select your ARIADNE repository's main directory, and we'll automatically find and load the CSV files from <code>ariadne/data/</code>.
+          </p>
+          <div class="upload-zone" id="repo-zone" onclick="document.getElementById('repo-picker').click()"
+            ondragover="dragOver(event,'repo-zone')" ondragleave="dragLeave('repo-zone')" ondrop="dropFile(event,'repo')">
+            <input type="file" id="repo-picker" webkitdirectory directory mozdirectory onchange="loadFromRepository(event)">
+            <div class="icon">📂</div>
+            <p>Click or drag & drop your <strong>repository main directory</strong></p>
+            <div class="filename" id="repo-status">No directory selected</div>
+          </div>
+          <div id="repo-load-status"></div>
+        </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
           <div class="card">
             <div class="card-title">🔵 Nodes CSV</div>
@@ -437,6 +486,49 @@ function navigate(page) {
 // ═══════════════════════════════════════════════════════════════
 //  FILE LOADING
 // ═══════════════════════════════════════════════════════════════
+function loadFromRepository(event) {
+  const files = Array.from(event.target.files);
+  const statusEl = document.getElementById('repo-load-status');
+  
+  if (!files.length) return;
+  
+  const nodesFile = files.find(f => f.webkitRelativePath && f.webkitRelativePath.endsWith('data_ariadne_nodes.csv'));
+  const edgesFile = files.find(f => f.webkitRelativePath && f.webkitRelativePath.endsWith('data_ariadne_edges.csv'));
+  
+  if (!nodesFile) {
+    statusEl.innerHTML = '<div class="alert alert-error">✗ Could not find "ariadne/data/data_ariadne_nodes.csv" in the selected directory</div>';
+    toast('Missing nodes CSV file', 'error');
+    return;
+  }
+  if (!edgesFile) {
+    statusEl.innerHTML = '<div class="alert alert-error">✗ Could not find "ariadne/data/data_ariadne_edges.csv" in the selected directory</div>';
+    toast('Missing edges CSV file', 'error');
+    return;
+  }
+  
+  const repoDir = files[0].webkitRelativePath.split('/')[0];
+  document.getElementById('repo-status').textContent = `✓ ${repoDir}`;
+  statusEl.innerHTML = '<div class="alert alert-info">⏳ Loading CSV files from repository...</div>';
+  
+  let loadedCount = 0;
+  
+  parseCSV(nodesFile, 'nodes', () => {
+    loadedCount++;
+    if (loadedCount === 2) {
+      statusEl.innerHTML = '<div class="alert alert-success">✅ CSV files loaded successfully from repository!</div>';
+      toast('Repository files loaded', 'success');
+    }
+  });
+  
+  parseCSV(edgesFile, 'edges', () => {
+    loadedCount++;
+    if (loadedCount === 2) {
+      statusEl.innerHTML = '<div class="alert alert-success">✅ CSV files loaded successfully from repository!</div>';
+      toast('Repository files loaded', 'success');
+    }
+  });
+}
+
 function loadFile(event, type) {
   const file = event.target.files[0];
   if (!file) return;
@@ -448,11 +540,19 @@ function dropFile(e, type) {
   e.preventDefault();
   const zoneId = type + '-zone';
   dragLeave(zoneId);
-  const file = e.dataTransfer.files[0];
-  if (file) parseCSV(file, type);
+  if (type === 'repo') {
+    const files = Array.from(e.dataTransfer.files);
+    if (files.length) {
+      const event = { target: { files: files } };
+      loadFromRepository(event);
+    }
+  } else {
+    const file = e.dataTransfer.files[0];
+    if (file) parseCSV(file, type);
+  }
 }
 
-function parseCSV(file, type) {
+function parseCSV(file, type, callback) {
   Papa.parse(file, {
     header: true,
     delimiter: ';',
@@ -470,6 +570,7 @@ function parseCSV(file, type) {
         document.getElementById('edges-filename').textContent = '✓ ' + file.name;
       }
       checkBothLoaded();
+      if (callback) callback();
     },
     error: function(err) {
       toast('Error parsing ' + type + ' CSV: ' + err.message, 'error');
@@ -707,6 +808,11 @@ function buildConfirmSummary() {
 }
 
 function submitAddResource() {
+  if (!authState.isAuthenticated()) {
+    toast('❌ Please login first', 'error');
+    return;
+  }
+
   const mode = document.getElementById('sg-mode').value;
   const nodeId = document.getElementById('new-node-id').value.trim();
   const nodeLabel = document.getElementById('new-node-label').value.trim();
@@ -725,7 +831,6 @@ function submitAddResource() {
 
   let subgraphName;
 
-  // If creating new subgraph first
   if (mode === 'new') {
     const newSgLabel = document.getElementById('new-sg-label').value.trim();
     const newSgRank = document.getElementById('new-sg-rank').value.trim();
@@ -750,9 +855,9 @@ function submitAddResource() {
 
   const resultEl = document.getElementById('add-result');
   if (result.success) {
-    resultEl.innerHTML = `<div class="alert alert-success">✅ ${result.message}</div>`;
+    prTrackingState.addResource(nodeId, nodeLabel);
+    resultEl.innerHTML = `<div class="alert alert-success">✅ ${result.message} (will be committed in next PR)</div>`;
     toast(result.message, 'success');
-    // Reset form
     setTimeout(() => { goToStep(1); document.getElementById('add-result').innerHTML = ''; }, 3000);
   } else {
     resultEl.innerHTML = `<div class="alert alert-error">✗ ${result.message}</div>`;
@@ -1052,6 +1157,308 @@ function toast(msg, type = 'info') {
   container.appendChild(el);
   setTimeout(() => el.remove(), 3500);
 }
+
+// ═══════════════════════════════════════════════════════════════
+//  AUTHENTICATION
+// ═══════════════════════════════════════════════════════════════
+const GITHUB_REPO = 'IGOR-bioDGPs/ARIADNE';
+
+const authState = {
+  username: sessionStorage.getItem('ariadne_user') || null,
+  token: sessionStorage.getItem('ariadne_token') || null,
+  isAuthenticated: () => authState.username && authState.token
+};
+
+const prTrackingState = {
+  addedResources: [],
+  addResource: (nodeId, nodeLabel) => {
+    prTrackingState.addedResources.push({ nodeId, nodeLabel });
+    updatePRCounter();
+  },
+  clear: () => {
+    prTrackingState.addedResources = [];
+    updatePRCounter();
+  }
+};
+
+function updatePRCounter() {
+  const count = prTrackingState.addedResources.length;
+  const counterEl = document.getElementById('pr-counter');
+  const countEl = document.getElementById('pr-count');
+  const createBtn = document.getElementById('create-pr-btn');
+  
+  if (count > 0) {
+    countEl.textContent = count;
+    counterEl.style.display = 'inline-block';
+    createBtn.style.display = 'inline-flex';
+  } else {
+    counterEl.style.display = 'none';
+    createBtn.style.display = 'none';
+  }
+}
+
+function login() {
+  const username = document.getElementById('login-username').value.trim();
+  const token = document.getElementById('login-token').value.trim();
+  const errorEl = document.getElementById('login-error');
+
+  if (!username || !token) {
+    errorEl.textContent = '❌ Please fill in all fields';
+    return;
+  }
+
+  if (!token.startsWith('ghp_')) {
+    errorEl.textContent = '❌ Invalid token format. Token should start with ghp_';
+    return;
+  }
+
+  sessionStorage.setItem('ariadne_user', username);
+  sessionStorage.setItem('ariadne_token', token);
+
+  authState.username = username;
+  authState.token = token;
+
+  document.getElementById('sidebar').classList.remove('hidden');
+  document.getElementById('auth-user').textContent = `Logged in as: ${username}`;
+  document.getElementById('logout-btn').style.display = 'inline-flex';
+  navigate('upload');
+  toast(`✅ Logged in as ${username}`, 'success');
+}
+
+function logout() {
+  sessionStorage.removeItem('ariadne_user');
+  sessionStorage.removeItem('ariadne_token');
+
+  authState.username = null;
+  authState.token = null;
+  prTrackingState.clear();
+
+  state.nodesLoaded = false;
+  state.edgesLoaded = false;
+  state.nodesData = [];
+  state.edgesData = [];
+
+  document.getElementById('sidebar').classList.add('hidden');
+  document.getElementById('auth-user').textContent = '';
+  document.getElementById('logout-btn').style.display = 'none';
+  navigate('login');
+  toast('Logged out', 'info');
+}
+
+function checkAuthentication() {
+  if (authState.isAuthenticated()) {
+    document.getElementById('sidebar').classList.remove('hidden');
+    document.getElementById('auth-user').textContent = `Logged in as: ${authState.username}`;
+    document.getElementById('logout-btn').style.display = 'inline-flex';
+    navigate('upload');
+  } else {
+    document.getElementById('sidebar').classList.add('hidden');
+    navigate('login');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  GITHUB API INTEGRATION - CUMULATIVE PR
+// ═══════════════════════════════════════════════════════════════
+async function createCumulativePR() {
+  if (!authState.isAuthenticated()) {
+    toast('❌ Not authenticated', 'error');
+    return;
+  }
+
+  if (prTrackingState.addedResources.length === 0) {
+    toast('❌ No resources to commit', 'error');
+    return;
+  }
+
+  const createBtn = document.getElementById('create-pr-btn');
+  const originalText = createBtn.innerHTML;
+  createBtn.disabled = true;
+  createBtn.innerHTML = '⏳ Creating PR...';
+
+  try {
+    const resourceList = prTrackingState.addedResources
+      .map(r => `- ${r.nodeLabel} (${r.nodeId})`)
+      .join('\n');
+
+    const branchName = `add-resources-${Date.now()}`;
+    const prTitle = `Add ${prTrackingState.addedResources.length} new resource${prTrackingState.addedResources.length > 1 ? 's' : ''}`;
+    const prBody = `This PR adds the following resources to the ARIADNE graph:\n\n${resourceList}\n\nPlease review the changes to the nodes and edges CSV files.`;
+
+    const baseUrl = `https://api.github.com/repos/${GITHUB_REPO}`;
+
+    const getRepoRes = await fetch(`${baseUrl}`, {
+      headers: {
+        'Authorization': `token ${authState.token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+
+    if (!getRepoRes.ok) {
+      throw new Error('Repository not found or token invalid');
+    }
+
+    const repoData = await getRepoRes.json();
+    const mainBranch = repoData.default_branch;
+
+    const getMainBranchRes = await fetch(`${baseUrl}/git/refs/heads/${mainBranch}`, {
+      headers: {
+        'Authorization': `token ${authState.token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+
+    if (!getMainBranchRes.ok) {
+      throw new Error('Failed to get main branch');
+    }
+
+    const branchData = await getMainBranchRes.json();
+    const mainSha = branchData.object.sha;
+
+    const createBranchRes = await fetch(`${baseUrl}/git/refs`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `token ${authState.token}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ref: `refs/heads/${branchName}`,
+        sha: mainSha
+      })
+    });
+
+    if (!createBranchRes.ok && createBranchRes.status !== 422) {
+      throw new Error('Failed to create branch');
+    }
+
+    await updateFilesOnBranch(baseUrl, branchName);
+
+    const prRes = await fetch(`${baseUrl}/pulls`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `token ${authState.token}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: prTitle,
+        body: prBody,
+        head: branchName,
+        base: mainBranch
+      })
+    });
+
+    if (!prRes.ok) {
+      const error = await prRes.json();
+      console.error('PR creation error response:', error);
+      throw new Error(`Failed to create PR: ${error.message || error.errors?.[0]?.message || prRes.statusText}`);
+    }
+
+    const pr = await prRes.json();
+    const prUrl = pr.html_url;
+    const prLink = `<a href="${prUrl}" target="_blank" style="color:var(--accent);text-decoration:underline">#${pr.number}</a>`;
+
+    toast(`✅ Pull Request ${prLink} created successfully`, 'success');
+    prTrackingState.clear();
+
+    const alert = document.createElement('div');
+    alert.className = 'alert alert-success';
+    alert.innerHTML = `✅ Pull Request created: <a href="${prUrl}" target="_blank" style="color:var(--accent);text-decoration:underline">View on GitHub</a>`;
+    document.querySelector('#content').insertBefore(alert, document.querySelector('#content').firstChild);
+
+  } catch (err) {
+    console.error('PR creation error:', err);
+    toast(`❌ Error: ${err.message}`, 'error');
+  } finally {
+    createBtn.disabled = false;
+    createBtn.innerHTML = originalText;
+  }
+}
+
+async function updateFilesOnBranch(baseUrl, branchName) {
+  const nodesPath = 'ariadne/data/data_ariadne_nodes.csv';
+  const edgesPath = 'ariadne/data/data_ariadne_edges.csv';
+
+  try {
+    const getNodesRes = await fetch(`${baseUrl}/contents/${nodesPath}`, {
+      headers: { 'Authorization': `token ${authState.token}` }
+    });
+
+    if (!getNodesRes.ok) {
+      throw new Error(`Failed to fetch nodes file from main: ${getNodesRes.statusText}`);
+    }
+
+    const nodeData = await getNodesRes.json();
+    const nodesSha = nodeData.sha;
+
+    const nodesCSV = Papa.unparse(state.nodesData, { delimiter: ';', columns: state.nodesHeaders });
+
+    const updateNodesRes = await fetch(`${baseUrl}/contents/${nodesPath}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${authState.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `Add ${prTrackingState.addedResources.length} resource${prTrackingState.addedResources.length > 1 ? 's' : ''} to nodes`,
+        content: btoa(unescape(encodeURIComponent(nodesCSV))),
+        sha: nodesSha,
+        branch: branchName
+      })
+    });
+
+    if (!updateNodesRes.ok) {
+      const errorData = await updateNodesRes.json();
+      console.error('Update nodes error:', errorData);
+      throw new Error(`Failed to update nodes file: ${errorData.message || updateNodesRes.statusText}`);
+    }
+  } catch (err) {
+    console.error('Nodes update failed:', err);
+    throw err;
+  }
+
+  try {
+    const getEdgesRes = await fetch(`${baseUrl}/contents/${edgesPath}`, {
+      headers: { 'Authorization': `token ${authState.token}` }
+    });
+
+    if (!getEdgesRes.ok) {
+      throw new Error(`Failed to fetch edges file from main: ${getEdgesRes.statusText}`);
+    }
+
+    const edgeData = await getEdgesRes.json();
+    const edgesSha = edgeData.sha;
+
+    const edgesCSV = Papa.unparse(state.edgesData, { delimiter: ';', columns: state.edgesHeaders });
+
+    const updateEdgesRes = await fetch(`${baseUrl}/contents/${edgesPath}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${authState.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `Add ${prTrackingState.addedResources.length} resource${prTrackingState.addedResources.length > 1 ? 's' : ''} to edges`,
+        content: btoa(unescape(encodeURIComponent(edgesCSV))),
+        sha: edgesSha,
+        branch: branchName
+      })
+    });
+
+    if (!updateEdgesRes.ok) {
+      const errorData = await updateEdgesRes.json();
+      console.error('Update edges error:', errorData);
+      throw new Error(`Failed to update edges file: ${errorData.message || updateEdgesRes.statusText}`);
+    }
+  } catch (err) {
+    console.error('Edges update failed:', err);
+    throw err;
+  }
+}
+
+// Initialize authentication on page load
+window.addEventListener('DOMContentLoaded', checkAuthentication);
 </script>
 </body>
 </html>
