@@ -185,10 +185,10 @@ id;source;target;subgraph;label;background-color
 185;Jupyter Notebook;Cheatsheets;JupyterNotebook;;black
 186;Python;Google Colab;Python;;black
 187;Analysis Framework;Matlab;AnalysisFramework;;black
-188;Data analysis;Data-extraction;Dataanalysis;;black
-189;Data-extraction;juicr;Data-extraction;;black
-190;Data-extraction;juicr;Data-extraction;;black
-191;Data-extraction;shinyDigitise;Data-extraction;;black
+188;Data analysis;Data Extraction;Dataanalysis;;black
+189;Data Extraction;juicr;DataExtraction;;black
+190;Data Extraction;juicr;DataExtraction;;black
+191;Data Extraction;shinyDigitise;DataExtraction;;black
 192;Data analysis;Meta-analysis;Dataanalysis;;black
 193;Meta-analysis;Syllabus;Meta-analysis;;black
 194;Meta-analysis;Metafor (R);Meta-analysis;;black
@@ -337,10 +337,12 @@ id;source;target;subgraph;label;background-color
 338;Publication;AlternativePublishingModels;Publication;;black
 339;AlternativePublishingModels;ScienceOpen;AlternativePublishingModels;;black
 340;AlternativePublishingModels;ResearchEquals;AlternativePublishingModels;;black
-341;Data-extraction;DataWeasel;Data-extraction;;black
+341;Data Extraction;DataWeasel;DataExtraction;;black
 342;Reproducibility;DES_RAP_Book;Reproducibility;;black
-343;Data-extraction;PlotDigitizer;Data-extraction;;black
+343;Data Extraction;PlotDigitizer;DataExtraction;;black
 344;Meta-analysis;EffectSizeCalculator;Meta-analysis;;black
 345;Meta-analysis;EffectSizeConverter;Meta-analysis;;black
 346;Writing;DERP;Writing;;black
 347;Citations;CiteMe;Citations;;black
+348;Datastructureandmanagement;Dataseer;Datastructureandmanagement;;black
+349;Matlab_analysis;EssentialsofNeuroscience;Matlab_analysis;;black
